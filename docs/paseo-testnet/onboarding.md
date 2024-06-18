@@ -30,15 +30,15 @@ To deploy your parachain, you'll first need to reserve a unique ParaId on the Pa
 1. Visit [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo testnet.
 
 2. Navigate to the Network > Parachains section.
-![PolkadotJS Paseo](../images/paseo-testnet/onboarding/onboarding-1.webp)
+    ![PolkadotJS Paseo](../images/paseo-testnet/onboarding/onboarding-1.webp)
 
 3. Switch to the Parathreads tab and click the +ParaId button.
-![ParaId](../images/paseo-testnet/onboarding/onboarding-2.webp)
+    ![ParaId](../images/paseo-testnet/onboarding/onboarding-2.webp)
 
 4. Submit the transaction and save the assigned ParaId for future reference.
-![SubmitTx](../images/paseo-testnet/onboarding/onboarding-3.webp)
+    ![SubmitTx](../images/paseo-testnet/onboarding/onboarding-3.webp)
 
-> In this example, the ParaId assigned is 4017
+    > In this example, the ParaId assigned is 4017
 
 ## Generate and Customize the Chainspec
 
@@ -46,9 +46,9 @@ In this guide, the [Generic template](https://github.com/OpenZeppelin/polkadot-r
 
 1. Generate a plain chainspec:
 
-```bash
-./target/release/parachain-template-node build-spec --disable-default-bootnode > plain-parachain-chainspec.json
-```
+    ```bash
+    ./target/release/parachain-template-node build-spec --disable-default-bootnode > plain-parachain-chainspec.json
+    ```
 
 2. Edit the `plain-parachain-chainspec.json` file:
     - Update the `name`, `id`, and `protocolId` to unique values for your parachain.
@@ -93,9 +93,9 @@ In this guide, the [Generic template](https://github.com/OpenZeppelin/polkadot-r
 
 3. Generate a raw chainspec:
 
-```bash
-./target/release/parachain-template-node build-spec --chain plain-parachain-chainspec.json --disable-default-bootnode --raw > raw-parachain-chainspec.json
-```
+    ```bash
+    ./target/release/parachain-template-node build-spec --chain plain-parachain-chainspec.json --disable-default-bootnode --raw > raw-parachain-chainspec.json
+    ```
 
 ## Register a Parathread
 
@@ -105,24 +105,24 @@ Before securing a dedicated parachain slot, you'll need to register a parathread
 
 1. Generate a genesis state:
 
-```bash
-./target/release/parachain-template-node export-genesis-state --chain raw-parachain-chainspec.json para-<paraId>-genesis-state
-```
+    ```bash
+    ./target/release/parachain-template-node export-genesis-state --chain raw-parachain-chainspec.json para-<paraId>-genesis-state
+    ```
 
 2. Generate a genesis wasm:
 
-```bash
-./target/release/parachain-template-node export-genesis-wasm --chain raw-parachain-chainspec.json para-<paraId>-wasm
-```
+    ```bash
+    ./target/release/parachain-template-node export-genesis-wasm --chain raw-parachain-chainspec.json para-<paraId>-wasm
+    ```
 
 3. Visit [PolkadotJS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer) and navigate to Network > Parachains.
-![Register Parathread](../images/paseo-testnet/onboarding/onboarding-1.webp)
+    ![PolkadotJS Paseo](../images/paseo-testnet/onboarding/onboarding-1.webp)
 
 4. Click the +ParaThread button.
-![Register Parathread](../images/paseo-testnet/onboarding/onboarding-4.webp)
+    ![Register Parathread](../images/paseo-testnet/onboarding/onboarding-4.webp)
 
 5. Submit the generated genesis state and genesis Wasm files.
-![Submit Parathread](../images/paseo-testnet/onboarding/onboarding-5.webp)
+    ![Submit Parathread Registration](../images/paseo-testnet/onboarding/onboarding-5.webp)
 
 [//]: <> (//TODO: This last extrinsic is failing with Insufficient balance. Need to investigate further.)
 
@@ -143,20 +143,20 @@ With a parachain slot secured, you can now set up and run your parachain on the 
 
 2. Start your parachain collator node with the following command:
 
-```bash
-./target/release/parachain-template-node \
---alice \
---collator \
---force-authoring \
---chain raw-parachain-chainspec.json \
---base-path ./data \
---port 40333 \
---rpc-port 8845 \
--- \
---execution wasm \
---chain paseo.raw.json \
---port 30343 \
---rpc-port 9977
-```
+    ```bash
+    ./target/release/parachain-template-node \
+    --alice \
+    --collator \
+    --force-authoring \
+    --chain raw-parachain-chainspec.json \
+    --base-path ./data \
+    --port 40333 \
+    --rpc-port 8845 \
+    -- \
+    --execution wasm \
+    --chain paseo.raw.json \
+    --port 30343 \
+    --rpc-port 9977
+    ```
 
 Congratulations! You've successfully deployed your parachain on the Paseo testnet. You can now test and iterate on your blockchain project within the Paseo ecosystem.
