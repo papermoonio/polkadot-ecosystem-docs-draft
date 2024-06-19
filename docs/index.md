@@ -5,5 +5,4 @@ hide:
   - navigation
   - feedback
   - toc
-  - footer
 ---
