@@ -34,13 +34,13 @@ To deploy your parachain, you'll first need to reserve a unique Parachain ID on 
 1. Visit [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo TestNet.
 
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
-    ![Polkadot.js Paseo](/images/paseo-testnet/onboarding/onboarding-1.webp)
+    ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
 
 3. Switch to the **Parathreads** tab and click the **+ParaId** button.
-    ![ParaId](/images/paseo-testnet/onboarding/onboarding-2.webp)
+    ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
 
 4. Submit the transaction and save the assigned Parachain ID for future reference.
-    ![SubmitTx](/images/paseo-testnet/onboarding/onboarding-3.webp)
+    ![Parachain reservation form](/images/paseo-testnet/onboarding/onboarding-3.webp)
 
     !!! note
         In this example, the Parachain ID assigned is 4017.
@@ -133,13 +133,13 @@ Before securing a dedicated parachain slot, you'll need to register a parathread
     ```
 
 3. Visit [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank}, navigate to the **Network** dropdown and then select the **Parachains** option.
-    ![Polkadot.js Paseo](/images/paseo-testnet/onboarding/onboarding-1.webp)
+    ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
 
 4. Click the **+ParaThread** button.
-    ![Register Parathread](/images/paseo-testnet/onboarding/onboarding-4.webp)
+    ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-4.webp)
 
 5. Submit the generated genesis state and genesis Wasm files.
-    ![Submit Parathread Registration](/images/paseo-testnet/onboarding/onboarding-5.webp)
+    ![Form to register a parathread](/images/paseo-testnet/onboarding/onboarding-5.webp)
 
 [//]: <> (//TODO: This last extrinsic is failing with Insufficient balance. Need to investigate further.)
 
@@ -158,7 +158,7 @@ With a parachain slot secured, you can now set up and run your parachain on the 
 
 1. Download the [Paseo Spec](https://github.com/paseo-network/runtimes/blob/main/chain-specs/paseo.raw.json){target=_blank}.
 
-2. Start your parachain collator node with the following command:
+2. Start your parachain collator node by running the command with the appropriate flags and options for your setup. For example:
 
     ```bash
     ./target/release/parachain-template-node \
