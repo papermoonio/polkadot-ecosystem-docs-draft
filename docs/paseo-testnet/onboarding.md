@@ -43,7 +43,7 @@ To deploy your parachain, you'll first need to reserve a unique Parachain ID on 
     ![Parachain reservation form](/images/paseo-testnet/onboarding/onboarding-3.webp)
 
     !!! note
-        In this example, the Parachain ID assigned is 4017.
+        In this example, the Parachain ID assigned is 4018.
 
 ## Generate and Customize the Chainspec
 
@@ -82,7 +82,7 @@ cargo build --release
             "tokenSymbol": "UNIT"
         },
         "relay_chain": "paseo",
-        "para_id": 4017,
+        "para_id": 4018,
         "codeSubstitutes": {},
         "genesis": {
             "runtimeGenesis": {
@@ -91,7 +91,7 @@ cargo build --release
                     "balances": {...},
                     "collatorSelection": {...},
                     "parachainInfo": {
-                        "parachainId": 4017
+                        "parachainId": 4018
                     },
                     "polkadotXcm": {
                         "safeXcmVersion": 4
