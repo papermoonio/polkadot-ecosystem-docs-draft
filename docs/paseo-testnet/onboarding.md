@@ -7,11 +7,11 @@ description: This guide walks through the entire process of deploying a parachai
 
 ## Introduction
 
-Paseo is a community run TestNet designed for parachain teams and dApp developers to build and test their solutions. The Paseo network is open, allowing anyone to launch an appchain (parachain) as part of their process for eventual deployment onto the Polkadot MainNet.
+Paseo is a community-run TestNet designed for parachain teams and dApp developers to build and test their solutions. The Paseo network is open, allowing anyone to launch an appchain (parachain) as part of their process for eventual deployment onto the Polkadot MainNet.
 
 It provides dedicated parachain slots to maintainers, with the lease period duration varying based on the following criteria:
 
-- Maintainers of live parachains on the Polkadot or Kusama MainNets will be granted a dedicated Paseo parachain slot for a one year lease period
+- Maintainers of live parachains on the Polkadot or Kusama MainNets will be granted a dedicated Paseo parachain slot for a one-year lease period
 
 - Maintainers of parachains under active development, or those that have not yet secured a parachain slot on Kusama or Polkadot, will be assigned a shorter Paseo lease period of two weeks
 
@@ -36,7 +36,7 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
 
-3. Review the list of active parachains and select an available parachain ID for your chain. Ensure the ID you choose is not currently in use by examining the **parachains column** in the table below. Save the selected ID for future reference
+3. Review the list of active parachains and select an available parachain ID for your chain. Ensure the ID you choose is not currently used by examining the **parachains column** in the table below. Save the selected ID for future reference
     ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-6.webp)
 
 
@@ -63,8 +63,8 @@ cargo build --release
 
 2. Edit the `plain-parachain-chainspec.json` file:
     - Update the `name`, `id` and `protocolId` fields to unique values for your parachain
-    - Change `relay_chain` field to `paseo`
-    - Change `para_id` and `parachainInfo.parachainId` from 1000 to the parachain ID you selected in previous steps
+    - Change the `relay_chain` field to `paseo`
+    - Change `para_id` and `parachainInfo.parachainId` from 1000 to the parachain ID you selected in the previous steps
     - Modify the `sudo` value to specify the account that will have sudo access to the parachain
 
     ```json
