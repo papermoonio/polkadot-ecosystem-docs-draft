@@ -140,7 +140,7 @@ Before securing a dedicated parachain slot, you'll need to generate a genesis st
 
     ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-7.webp)
 
-4. Ensure you fill in all the necessary information, including your parachain name, selected parachain ID, manager account, genesis state, and genesis Wasm files from the previous steps. After filling in the required details, submit the issue.
+4. Ensure you fill in all the necessary information, including your parachain name, selected parachain ID, manager account, genesis state, and genesis Wasm files from the previous steps. After filling in the required details, submit the issue
     ![Paseo Parachain Onboarding Issue Template](/images/paseo-testnet/onboarding/onboarding-8.webp)
 
 5. Once your request is reviewed and approved, you'll be allocated a dedicated parachain slot
