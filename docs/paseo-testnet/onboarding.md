@@ -15,7 +15,7 @@ It provides dedicated parachain slots to maintainers, with the lease period dura
 
 - Maintainers of parachains under active development, or those that have not yet secured a parachain slot on Kusama or Polkadot, will be assigned a shorter Paseo lease period of two weeks
 
-This guide will walk you through the process of deploying your blockchain as a parachain on the Paseo TestNet. We'll cover reserving a parachain ID, generating a customized chain spec, registering a parathread, securing a dedicated parachain slot, and finally, setting up and running your parachain.
+This guide will walk you through the process of deploying your blockchain as a parachain on the Paseo TestNet. We'll cover generating a customized chain spec, securing a dedicated parachain slot, and finally, setting up and running your parachain.
 
 ## Prerequisites
 
@@ -27,23 +27,18 @@ Before you can deploy your parachain on the Paseo TestNet, you'll need to meet t
 - [PAS Tokens]() - the native currency of the Paseo TestNet to pay for transaction fees
 - [Parachain Runtime]() - a fully operational blockchain capable of operating as a parachain
 
-## Reserve a Parachain ID
+## Select a Parachain ID
 
-To deploy your parachain, you'll first need to reserve a unique parachain ID on the Paseo TestNet.
+To deploy your parachain, you'll first need to select a unique parachain ID on the Paseo TestNet.
 
 1. Visit [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo TestNet
 
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
 
-3. Switch to the **Parathreads** tab and click the **+ParaId** button
-    ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
+3. Review the list of active parachains and select an available parachain ID for your chain. Ensure the ID you choose is not currently in use by examining the **parachains column** in the table below. Save the selected ID for future reference
+    ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-6.webp)
 
-4. Submit the transaction and save the assigned parachain ID for future reference
-    ![Parachain reservation form](/images/paseo-testnet/onboarding/onboarding-3.webp)
-
-    !!! note
-        In this example, the parachain ID assigned is 4018.
 
 ## Generate and Customize the Chain Spec
 
@@ -67,25 +62,26 @@ cargo build --release
     ```
 
 2. Edit the `plain-parachain-chainspec.json` file:
-    - Update the `name`, `id`, and `protocolId` to unique values for your parachain
-    - Change `relay_chain` to `paseo`
-    - Change `para_id` and `parachainInfo.parachainId` from 1000 to the parachain ID you reserved in step 1
+    - Update the `name`, `id` and `protocolId` fields to unique values for your parachain
+    - Change `relay_chain` field to `paseo`
+    - Change `para_id` and `parachainInfo.parachainId` from 1000 to the parachain ID you selected in previous steps
+    - Modify the `sudo` value to specify the account that will have sudo access to the parachain
 
     ```json
     {
-        "name": "My Parachain Name",
-        "id": "my_parachain",
+        "name": "INSERT_NAME",
+        "id": "INSERT_ID",
         "chainType": "Local",
         "bootNodes": [],
         "telemetryEndpoints": null,
-        "protocolId": "my_para",
+        "protocolId": "INSERT_PROTOCOL_ID",
         "properties": {
             "ss58Format": 42,
             "tokenDecimals": 12,
             "tokenSymbol": "UNIT"
         },
         "relay_chain": "paseo",
-        "para_id": 4018,
+        "para_id": INSERT_SELECTED_PARA_ID,
         "codeSubstitutes": {},
         "genesis": {
             "runtimeGenesis": {
@@ -94,18 +90,23 @@ cargo build --release
                     "balances": {...},
                     "collatorSelection": {...},
                     "parachainInfo": {
-                        "parachainId": 4018
+                        "parachainId": INSERT_SELECTED_PARA_ID
                     },
                     "polkadotXcm": {
                         "safeXcmVersion": 4
                     },
                     "session": {...},
-                    "sudo": {...}
+                    "sudo": {
+                        "key": "INSERT_SUDO_ACCOUNT"
+                    }
                 }
             }
         }
     }
     ```
+
+    !!!note
+        For more detailed information on customizing your chain spec, please check the section [Customizing Chain Specifications]()
 
 3. Generate a raw chain spec:
 
@@ -114,46 +115,35 @@ cargo build --release
     --disable-default-bootnode --raw > raw-parachain-chainspec.json
     ```
 
-## Register a Parathread
+## Obtain a Parachain Slot
 
-Before securing a dedicated parachain slot, you'll need to register a parathread on the Paseo TestNet. 
+Before securing a dedicated parachain slot, you'll need to generate a genesis state and Wasm for your chain.
 
 !!!note
-    Replace `INSERT_PARA_ID` with the actual parachain ID you reserved earlier when executing the following commands:
+    Replace `<INSERT_SELECTED_PARA_ID>` with the actual parachain ID you reserved earlier when executing the following commands:
 
 1. Generate a genesis state:
 
     ```bash
     ./target/release/parachain-template-node export-genesis-state \
-    --chain raw-parachain-chainspec.json para-<INSERT_PARA_ID>-genesis-state
+    --chain raw-parachain-chainspec.json para-<INSERT_SELECTED_PARA_ID>-genesis-state
     ```
 
 2. Generate a genesis Wasm:
 
     ```bash
     ./target/release/parachain-template-node export-genesis-wasm \
-    --chain raw-parachain-chainspec.json para-<INSERT_PARA_ID>-wasm
+    --chain raw-parachain-chainspec.json para-<INSERT_SELECTED_PARA_ID>-wasm
     ```
 
-3. Visit [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank}, navigate to the **Network** dropdown and then select the **Parachains** option
-    ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
+3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template](https://github.com/paseo-network/support/issues/new/choose){target=_blank}
 
-4. Click the **+ParaThread** button
-    ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-4.webp)
+    ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-7.webp)
 
-5. Submit the generated genesis state and genesis Wasm files
-    ![Form to register a parathread](/images/paseo-testnet/onboarding/onboarding-5.webp)
+4. Ensure you fill in all the necessary information, including your parachain name, selected parachain ID, manager account, genesis state, and genesis Wasm files from the previous steps. After filling in the required details, submit the issue.
+    ![Paseo Parachain Onboarding Issue Template](/images/paseo-testnet/onboarding/onboarding-8.webp)
 
-[//]: <> (//TODO: This last extrinsic is failing with Insufficient balance. Need to investigate further.)
-
-## Obtain a Parachain Slot
-
-To upgrade your parathread to a full parachain, you must secure a dedicated parachain slot.
-
-1. Submit an issue via the [Paseo Support repository](https://github.com/paseo-network/support){target=_blank} using the [Paseo Parachain Onboarding issue template](https://github.com/paseo-network/support/issues/new/choose){target=_blank}
-
-2. Once your request is reviewed and approved, you'll be allocated a dedicated parachain slot
-
+5. Once your request is reviewed and approved, you'll be allocated a dedicated parachain slot
 
 ## Set Up Your Parachain
 
