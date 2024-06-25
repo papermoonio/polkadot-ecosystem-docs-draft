@@ -3,7 +3,8 @@ repositories:
     polkadot_runtime_template: https://github.com/OpenZeppelin/polkadot-runtime-templates.git 
     polkadot_runtime_generic_template: https://github.com/OpenZeppelin/polkadot-runtime-templates/tree/v1.0.0
     parachain_runtime_template: https://docs.openzeppelin.com/substrate-runtimes/1.0.0/
-    
+  paseo_network:
+    onboarding_issue_template: https://github.com/paseo-network/support/issues/new/choose
 polkadot_js:
   paseo_rpc:
     explorer: https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer

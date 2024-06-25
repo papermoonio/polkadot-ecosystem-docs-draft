@@ -137,7 +137,7 @@ Before securing a dedicated parachain slot, you'll need to generate a genesis st
     --chain raw-parachain-chainspec.json para-<INSERT_SELECTED_PARA_ID>-wasm
     ```
 
-3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template](https://github.com/paseo-network/support/issues/new/choose){target=_blank}
+3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template]({{ repositories.paseo_network.onboarding_issue_template }}){target=_blank}
 
     ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-7.webp)
 
