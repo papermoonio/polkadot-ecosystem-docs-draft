@@ -47,7 +47,7 @@ This guide demonstrates the process using the [generic template]({{ repositories
 
 Before starting, clone the repository and execute the build command:
 ```bash
-git clone -b v1.0.0 {{ repositories.open_zeppelin.polkadot_runtime_template }}
+git clone -b {{ repositories.open_zeppelin.polkadot_runtime_template.release_tag}} {{ repositories.open_zeppelin.polkadot_runtime_template }}
 cd polkadot-runtime-templates
 cargo build --release
 ```
