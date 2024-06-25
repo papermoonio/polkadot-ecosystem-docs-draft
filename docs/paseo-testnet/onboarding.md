@@ -31,7 +31,7 @@ Before you can deploy your parachain on the Paseo TestNet, you'll need to meet t
 
 To deploy your parachain, you'll first need to select a unique parachain ID on the Paseo TestNet.
 
-1. Visit [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo TestNet
+1. Visit [Polkadot.js]({{ polkadot_js.paseo_rpc.explorer }}){target=_blank} and ensure you're connected to the Paseo TestNet
 
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
@@ -42,11 +42,12 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 
 ## Generate and Customize the Chain Spec
 
-This guide demonstrates the process using the [generic template](https://github.com/OpenZeppelin/polkadot-runtime-templates/tree/v1.0.0){target=_blank} from [OpenZeppelin Substrate Parachain Runtimes](https://docs.openzeppelin.com/substrate-runtimes/1.0.0/){target=_blank}. Most of the time, you will use your own custom runtime. The steps outlined here are adaptable to your specific runtime with minor adjustments.
+This guide demonstrates the process using the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} from [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
+}}){target=_blank}. Most of the time, you will use your own custom runtime. The steps outlined here are adaptable to your specific runtime with minor adjustments.
 
 Before starting, clone the repository and execute the build command:
 ```bash
-git clone -b v1.0.0 https://github.com/OpenZeppelin/polkadot-runtime-templates.git
+git clone -b v1.0.0 {{ repositories.open_zeppelin.polkadot_runtime_template }}
 cd polkadot-runtime-templates
 cargo build --release
 ```

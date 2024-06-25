@@ -78,9 +78,9 @@
       'redirect_maps':
         # Redirects will go here as pages get moved around in the following format:
         # 'old-page.md': 'new-page.md'
-  # - 'macros':
-  #     'include_yaml':
-  #       - 'docs/variables.yml'
+  - 'macros':
+      'include_yaml':
+        - 'variables.yml'
 # 'extra':
 #   'generator': !!bool 'false'
 #   'social':
