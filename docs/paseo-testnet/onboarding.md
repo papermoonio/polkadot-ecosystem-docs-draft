@@ -164,10 +164,21 @@ With a parachain slot secured, you can now set up and run your parachain on the 
     --port 40333 \
     --rpc-port 8845 \
     -- \
+    --sync warp \
     --execution wasm \
     --chain paseo.raw.json \
     --port 30343 \
     --rpc-port 9977
     ```
+    !!!warning
+        Replace `--alice` with your own securely generated and managed session keys. Using predefined keys poses security risks.
+    !!!note
+        For more information on the available command-line arguments you can provide to your collator node, execute the following command:
+
+        ```bash
+        ./target/release/parachain-template-node -h
+        ```
+
+3. Once your collator is synced with the Paseo relay chain, it will begin producing blocks for your parachain. This process may take some time. You'll see log messages indicating when your parachain starts participating in block production
 
 Congratulations! You've successfully deployed your parachain on the Paseo TestNet. You can now test and iterate on your blockchain project within the Paseo ecosystem.
