@@ -1,7 +1,7 @@
 repositories:
   open_zeppelin:
     polkadot_runtime_template: https://github.com/OpenZeppelin/polkadot-runtime-templates.git 
-      release_tag: v1.0.0
+    release_tag: v1.0.0
     polkadot_runtime_generic_template: https://github.com/OpenZeppelin/polkadot-runtime-templates/tree/v1.0.0
     parachain_runtime_template: https://docs.openzeppelin.com/substrate-runtimes/1.0.0/
   paseo_network:
