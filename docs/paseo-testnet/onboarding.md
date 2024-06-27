@@ -159,9 +159,9 @@ With a parachain slot secured, you can now set up and run your parachain on the 
     You can use several methods to generate your session keys, such as the node-template `key` subcommand, the standalone `subkey` command-line tool, the Polkadot-JS application, or third-party utilities designed for key generation. This tutorial opts for using a [Docker image of the subkey]({{ docker_images.parity.subkey }}){target=_blank} CLI for simplicity
 
 !!!note
-    The flag --scheme uses the sr25519 signature scheme since this runtime uses the **aura** consensus mechanism for block production
-
-2. Download the [Paseo spec](https://github.com/paseo-network/runtimes/blob/main/chain-specs/paseo.raw.json){target=_blank}
+    The flag `--scheme` uses the sr25519 signature scheme since this runtime uses the **aura** consensus mechanism for block production
+    
+2. Download the [Paseo spec]({{ repositories.paseo_network.paseo_specs }}){target=_blank}
 
 3. Start your parachain collator node by running the command with the appropriate flags and options for your setup. For example:
 
