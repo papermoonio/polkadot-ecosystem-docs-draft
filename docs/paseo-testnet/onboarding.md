@@ -150,13 +150,24 @@ Before securing a dedicated parachain slot, you'll need to generate a genesis st
 
 With a parachain slot secured, you can now set up and run your parachain on the Paseo TestNet.
 
-1. Download the [Paseo spec](https://github.com/paseo-network/runtimes/blob/main/chain-specs/paseo.raw.json){target=_blank}
+1. Generate your collator session keys:
+   
+    ```bash
+    docker run -it parity/subkey:latest generate --scheme sr25519 --password-interactive
+    ```
+!!!note
+    You can use several methods to generate your session keys, such as the node-template `key` subcommand, the standalone `subkey` command-line tool, the Polkadot-JS application, or third-party utilities designed for key generation. This tutorial opts for using a [Docker image of the subkey]({{ docker_images.parity.subkey }}){target=_blank} CLI for simplicity
 
-2. Start your parachain collator node by running the command with the appropriate flags and options for your setup. For example:
+!!!note
+    The flag --scheme uses the sr25519 signature scheme since this runtime uses the **aura** consensus mechanism for block production
+
+2. Download the [Paseo spec](https://github.com/paseo-network/runtimes/blob/main/chain-specs/paseo.raw.json){target=_blank}
+
+3. Start your parachain collator node by running the command with the appropriate flags and options for your setup. For example:
 
     ```bash
     ./target/release/parachain-template-node \
-    --alice \
+    --INSERT_GENERATED_SESSION_KEY \
     --collator \
     --force-authoring \
     --chain raw-parachain-chainspec.json \
@@ -171,7 +182,7 @@ With a parachain slot secured, you can now set up and run your parachain on the 
     --rpc-port 9977
     ```
     !!!warning
-        Replace `--alice` with your own securely generated and managed session keys. Using predefined keys poses security risks.
+        Replace `--INSERT_GENERATED_SESSION_KEY` with your own securely generated and managed session keys. Using predefined keys poses security risks.
     !!!note
         For more information on the available command-line arguments you can provide to your collator node, execute the following command:
 

@@ -10,3 +10,8 @@ repositories:
 polkadot_js:
   paseo_rpc:
     explorer: https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer
+
+
+docker_images:
+  parity:
+    subkey: https://hub.docker.com/r/parity/subkey 
