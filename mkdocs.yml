@@ -80,7 +80,7 @@
         # 'old-page.md': 'new-page.md'
   - 'macros':
       'include_yaml':
-        - 'variables.yml'
+        - 'docs/variables.yml'
 # 'extra':
 #   'generator': !!bool 'false'
 #   'social':
