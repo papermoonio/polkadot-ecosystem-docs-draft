@@ -12,6 +12,9 @@ polkadot_js:
   paseo_rpc:
     explorer: https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer
 
+tools:
+  subkey: https://docs.rs/crate/subkey/latest
+
 docker_images:
   parity:
     subkey: https://hub.docker.com/r/parity/subkey 
