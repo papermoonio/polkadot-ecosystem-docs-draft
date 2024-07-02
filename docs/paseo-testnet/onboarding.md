@@ -43,9 +43,9 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 
 To securely deploy your parachain, it is essential to generate custom keys specifically for your collators. You should generate two set of keys for each collator:
 
-- Account keys: Keys used to interact with the network and manage funds. Should be protected carefully and should never exist on the filesystem of the collator node
+- Account keys - used to interact with the network and manage funds. Should be protected carefully and should never exist on the filesystem of the collator node
 
-- Session keys: Keys used in block production. These identify your node and its blocks on the network. Stored in the parachain keystore, these are disposable "hot wallet" keys. If leaked, they could be used to impersonate your node, potentially leading to fund slashing. To mitigate risks, rotate these keys frequently. Treat them with the same caution as a hot wallet to protect your node security
+- Session keys - used in block production. These identify your node and its blocks on the network. Stored in the parachain keystore, these are disposable "hot wallet" keys. If leaked, they could be used to impersonate your node, potentially leading to fund slashing. To mitigate risks, rotate these keys frequently. Treat them with the same caution as a hot wallet to protect your node security
 
 To perform this step you can use [subkey]({{ tools.subkey }}){target=_blank}, a command-line tool for generating and managing keys.
 
@@ -211,7 +211,6 @@ With a parachain slot secured, you can now set up and run your parachain on the 
 
     ```bash
     ./target/release/parachain-template-node \
-    --alice \
     --collator \
     --force-authoring \
     --chain raw-parachain-chainspec.json \
@@ -225,8 +224,7 @@ With a parachain slot secured, you can now set up and run your parachain on the 
     --port 30343 \
     --rpc-port 9977
     ```
-    !!!warning
-        Replace `--alice` with your own securely generated and managed session keys. Using predefined keys poses security risks.
+
     !!!note
         For more information on the available command-line arguments you can provide to your collator node, execute the following command:
 
@@ -234,6 +232,33 @@ With a parachain slot secured, you can now set up and run your parachain on the 
         ./target/release/parachain-template-node -h
         ```
 
-3. Once your collator is synced with the Paseo relay chain, it will begin producing blocks for your parachain. This process may take some time. You'll see log messages indicating when your parachain starts participating in block production
+3. Insert the session key previously generated in your collator keystore by running the following command with the appropriate values:
+
+    ```bash
+    curl -H "Content-Type: application/json" \
+    --data '{
+      "jsonrpc":"2.0",
+      "method":"author_insertKey",
+      "params":[
+        "aura",
+        "INSERT_SECRET_PHRASE",
+        "INSERT_PUBLIC_KEY"
+      ],
+      "id":1
+    }' \
+    http://localhost:8845
+    ```
+
+    If successful, you should see the following response:
+
+    ```json
+    {"jsonrpc":"2.0","result":null,"id":1}
+    ```
+    
+    !!!note
+		Replace the port number `8845` with the RPC port you specified when starting your collator node. Also, replace `INSERT_SECRET_PHRASE` and `INSERT_PUBLIC_KEY` with the session key generated for your collator.
+        
+
+4. Once your collator is synced with the Paseo relay chain, it will begin producing blocks for your parachain. This process may take some time. You'll see log messages indicating when your parachain starts participating in block production
 
 Congratulations! You've successfully deployed your parachain on the Paseo TestNet. You can now test and iterate on your blockchain project within the Paseo ecosystem.
