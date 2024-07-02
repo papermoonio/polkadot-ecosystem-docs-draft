@@ -42,10 +42,10 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 ## Generate customs keys for your collators
 
 To securely deploy your parachain, it is essential to generate custom keys specifically for your collators.
-   
     ```bash
     docker run -it parity/subkey:latest generate --scheme sr25519 --password-interactive
     ```
+
 !!!note
     You can use several methods to generate your session keys, such as the node-template `key` subcommand, the standalone `subkey` command-line tool, the Polkadot-JS application, or third-party utilities designed for key generation. This tutorial opts for using a [Docker image of the subkey]({{ docker_images.parity.subkey }}){target=_blank} CLI for simplicity.
 
