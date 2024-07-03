@@ -14,6 +14,9 @@ polkadot_js:
 
 tools:
   subkey: https://docs.rs/crate/subkey/latest
+  npm: https://nodejs.org/en
+  yarn: https://yarnpkg.com/
+
 
 docker_images:
   parity:

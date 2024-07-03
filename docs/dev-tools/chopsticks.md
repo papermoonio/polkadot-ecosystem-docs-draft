@@ -14,4 +14,15 @@ This article covers the fundamentals of using Chopsticks to fork Substrate-based
 
 # Getting Started
 
+To begin using Chopsticks, you can install it as a package using either [Node package manager]({{ tools.npm }}){target=_blank} or [Yarn]({{ tools.yarn }}){target=_blank}:
+
+```bash
+npm i @acala-network/chopsticks@latest
+```
+
+After installation, you can execute commands using the Node package executor. For instance, it allows you to execute Chopstick's main command.
+
+```bash
+npx i @acala-network/chopsticks@latest
+```
 
