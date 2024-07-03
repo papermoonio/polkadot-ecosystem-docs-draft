@@ -9,6 +9,9 @@ Chopsticks introduces a user-friendly method for developers to locally fork exis
 
 This article covers the fundamentals of using Chopsticks to fork Substrate-based chains, including replaying blockchain transactions, analyzing changes in system state, simulating cross-chain message (XCM) interactions, and locally duplicating Substrate-based networks. 
 
+!!!Note
+    Chopsticks does not support calls made through the Ethereum JSON-RPC at this time. Consequently, you cannot fork your chain using Chopsticks and connect Metamask to it.
+
 # Getting Started
 
 
