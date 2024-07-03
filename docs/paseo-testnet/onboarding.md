@@ -242,7 +242,7 @@ With a parachain slot secured, you can now set up and run your parachain on the 
       "params":[
         "aura",
         "INSERT_SECRET_PHRASE",
-        "INSERT_PUBLIC_KEY"
+        "INSERT_PUBLIC_KEY_HEX_FORMAT"
       ],
       "id":1
     }' \
@@ -256,7 +256,7 @@ With a parachain slot secured, you can now set up and run your parachain on the 
     ```
     
     !!!note
-		Replace the port number `8845` with the RPC port you specified when starting your collator node. Also, replace `INSERT_SECRET_PHRASE` and `INSERT_PUBLIC_KEY` with the session key generated for your collator.
+		Replace the port number `8845` with the RPC port you specified when starting your collator node. Also, replace `INSERT_SECRET_PHRASE` and `INSERT_PUBLIC_KEY_HEX_FORMAT` with the session key generated for your collator.
         
 
 4. Once your collator is synced with the Paseo relay chain, it will begin producing blocks for your parachain. This process may take some time. You'll see log messages indicating when your parachain starts participating in block production
