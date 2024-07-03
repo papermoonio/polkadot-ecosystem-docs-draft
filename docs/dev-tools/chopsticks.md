@@ -22,7 +22,7 @@ To begin using Chopsticks, you can install it as a package using either [Node pa
 npm i @acala-network/chopsticks@latest
 ```
 
-After installation, you can execute commands using the Node package executor. For instance, it allows you to execute Chopstick's main command.
+After installation, you can execute commands using the Node package executor. For instance, the following command allows you to execute Chopstick's main command.
 
 ```bash
 npx i @acala-network/chopsticks@latest
