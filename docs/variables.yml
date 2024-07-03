@@ -7,6 +7,7 @@ repositories:
   paseo_network:
     onboarding_issue_template: https://github.com/paseo-network/support/issues/new/choose
     paseo_specs: https://github.com/paseo-network/runtimes/blob/main/chain-specs/paseo.raw.json
+  chopsticks: https://github.com/AcalaNetwork/chopsticks 
 
 polkadot_js:
   paseo_rpc:
