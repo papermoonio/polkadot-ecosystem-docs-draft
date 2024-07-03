@@ -5,7 +5,7 @@ description: Discover the fundamentals of using Chopsticks to replay blockchain 
 
 # Introduction
 
-Chopsticks introduces a user-friendly method for developers to locally fork existing Substrate-based chains, enabling the replaying of blocks to analyze transaction impacts and facilitate the forking of multiple chains for comprehensive testing. This capability empowers developers to experiment with custom blockchain configurations in a local development environment, avoiding the complexities of deploying on a live network. By simplifying the process of building blockchain applications on Substrate, Chopsticks aims to broaden accessibility for developers, fostering innovation and rapid iteration in blockchain development. 
+Chopsticks introduces a user-friendly method for developers to locally fork existing Substrate-based chains. This capability enables the replaying of blocks to analyze transaction impacts and facilitates the forking of multiple chains for comprehensive testing. This capability empowers developers to experiment with custom blockchain configurations in a local development environment, avoiding the complexities of deploying on a live network. By simplifying the process of building blockchain applications on Substrate, Chopsticks aims to broaden developers’ accessibility and foster innovation and rapid iteration in blockchain development. 
 
 This article covers the fundamentals of using Chopsticks to fork Substrate-based chains, including replaying blockchain transactions, analyzing changes in system state, simulating cross-chain message (XCM) interactions, and locally duplicating Substrate-based networks. 
 
