@@ -28,3 +28,17 @@ After installation, you can execute commands using the Node package executor. Fo
 npx i @acala-network/chopsticks@latest
 ```
 
+## Base Configurations
+
+TODO: talkn about yml files and other params of chopsticks
+
+
+## RPC Methods
+
+TODO: check out rpc methods like dev_setStorage
+
+## Tutorials
+
+- [Testing runtime upgrades using Chopsticks](./tutorials/chopsticks-runtime-upgrades.md)
+- [Chopsticks and XCM](./tutorials//chopsticks-xcm.md)
+- [Track governance proposals through Chopsticks](./tutorials/chopsticks-open-gov.md)
