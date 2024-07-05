@@ -33,7 +33,7 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
 
 3. Review the list of active parachains and select an available parachain ID for your chain. Ensure the ID you choose is not currently used by examining the **parachains column** in the table below. Save the selected ID for future reference
-    ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-6.webp)
+    ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
 
 ## Generate customs keys for your collators
 
@@ -190,10 +190,10 @@ Before securing a dedicated parachain slot, you'll need to generate a genesis st
 
 3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template]({{ repositories.paseo_network.onboarding_issue_template }}){target=_blank}
 
-    ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-7.webp)
+    ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-3.webp)
 
 4. Ensure you fill in all the necessary information, including your parachain name, selected parachain ID, manager account, genesis state, and genesis Wasm files from the previous steps. After filling in the required details, submit the issue
-    ![Paseo Parachain Onboarding Issue Template](/images/paseo-testnet/onboarding/onboarding-8.webp)
+    ![Paseo Parachain Onboarding Issue Template](/images/paseo-testnet/onboarding/onboarding-4.webp)
 
 5. Once your request is reviewed and approved, you'll be allocated a dedicated parachain slot
 
