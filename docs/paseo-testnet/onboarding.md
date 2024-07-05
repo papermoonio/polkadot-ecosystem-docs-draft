@@ -21,11 +21,7 @@ This guide will walk you through the process of deploying your blockchain as a p
 
 Before you can deploy your parachain on the Paseo TestNet, you'll need to meet the following requirements:
 
-[//]: <> (//TODO: Add links to the following items)
-
-- [Wallet]() - a Substrate-supported wallet to deploy and manage your parachain
-- [PAS Tokens]() - the native currency of the Paseo TestNet to pay for transaction fees
-- [Parachain Runtime]() - a fully operational blockchain capable of operating as a parachain
+- Parachain Runtime - a fully operational blockchain capable of operating as a parachain
 
 ## Select a Parachain ID
 
