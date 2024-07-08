@@ -228,6 +228,15 @@ With a parachain slot secured, you can now set up and run your parachain on the 
     ```
 
     !!!note
+        The following arguments are mandatory for running your parachain node:
+
+        - `--collator` - configures the node to work as a parachain collator
+        - `--force-authoring` - ensures the node produces blocks even when operating as a single node without peers
+        - `--chain` - specifies the chain specification file for your parachain
+        - `--` - separates parachain and relay chain arguments
+        -  `--sync warp` - argument is optional, but highly recommended. Without this, the default is full sync, which can take a significantly longer time
+        - `--chain` - indicates which relay chain to connect to and synchronize with
+
         For more information on the available command-line arguments you can provide to your collator node, execute the following command:
 
         ```bash
