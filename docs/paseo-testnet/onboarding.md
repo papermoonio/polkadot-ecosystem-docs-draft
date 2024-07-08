@@ -68,7 +68,7 @@ Ensure to execute this command twice to generate the keys for both the account a
 
 ## Generate and Customize the Chain Spec
 
-This guide demonstrates the process using the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} from [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
+This section goes through the process of using the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} from [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
 }}){target=_blank}. Most of the time, you will use your own custom runtime. The steps outlined here are adaptable to your specific runtime with minor adjustments.
 
 Before starting, clone the repository and execute the build command:
