@@ -166,7 +166,10 @@ cargo build --release
 
 ## Obtain a Parachain Slot
 
-Before securing a dedicated parachain slot, you'll need to generate a genesis state and Wasm for your chain.
+Before securing a dedicated parachain slot, you'll need to generate the following files:
+
+- Genesis state - the initial state of your parachain
+- Genesis Wasm - the initial runtime Wasm blob of your parachain
 
 !!!note
     Replace `<INSERT_SELECTED_PARA_ID>` with the actual parachain ID you reserved earlier when executing the following commands:
