@@ -201,7 +201,7 @@ Before securing a dedicated parachain slot, you'll need to generate a genesis st
 
 With a parachain slot secured, you can now set up and run your parachain on the Paseo TestNet.
  
-1. Download the [Paseo spec]({{ repositories.paseo_network.paseo_specs }}){target=_blank}
+1. Download the [Paseo Network raw chain spec file]({{ repositories.paseo_network.paseo_specs }}){target=_blank}
 
 2. Start your parachain collator node by running the command with the appropriate flags and options for your setup. For example:
 
