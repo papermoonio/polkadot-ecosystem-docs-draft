@@ -37,7 +37,7 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 
 ## Generate customs keys for your collators
 
-To securely deploy your parachain, it is essential to generate custom keys specifically for your collators. You should generate two set of keys for each collator:
+To securely deploy your parachain, it is essential to generate custom keys specifically for your collators (block producers). You should generate two set of keys for each collator:
 
 - Account keys - used to interact with the network and manage funds. Should be protected carefully and should never exist on the filesystem of the collator node
 
@@ -155,10 +155,6 @@ cargo build --release
       }
     }
     ```
-
-
-    !!!note
-        For more detailed information on customizing your chain spec, please check the section [Customizing Chain Specifications]()
 
 3. Generate a raw chain spec:
 
