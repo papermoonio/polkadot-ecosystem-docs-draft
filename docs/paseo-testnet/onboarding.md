@@ -70,8 +70,8 @@ Ensure to execute this command twice to generate the keys for both the account a
 
 ## Generate and Customize the Chain Spec
 
-This section goes through the process of using the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} from [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
-}}){target=_blank}. Most of the time, you will use your custom runtime. The steps outlined here are adaptable to your specific runtime with minor adjustments.
+Substrate-based blockchains are defined by a file called the chain specification, or chain spec for short. This guide explains how to use the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} provided by [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
+}}){target=_blank} to create and modify the chain spec file. Although most of the time you will use your custom runtime, the steps outlined here can be adapted to your specific runtime with minor adjustments.
 
 Before starting, clone the repository and execute the build command:
 
