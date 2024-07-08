@@ -15,7 +15,7 @@ It provides dedicated parachain slots to maintainers, with the lease period dura
 
 - Maintainers of parachains under active development, or those that have not yet secured a parachain slot on Kusama or Polkadot, will be assigned a shorter Paseo lease period of two weeks
 
-This guide will walk you through the process of deploying your blockchain as a parachain on the Paseo TestNet. We'll cover generating a customized chain spec, securing a dedicated parachain slot, and finally, setting up and running your parachain.
+This guide will walk you through deploying your blockchain as a parachain on the Paseo TestNet.  It covers generating a customized chain spec, securing a dedicated parachain slot, and setting up and running your parachain.
 
 ## Prerequisites
 
