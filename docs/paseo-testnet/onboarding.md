@@ -34,8 +34,12 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
 
-3. Review the list of active parachains and select an available parachain ID for your chain. Ensure the ID you choose is not currently used by examining the **parachains column** in the table below. Save the selected ID for future reference
-    ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
+3. Review the list of active parachains and parathreads, and select an available parachain ID for your chain. Ensure the ID you choose is not currently used by examining:
+    - The **parachains column**
+      ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
+
+    - The **parathreads column** under the **Parathreads** tab
+      ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-3.webp)
 
 ## Generate customs keys for your collators
 
@@ -94,7 +98,7 @@ cargo build --release
 2. Edit the `plain-parachain-chainspec.json` file:
     - Update the `name`, `id` and `protocolId` fields to unique values for your parachain
     - Change the `relay_chain` field to `paseo`
-    - Change `para_id` and `parachainInfo.parachainId` from 1000 to the parachain ID you selected in the previous steps
+    - Change `para_id` and `parachainInfo.parachainId` from 1000 to the parachain ID you selected in the [Select a Parachain ID](#select-a-parachain-id) step
     - Insert the account IDs and session keys in SS58 format generated for your collators in the `collatorSelection.invulnerables` and `session.keys` fields
     - Modify the `sudo` value to specify the account that will have sudo access to the parachain
     
@@ -192,10 +196,10 @@ Before securing a dedicated parachain slot, you'll need to generate the followin
 
 3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template]({{ repositories.paseo_network.onboarding_issue_template }}){target=_blank}
 
-    ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-3.webp)
+    ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-4.webp)
 
 4. Ensure you fill in all the necessary information, including your parachain name, selected parachain ID, manager account, genesis state, and genesis Wasm files from the previous steps. After filling in the required details, submit the issue
-    ![Paseo Parachain Onboarding Issue Template](/images/paseo-testnet/onboarding/onboarding-4.webp)
+    ![Paseo Parachain Onboarding Issue Template](/images/paseo-testnet/onboarding/onboarding-5.webp)
 
 5. Once your request is reviewed and approved, you'll be allocated a dedicated parachain slot
 
