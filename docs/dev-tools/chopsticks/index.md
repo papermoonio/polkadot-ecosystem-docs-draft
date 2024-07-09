@@ -15,7 +15,7 @@ description: Configure and fork Substrate-based blockchains locally with Chopsti
 
 With Chopsticks, developers can simulate and test complex blockchain scenarios without deploying to a live network. This tool significantly reduces the complexity of building blockchain applications on Substrate, making it more accessible to developers of varying experience levels. Ultimately, Chopsticks aims to accelerate innovation in the Substrate ecosystem by providing a robust, flexible testing framework.
 
-!!!Note
+!!!note
     Chopsticks currently does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
 
 ## Prerequisites
@@ -63,7 +63,7 @@ npx @acala-network/chopsticks@latest
 
 ## Configuration
 
-To run Chopsticks, you need to configure some parameters. This can be set either through using a configuration file or the command line interface (CLI). 
+To run Chopsticks, you need to configure some parameters. This can be set either through using a configuration file or the command line interface (CLI).
 
 ### Using a Configuration File
 
@@ -98,7 +98,7 @@ import-storage:
 This file can include the following settings:
 
 |           Option           |                                                 Description                                                  |
-|:--------------------------:|:------------------------------------------------------------------------------------------------------------:|
+| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
 |         `genesis`          |          The link to a parachain's raw genesis file to build the fork from, instead of an endpoint.          |
 |        `timestamp`         |                                     Timestamp of the block to fork from.                                     |
 |         `endpoint`         |                                    The endpoint of the parachain to fork.                                    |
@@ -112,7 +112,6 @@ This file can include the following settings:
 | `allow-unresolved-imports` |              Whether to allow WASM unresolved imports when using a WASM to build the parachain.              |
 |           `html`           |                           Include to generate storage diff preview between blocks.                           |
 |   `mock-signature-host`    | Mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid. |
-
 
 For the `--config` flag, you can use a raw GitHub URL of the default configuration files, a path to a local configuration file, or simply the chain's name. For example, the following commands all use Moonbeam's configuration in the same way:
 
@@ -136,7 +135,7 @@ For the `--config` flag, you can use a raw GitHub URL of the default configurati
     ```
 
 !!! note
-    If using a file path, make sure you've downloaded the [Moonbeam configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=\_blank}, or have created your own.
+    If using a file path, make sure you've downloaded the [Moonbeam configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=_blank}, or have created your own.
 
 ### Using Command Line Interface (CLI)
 
@@ -146,10 +145,147 @@ Alternatively, all settings (except for genesis and timestamp) can be configured
 npx @acala-network/chopsticks@latest --endpoint wss://wss.api.moonbase.moonbeam.network --block 100
 ```
 
+## WebSocket Commands
 
-## RPC Methods
+Chopstick's internal WebSocket server has special endpoints that allow the manipulation of the local Substrate chain.
 
-//TODO
+These are the methods that can be invoked and their parameters:
+
+???+ function "**dev_newBlock** (newBlockParams) — Generates one or more new blocks"
+
+    === "Parameters"
+
+        |            Name            |                         Type                        | Description |
+        | :------------------------: | :-------------------------------------------------: | :---------: |
+        | `count`| number | The number of blocks to build|
+        | `dmp`| { msg: 0x${string} ; sentAt: number }[] | The downward messages to include in the block|
+        | `hrmp` | Record < string \| number, { data: 0x${string} ; sentAt: number }[] > |The horizontal messages to include in the block|
+        | `to` | number | The block number to build to|
+        | `transactions` | 0x${string}[] |The transactions to include in the block|
+        | `ump` | Record < number, 0x${string}[] > | The upward messages to include in the block|
+        | `unsafeBlockHeight` | number | Build block using a specific block height (unsafe)|
+
+    === "Example"
+
+        ```js
+        import { ApiPromise, WsProvider } from '@polkadot/api';
+        async function main() {
+          const wsProvider = new WsProvider('ws://localhost:8000');
+          const api = await ApiPromise.create({ provider: wsProvider });
+          await api.rpc('dev_newBlock',{ count:1 })
+        }
+        main()
+        ```
+
+??? function "**dev_setBlockBuildMode** (buildBlockMode) — Sets block build mode"
+
+    === "Parameter"
+
+        |            Name            |                         Type                        | Description |
+        | :------------------------: | :-------------------------------------------------: | :---------: |
+        | `buildBlockMode`| "Batch" \| "Instant" \| "Manual" | Build mode|
+
+    === "Example"
+
+        ```js
+        import { ApiPromise, WsProvider } from '@polkadot/api';
+        async function main() {
+          const wsProvider = new WsProvider('ws://localhost:8000');
+          const api = await ApiPromise.create({ provider: wsProvider });
+          await api.rpc('dev_setBlockBuildMode', "Instant")
+        }
+        main()
+        ```
+
+??? function "**dev_setHead** (hashOrNumber) — Sets the head of the blockchain to a specific hash or number"
+
+    === "Parameter"      
+
+        |            Name            |                         Type                        | Description |
+        | :------------------------: | :-------------------------------------------------: | :---------: |
+        | hashOrNumber | number \| 0x${string}| The block hash or number to set as head|
+
+    === "Example"
+
+        ```js
+        import { ApiPromise, WsProvider } from '@polkadot/api';
+        async function main() {
+          const wsProvider = new WsProvider('ws://localhost:8000');
+          const api = await ApiPromise.create({ provider: wsProvider });
+          await api.rpc('dev_setHead', 500)
+        }
+        main()
+        ```
+
+??? function "**dev_setRuntimeLogLevel** (runtimeLogLevel) — Sets the runtime log level"
+
+    === "Parameter"
+
+        |            Name            |                         Type                        | Description |
+        | :------------------------: | :-------------------------------------------------: | :---------: |
+        |runtimeLogLevel | number | The runtime log level to set|
+
+    === "Example"
+
+        ```js
+        import { ApiPromise, WsProvider } from '@polkadot/api';
+        async function main() {
+          const wsProvider = new WsProvider('ws://localhost:8000');
+          const api = await ApiPromise.create({ provider: wsProvider });
+          await api.rpc('dev_setRuntimeLogLevel', 1)
+        }
+        main()
+        ```
+
+??? function "**dev_setStorage** (values, blockHash) — Creates or overwrites the value of any storage"
+
+    === "Parameters"
+
+        |            Name            |                         Type                        | Description |
+        | :------------------------: | :-------------------------------------------------: | :---------: |
+        |values| Object | JSON object resembling the path to a storage value |
+        |blockHash| 0x${string} | The block hash to set the storage value |
+
+    === "Example"
+
+        ```js
+        import { ApiPromise, WsProvider } from '@polkadot/api';
+        import { Keyring } from '@polkadot/keyring'
+        async function main() {
+            const wsProvider = new WsProvider('ws://localhost:8000');
+            const api = await ApiPromise.create({ provider: wsProvider });
+            const keyring = new Keyring({ type: 'ed25519' })
+            const bob = keyring.addFromUri('//Bob')
+            const storage = {
+              System: {
+                Account: [[[bob.address], { data: { free: 100000 }, nonce: 1 }]],
+              },
+            }
+            await api.rpc('dev_setStorage', storage)
+          }
+        main()
+
+        ```
+
+??? function "**dev_timeTravel** (date) — Sets the timestamp of the block to a specific date"
+
+    === "Parameter"
+        
+        |            Name            |                         Type                        | Description |
+        | :------------------------: | :-------------------------------------------------: | :---------: |
+        |date | string \| number | Timestamp or date string to set. All future blocks will be sequentially created after this point in time |
+
+    === "Example"
+
+        ```js
+        import { ApiPromise, WsProvider } from '@polkadot/api';
+        async function main() {
+          const wsProvider = new WsProvider('ws://localhost:8000');
+          const api = await ApiPromise.create({ provider: wsProvider });
+          await api.rpc('dev_timeTravel', "2030-08-15T00:00:00")
+        }
+        main()
+        ```
 
 ## Tutorials
 
