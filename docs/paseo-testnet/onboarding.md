@@ -60,15 +60,17 @@ docker run -it parity/subkey:latest generate --scheme sr25519
 
 The output should look similar to the following:
 
-```bash
-Secret phrase:     lemon play remain picture leopard frog mad bridge hire hazard best buddy
-Network ID:        substrate
-Secret seed:       0xb748b501de061bae1fcab1c0b814255979d74d9637b84e06414a57a1a149c004
-Public key (hex):  0xf4ec62ec6e70a3c0f8dcbe0531e2b1b8916cf16d30635bbe9232f6ed3f0bf422
-Account ID:        0xf4ec62ec6e70a3c0f8dcbe0531e2b1b8916cf16d30635bbe9232f6ed3f0bf422
-Public key (SS58): 5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
-SS58 Address:      5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
-```
+<div id="termynal" data-termynal>
+  <span data-ty="input"><span class="file-path"></span>docker run -it parity/subkey:latest generate --scheme sr25519</span>
+  <span>
+  <br>Secret phrase: lemon play remain picture leopard frog mad bridge hire hazard best buddy
+  <br>Network ID: substrate
+  <br>Secret seed: 0xb748b501de061bae1fcab1c0b814255979d74d9637b84e06414a57a1a149c004
+  <br>Public key (hex): 0xf4ec62ec6e70a3c0f8dcbe0531e2b1b8916cf16d30635bbe9232f6ed3f0bf422
+  <br>Account ID: 0xf4ec62ec6e70a3c0f8dcbe0531e2b1b8916cf16d30635bbe9232f6ed3f0bf422
+  <br>Public key (SS58): 5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
+  <br>SS58 Address: 5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
+</div>
 
 Ensure that this command is executed twice to generate the keys for both the account and session keys. Save them for future reference.
 
