@@ -35,7 +35,7 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
 
 3. Review the list of active parachains and parathreads, and select an available parachain ID for your chain. Ensure the ID you choose is not currently used by examining:
-    - The **parachains column**
+    - The **parachains** column
       ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
 
     - The **parathreads** column under the **Parathreads** tab
