@@ -30,15 +30,15 @@ In order to install Zombienet, there are some options available, depending on th
     === "Curl"
         ```bash
         curl -LO \\
-        https://github.com/paritytech/zombienet/releases/download/v1.3.106/zombienet-macos-arm64
-        ```
+        https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
+        ``` 
     === "Wget"
         ```bash
         wget \\
-        https://github.com/paritytech/zombienet/releases/download/v1.3.106/zombienet-macos-arm64
+        https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ```
     !!! note
-        Ensure to replace the URL with the `release version` that you want to download, as well as the `correct architecture` for your system.
+        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This tutorial uses v1.3.106 and zombienet-macos-arm64 as an example.
 
     Then, you should make the downloaded file executable:
 
@@ -58,6 +58,25 @@ In order to install Zombienet, there are some options available, depending on th
         ```
 
 === "Using Nix"
+
+    For Nix users, Zombienet repository provides a [`flake.nix`](https://github.com/paritytech/zombienet/blob/main/flake.nix){target=_blanket} file that can be used to install Zombienet using the Nix package manager. To install Zombienet using Nix, you can run the following command, that will fetch the flake and install the Zombienet package:
+
+    ```bash
+    nix run github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION> -- \\
+    spawn <INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
+    ```
+
+    !!! Warning
+        To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blanket}.
+
+    Alternatively, you can also include the zombienet binary in the PATH for the current shell. This can be achieved by:
+    
+    ```bash
+    nix shell github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION>
+    ```
+
+    !!! note
+        Ensure to replace the `<INSERT_ZOMBIENET_VERSION>` with the desired version of Zombienet. Also, replace the `<INSERT_ZOMBIENET_CONFIG_FILE_NAME>` with the name of the configuration file you want to use.
 
 === "Using Docker"
 
