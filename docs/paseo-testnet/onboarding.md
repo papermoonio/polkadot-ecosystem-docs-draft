@@ -45,7 +45,7 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 
 To securely deploy your parachain, it is essential to generate custom keys specifically for your collators (block producers). You should generate two sets of keys for each collator:
 
-- Account keys - used to interact with the network and manage funds. Should be protected carefully and should never exist on the filesystem of the collator node
+- Account keys - used to interact with the network and manage funds. These should be protected carefully and should never exist on the filesystem of the collator node
 
 - Session keys - used in block production. These identify your node and its blocks on the network. Stored in the parachain keystore, these are disposable "hot wallet" keys. If leaked, they could be used to impersonate your node, potentially leading to fund slashing. To mitigate risks, rotate these keys frequently. Treat them with the same caution as a hot wallet to protect your node security
 
