@@ -70,7 +70,7 @@ Public key (SS58): 5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
 SS58 Address:      5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
 ```
 
-Ensure to execute this command twice to generate the keys for both the account and session keys. Save them for future reference.
+Ensure that this command is executed twice to generate the keys for both the account and session keys. Save them for future reference.
 
 ## Generate and Customize the Chain Spec
 
