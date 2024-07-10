@@ -38,7 +38,7 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
     - The **parachains column**
       ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
 
-    - The **parathreads column** under the **Parathreads** tab
+    - The **parathreads** column under the **Parathreads** tab
       ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-3.webp)
 
 ## Generate Customs Keys for Your Collators
