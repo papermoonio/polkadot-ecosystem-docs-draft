@@ -80,6 +80,21 @@ In order to install Zombienet, there are some options available, depending on th
 
 === "Using Docker"
 
+    Zombienet can also be run using Docker. The Zombienet repository provides a Docker image that can be used to run the Zombienet CLI. To run Zombienet using Docker, you can use the following command:
+
+    ```bash
+    docker run -it --rm \\
+    -v $(pwd):/workspace \\
+    paritytech/zombienet:<INSERT_ZOMBIENET_VERSION> \\
+    spawn /workspace/<INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
+    ```
+
+    !!! note
+        Ensure to replace the `<INSERT_ZOMBIENET_VERSION>` with the desired version of Zombienet. Also, replace the `<INSERT_ZOMBIENET_CONFIG_FILE_NAME>` with the name of the configuration file you want to use.
+
+    !!! warning
+        The command above mounts the current directory to the `/workspace` directory inside the Docker container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
+
 
 ## Providers
 

@@ -1,2 +1,4 @@
 venv
 .DS_Store
+papermoon-env
+.vscode
