@@ -41,7 +41,7 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
     - The **parathreads column** under the **Parathreads** tab
       ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-3.webp)
 
-## Generate customs keys for your collators
+## Generate Customs Keys for Your Collators
 
 To securely deploy your parachain, it is essential to generate custom keys specifically for your collators (block producers). You should generate two set of keys for each collator:
 
