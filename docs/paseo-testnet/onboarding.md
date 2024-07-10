@@ -1,6 +1,6 @@
 ---
 title: How to Deploy a Parachain on Polkadot's Paseo TestNet
-description: This guide walks through the entire process of deploying a parachain on Polkadot's Paseo TestNet.
+description: Guide to deploying a parachain on Polkadot's Paseo TestNet. It covers key generation, chain spec customization, slot reservation, and collator node setup.
 ---
 
 # Deploying a Parachain on Paseo TestNet
