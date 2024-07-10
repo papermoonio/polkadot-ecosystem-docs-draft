@@ -67,7 +67,7 @@ To run Chopsticks, you need to configure some parameters. This can be set either
 
 ### Using a Configuration File
 
-The Chopsticks source repository includes a collection of [YAML](https://yaml.org/) files that can be used to set up various Substrate chains locally. You can download these configuration files from the [repository's `configs` folder](https://github.com/AcalaNetwork/chopsticks/tree/master/configs).
+The Chopsticks source repository includes a collection of [YAML](https://yaml.org/){target=_blank} files that can be used to set up various Substrate chains locally. You can download these configuration files from the [repository's `configs` folder](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}.
 
 An example of a configuration file for Moonbeam is as follows:
 
@@ -143,6 +143,49 @@ Alternatively, all settings (except for genesis and timestamp) can be configured
 
 ```bash
 npx @acala-network/chopsticks@latest --endpoint wss://wss.api.moonbase.moonbeam.network --block 100
+```
+
+## Interacting with a Fork
+
+When running a fork, it's accessible by default at:
+
+```bash
+ws://localhost:8000
+```
+
+You can interact with the forked chain using various [libraries](https://wiki.polkadot.network/docs/build-tools-index#libraries){target=_blank} such as [Polkadot.js](https://polkadot.js.org/docs/){target=_blank} and its user interface, [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=_blank}.
+
+### Using Polkadot.js Apps
+
+To interact with Chopsticks via the hosted user interface, visit [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=_blank}. and follow these steps:
+
+1. Click the network icon in the top left corner
+2. Scroll to the bottom and select **Development**
+3. Choose **Custom**
+4. Enter `ws://localhost:8000` in the input field
+4. Click the **Switch** button
+
+![](/images/dev-tools/chopsticks/chopsticks-1.webp)
+![](/images/dev-tools/chopsticks/chopsticks-2.webp)
+
+You should now be connected to your local fork and can interact with it as you would with a real chain.
+
+### Using Polkadot.js Library
+
+For programmatic interaction, you can use the Polkadot.js library. Here's a basic example:
+
+```js
+import { ApiPromise, WsProvider } from '@polkadot/api';
+
+async function connectToFork() {
+  const wsProvider = new WsProvider('ws://localhost:8000');
+  const api = await ApiPromise.create({ provider: wsProvider });
+  
+  // Now you can use 'api' to interact with your fork
+  console.log(`Connected to chain: ${await api.rpc.system.chain()}`);
+}
+
+connectToFork();
 ```
 
 ## WebSocket Commands
