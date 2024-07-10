@@ -9,7 +9,7 @@ description: This guide walks through the entire process of deploying a parachai
 
 Paseo is a community-run TestNet designed for parachain teams and dApp developers to build and test their solutions. The Paseo network is open, allowing anyone to launch an appchain (parachain) as part of their process for eventual deployment onto the Polkadot MainNet.
 
-This project is maintained by the members of the following teams: [Portico]({{ "https://forum.polkadot.network/u/portico/summary" }}){target=_blank}, [R0GUE]({{ "https://r0gue.io/" }}){target=_blank}, and [Zondax]({{ "https://zondax.ch/" }}){target=_blank}. For further support, you can reach out to the team members on the [Paseo Matrix channel]({{ "https://matrix.to/#/#paseo-testnet-support:parity.io" }}){target=_blank} 
+This project is maintained by the members of the following teams: [Portico](https://forum.polkadot.network/u/portico/summary){target=_blank}, [R0GUE](https://r0gue.io/){target=_blank}, and [Zondax](https://zondax.ch/){target=_blank}. For further support, you can reach out to the team members on the [Paseo Matrix channel](https://matrix.to/#/#paseo-testnet-support:parity.io){target=_blank}.
 
 It provides dedicated parachain slots to maintainers, with the lease period duration varying based on the following criteria:
 
@@ -17,7 +17,7 @@ It provides dedicated parachain slots to maintainers, with the lease period dura
 
 - Maintainers of parachains under active development, or those that have not yet secured a parachain slot on Kusama or Polkadot, will be assigned a shorter Paseo lease period of two weeks
 
-This guide will walk you through deploying your blockchain as a parachain on the Paseo TestNet.  It covers generating a customized chain spec, securing a dedicated parachain slot, and setting up and running your parachain.
+This guide will walk you through deploying your blockchain as a parachain on the Paseo TestNet. It covers generating a customized chain spec, securing a dedicated parachain slot, and setting up and running your parachain.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ Before you can deploy your parachain on the Paseo TestNet, you'll need to meet t
 
 ## Select a Parachain ID
 
-To deploy your parachain, you'll first need to select a unique parachain ID on the Paseo TestNet.
+To deploy your parachain, you'll first need to select a unique parachain ID on the Paseo TestNet:
 
 1. Visit [Polkadot.js Apps]({{ polkadot_js.paseo_rpc.explorer }}){target=_blank} and ensure you're connected to the Paseo TestNet
 
@@ -41,15 +41,15 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
     - The **parathreads column** under the **Parathreads** tab
       ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-3.webp)
 
-## Generate customs keys for your collators
+## Generate Customs Keys for Your Collators
 
-To securely deploy your parachain, it is essential to generate custom keys specifically for your collators (block producers). You should generate two set of keys for each collator:
+To securely deploy your parachain, it is essential to generate custom keys specifically for your collators (block producers). You should generate two sets of keys for each collator:
 
-- Account keys - used to interact with the network and manage funds. Should be protected carefully and should never exist on the filesystem of the collator node
+- Account keys - used to interact with the network and manage funds. These should be protected carefully and should never exist on the filesystem of the collator node
 
 - Session keys - used in block production. These identify your node and its blocks on the network. Stored in the parachain keystore, these are disposable "hot wallet" keys. If leaked, they could be used to impersonate your node, potentially leading to fund slashing. To mitigate risks, rotate these keys frequently. Treat them with the same caution as a hot wallet to protect your node security
 
-To perform this step you can use [subkey]({{ tools.subkey }}){target=_blank}, a command-line tool for generating and managing keys.
+To perform this step, you can use [subkey]({{ tools.subkey }}){target=_blank}, a command-line tool for generating and managing keys:
 
 ```bash
 docker run -it parity/subkey:latest generate --scheme sr25519
@@ -70,17 +70,17 @@ Public key (SS58): 5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
 SS58 Address:      5HbqmBBJ5ALUzho7tw1k1jEgKBJM7dNsQwrtfSfUskT1a3oe
 ```
 
-Ensure to execute this command twice to generate the keys for both the account and session keys. Save them for future reference.
+Ensure that this command is executed twice to generate the keys for both the account and session keys. Save them for future reference.
 
 ## Generate and Customize the Chain Spec
 
 Substrate-based blockchains are defined by a file called the chain specification, or chain spec for short. This guide explains how to use the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} provided by [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
 }}){target=_blank} to create and modify the chain spec file. Although most of the time you will use your custom runtime, the steps outlined here can be adapted to your specific runtime with minor adjustments.
 
-There exist two types of chain spec files:
+There are two types of chain spec files:
 
-- Plain chain spec - a human-readable JSON file that can be modified to suit your parachain's requirements. It serves as a template for initial configuration and includes human-readable keys and structures.
-- Raw chain spec - a binary-encoded file used to start your parachain node. This file is generated from the plain chain spec and contains the encoded information necessary for the parachain node to synchronize with the blockchain network. It ensures compatibility across different runtime versions by providing data in a format directly interpretable by the node's runtime, regardless of upgrades since the chain's genesis.
+- Plain chain spec - a human-readable JSON file that can be modified to suit your parachain's requirements. It serves as a template for initial configuration and includes human-readable keys and structures
+- Raw chain spec - a binary-encoded file used to start your parachain node. This file is generated from the plain chain spec and contains the encoded information necessary for the parachain node to synchronize with the blockchain network. It ensures compatibility across different runtime versions by providing data in a format directly interpretable by the node's runtime, regardless of upgrades since the chain's genesis
 
 Before starting, clone the repository and execute the build command:
 
