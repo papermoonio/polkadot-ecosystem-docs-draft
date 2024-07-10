@@ -7,11 +7,11 @@ description: Configure and fork Substrate-based blockchains locally with Chopsti
 
 ## Introduction
 
-[Chopsticks](https://github.com/AcalaNetwork/chopsticks/){target=_blank} is a powerful tool designed to enhance the development process for Substrate-based blockchains. It offers developers a user-friendly method to locally fork existing chains, enabling them to:
+[Chopsticks](https://github.com/AcalaNetwork/chopsticks/){target=_blank}, created and maintained by the [Acala Foundation](https://github.com/AcalaNetwork), is a powerful tool designed to enhance the development process for Substrate-based blockchains. It offers developers a user-friendly method to locally fork existing chains, enabling them to:
 
+- Experiment with custom blockchain configurations in a local environment
 - Replay blocks and analyze how extrinsics affect state
 - Fork multiple blocks for comprehensive XCM testing
-- Experiment with custom blockchain configurations in a local environment
 
 With Chopsticks, developers can simulate and test complex blockchain scenarios without deploying to a live network. This tool significantly reduces the complexity of building blockchain applications on Substrate, making it more accessible to developers of varying experience levels. Ultimately, Chopsticks aims to accelerate innovation in the Substrate ecosystem by providing a robust, flexible testing framework.
 
