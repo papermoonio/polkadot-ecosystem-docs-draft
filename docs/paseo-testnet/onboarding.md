@@ -9,7 +9,7 @@ description: This guide walks through the entire process of deploying a parachai
 
 Paseo is a community-run TestNet designed for parachain teams and dApp developers to build and test their solutions. The Paseo network is open, allowing anyone to launch an appchain (parachain) as part of their process for eventual deployment onto the Polkadot MainNet.
 
-This project is maintained by the members of the following teams: [Portico]({{ "https://forum.polkadot.network/u/portico/summary" }}){target=_blank}, [R0GUE]({{ "https://r0gue.io/" }}){target=_blank}, and [Zondax]({{ "https://zondax.ch/" }}){target=_blank}. For further support, you can reach out to the team members on the [Paseo Matrix channel]({{ "https://matrix.to/#/#paseo-testnet-support:parity.io" }}){target=_blank} 
+This project is maintained by the members of the following teams: [Portico](https://forum.polkadot.network/u/portico/summary){target=_blank}, [R0GUE](https://r0gue.io/){target=_blank}, and [Zondax](https://zondax.ch/){target=_blank}. For further support, you can reach out to the team members on the [Paseo Matrix channel](https://matrix.to/#/#paseo-testnet-support:parity.io){target=_blank}.
 
 It provides dedicated parachain slots to maintainers, with the lease period duration varying based on the following criteria:
 
