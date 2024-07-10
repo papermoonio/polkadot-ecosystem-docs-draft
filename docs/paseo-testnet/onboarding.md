@@ -77,7 +77,7 @@ Ensure to execute this command twice to generate the keys for both the account a
 Substrate-based blockchains are defined by a file called the chain specification, or chain spec for short. This guide explains how to use the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} provided by [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
 }}){target=_blank} to create and modify the chain spec file. Although most of the time you will use your custom runtime, the steps outlined here can be adapted to your specific runtime with minor adjustments.
 
-There exist two types of chain spec files:
+There are two types of chain spec files:
 
 - Plain chain spec - a human-readable JSON file that can be modified to suit your parachain's requirements. It serves as a template for initial configuration and includes human-readable keys and structures
 - Raw chain spec - a binary-encoded file used to start your parachain node. This file is generated from the plain chain spec and contains the encoded information necessary for the parachain node to synchronize with the blockchain network. It ensures compatibility across different runtime versions by providing data in a format directly interpretable by the node's runtime, regardless of upgrades since the chain's genesis
