@@ -76,7 +76,7 @@ Ensure that this command is executed twice to generate the keys for both the acc
 
 ## Generate and Customize the Chain Spec
 
-Substrate-based blockchains are defined by a file called the chain specification, or chain spec for short. This guide explains how to use the [generic template](https://github.com/OpenZeppelin/polkadot-runtime-templates/tree/v1.0.0){target=_blank} provided by [OpenZeppelin Substrate Parachain Runtimes](https://github.com/OpenZeppelin/polkadot-runtime-templates.git){target=_blank} to create and modify the chain spec file. Although most of the time you will use your custom runtime, the steps outlined here can be adapted to your specific runtime with minor adjustments.
+Substrate-based blockchains are defined by a file called the chain specification, or chain spec for short. This guide explains how to use a template provided by OpenZeppelin's [Substrate Parachain Runtimes](https://docs.openzeppelin.com/substrate-runtimes/{{ repositories.open_zeppelin.release_tag_version}}/){target=_blank} to create and modify the chain spec file. Although most of the time you will use your custom runtime, the steps outlined here can be adapted to your specific runtime with minor adjustments.
 
 There are two types of chain spec files:
 
@@ -86,7 +86,7 @@ There are two types of chain spec files:
 Before starting, clone the repository and execute the build command:
 
 ```bash 
-git clone -b {{ repositories.open_zeppelin.release_tag}} https://github.com/OpenZeppelin/polkadot-runtime-templates.git
+git clone -b v{{ repositories.open_zeppelin.release_tag_version}} https://github.com/OpenZeppelin/polkadot-runtime-templates.git
 cd polkadot-runtime-templates
 cargo build --release
 ```
