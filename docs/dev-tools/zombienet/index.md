@@ -62,7 +62,7 @@ In order to install Zombienet, there are some options available, depending on th
     For Nix users, Zombienet repository provides a [`flake.nix`](https://github.com/paritytech/zombienet/blob/main/flake.nix){target=_blanket} file that can be used to install Zombienet using the Nix package manager. To install Zombienet using Nix, you can run the following command, that will fetch the flake and install the Zombienet package:
 
     ```bash
-    nix run github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION> -- \\
+    nix run github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION> -- \
     spawn <INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
     ```
 
