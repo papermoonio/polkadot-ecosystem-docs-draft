@@ -29,7 +29,7 @@ Before you can deploy your parachain on the Paseo TestNet, you'll need to meet t
 
 To deploy your parachain, you'll first need to select a unique parachain ID on the Paseo TestNet:
 
-1. Visit [Polkadot.js Apps]({{ polkadot_js.paseo_rpc.explorer }}){target=_blank} and ensure you're connected to the Paseo TestNet
+1. Visit [Polkadot.js Apps]( https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer ){target=_blank} and ensure you're connected to the Paseo TestNet
 
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
@@ -49,14 +49,14 @@ To securely deploy your parachain, it is essential to generate custom keys speci
 
 - Session keys - used in block production. These identify your node and its blocks on the network. Stored in the parachain keystore, these are disposable "hot wallet" keys. If leaked, they could be used to impersonate your node, potentially leading to fund slashing. To mitigate risks, rotate these keys frequently. Treat them with the same caution as a hot wallet to protect your node security
 
-To perform this step, you can use [subkey]({{ tools.subkey }}){target=_blank}, a command-line tool for generating and managing keys:
+To perform this step, you can use [subkey]( https://docs.rs/crate/subkey/latest ){target=_blank}, a command-line tool for generating and managing keys:
 
 ```bash
 docker run -it parity/subkey:latest generate --scheme sr25519
 ```
 
 !!!note
-    Several methods can be used to generate your keys. This tutorial opts for using the [subkey Docker image]({{ docker_images.parity.subkey }}){target=_blank} for simplicity.
+    Several methods can be used to generate your keys. This tutorial opts for using the [subkey Docker image]( https://hub.docker.com/r/parity/subkey ){target=_blank} for simplicity.
 
 The output should look similar to the following:
 
@@ -76,8 +76,7 @@ Ensure that this command is executed twice to generate the keys for both the acc
 
 ## Generate and Customize the Chain Spec
 
-Substrate-based blockchains are defined by a file called the chain specification, or chain spec for short. This guide explains how to use the [generic template]({{ repositories.open_zeppelin.polkadot_runtime_generic_template }}){target=_blank} provided by [OpenZeppelin Substrate Parachain Runtimes]({{ repositories.open_zeppelin.parachain_runtime_template
-}}){target=_blank} to create and modify the chain spec file. Although most of the time you will use your custom runtime, the steps outlined here can be adapted to your specific runtime with minor adjustments.
+Substrate-based blockchains are defined by a file called the chain specification, or chain spec for short. This guide explains how to use the [generic template](https://github.com/OpenZeppelin/polkadot-runtime-templates/tree/v1.0.0){target=_blank} provided by [OpenZeppelin Substrate Parachain Runtimes](https://github.com/OpenZeppelin/polkadot-runtime-templates.git){target=_blank} to create and modify the chain spec file. Although most of the time you will use your custom runtime, the steps outlined here can be adapted to your specific runtime with minor adjustments.
 
 There are two types of chain spec files:
 
@@ -87,7 +86,7 @@ There are two types of chain spec files:
 Before starting, clone the repository and execute the build command:
 
 ```bash 
-git clone -b {{ repositories.open_zeppelin.release_tag}} {{ repositories.open_zeppelin.polkadot_runtime_template }}
+git clone -b {{ repositories.open_zeppelin.release_tag}} https://github.com/OpenZeppelin/polkadot-runtime-templates.git
 cd polkadot-runtime-templates
 cargo build --release
 ```
@@ -201,7 +200,7 @@ Before securing a dedicated parachain slot, you'll need to generate the followin
     --chain raw-parachain-chainspec.json para-<INSERT_SELECTED_PARA_ID>-wasm
     ```
 
-3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template]({{ repositories.paseo_network.onboarding_issue_template }}){target=_blank}
+3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank}
 
     ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-4.webp)
 
@@ -214,7 +213,7 @@ Before securing a dedicated parachain slot, you'll need to generate the followin
 
 With a parachain slot secured, you can now set up and run your parachain on the Paseo TestNet.
  
-1. Download the [Paseo Network raw chain spec file]({{ repositories.paseo_network.paseo_specs }}){target=_blank}
+1. Download the [Paseo Network raw chain spec file](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank}
 
 2. Start your parachain collator node by running the command with the appropriate flags and options for your setup. For example:
 
