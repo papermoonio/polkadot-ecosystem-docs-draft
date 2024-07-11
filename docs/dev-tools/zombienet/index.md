@@ -116,9 +116,24 @@ In order to install Zombienet, there are some options available, depending on th
 
 Internally, Zombienet is a Javascript library, designed to run on Node.js and support different backend providers to run the nodes; at this moment [Kubernetes]( https://kubernetes.io/ ){target=_blanket}, [Podman]( https://podman.io/ ){target=_blanket} and, native are supported.
 
-It's important to note that each provider has its own specific requirements and installation steps. The following sections guide the installation process for each provider and the necessary requirements.
+It's important to note that each provider has its own specific requirements and associated features. The following sections will guide you through the installation process for each provider and the necessary requirements, as well as the features that each provider offers.
 
 ### Kubernetes
+
+#### Requirements
+Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blanket}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blanket}, and [kind](https://kind.sigs.k8s.io/){target=_blanket}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
+
+Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+
+#### Features
+In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. By using the Prometheus operator, Zombienet improves its capability to efficiently monitor and manage network activities within the Kubernetes cluster.
+
+### Podman
+
+#### Installation
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+
+#### Requirements
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
 
 ### Podman
