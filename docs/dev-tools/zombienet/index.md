@@ -153,7 +153,10 @@ It's important to note that Grafana is deployed with default admin access.
 ### Native
 
 #### Requirements
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `adder-collator`). You can choose to set it up by configuring your network file or using the `--provider` flag in the CLI.
+
+!!! note
+    The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
 
 ### Podman
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
