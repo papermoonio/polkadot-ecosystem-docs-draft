@@ -130,8 +130,27 @@ In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee 
 
 ### Podman
 
-#### Installation
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+#### Requirements
+Zombienet supports Podman rootless as a provider. To use it, you simply need to have Podman installed on your system and specify it either in the network file or using the `--provider` flag in the CLI.
+
+!!! note
+    Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
+
+#### Features
+Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as datasources.
+
+Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
+
+- Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blanket}
+- Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blanket}
+- Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blanket}
+
+It's important to note that Grafana is deployed with default admin access.
+
+!!! note
+    When the network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—all associated pods, including those for Prometheus, Tempo, and Grafana, are automatically removed by Zombienet.
+
+### Native
 
 #### Requirements
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
