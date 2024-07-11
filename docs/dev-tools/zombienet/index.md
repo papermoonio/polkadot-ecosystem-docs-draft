@@ -158,10 +158,7 @@ The Zombienet Native provider enables you to run nodes as local processes in you
 !!! note
     The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
 
-### Podman
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-
-### Native
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+#### Features
+Currently, the Native provider does not execute any additional layers or processes.
 
 ## CLI Usage
