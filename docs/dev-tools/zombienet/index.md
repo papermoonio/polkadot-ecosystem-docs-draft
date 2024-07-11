@@ -83,14 +83,30 @@ In order to install Zombienet, there are some options available, depending on th
     Zombienet can also be run using Docker. The Zombienet repository provides a Docker image that can be used to run the Zombienet CLI. To run Zombienet using Docker, you can use the following command:
 
     ```bash
-    docker run -it --rm \\
-    -v $(pwd):/workspace \\
-    paritytech/zombienet:<INSERT_ZOMBIENET_VERSION> \\
-    spawn /workspace/<INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
+    docker run -it --rm \
+    -v $(pwd):/home/nonroot/zombie-net/host-current-files \
+    paritytech/zombienet
+    ```
+    !!! note
+        Command above will run the Zombienet CLI inside a Docker container and mount the current directory to the `/home/nonroot/zombie-net/host-current-files` directory inside the container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
+
+    Now, inside the Docker container, you can run the Zombienet CLI commands. First, you need to set up ZombieNet downloading the neccessary binaries:
+
+    ```bash
+    npm run zombie -- setup polkadot polkadot-parachain
     ```
 
-    !!! note
-        Ensure to replace the `<INSERT_ZOMBIENET_VERSION>` with the desired version of Zombienet. Also, replace the `<INSERT_ZOMBIENET_CONFIG_FILE_NAME>` with the name of the configuration file you want to use.
+    After that, you need to add those binaries to the PATH:
+
+    ```bash
+    export PATH=/home/nonroot/zombie-net:$PATH
+    ```
+
+    Finally, you can run the Zombienet CLI commands. For example, to spawn a network using a specific configuration file, you can run the following command:
+
+    ```bash
+    npm run zombie -- -p native spawn host-current-files/minimal.toml
+    ```
 
     !!! warning
         The command above mounts the current directory to the `/workspace` directory inside the Docker container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
