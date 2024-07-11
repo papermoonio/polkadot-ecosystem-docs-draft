@@ -65,6 +65,47 @@ npx @acala-network/chopsticks@latest
 
 To run Chopsticks, you need to configure some parameters. This can be set either through using a configuration file or the command line interface (CLI).
 
+|           Option           |                                                 Description                                                  |
+| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
+|         `genesis`          |          The link to a parachain's raw genesis file to build the fork from, instead of an endpoint.          |
+|        `timestamp`         |                                     Timestamp of the block to fork from.                                     |
+|         `endpoint`         |                                    The endpoint of the parachain to fork.                                    |
+|          `block`           |                       Use to specify at which block hash or number to replay the fork.                       |
+|      `wasm-override`       |             Path of the WASM to use as the parachain runtime, instead of an endpoint's runtime.              |
+|            `db`            |               Path to the name of the file that stores or will store the parachain's database.               |
+|          `config`          |                                       Path or URL of the config file.                                        |
+|           `port`           |                                      The port to expose an endpoint on.                                      |
+|     `build-block-mode`     |                       How blocks should be built in the fork: batch, manual, instant.                        |
+|      `import-storage`      |              A pre-defined JSON/YAML storage file path to override in the parachain's storage.               |
+| `allow-unresolved-imports` |              Whether to allow WASM unresolved imports when using a WASM to build the parachain.              |
+|           `html`           |                           Include to generate storage diff preview between blocks.                           |
+|   `mock-signature-host`    | Mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid. |
+
+
+For the `--config` flag, you can use a raw GitHub URL of the default configuration files, a path to a local configuration file, or simply the chain's name. For example, the following commands all use Moonbeam's configuration in the same way:
+
+=== "Chain Name"
+
+    ```bash
+    npx @acala-network/chopsticks@latest --config=moonbeam
+    ```
+
+=== "GitHub URL"
+
+    ```bash
+    npx @acala-network/chopsticks@latest \
+    --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
+    ```
+
+=== "Local File Path"
+
+    ```bash
+    npx @acala-network/chopsticks@latest --config=configs/moonbeam.yml
+    ```
+
+!!! note
+    If using a file path, make sure you've downloaded the [Moonbeam configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=_blank}, or have created your own.
+
 ### Using a Configuration File
 
 The Chopsticks source repository includes a collection of [YAML](https://yaml.org/){target=_blank} files that can be used to set up various Substrate chains locally. You can download these configuration files from the [repository's `configs` folder](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}.
@@ -94,48 +135,6 @@ import-storage:
     EligibleRatio: 100
     EligibleCount: 100
 ```
-
-This file can include the following settings:
-
-|           Option           |                                                 Description                                                  |
-| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
-|         `genesis`          |          The link to a parachain's raw genesis file to build the fork from, instead of an endpoint.          |
-|        `timestamp`         |                                     Timestamp of the block to fork from.                                     |
-|         `endpoint`         |                                    The endpoint of the parachain to fork.                                    |
-|          `block`           |                       Use to specify at which block hash or number to replay the fork.                       |
-|      `wasm-override`       |             Path of the WASM to use as the parachain runtime, instead of an endpoint's runtime.              |
-|            `db`            |               Path to the name of the file that stores or will store the parachain's database.               |
-|          `config`          |                                       Path or URL of the config file.                                        |
-|           `port`           |                                      The port to expose an endpoint on.                                      |
-|     `build-block-mode`     |                       How blocks should be built in the fork: batch, manual, instant.                        |
-|      `import-storage`      |              A pre-defined JSON/YAML storage file path to override in the parachain's storage.               |
-| `allow-unresolved-imports` |              Whether to allow WASM unresolved imports when using a WASM to build the parachain.              |
-|           `html`           |                           Include to generate storage diff preview between blocks.                           |
-|   `mock-signature-host`    | Mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid. |
-
-For the `--config` flag, you can use a raw GitHub URL of the default configuration files, a path to a local configuration file, or simply the chain's name. For example, the following commands all use Moonbeam's configuration in the same way:
-
-=== "Chain Name"
-
-    ```bash
-    npx @acala-network/chopsticks@latest --config=moonbeam
-    ```
-
-=== "GitHub URL"
-
-    ```bash
-    npx @acala-network/chopsticks@latest \
-    --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
-    ```
-
-=== "Local File Path"
-
-    ```bash
-    npx @acala-network/chopsticks@latest --config=configs/moonbeam.yml
-    ```
-
-!!! note
-    If using a file path, make sure you've downloaded the [Moonbeam configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=_blank}, or have created your own.
 
 ### Using Command Line Interface (CLI)
 
@@ -187,6 +186,72 @@ async function connectToFork() {
 
 connectToFork();
 ```
+
+## Replaying Blocks
+
+Chopsticks allows you to replay specific blocks from a chain, which is useful for debugging and analyzing state changes.  You can use the parameters in the [Configuration](#configuration) section to set up the chain configuration, and then use the run-block subcommand with additional options:
+
+|           Option           |                                                 Description                                                  |
+| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
+|         `output-path`          |           File path to print output          |
+|        `html`         |                                     Generate html with storage diff                                     |
+|         `open`         |                                    Open generated html                                     |
+
+For example, to replay block 1000 from Moonbeam and save the output to a JSON file:
+
+```bash
+npx @acala-network/chopsticks@latest run-block  \
+--endpoint wss://wss.api.moonbeam.network  \
+--output-path ./moonbeam-output.json  \
+--block 1000
+```
+
+## XCM Testing
+To test XCM (Cross-Consensus Messaging) messages between networks, you can fork multiple parachains and a relay chain locally using Chopsticks. 
+
+|           Option           |                                                 Description                                                  |
+| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
+|         `relaychain`          |           Relaychain config file          |
+|        `parachain`         |                                    Parachain config file path                                     |
+
+
+For example, to fork Moonbeam, Astar, and Polkadot enabling XCM between them, you can use the following command:
+
+```bash
+npx @acala-network/chopsticks@latest xcm \
+--r polkadot \
+--p moonbeam \
+--p astar
+```
+
+After running the command, you should see output similar to the following:
+
+```bash
+[13:46:07.901] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
+    app: "chopsticks"
+[13:46:12.631] INFO: Moonbeam RPC listening on port 8000
+    app: "chopsticks"
+[13:46:12.632] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/astar.yml
+    app: "chopsticks"
+        chopsticks::executor  TRACE: Calling Metadata_metadata
+        chopsticks::executor  TRACE: Completed Metadata_metadata
+[13:46:23.669] INFO: Astar RPC listening on port 8001
+    app: "chopsticks"
+[13:46:25.144] INFO (xcm): Connected parachains [2004,2006]
+    app: "chopsticks"
+[13:46:25.144] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot.yml
+    app: "chopsticks"
+        chopsticks::executor  TRACE: Calling Metadata_metadata
+        chopsticks::executor  TRACE: Completed Metadata_metadata
+[13:46:53.320] INFO: Polkadot RPC listening on port 8002
+    app: "chopsticks"
+[13:46:54.038] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Moonbeam'
+    app: "chopsticks"
+[13:46:55.028] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Astar'
+    app: "chopsticks"
+```
+
+Now you can interact with the forked chains using the ports specified in the output.
 
 ## WebSocket Commands
 
@@ -329,11 +394,3 @@ These are the methods that can be invoked and their parameters:
         }
         main()
         ```
-
-## Tutorials
-
-//TODO
-
-- [Testing runtime upgrades using Chopsticks](./tutorials/chopsticks-runtime-upgrades.md)
-- [Chopsticks and XCM](./tutorials//chopsticks-xcm.md)
-- [Track governance proposals through Chopsticks](./tutorials/chopsticks-open-gov.md)
