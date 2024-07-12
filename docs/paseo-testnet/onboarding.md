@@ -56,7 +56,7 @@ docker run -it parity/subkey:latest generate --scheme sr25519
 ```
 
 !!!note
-    Several methods can be used to generate your keys. This tutorial opts for using the [subkey Docker image]( https://hub.docker.com/r/parity/subkey ){target=_blank} for simplicity.
+    Several methods can be used to generate your keys. This tutorial opts for using the [subkey Docker image](https://hub.docker.com/r/parity/subkey){target=_blank} for simplicity.
 
 The output should look similar to the following:
 
