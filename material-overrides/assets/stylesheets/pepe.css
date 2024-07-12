@@ -259,6 +259,10 @@ form[data-md-component=palette] .md-header__button:hover svg {
   }
 }
 
+li img {
+  margin-top: 1em;
+}
+
 /* Section lines */
 li > nav.md-nav[data-md-level='3'],
 li > nav.md-nav[data-md-level='4'] {
