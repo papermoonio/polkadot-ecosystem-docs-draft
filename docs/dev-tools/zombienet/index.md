@@ -168,7 +168,7 @@ Zombienet provides a CLI tool that allows interaction with the tool. The CLI can
 | Command      | Arguments    | Description                          |
 | :---------:  | :---------:  | :----------------------------------: |
 | `spawn`      |  `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section. | Spawn the network defined in the config file |
-| `test`       |  `<testFile>` - a file that defines assertions and tests against the network spawned, by using a set of `natural language expressions`. This helps to make assertiosn metrics, logs, and built-in functions.   | Run test on the network spawned |
+| `test`       |  `<testFile>` - a file that defines assertions and tests against the spawned network, by using a set of `natural language expressions`. This helps to make assertios metrics, logs, and built-in functions.   | Run test on the network spawned |
 | `setup`      | `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`. | Setup is meant for downloading and making dev environment of Zombienet ready. |
 | `convert`    | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blanket} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blanket} | Convert is meant for transforming a (now deprecated) polkadot-launch configuration to zombienet configuration |
 | `version`    | - | Prints zombienet version |
@@ -179,11 +179,15 @@ Zombienet provides a CLI tool that allows interaction with the tool. The CLI can
 
 Then, you can use the following flags to customize the behavior of the CLI:
 
-| Flag         | Description                          |
-| :---------:  | :----------------------------------: |
-| `-p`, `--provider` | Provider to use for spawning the network |
-| `-c`, `--config` | Path to the configuration file |
-| `-n`, `--network` | Network to spawn |
+| Flag               | Description                          |
+| :------------------:  | :----------------------------------: |
+| `-p`, `--provider` | Override provider to use (choices: `podman`, `default`, and, `native`). By default it uses `kubernetes` |
+| `-d`, `--dir` <path> | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet)  |
+| `-f`, `--force` | Force override all prompt commands |
+| `-l`, `--logType` <logType> | Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`  |
+| `-m`, `--monitor` | Start as monitor, do not auto clean up network  |
+| `-c`, `--spawn-concurrency` <concurrency> | Number of concurrent spawning process to launch. By default it is `1`  |
+| `-h`, `--help` | Display help for command |
 
 
 ## Configuration Files {#configuration-files}
