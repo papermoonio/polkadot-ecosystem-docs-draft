@@ -65,21 +65,21 @@ npx @acala-network/chopsticks@latest
 
 To run Chopsticks, you need to configure some parameters. This can be set either through using a configuration file or the command line interface (CLI).
 
-|           Option           |                                                 Description                                                  |
-| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
-|         `genesis`          |          The link to a parachain's raw genesis file to build the fork from, instead of an endpoint.          |
-|        `timestamp`         |                                     Timestamp of the block to fork from.                                     |
-|         `endpoint`         |                                    The endpoint of the parachain to fork.                                    |
-|          `block`           |                       Use to specify at which block hash or number to replay the fork.                       |
-|      `wasm-override`       |             Path of the WASM to use as the parachain runtime, instead of an endpoint's runtime.              |
-|            `db`            |               Path to the name of the file that stores or will store the parachain's database.               |
-|          `config`          |                                       Path or URL of the config file.                                        |
-|           `port`           |                                      The port to expose an endpoint on.                                      |
-|     `build-block-mode`     |                       How blocks should be built in the fork: batch, manual, instant.                        |
-|      `import-storage`      |              A pre-defined JSON/YAML storage file path to override in the parachain's storage.               |
-| `allow-unresolved-imports` |              Whether to allow WASM unresolved imports when using a WASM to build the parachain.              |
-|           `html`           |                           Include to generate storage diff preview between blocks.                           |
-|   `mock-signature-host`    | Mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid. |
+|           Option           |                                                 Description                                                 |
+| :------------------------: | :---------------------------------------------------------------------------------------------------------: |
+|         `genesis`          |          The link to a parachain's raw genesis file to build the fork from, instead of an endpoint          |
+|        `timestamp`         |                                     Timestamp of the block to fork from                                     |
+|         `endpoint`         |                                    The endpoint of the parachain to fork                                    |
+|          `block`           |                       Use to specify at which block hash or number to replay the fork                       |
+|      `wasm-override`       |             Path of the WASM to use as the parachain runtime, instead of an endpoint's runtime              |
+|            `db`            |               Path to the name of the file that stores or will store the parachain's database               |
+|          `config`          |                                       Path or URL of the config file                                        |
+|           `port`           |                                      The port to expose an endpoint on                                      |
+|     `build-block-mode`     |                       How blocks should be built in the fork: batch, manual, instant                        |
+|      `import-storage`      |              A pre-defined JSON/YAML storage file path to override in the parachain's storage               |
+| `allow-unresolved-imports` |              Whether to allow WASM unresolved imports when using a WASM to build the parachain              |
+|           `html`           |                           Include to generate storage diff preview between blocks                           |
+|   `mock-signature-host`    | Mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid |
 
 
 For the `--config` flag, you can use a raw GitHub URL of the default configuration files, a path to a local configuration file, or simply the chain's name. For example, the following commands all use Moonbeam's configuration in the same way:
@@ -191,11 +191,11 @@ connectToFork();
 
 Chopsticks allows you to replay specific blocks from a chain, which is useful for debugging and analyzing state changes.  You can use the parameters in the [Configuration](#configuration) section to set up the chain configuration, and then use the run-block subcommand with additional options:
 
-|           Option           |                                                 Description                                                  |
-| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
-|         `output-path`          |           File path to print output          |
-|        `html`         |                                     Generate html with storage diff                                     |
-|         `open`         |                                    Open generated html                                     |
+|    Option     |           Description           |
+| :-----------: | :-----------------------------: |
+| `output-path` |    File path to print output    |
+|    `html`     | Generate html with storage diff |
+|    `open`     |       Open generated html       |
 
 For example, to replay block 1000 from Moonbeam and save the output to a JSON file:
 
@@ -209,10 +209,10 @@ npx @acala-network/chopsticks@latest run-block  \
 ## XCM Testing
 To test XCM (Cross-Consensus Messaging) messages between networks, you can fork multiple parachains and a relay chain locally using Chopsticks. 
 
-|           Option           |                                                 Description                                                  |
-| :------------------------: | :----------------------------------------------------------------------------------------------------------: |
-|         `relaychain`          |           Relaychain config file          |
-|        `parachain`         |                                    Parachain config file path                                     |
+|    Option    |        Description         |
+| :----------: | :------------------------: |
+| `relaychain` |   Relaychain config file   |
+| `parachain`  | Parachain config file path |
 
 
 For example, to fork Moonbeam, Astar, and Polkadot enabling XCM between them, you can use the following command:
@@ -263,15 +263,15 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameters"
 
-        |            Name            |                         Type                        | Description |
-        | :------------------------: | :-------------------------------------------------: | :---------: |
-        | `count`| number | The number of blocks to build|
-        | `dmp`| { msg: 0x${string} ; sentAt: number }[] | The downward messages to include in the block|
-        | `hrmp` | Record < string \| number, { data: 0x${string} ; sentAt: number }[] > |The horizontal messages to include in the block|
-        | `to` | number | The block number to build to|
-        | `transactions` | 0x${string}[] |The transactions to include in the block|
-        | `ump` | Record < number, 0x${string}[] > | The upward messages to include in the block|
-        | `unsafeBlockHeight` | number | Build block using a specific block height (unsafe)|
+        |        Name         |                                 Type                                  |                    Description                     |
+        | :-----------------: | :-------------------------------------------------------------------: | :------------------------------------------------: |
+        |       `count`       |                                number                                 |           The number of blocks to build            |
+        |        `dmp`        |                { msg: 0x${string} ; sentAt: number }[]                |   The downward messages to include in the block    |
+        |       `hrmp`        | Record < string \| number, { data: 0x${string} ; sentAt: number }[] > |  The horizontal messages to include in the block   |
+        |        `to`         |                                number                                 |            The block number to build to            |
+        |   `transactions`    |                             0x${string}[]                             |      The transactions to include in the block      |
+        |        `ump`        |                   Record < number, 0x${string}[] >                    |    The upward messages to include in the block     |
+        | `unsafeBlockHeight` |                                number                                 | Build block using a specific block height (unsafe) |
 
     === "Example"
 
@@ -289,9 +289,9 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
 
-        |            Name            |                         Type                        | Description |
-        | :------------------------: | :-------------------------------------------------: | :---------: |
-        | `buildBlockMode`| "Batch" \| "Instant" \| "Manual" | Build mode|
+        |       Name       |               Type               | Description |
+        | :--------------: | :------------------------------: | :---------: |
+        | `buildBlockMode` | "Batch" \| "Instant" \| "Manual" | Build mode  |
 
     === "Example"
 
@@ -309,9 +309,9 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"      
 
-        |            Name            |                         Type                        | Description |
-        | :------------------------: | :-------------------------------------------------: | :---------: |
-        | hashOrNumber | number \| 0x${string}| The block hash or number to set as head|
+        |     Name     |         Type          |               Description               |
+        | :----------: | :-------------------: | :-------------------------------------: |
+        | hashOrNumber | number \| 0x${string} | The block hash or number to set as head |
 
     === "Example"
 
@@ -329,9 +329,9 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
 
-        |            Name            |                         Type                        | Description |
-        | :------------------------: | :-------------------------------------------------: | :---------: |
-        |runtimeLogLevel | number | The runtime log level to set|
+        |      Name       |  Type  |         Description          |
+        | :-------------: | :----: | :--------------------------: |
+        | runtimeLogLevel | number | The runtime log level to set |
 
     === "Example"
 
@@ -349,10 +349,10 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameters"
 
-        |            Name            |                         Type                        | Description |
-        | :------------------------: | :-------------------------------------------------: | :---------: |
-        |values| Object | JSON object resembling the path to a storage value |
-        |blockHash| 0x${string} | The block hash to set the storage value |
+        |   Name    |    Type     |                    Description                     |
+        | :-------: | :---------: | :------------------------------------------------: |
+        |  values   |   Object    | JSON object resembling the path to a storage value |
+        | blockHash | 0x${string} |      The block hash to set the storage value       |
 
     === "Example"
 
@@ -379,9 +379,9 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
         
-        |            Name            |                         Type                        | Description |
-        | :------------------------: | :-------------------------------------------------: | :---------: |
-        |date | string \| number | Timestamp or date string to set. All future blocks will be sequentially created after this point in time |
+        | Name  |       Type       |                                               Description                                                |
+        | :---: | :--------------: | :------------------------------------------------------------------------------------------------------: |
+        | date  | string \| number | Timestamp or date string to set. All future blocks will be sequentially created after this point in time |
 
     === "Example"
 
