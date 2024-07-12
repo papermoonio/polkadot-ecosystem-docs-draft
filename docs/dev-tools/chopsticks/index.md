@@ -81,67 +81,66 @@ To run Chopsticks, you need to configure some parameters. This can be set either
 |           `html`           |                           Include to generate storage diff preview between blocks                           |
 |   `mock-signature-host`    | Mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid |
 
-
-For the `--config` flag, you can use a raw GitHub URL of the default configuration files, a path to a local configuration file, or simply the chain's name. For example, the following commands all use Moonbeam's configuration in the same way:
-
-=== "Chain Name"
-
-    ```bash
-    npx @acala-network/chopsticks@latest --config=moonbeam
-    ```
-
-=== "GitHub URL"
-
-    ```bash
-    npx @acala-network/chopsticks@latest \
-    --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
-    ```
-
-=== "Local File Path"
-
-    ```bash
-    npx @acala-network/chopsticks@latest --config=configs/moonbeam.yml
-    ```
-
-!!! note
-    If using a file path, make sure you've downloaded the [Moonbeam configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/moonbeam.yml){target=_blank}, or have created your own.
-
 ### Using a Configuration File
 
 The Chopsticks source repository includes a collection of [YAML](https://yaml.org/){target=_blank} files that can be used to set up various Substrate chains locally. You can download these configuration files from the [repository's `configs` folder](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}.
 
-An example of a configuration file for Moonbeam is as follows:
+An example of a configuration file for Polkadot is as follows:
 
 ```yaml
-endpoint: wss://wss.api.moonbeam.network
+endpoint:
+  - wss://rpc.ibp.network/polkadot
+  - wss://polkadot-rpc.dwellir.com
 mock-signature-host: true
+block: ${env.POLKADOT_BLOCK_NUMBER}
 db: ./db.sqlite
+runtime-log-level: 5
 
 import-storage:
   System:
     Account:
       -
         -
-          - "0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac"
-        - data:
-            free: "100000000000000000000000"
-  TechCommitteeCollective:
-    Members: ["0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac"]
-  CouncilCollective:
-    Members: ["0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac"]
-  TreasuryCouncilCollective:
-    Members: ["0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac"]
-  AuthorFilter:
-    EligibleRatio: 100
-    EligibleCount: 100
+          - 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+        - providers: 1
+          data:
+            free: '10000000000000000000'
+  ParasDisputes:
+    $removePrefix: ['disputes'] # those can makes block building super slow
 ```
+
+To run Chopsticks using a configuration file, utilize the `--config` flag. You can use a raw GitHub URL, a path to a local file, or simply the chain's name. For example, the following commands all use Polkadot's configuration in the same way:
+
+=== "GitHub URL"
+
+    ```bash
+    npx @acala-network/chopsticks@latest \
+    --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot.yml
+    ```
+
+=== "Local File Path"
+
+    ```bash
+    npx @acala-network/chopsticks@latest --config=configs/polkadot.yml
+    ```
+
+=== "Chain Name"
+
+    ```bash
+    npx @acala-network/chopsticks@latest --config=polkadot
+    ```
+
+!!! note
+    If using a file path, make sure you've downloaded the [Polkadot configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/polkadot.yml){target=_blank}, or have created your own.
 
 ### Using Command Line Interface (CLI)
 
-Alternatively, all settings (except for genesis and timestamp) can be configured via command-line flags, providing a comprehensive method to set up the environment. For example, the following command forks Moonbase Alpha at block 100.
+Alternatively, all settings (except for genesis and timestamp) can be configured via command-line flags, providing a comprehensive method to set up the environment. For example, the following command forks Polkadot at block 100.
 
 ```bash
-npx @acala-network/chopsticks@latest --endpoint wss://wss.api.moonbase.moonbeam.network --block 100
+npx @acala-network/chopsticks@latest \
+--endpoint wss://polkadot-rpc.dwellir.com \
+--block 100
 ```
 
 ## Interacting with a Fork
@@ -156,7 +155,7 @@ You can interact with the forked chain using various [libraries](https://wiki.po
 
 ### Using Polkadot.js Apps
 
-To interact with Chopsticks via the hosted user interface, visit [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=_blank}. and follow these steps:
+To interact with Chopsticks via the hosted user interface, visit [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=_blank} and follow these steps:
 
 1. Click the network icon in the top left corner
 2. Scroll to the bottom and select **Development**
@@ -197,22 +196,22 @@ Chopsticks allows you to replay specific blocks from a chain, which is useful fo
 |    `html`     | Generate html with storage diff |
 |    `open`     |       Open generated html       |
 
-For example, to replay block 1000 from Moonbeam and save the output to a JSON file:
+For example, to replay block 1000 from Polkadot and save the output to a JSON file:
 
 ```bash
 npx @acala-network/chopsticks@latest run-block  \
---endpoint wss://wss.api.moonbeam.network  \
---output-path ./moonbeam-output.json  \
+--endpoint wss://polkadot-rpc.dwellir.com  \
+--output-path ./polkadot-output.json  \
 --block 1000
 ```
 
 ## XCM Testing
 To test XCM (Cross-Consensus Messaging) messages between networks, you can fork multiple parachains and a relay chain locally using Chopsticks. 
 
-|    Option    |        Description         |
-| :----------: | :------------------------: |
-| `relaychain` |   Relaychain config file   |
-| `parachain`  | Parachain config file path |
+|    Option    |      Description       |
+| :----------: | :--------------------: |
+| `relaychain` | Relaychain config file |
+| `parachain`  | Parachain config file  |
 
 
 For example, to fork Moonbeam, Astar, and Polkadot enabling XCM between them, you can use the following command:
