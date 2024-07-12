@@ -165,14 +165,15 @@ Currently, the Native provider does not execute any additional layers or process
 
 Zombienet provides a CLI tool that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. The following sections will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
 
-| Command      | Arguments    | Description                          |
-| :---------:  | :---------:  | :----------------------------------: |
-| `spawn`      |  `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section. | Spawn the network defined in the config file |
-| `test`       |  `<testFile>` - a file that defines assertions and tests against the spawned network, by using a set of `natural language expressions`. This helps to make assertios metrics, logs, and built-in functions.   | Run test on the network spawned |
-| `setup`      | `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`. | Setup is meant for downloading and making dev environment of Zombienet ready. |
-| `convert`    | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blanket} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blanket} | Convert is meant for transforming a (now deprecated) polkadot-launch configuration to zombienet configuration |
-| `version`    | - | Prints zombienet version |
-| `help`       | - | Prints help information |
+| Command   | Description   | Arguments   |
+| :--------:| :------------:| :----------:|
+| `spawn`   | Spawn the network defined in the config file | `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section. |
+| `test`    | Run test on the network spawned | `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions. |
+| `setup`   | Setup is meant for downloading and making dev environment of Zombienet ready. | `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`. |
+| `convert` | Convert is meant for transforming a (now deprecated) polkadot-launch configuration to zombienet configuration | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
+| `version` | Prints zombienet version | - |
+| `help`    | Prints help information | - |
+
 
 !!! warning
     For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blanket}, generate a release, and manually add it to their PATH.
