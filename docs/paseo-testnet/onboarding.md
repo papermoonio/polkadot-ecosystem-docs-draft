@@ -29,7 +29,7 @@ Before you can deploy your parachain on the Paseo TestNet, you'll need to meet t
 
 To deploy your parachain, you'll first need to select a unique parachain ID on the Paseo TestNet:
 
-1. Visit [Polkadot.js Apps]( https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer ){target=_blank} and ensure you're connected to the Paseo TestNet
+1. Visit [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo TestNet
 
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
     ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
