@@ -165,14 +165,14 @@ Currently, the Native provider does not execute any additional layers or process
 
 Zombienet provides a CLI tool that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. The following sections will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
 
-| Command   | Description   | Arguments   |
-| :--------:| :------------:| :----------:|
-| `spawn`   | Spawn the network defined in the config file | `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section. |
-| `test`    | Run test on the network spawned | `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions. |
-| `setup`   | Setup is meant for downloading and making dev environment of Zombienet ready. | `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`. |
+|  Command  |                                                  Description                                                  |                                                                                                                                                      Arguments                                                                                                                                                       |
+| :-------: | :-----------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  `spawn`  |                                 Spawn the network defined in the config file                                  |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section.                                                            |
+|  `test`   |                                        Run test on the network spawned                                        |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions.                                                                      |
+|  `setup`  |                 Setup is meant for downloading and making dev environment of Zombienet ready.                 |                                                                                         `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`.                                                                                          |
 | `convert` | Convert is meant for transforming a (now deprecated) polkadot-launch configuration to zombienet configuration | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
-| `version` | Prints zombienet version | - |
-| `help`    | Prints help information | - |
+| `version` |                                           Prints zombienet version                                            |                                                                                                                                                          -                                                                                                                                                           |
+|  `help`   |                                            Prints help information                                            |                                                                                                                                                          -                                                                                                                                                           |
 
 
 !!! warning
@@ -180,15 +180,127 @@ Zombienet provides a CLI tool that allows interaction with the tool. The CLI can
 
 Then, you can use the following flags to customize the behavior of the CLI:
 
-| Flag               | Description                          |
-| :------------------:  | :----------------------------------: |
-| `-p`, `--provider` | Override provider to use (choices: `podman`, `default`, and, `native`). By default it uses `kubernetes` |
-| `-d`, `--dir` <path> | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet)  |
-| `-f`, `--force` | Force override all prompt commands |
-| `-l`, `--logType` <logType> | Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`  |
-| `-m`, `--monitor` | Start as monitor, do not auto clean up network  |
-| `-c`, `--spawn-concurrency` <concurrency> | Number of concurrent spawning process to launch. By default it is `1`  |
-| `-h`, `--help` | Display help for command |
+|                   Flag                    |                                                Description                                                |
+| :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
+|            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `default`, and, `native`). By default it uses `kubernetes`  |
+|           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet) |
+|              `-f`, `--force`              |                                    Force override all prompt commands                                     |
+|        `-l`, `--logType` <logType>        |   Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`    |
+|             `-m`, `--monitor`             |                              Start as monitor, do not auto clean up network                               |
+| `-c`, `--spawn-concurrency` <concurrency> |                   Number of concurrent spawning process to launch. By default it is `1`                   |
+|              `-h`, `--help`               |                                         Display help for command                                          |
 
 
 ## Configuration Files {#configuration-files}
+
+The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](){target=_blanket} of configuration files that can be used as a reference.
+
+!!! note
+    Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the native provider, any references to images for nodes will be disregarded.
+
+### Settings
+
+Through the keyword `settings`, it's possible to define the general settings for the network. The following keys are available:
+
+|                 Key                  |  Type   | Description                                                                                                | Default Value                            |
+| :----------------------------------: | :-----: | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
+|              `bootnode`              | Boolean | Add bootnode to network.                                                                                   | `true`                                   |
+|              `timeout`               | Number  | Global timeout to use for spawning the whole network.                                                      | -                                        |
+|              `provider`              | String  | Provider to use (e.g., kubernetes, podman).                                                                | kubernetes                               |
+|            `backchannel`             | Boolean | Deploy an instance of backchannel server. Only available on kubernetes.                                    | `false`                                  |
+|       `polkadot_introspector`        | Boolean | Deploy an instance of polkadot-introspector. Only available on podman and kubernetes.                      | `false`                                  |
+|            `jaeger_agent`            | String  | The Jaeger agent endpoint passed to the nodes. Only available on kubernetes.                               | -                                        |
+|           `enable_tracing`           | Boolean | Enable the tracing system. Only available on kubernetes.                                                   | `true`                                   |
+|        `tracing_collator_url`        | String  | The URL of the tracing collator used to query by the tracing assertion (Should be tempo query compatible). | -                                        |
+|   `tracing_collator_service_name`    | String  | Service name for tempo query frontend. Only available on kubernetes.                                       | `tempo-tempo-distributed-query-frontend` |
+| `tracing_collator_service_namespace` | String  | Namespace where tempo is running. Only available on kubernetes.                                            | `tempo`                                  |
+|   `tracing_collator_service_port`    | Number  | Port of the query instance of tempo. Only available on kubernetes.                                         | `3100`                                   |
+|         `node_spawn_timeout`         | Number  | Timeout to spawn pod/process.                                                                              | `per provider`                           |
+|              `local_ip`              | String  | IP used for exposing local services (rpc/metrics/monitors).                                                | `"127.0.0.1"`                            |
+|           `node_verifier`            | String  | Allow managing how to verify node readiness or disable (None). Default value is "Metric".                  | `Metric`                                 |
+
+For example, the following configuration file defines a minimal example for the settings:
+
+=== "base-example.toml"
+    ```toml
+    [settings]
+    timeout = 1000
+    bootnode = false
+    provider = "kubernetes"
+    backchannel = false
+    ...
+    ```
+
+=== "base-example.json"
+    ```json
+    {
+      "settings": {
+        "timeout": 1000,
+        "bootnode": false,
+        "provider": "kubernetes",
+        "backchannel": false,
+        ...
+      },
+        ...
+    }
+    ```
+
+### Relay Chain
+
+The `relaychain` keyword is used to define further parameters for the relay chain. The following keys are available:
+
+|                 Key                  |       Type        | Description                                                                                                       | Default Value           |
+| :----------------------------------: | :---------------: | :---------------------------------------------------------------------------------------------------------------- | :---------------------- |
+|          `default_command`           |      String       | The default command to run.                                                                                       | `polkadot`              |
+|           `default_image`            |      String       | The default image to use for the nodes of the relaychain.                                                         | `polkadot-debug:master` |
+|               `chain`                |      String       | The chain name.                                                                                                   | `rococo-local`          |
+|          `chain_spec_path`           |      String       | Path to the chain spec file. NOTE should be the plain version to allow customizations.                            | -                       |
+|         `chain_spec_command`         |      String       | Command to generate the chain spec. NOTE can't be used in combination with `chain_spec_path`.                     | -                       |
+|            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command.                                                   | -                       |
+| `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version.                                                                               | -                       |
+|         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes.                                                                     | -                       |
+|         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default.         | -                       |
+|     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix.                                                                  | `substrate`             |
+|      `random_nominators_count`       | number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis. | -                       |
+|          `max_nominations`           |      number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime.                  | `24`                    |
+
+??? Node 
+    Lorem   
+
+??? "Node Group"
+    Lorem
+
+For example, the following configuration file defines a minimal example for the relaychain:
+
+=== "relaychain-example.toml"
+    ```toml
+    [relaychain]
+    default_command = "polkadot"
+    default_image = "polkadot-debug:master"
+    chain = "rococo-local"
+    chain_spec_path = "/path/to/chain-spec.json"
+    default_args = ["--chain", "rococo-local"]
+    ...
+    ```
+
+=== "relaychain-example.json"
+    ```json
+    {
+    ...,
+      "relaychain": {
+        "default_command": "polkadot",
+        "default_image": "polkadot-debug:master",
+        "chain": "rococo-local",
+        "chain_spec_path": "/path/to/chain-spec.json",
+        "default_args": ["--chain", "rococo-local"],
+        ...
+      },
+      ...
+    }
+    ```
+
+### Parachain
+
+
+
+### HRMP Channels
