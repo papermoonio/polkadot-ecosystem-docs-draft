@@ -162,3 +162,25 @@ The Zombienet Native provider enables you to run nodes as local processes in you
 Currently, the Native provider does not execute any additional layers or processes.
 
 ## CLI Usage
+
+Zombienet provides a CLI tool that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. The following sections will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
+
+| Command      | Arguments    | Description                          |
+| :---------:  | :---------:  | :----------------------------------: |
+| `spawn`      | | Spawn the network defined in the config file |
+| `test`       | | Run test on the network spawned |
+| `setup`      | | Setup is meant for downloading and making dev environment of Zombienet ready. |
+| `convert`    | | Convert is meant for transforming a (now deprecated) polkadot-launch configuration to zombienet configuration |
+| `version`    | | Prints zombienet version |
+| `help`       | | Prints help information |
+
+Then, you can use the following flags to customize the behavior of the CLI:
+
+| Flag         | Description                          |
+| :---------:  | :----------------------------------: |
+| `-p`, `--provider` | Provider to use for spawning the network |
+| `-c`, `--config` | Path to the configuration file |
+| `-n`, `--network` | Network to spawn |
+
+
+## Configuration Files
