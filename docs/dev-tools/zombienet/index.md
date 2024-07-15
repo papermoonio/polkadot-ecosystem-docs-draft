@@ -595,3 +595,4 @@ The `hrmp_channels` keyword is used to define further parameters for the HRMP ch
 | `recipient`     | Number           | Parachain ID of the recipient.                      |
 | `max_capacity`  | Number           | Maximum capacity of the HRMP channel.               |
 | `max_message_size` | Number        | Maximum message size allowed in the HRMP channel.   |
+
