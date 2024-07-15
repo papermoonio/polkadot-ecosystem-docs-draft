@@ -264,11 +264,87 @@ The `relaychain` keyword is used to define further parameters for the relay chai
 |      `random_nominators_count`       | number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis. | -                       |
 |          `max_nominations`           |      number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime.                  | `24`                    |
 
-??? Node 
-    Lorem   
+??? Nodes
+    There is one specif key capable of receiving more subkeys, the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
+
+    | Key                                | Type             | Description                                                                                                       | Default Value           |
+    | :--------------------------------- | :--------------- | :---------------------------------------------------------------------------------------------------------------- | :---------------------- |
+    | `name`                             | String           | Name of the node. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice').                 | -                       |
+    | `image`                            | String           | Override default Docker image to use for this node.                                                                | -                       |
+    | `command`                          | String           | Override default command to run.                                                                                  | -                       |
+    | `command_with_args`                | String           | Override default command and arguments.                                                                            | -                       |
+    | `args`                             | Array of strings | Arguments to be passed to the command.                                                                             | -                       |
+    | `substrate_cli_args_version`       | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead.                                    | -                       |
+    | `validator`                        | Boolean          | Pass the --validator flag to the command.                                                                          | `true`                  |
+    | `invulnerable`                     | Boolean          | If true, add the node to invulnerables in the chain spec.                                                          | `false`                 |
+    | `balance`                          | Number           | Balance to set in balances for node's account.                                                                     | `2000000000000`         |
+    | `env`                              | Array of objects | Environment variables to set in the container.                                                                     | -                       |
+    | `env.name`                         | String           | Name of the environment variable.                                                                                  | -                       |
+    | `env.value`                        | String \| Number | Value of the environment variable.                                                                                 | -                       |
+    | `bootnodes`                        | Array of strings | Array of bootnodes to use.                                                                                        | -                       |
+    | `overrides`                        | Array of objects | Array of overrides definitions.                                                                                    | -                       |
+    | `add_to_bootnodes`                 | Boolean          | Add this node to the bootnode list.                                                                                | `false`                 |
+    | `resources`                        | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node.                               | -                       |
+    | `ws_port`                          | Number           | WS port to use.                                                                                                   | -                       |
+    | `rpc_port`                         | Number           | RPC port to use.                                                                                                  | -                       |
+    | `prometheus_port`                  | Number           | Prometheus port to use.                                                                                           | -                       |
+    | `prometheus_prefix`                | String           | Customizing the metric's prefix for the specific node. Defaults to 'substrate'.                                    | `substrate`             |
+    | `keystore_key_types`               | String           | Defines which keystore keys should be created.                                                                     | -                       |
+
+    So, for example, the following configuration file defines a minimal example for the relaychain, including the `nodes` key:
+
+    === "relaychain-example-nodes.toml"
+        ```toml
+        [relaychain]
+        default_command = "polkadot"
+        default_image = "polkadot-debug:master"
+        chain = "rococo-local"
+        chain_spec_path = "/path/to/chain-spec.json"
+        default_args = ["--chain", "rococo-local"]
+
+        [[nodes]]
+        name = "alice"
+        validator = true
+        balance = 1000000000000
+
+        [[nodes]]
+        name = "bob"
+        validator = true
+        balance = 1000000000000
+        ...
+        ```
+
+    === "relaychain-example-nodes.json"
+        ```json
+        {
+        ...,
+        "relaychain": {
+            "default_command": "polkadot",
+            "default_image": "polkadot-debug:master",
+            "chain": "rococo-local",
+            "chain_spec_path": "/path/to/chain-spec.json",
+            "default_args": ["--chain", "rococo-local"],
+            ...
+        },
+        "nodes": [
+            {
+            "name": "alice",
+            "validator": true,
+            "balance": 1000000000000
+            },
+            {
+            "name": "bob",
+            "validator": true,
+            "balance": 1000000000000
+            },
+            ...
+        ],
+        ...
+        }
+        ```
 
 ??? "Node Group"
-    Lorem
+    TODO:
 
 For example, the following configuration file defines a minimal example for the relaychain:
 
