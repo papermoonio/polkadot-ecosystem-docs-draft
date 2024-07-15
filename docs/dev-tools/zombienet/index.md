@@ -9,7 +9,7 @@ description: Diving depper into zombienet, a tool that allows spawning ephemeral
 
 Zombienet is a testing framework designed for Substrate-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. It supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
 
-The framework enables developers to create tests using natural language tools, allowing them to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relay chains with validators and parachains with collators.
+The framework enables developers to create tests using natural language tools, allowing them to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
 This framework has been designed and developed by [Parity Technologies]({{ https://www.parity.io/ }}){target=_blanket}, now mantained by the Zombienet team. For further support and information, please refer to the following contact points:
     
@@ -156,7 +156,7 @@ It's important to note that Grafana is deployed with default admin access.
 The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). You can choose to set it up by configuring your network file or using the `--provider` flag in the CLI.
 
 !!! note
-    The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
+    The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relaychain.
 
 #### Features
 Currently, the Native provider does not execute any additional layers or processes.
@@ -245,9 +245,9 @@ For example, the following configuration file defines a minimal example for the 
     }
     ```
 
-### Relay Chain
+### Relaychain
 
-The `relaychain` keyword is used to define further parameters for the relay chain. The following keys are available:
+The `relaychain` keyword is used to define further parameters for the relaychain. The following keys are available:
 
 |                 Key                  |       Type        | Description                                                                                                       | Default Value           |
 | :----------------------------------: | :---------------: | :---------------------------------------------------------------------------------------------------------------- | :---------------------- |
@@ -340,21 +340,20 @@ The `relaychain` keyword is used to define further parameters for the relay chai
             "chain": "rococo-local",
             "chain_spec_path": "/path/to/chain-spec.json",
             "default_args": ["--chain", "rococo-local"],
+            "nodes": [
+                {
+                    "name": "alice",
+                    "validator": true,
+                    "balance": 1000000000000
+                },
+                {
+                    "name": "bob",
+                    "validator": true,
+                    "balance": 1000000000000
+                },
             ...
+            ],
         },
-        "nodes": [
-            {
-            "name": "alice",
-            "validator": true,
-            "balance": 1000000000000
-            },
-            {
-            "name": "bob",
-            "validator": true,
-            "balance": 1000000000000
-            },
-            ...
-        ],
         ...
         }
         ```
@@ -426,6 +425,173 @@ The `relaychain` keyword is used to define further parameters for the relay chai
 
 ### Parachain
 
+The `parachain` keyword is used to define further parameters for the parachain. The following keys are available:
 
+| Key                       | Type    | Description                                                                                                 | Default Value |
+| :------------------------ | :------ | :---------------------------------------------------------------------------------------------------------- | :------------ |
+| `id`                      | Number  | The id to assign to this parachain. Must be unique.                                                         | -             |
+| `add_to_genesis`          | Boolean | Flag to add parachain to genesis or register in runtime.                                                    | `true`        |
+| `cumulus_based`           | Boolean | Flag to use cumulus command generation.                                                                     | `true`        |
+| `genesis_wasm_path`       | String  | Path to the wasm file to use.                                                                               | -             |
+| `genesis_wasm_generator`  | String  | Command to generate the wasm file.                                                                          | -             |
+| `genesis_state_path`      | String  | Path to the state file to use.                                                                              | -             |
+| `genesis_state_generator` | String  | Command to generate the state file.                                                                         | -             |
+| `prometheus_prefix`       | String  | A parameter for customizing the metric's prefix for all parachain nodes/collators. Defaults to 'substrate'. | `substrate`   |
+| `onboard_as_parachain`       | Boolean  | Flag to specify whether the para should be onboarded as a parachain or stay a parathread. | `true`   |
+| `register_para`       | Boolean  | Flag to specify whether the para should be registered. The `add_to_genesis` flag must be set to false for this flag to have any effect. | `true`   |
+
+For example, the following configuration file defines a minimal example for the parachain:
+
+=== "parachain-example.toml"
+    ```toml
+    [parachain]
+    id = 100
+    add_to_genesis = true
+    cumulus_based = true
+    genesis_wasm_path = "/path/to/wasm"
+    genesis_state_path = "/path/to/state"
+    ...
+    ```
+
+=== "parachain-example.json"
+    ```json
+    {
+      "parachain": {
+        "id": 100,
+        "add_to_genesis": true,
+        "cumulus_based": true,
+        "genesis_wasm_path": "/path/to/wasm",
+        "genesis_state_path": "/path/to/state",
+        ...
+      },
+      ...
+    }
+    ```
+
+??? "Collator"
+   
+    There is one specific key capable of receiving more subkeys: the `collator` key. This key is used to define further parameters for the nodes. The following keys are available:
+
+    | Key                       | Type             | Description                                                                                                       | Default Value           |
+    | ------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------- |
+    | `name`                    | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice').             | -                       |
+    | `image`                   | String           | Image to use for the collator.                                                                                    | -                       |
+    | `command`                 | String           | Command to run for the collator. Default is `polkadot-parachain`.                                                 | `polkadot-parachain`    |
+    | `args`                    | Array of strings | An array of arguments to use as defaults to pass to the command.                                                  | -                       |
+    | `substrate_cli_args_version`| 0 \| 1           | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead.    | -                       |
+    | `command_with_args`       | String           | Overrides both command and arguments for the collator.                                                             | -                       |
+    | `env`                     | Array of objects | Environment variables to set in the container for the collator.                                                   | -                       |
+    | `env.name`                | String           | Name of the environment variable.                                                                                 | -                       |
+    | `env.value`               | String \| Number | Value of the environment variable.                                                                                | -                       |
+    | `keystore_key_types`      | String           | Defines which keystore keys should be created. For more details, refer to additional documentation.                | -                       |
+
+    For example, the following configuration file defines a minimal example for the collator:
+
+    === "collator-example.toml"
+        ```toml
+        [parachain]
+        id = 100
+        add_to_genesis = true
+        cumulus_based = true
+        genesis_wasm_path = "/path/to/wasm"
+        genesis_state_path = "/path/to/state"
+
+        [[parachain.collators]]
+        name = "alice"
+        image = "polkadot-parachain"
+        command = "polkadot-parachain"
+        ...
+        ```
+
+    === "collator-example.json"
+        ```json
+        {
+          "parachain": {
+            "id": 100,
+            "add_to_genesis": true,
+            "cumulus_based": true,
+            "genesis_wasm_path": "/path/to/wasm",
+            "genesis_state_path": "/path/to/state",
+            "collators": [
+              {
+                "name": "alice",
+                "image": "polkadot-parachain",
+                "command": "polkadot-parachain",
+                ...
+              },
+            ],
+          },
+          ...
+        }
+        ```
+
+??? "Collator Groups"
+   
+    The `collator_groups` key is used to define further parameters for the collator groups. The following keys are available:
+
+    | Key                       | Type             | Description                                                                                                       | Default Value           |
+    | ------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------- |
+    | `name`                    | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice').             | -                       |
+    | `count`                   | Number           | Number of collators to launch for this group.                                                                      | -                       |
+    | `image`                   | String           | Image to use for the collators.                                                                                    | -                       |
+    | `command`                 | String           | Command to run for each collator. Default is `polkadot-parachain`.                                                 | `polkadot-parachain`    |
+    | `args`                    | Array of strings | An array of arguments to use as defaults to pass to the command.                                                  | -                       |
+    | `command_with_args`       | String           | Overrides both command and arguments for each collator.                                                             | -                       |
+    | `env`                     | Array of objects | Environment variables to set in the container for each collator.                                                   | -                       |
+    | `env.name`                | String           | Name of the environment variable.                                                                                 | -                       |
+    | `env.value`               | String \| Number | Value of the environment variable.                                                                                | -                       |
+    | `substrate_cli_args_version`| 0 \| 1 \| 2      | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead.    | -                       |
+
+    For example, the following configuration file defines a minimal example for the collator groups:
+
+    === "collator-groups-example.toml"
+        ```toml
+        [parachain]
+        id = 100
+        add_to_genesis = true
+        cumulus_based = true
+        genesis_wasm_path = "/path/to/wasm"
+        genesis_state_path = "/path/to/state"
+
+        [[parachain.collator_groups]]
+        name = "group-1"
+        count = 2
+        image = "polkadot-parachain"
+        command = "polkadot-parachain"
+        ...
+        ```
+    
+    === "collator-groups-example.json"
+        ```json
+        {
+          "parachain": {
+            "id": 100,
+            "add_to_genesis": true,
+            "cumulus_based": true,
+            "genesis_wasm_path": "/path/to/wasm",
+            "genesis_state_path": "/path/to/state",
+            "collator_groups": [
+              {
+                "name": "group-1",
+                "count": 2,
+                "image": "polkadot-parachain",
+                "command": "polkadot-parachain",
+                ...
+              },
+            ],
+          },
+          ...
+        }
+        ```
 
 ### HRMP Channels
+
+The `hrmp_channels` keyword is used to define further parameters for the HRMP channels. The following keys are available:
+
+| Key             | Type             | Description                                         |
+| --------------- | ---------------- | --------------------------------------------------- |
+| `hrmp_channels` | Array of objects | Array of HRMP channel configurations.               |
+| `sender`        | Number           | Parachain ID of the sender.                         |
+| `recipient`     | Number           | Parachain ID of the recipient.                      |
+| `max_capacity`  | Number           | Maximum capacity of the HRMP channel.               |
+| `max_message_size` | Number        | Maximum message size allowed in the HRMP channel.   |
