@@ -264,8 +264,24 @@ The `relaychain` keyword is used to define further parameters for the relay chai
 |      `random_nominators_count`       | number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis. | -                       |
 |          `max_nominations`           |      number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime.                  | `24`                    |
 
+| Key                                | Type             | Description                                                                                                       | Default Value           |
+| :--------------------------------- | :--------------- | :---------------------------------------------------------------------------------------------------------------- | :---------------------- |
+| `name`                              | String           | Group name, used for naming the nodes (e.g., `name-1`). Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group'). | -                       |
+| `count`                             | Number           | Number of nodes to launch for this group.                                                                          | -                       |
+| `image`                             | String           | Override default Docker image to use for this node.                                                                | -                       |
+| `command`                           | String           | Override default command to run.                                                                                  | -                       |
+| `args`                              | Array of strings | Arguments to be passed to the command.                                                                             | -                       |
+| `env`                               | Array of objects | Environment variables to set in the container.                                                                     | -                       |
+| `env.name`                          | String           | Name of the environment variable.                                                                                  | -                       |
+| `env.value`                         | String \| Number | Value of the environment variable.                                                                                 | -                       |
+| `overrides`                         | Array of objects | Array of overrides definitions.                                                                                    | -                       |
+| `prometheus_prefix`                 | String           | A parameter for customizing the metric's prefix for the specific node group. Defaults to 'substrate'.              | `substrate`             |
+| `resources`                         | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node.                               | -                       |
+| `substrate_cli_args_version`        | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead.                                    | -                       |
+
+
 ??? Nodes
-    There is one specif key capable of receiving more subkeys, the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
+    There is one specific key capable of receiving more subkeys, the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
 
     | Key                                | Type             | Description                                                                                                       | Default Value           |
     | :--------------------------------- | :--------------- | :---------------------------------------------------------------------------------------------------------------- | :---------------------- |
@@ -343,37 +359,45 @@ The `relaychain` keyword is used to define further parameters for the relay chai
         }
         ```
 
-??? "Node Group"
-    TODO:
+??? "Node Groups"
+    The `node_groups` key is used to define further parameters for the node groups. The following keys are available:
 
-For example, the following configuration file defines a minimal example for the relaychain:
+    | Key                                | Type             | Description                                                                                                       | Default Value           |
+    | :--------------------------------- | :--------------- | :---------------------------------------------------------------------------------------------------------------- | :---------------------- |
+    | `name`                              | String           | Group name, used for naming the nodes (e.g., `name-1`). Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group'). | -                       |
+    | `count`                             | Number           | Number of nodes to launch for this group.                                                                          | -                       |
+    | `image`                             | String           | Override default Docker image to use for this node.                                                                | -                       |
+    | `command`                           | String           | Override default command to run.                                                                                  | -                       |
+    | `args`                              | Array of strings | Arguments to be passed to the command.                                                                             | -                       |
+    | `env`                               | Array of objects | Environment variables to set in the container.                                                                     | -                       |
+    | `env.name`                          | String           | Name of the environment variable.                                                                                  | -                       |
+    | `env.value`                         | String \| Number | Value of the environment variable.                                                                                 | -                       |
+    | `overrides`                         | Array of objects | Array of overrides definitions.                                                                                    | -                       |
+    | `prometheus_prefix`                 | String           | A parameter for customizing the metric's prefix for the specific node group. Defaults to 'substrate'.              | `substrate`             |
+    | `resources`                         | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node.                               | -                       |
+    | `substrate_cli_args_version`        | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead.                                    | -                       |
 
-=== "relaychain-example.toml"
-    ```toml
-    [relaychain]
-    default_command = "polkadot"
-    default_image = "polkadot-debug:master"
-    chain = "rococo-local"
-    chain_spec_path = "/path/to/chain-spec.json"
-    default_args = ["--chain", "rococo-local"]
-    ...
-    ```
+    So, for example, the following configuration file defines a minimal example for the relaychain, including the `node_groups` key:
+    
+    === "relaychain-example-node-groups.toml"
+        ```toml
+        [relaychain]
+        default_command = "polkadot"
+        default_image = "polkadot-debug:master"
+        chain = "rococo-local"
+        chain_spec_path = "/path/to/chain-spec.json"
+        default_args = ["--chain", "rococo-local"]
 
-=== "relaychain-example.json"
-    ```json
-    {
-    ...,
-      "relaychain": {
-        "default_command": "polkadot",
-        "default_image": "polkadot-debug:master",
-        "chain": "rococo-local",
-        "chain_spec_path": "/path/to/chain-spec.json",
-        "default_args": ["--chain", "rococo-local"],
+        [[node_groups]]
+        name = "group-1"
+        count = 2
+        image = "polkadot-debug:master"
+        command = "polkadot"
+        args = ["--chain", "rococo-local"]
         ...
-      },
-      ...
-    }
-    ```
+        ```
+   
+
 
 ### Parachain
 
