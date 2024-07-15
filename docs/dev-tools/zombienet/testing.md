@@ -1,6 +1,6 @@
 # Testing DSL
 
-Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL is designed to be human-readable and allows you to write tests using natural language expressions. Using this DSL, you can define assertions and tests against the spawned network, this way users can evaluate different metrics, such as:
+Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL is designed to be human-readable and allows you to write tests using natural language expressions. Using this DSL, you can define assertions and tests against the spawned network. This way, users can evaluate different metrics, such as:
 
 - On chain storage
 - Metrics
@@ -11,7 +11,7 @@ Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL i
 - Custom api calls (through polkadot.js)
 - Commands 
 
-Each of these abstractions is expressed by sentences defined in a natural language style. Therefore, each test line will be mapped to a test to run. Also, the test file (`*.zndsl`) includes pre-defined header fields used to define information about the suite, such as network configuration and credentials location.
+These abstractions are expressed by sentences defined in a natural language style. Therefore, each test line will be mapped to a test to run. Also, the test file (`*.zndsl`) includes pre-defined header fields used to define information about the suite, such as network configuration and credentials location.
 
 ## Test file 
 
@@ -21,7 +21,7 @@ The test name in Zombienet is derived from the filename by removing any leading 
 
 ### Structure
 
-The test file is a text file with the extension `.zndsl`. The file is divided into two parts: the header and the body. The header contains the configuration of the network and the credentials to use. The body contains the tests to run.
+The test file is a text file with the extension `.zndsl`. It is divided into two parts: the header and the body. The header contains the network configuration and the credentials to use, while the body contains the tests to run.
 
 The header is defined by the following fields:
 
@@ -63,7 +63,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
   - node-name: `system event (contains|matches)( regex| glob) "pattern" [within x seconds]`
     - alice: system event matches ""paraId":[0-9]+" within 10 seconds
 
-- `Tracing assertion` - match an array of span names from the supplied traceID. NOTE this is not supported with the native provider
+- `Tracing assertion` - match an array of span names from the supplied traceID. NOTE this is not supported by the native provider
   - node-name: `trace with traceID contains ["name", "name2",...]`
     - alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chunk-request", "answer-chunk-request"]
 
@@ -81,7 +81,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
 #### Commands
 
-Commands allow to interact with the nodes, given the ability to run some pre-defined commands or an arbitrary command in the node.
+Commands allow interaction with the nodes, with the ability to run pre-defined commands or an arbitrary command in the node.
 
 - `restart`
   - node-name `restart [after x seconds]` - will stop the process and start again after the x amount of seconds or innmediatly.
@@ -92,9 +92,9 @@ Commands allow to interact with the nodes, given the ability to run some pre-def
 
 ## Example
 
-For example, the following test file defines two tests. The first test is a small network test, and the second test is a big network test. Each test defines a network configuration file to use and the credentials to use.
+For example, the following test file defines two tests: a small network test and a big network test. Each test defines a network configuration file and credentials to use.
 
-The tests define assertions to evaluate the metrics and logs of the network. The assertions are defined by sentences in the DSL, which are mapped to tests to run.
+The tests define assertions to evaluate the network’s metrics and logs. The assertions are defined by sentences in the DSL, which are mapped to tests to run.
 
 ``` toml
 Description: Small Network test
