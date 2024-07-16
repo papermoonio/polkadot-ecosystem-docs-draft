@@ -7,15 +7,26 @@ hide:
 
 # Polkadot Ecosystem Documentation
 
-Welcome to the documentation site for Polkadot, the first layer-0 (L0) blockchain that provides shared security and secure interoperability to layer-1 (L1) blockchains. 
+Welcome to the documentation hub for Polkadot, a scalable, interoperable, and secure network empowering the next generation of web builders. This site aims to serve as a central knowledge exchange for teams across the Polkadot ecosystem. 
+
+Here, you will find detailed Polkadot information, including key features, tools, and SDKs for parachain and appchain builders. These resources provide practical benefits and best practices for working with smart contracts, pallets, and Substrate and offer guidance for those building tooling and running infrastructure.
 
 ## What is Polkadot? {: #what-is-polkadot }
 
-Polkadot is a layer-0 (L0) blockchain connecting a network of purpose-built level-1 (L1) blockchains, allowing them to operate seamlessly together at scale. Polkadot allows specialized blockchains to focus on their area of expertise without the L1 worrying about security or how to connect to and exchange data with other blockchains. 
+Polkadot is a blockchain network protocol that provides shared security among all parachains and allows all connected tasks to interoperate using XCM. The XCM messaging format will enable blockchains to pass any data to other chains or consensus mechanisms, allowing for secure interoperability and scaling of connected chains. This foundation lets each parachain specialize towards a specific focus and optimize toward that goal without the risk of compromising user security or cross-chain capabilities.
 
 ## Get Started with Polkadot {: #get-started-with-polkadot }
 
-### Networks {: #networks }
+### Build a Parachain {: #build-a-parachain }
 
-- [Paseo Testnet](/docs/paseo-testnet/onboarding.md) - deploy a custom parachain to the Paseo Testnet
+- [Paseo Testnet](/paseo-testnet/onboarding) - deploy a custom parachain to the Paseo Testnet
+
+### Develop Smart Contracts {: develop-smart-contracts}
+
+
+### Create Tooling 
+
+
+### Validate and Produce Blocks
+<!--TODO: Rename this? Need a name for this Infrastructure section-->
 
