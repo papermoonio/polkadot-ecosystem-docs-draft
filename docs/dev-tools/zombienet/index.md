@@ -304,7 +304,7 @@ The `relaychain` keyword is used to define further parameters for the relaychain
     | `ws_port`                    | Number           | WS port to use.                                                                                   | -               |
     | `rpc_port`                   | Number           | RPC port to use.                                                                                  | -               |
     | `prometheus_port`            | Number           | Prometheus port to use.                                                                           | -               |
-    | `prometheus_prefix`          | String           | Customizing the metric's prefix for the specific node. Defaults to 'substrate'.                   | `substrate`     |
+    | `prometheus_prefix`          | String           | Customizing the metric's prefix for the specific node.                   | `substrate`     |
     | `keystore_key_types`         | String           | Defines which keystore keys should be created.                                                    | -               |
 
     So, for example, the following configuration file defines a minimal example for the relaychain, including the `nodes` key:
