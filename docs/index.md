@@ -1,8 +1,9 @@
 ---
-title: Docs
+title: Polkadot Ecosystem Developer Hub
 description: # Add a meta description
 hide:
-  - navigation
   - feedback
-  - toc
+template: main.html
 ---
+
+# Polkadot Ecosystem Developer Hub
