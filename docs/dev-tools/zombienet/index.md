@@ -1,6 +1,6 @@
 ---
 title: Using Zombienet to spawn ephemeral substrate based networks
-description: Diving depper into zombienet, a tool that allows spawning ephemeral substrate networks.
+description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary substrate networks for testing purposes
 ---
 
 # Zombienet
@@ -234,13 +234,13 @@ For example, the following configuration file defines a minimal example for the 
 === "base-example.json"
     ```json
     {
-      "settings": {
-        "timeout": 1000,
-        "bootnode": false,
-        "provider": "kubernetes",
-        "backchannel": false,
-        ...
-      },
+        "settings": {
+            "timeout": 1000,
+            "bootnode": false,
+            "provider": "kubernetes",
+            "backchannel": false,
+            ...
+        },
         ...
     }
     ```
