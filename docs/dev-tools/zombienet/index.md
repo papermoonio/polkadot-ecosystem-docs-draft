@@ -120,46 +120,50 @@ It's important to note that each provider has its own specific requirements and 
 
 ### Kubernetes
 
-#### Requirements
-Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blanket}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blanket}, and [kind](https://kind.sigs.k8s.io/){target=_blanket}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
+=== "Requirements"
 
-Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+    Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blanket}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blanket}, and [kind](https://kind.sigs.k8s.io/){target=_blanket}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
 
-#### Features
-In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. By using the Prometheus operator, Zombienet improves its capability to efficiently monitor and manage network activities within the Kubernetes cluster.
+    Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+
+=== "Features"
+    In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. By using the Prometheus operator, Zombienet improves its capability to efficiently monitor and manage network activities within the Kubernetes cluster.
 
 ### Podman
 
-#### Requirements
-Zombienet supports Podman rootless as a provider. To use it, you simply need to have Podman installed on your system and specify it either in the network file or using the `--provider` flag in the CLI.
+=== "Requirements"
 
-!!! note
-    Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
+    Zombienet supports Podman rootless as a provider. To use it, you simply need to have Podman installed on your system and specify it either in the network file or using the `--provider` flag in the CLI.
 
-#### Features
-Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as datasources.
+    !!! note
+        Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
 
-Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
+=== "Features"
+    
+    Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as datasources.
 
-- Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blanket}
-- Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blanket}
-- Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blanket}
+    Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
 
-It's important to note that Grafana is deployed with default admin access.
+    - Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blanket}
+    - Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blanket}
+    - Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blanket}
 
-!!! note
-    When the network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—all associated pods, including those for Prometheus, Tempo, and Grafana, are automatically removed by Zombienet.
+    It's important to note that Grafana is deployed with default admin access.
+
+    !!! note
+        When the network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—all associated pods, including those for Prometheus, Tempo, and Grafana, are automatically removed by Zombienet.
 
 ### Native
 
-#### Requirements
-The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). You can choose to set it up by configuring your network file or using the `--provider` flag in the CLI.
+=== "Requirements"
+    
+    The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). You can choose to set it up by configuring your network file or using the `--provider` flag in the CLI.
 
-!!! note
-    The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relaychain.
+    !!! note
+        The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relaychain.
 
-#### Features
-Currently, the Native provider does not execute any additional layers or processes.
+=== "Features"
+    Currently, the Native provider does not execute any additional layers or processes.
 
 ## CLI Usage
 
