@@ -84,10 +84,10 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 Commands allow interaction with the nodes, with the ability to run pre-defined commands or an arbitrary command in the node.
 
 - `restart`
-  - node-name `restart [after x seconds]` - will stop the process and start again after the x amount of seconds or innmediatly.
-  - node-name `pause` - will pause (SIGSTOP) the process
-  - node-name `resume` - will pause (SIGCONT) the process
-  - `sleep x` - will sleep the test-runner for x amount of seconds.
+    -  node-name `restart [after x seconds]` - will stop the process and start again after the x amount of seconds or innmediatly.
+    - node-name `pause` - will pause (SIGSTOP) the process
+    - node-name `resume` - will pause (SIGCONT) the process
+    - `sleep x` - will sleep the test-runner for x amount of seconds.
 
 
 ## Example
