@@ -254,15 +254,15 @@ The `relaychain` keyword is used to define further parameters for the relaychain
 |          `default_command`           |      String       | The default command to run.                                                                                       | `polkadot`              |
 |           `default_image`            |      String       | The default image to use for the nodes of the relaychain.                                                         | `polkadot-debug:master` |
 |               `chain`                |      String       | The chain name.                                                                                                   | `rococo-local`          |
-|          `chain_spec_path`           |      String       | Path to the chain spec file. NOTE should be the plain version to allow customizations.                            | -                       |
-|         `chain_spec_command`         |      String       | Command to generate the chain spec. NOTE can't be used in combination with `chain_spec_path`.                     | -                       |
+|          `chain_spec_path`           |      String       | Path to the chain spec file. It should be the plain version to allow customizations.                            | -                       |
+|         `chain_spec_command`         |      String       | Command to generate the chain spec. It can't be used in combination with `chain_spec_path`.                     | -                       |
 |            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command.                                                   | -                       |
 | `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version.                                                                               | -                       |
 |         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes.                                                                     | -                       |
 |         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default.         | -                       |
 |     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix.                                                                  | `substrate`             |
-|      `random_nominators_count`       | number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis. | -                       |
-|          `max_nominations`           |      number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime.                  | `24`                    |
+|      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis. | -                       |
+|          `max_nominations`           |      Number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime.                  | `24`                    |
 
 | Key                          | Type             | Description                                                                                                                             | Default Value |
 | :--------------------------- | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
@@ -333,28 +333,28 @@ The `relaychain` keyword is used to define further parameters for the relaychain
     === "relaychain-example-nodes.json"
         ```json
         {
-        ...,
-        "relaychain": {
-            "default_command": "polkadot",
-            "default_image": "polkadot-debug:master",
-            "chain": "rococo-local",
-            "chain_spec_path": "/path/to/chain-spec.json",
-            "default_args": ["--chain", "rococo-local"],
-            "nodes": [
-                {
-                    "name": "alice",
-                    "validator": true,
-                    "balance": 1000000000000
-                },
-                {
-                    "name": "bob",
-                    "validator": true,
-                    "balance": 1000000000000
-                },
+            ...,
+            "relaychain": {
+                "default_command": "polkadot",
+                "default_image": "polkadot-debug:master",
+                "chain": "rococo-local",
+                "chain_spec_path": "/path/to/chain-spec.json",
+                "default_args": ["--chain", "rococo-local"],
+                "nodes": [
+                    {
+                        "name": "alice",
+                        "validator": true,
+                        "balance": 1000000000000
+                    },
+                    {
+                        "name": "bob",
+                        "validator": true,
+                        "balance": 1000000000000
+                    }
+                ],
+                ...
+            },
             ...
-            ],
-        },
-        ...
         }
         ```
 
@@ -399,29 +399,27 @@ The `relaychain` keyword is used to define further parameters for the relaychain
     === "relaychain-example-node-groups.json"
         ```json
         {
-        ...,
-        "relaychain": {
-            "default_command": "polkadot",
-            "default_image": "polkadot-debug:master",
-            "chain": "rococo-local",
-            "chain_spec_path": "/path/to/chain-spec.json",
-            "default_args": ["--chain", "rococo-local"],
-            "node_groups": [
-                {
-                    "name": "group-1",
-                    "count": 2,
-                    "image": "polkadot-debug:master",
-                    "command": "polkadot",
-                    "args": ["--chain", "rococo-local"]
-                },
-            ],
-        },
-        ...
+            ...,
+            "relaychain": {
+                "default_command": "polkadot",
+                "default_image": "polkadot-debug:master",
+                "chain": "rococo-local",
+                "chain_spec_path": "/path/to/chain-spec.json",
+                "default_args": ["--chain", "rococo-local"],
+                "node_groups": [
+                    {
+                        "name": "group-1",
+                        "count": 2,
+                        "image": "polkadot-debug:master",
+                        "command": "polkadot",
+                        "args": ["--chain", "rococo-local"]
+                    }
+                ],
+                ...
+            },
+            ...
         }
         ```
-
-   
-
 
 ### Parachain
 
