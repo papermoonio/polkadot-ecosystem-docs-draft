@@ -37,7 +37,7 @@ To install Chopsticks globally, allowing you to use it across multiple projects,
 npm i -g @acala-network/chopsticks@latest
 ```
 
-Now you should be able to run the `chopsticks` command from your terminal.
+Now, you should be able to run the `chopsticks` command from your terminal.
 
 ### Local Installation
 
