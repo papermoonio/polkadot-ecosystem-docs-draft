@@ -38,7 +38,7 @@
 }
 
 .subsection-wrapper .card {
-  border: 1px solid var(--md-primary-fg-color);
+  border: 1px solid var(--pink);
   border-radius: var(--md-border-radius);
   margin: 1em 0;
   text-decoration: none;

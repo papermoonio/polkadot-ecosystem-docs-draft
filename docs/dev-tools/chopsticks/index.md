@@ -34,10 +34,10 @@ You can install Chopsticks either globally or locally in your project. Choose th
 To install Chopsticks globally, allowing you to use it across multiple projects, run:
 
 ```bash
-npm i -g @acala-network/chopsticks@latest
+npm i -g @acala-network/chopsticks
 ```
 
-Now you should be able to run the `chopsticks` command from your terminal.
+Now, you should be able to run the `chopsticks` command from your terminal.
 
 ### Local Installation
 
@@ -52,13 +52,13 @@ npm init -y
 Then, install Chopsticks as a local dependency:
 
 ```bash
-npm i @acala-network/chopsticks@latest
+npm i @acala-network/chopsticks
 ```
 
 Finally, you can run Chopsticks using the `npx` command:
 
 ```bash
-npx @acala-network/chopsticks@latest
+npx @acala-network/chopsticks
 ```
 
 ## Configuration
@@ -114,20 +114,20 @@ To run Chopsticks using a configuration file, utilize the `--config` flag. You c
 === "GitHub URL"
 
     ```bash
-    npx @acala-network/chopsticks@latest \
+    npx @acala-network/chopsticks \
     --config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot.yml
     ```
 
 === "Local File Path"
 
     ```bash
-    npx @acala-network/chopsticks@latest --config=configs/polkadot.yml
+    npx @acala-network/chopsticks --config=configs/polkadot.yml
     ```
 
 === "Chain Name"
 
     ```bash
-    npx @acala-network/chopsticks@latest --config=polkadot
+    npx @acala-network/chopsticks --config=polkadot
     ```
 
 !!! note
@@ -138,7 +138,7 @@ To run Chopsticks using a configuration file, utilize the `--config` flag. You c
 Alternatively, all settings (except for genesis and timestamp) can be configured via command-line flags, providing a comprehensive method to set up the environment. For example, the following command forks Polkadot at block 100.
 
 ```bash
-npx @acala-network/chopsticks@latest \
+npx @acala-network/chopsticks \
 --endpoint wss://polkadot-rpc.dwellir.com \
 --block 100
 ```
@@ -199,7 +199,7 @@ Chopsticks allows you to replay specific blocks from a chain, which is useful fo
 For example, to replay block 1000 from Polkadot and save the output to a JSON file:
 
 ```bash
-npx @acala-network/chopsticks@latest run-block  \
+npx @acala-network/chopsticks run-block  \
 --endpoint wss://polkadot-rpc.dwellir.com  \
 --output-path ./polkadot-output.json  \
 --block 1000
@@ -217,13 +217,43 @@ To test XCM (Cross-Consensus Messaging) messages between networks, you can fork 
 For example, to fork Moonbeam, Astar, and Polkadot enabling XCM between them, you can use the following command:
 
 ```bash
-npx @acala-network/chopsticks@latest xcm \
+npx @acala-network/chopsticks xcm \
 --r polkadot \
 --p moonbeam \
 --p astar
 ```
 
-After running the command, you should see output similar to the following:
+After running it, you should see output similar to the following:
+
+<div id="termynal" data-termynal>
+    <span data-ty="input"><span class="file-path"></span>npx @acala-network/chopsticks xcm \
+--r polkadot \
+--p moonbeam \
+--p astar</span>
+    <br>
+    <span data-ty>[13:46:07.901] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml</span>
+    <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>[13:46:12.631] INFO: Moonbeam RPC listening on port 8000</span>
+    <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>[13:46:12.632] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/astar.yml</span>
+    <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>        chopsticks::executor  TRACE: Calling Metadata_metadata</span>
+    <span data-ty>        chopsticks::executor  TRACE: Completed Metadata_metadata</span>
+    <span data-ty>[13:46:23.669] INFO: Astar RPC listening on port 8001</span>
+    <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>[13:46:25.144] INFO (xcm): Connected parachains [2004,2006]</span>
+    <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>[13:46:25.144] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot.yml</span>
+        <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>        chopsticks::executor  TRACE: Calling Metadata_metadata</span>
+    <span data-ty>        chopsticks::executor  TRACE: Completed Metadata_metadata</span>
+    <span data-ty>[13:46:53.320] INFO: Polkadot RPC listening on port 8002</span>
+    <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>[13:46:54.038] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Moonbeam'</span>
+    <span data-ty>    app: "chopsticks"</span>
+    <span data-ty>[13:46:55.028] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Astar'</span>
+    <span data-ty>    app: "chopsticks"</span>
+</div>
 
 ```bash
 [13:46:07.901] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
@@ -276,11 +306,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_newBlock',{ count:1 })
         }
+
         main()
         ```
 
@@ -296,11 +328,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_setBlockBuildMode', "Instant")
         }
+
         main()
         ```
 
@@ -316,11 +350,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_setHead', 500)
         }
+
         main()
         ```
 
@@ -336,11 +372,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_setRuntimeLogLevel', 1)
         }
+
         main()
         ```
 
@@ -357,6 +395,7 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         import { Keyring } from '@polkadot/keyring'
         async function main() {
             const wsProvider = new WsProvider('ws://localhost:8000');
@@ -370,6 +409,7 @@ These are the methods that can be invoked and their parameters:
             }
             await api.rpc('dev_setStorage', storage)
           }
+
         main()
 
         ```
@@ -386,10 +426,12 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_timeTravel', "2030-08-15T00:00:00")
         }
+
         main()
         ```
