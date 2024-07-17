@@ -276,11 +276,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_newBlock',{ count:1 })
         }
+
         main()
         ```
 
@@ -296,11 +298,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_setBlockBuildMode', "Instant")
         }
+
         main()
         ```
 
@@ -316,11 +320,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_setHead', 500)
         }
+
         main()
         ```
 
@@ -336,11 +342,13 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_setRuntimeLogLevel', 1)
         }
+
         main()
         ```
 
@@ -357,6 +365,7 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         import { Keyring } from '@polkadot/keyring'
         async function main() {
             const wsProvider = new WsProvider('ws://localhost:8000');
@@ -370,6 +379,7 @@ These are the methods that can be invoked and their parameters:
             }
             await api.rpc('dev_setStorage', storage)
           }
+
         main()
 
         ```
@@ -386,10 +396,12 @@ These are the methods that can be invoked and their parameters:
 
         ```js
         import { ApiPromise, WsProvider } from '@polkadot/api';
+
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
           await api.rpc('dev_timeTravel', "2030-08-15T00:00:00")
         }
+        
         main()
         ```
