@@ -21,16 +21,10 @@ These resources provide practical benefits and best practices for working with s
 
 
 
-### Build a Parachain {: #build-a-parachain }
-
-- [Paseo Testnet](/paseo-testnet/onboarding) - deploy a custom parachain to the Paseo Testnet
-
-### Develop Smart Contracts {: develop-smart-contracts}
 
 
-### Create Tooling 
 
 
-### Validate and Produce Blocks
-<!--TODO: Rename this? Need a name for this Infrastructure section-->
+
+
 
