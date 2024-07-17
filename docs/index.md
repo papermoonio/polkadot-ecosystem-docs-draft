@@ -5,7 +5,7 @@ description: Explore the information, tools, and tutorials needed to start build
 
 # Polkadot Ecosystem Documentation
 
-Welcome to the documentation hub for Polkadot, a scalable, interoperable, and secure network empowering the next generation of web builders. This site aims to serve as a central knowledge exchange for teams across the Polkadot ecosystem. 
+Welcome to a draft documentation site for ecosystem-related things on Polkadot, a scalable, interoperable, and secure network empowering the next generation of web builders. This site aims to serve as a central knowledge exchange for teams across the Polkadot ecosystem. 
 
 Here, you will find detailed Polkadot information, including key features, tools, and SDKs for parachain and appchain builders. These resources provide practical benefits and best practices for working with smart contracts, pallets, and Substrate and offer guidance for those building tooling and running infrastructure.
 
