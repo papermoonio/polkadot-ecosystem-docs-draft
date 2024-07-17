@@ -12,6 +12,12 @@
 'extra_css':
   - 'assets/stylesheets/extra.css'
   - 'assets/stylesheets/terminal.css'
+# Diagnostic messages when validating links to documents
+'validation':
+  'absolute_links': 'ignore'
+  'unrecognized_links': 'ignore'
+  'anchors': 'ignore'
+# Theme related settings
 'theme':
   'name': 'material'
   'custom_dir': 'material-overrides'
@@ -43,6 +49,9 @@
       'toggle':
         'icon': material/weather-sunny
         'name': Switch to light mode
+
+'nav':
+
 'markdown_extensions':
   - 'abbr'
   - 'admonition'
