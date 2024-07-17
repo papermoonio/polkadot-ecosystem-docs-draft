@@ -119,7 +119,7 @@ In order to install Zombienet, there are multiple options available, depending o
 
 Zombienet is a Javascript library designed to run on Node.js and support different backend providers to run the nodes. At this moment [Kubernetes]( https://kubernetes.io/ ){target=_blank}, [Podman]( https://podman.io/ ){target=_blank} and, native are supported.
 
-It's important to note that each provider has its own specific requirements and associated features. The following sections will guide you through the installation process for each provider and the necessary requirements, as well as the features that each provider offers.
+It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
 ### Kubernetes
 
@@ -170,7 +170,7 @@ It's important to note that each provider has its own specific requirements and 
 
 ## CLI Usage
 
-Zombienet provides a CLI tool that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. The following sections will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
+Zombienet provides a CLI tool that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. The following tables will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
 
 |  Command  |                                                  Description                                                  |                                                                                                                                                      Arguments                                                                                                                                                       |
 | :-------: | :-----------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
