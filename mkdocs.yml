@@ -24,7 +24,7 @@
     - 'content.code.annotate' # Adds annotations to code blocks
     - 'content.code.copy' # Adds copy to clipboard button to code snippets
     - 'content.tooltips' # Adds tooltips
-    - 'navigation.footer' # Shows previous and next on the footer
+    #- 'navigation.footer' # Shows previous and next on the footer
     - 'navigation.tabs' # Top-level sections are rendered below the header (can be modified to in-line with CSS)
     - 'navigation.tabs.sticky' # When scrolling, the tabs remain at the top of the page
     - 'navigation.sections' # Render top-level sections as groups in the sidebar
