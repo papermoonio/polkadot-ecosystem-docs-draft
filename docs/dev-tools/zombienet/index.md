@@ -18,13 +18,15 @@ This framework has been designed and developed by [Parity Technologies]({{ https
 
 ## Installation
 
-Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
+Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}.
 
 In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following sections will guide you through the installation process for each of the available options.
 
 === "Using the executable" 
 
-    Zombienet can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture, and then move it to a directory in your PATH. Or you can either dowlonad it directly from the command line using `curl` or `wget`:
+    Zombienete executables can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
+
+    Alternatively, you can also download the executable using either `curl` or `wget`:
 
     === "Curl"
         ```bash
