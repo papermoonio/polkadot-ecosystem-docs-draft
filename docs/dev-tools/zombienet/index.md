@@ -183,7 +183,7 @@ Zombienet provides a CLI tool that allows interaction with the tool. The CLI can
 
 
 !!! warning
-    For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, generate a release, and manually add it to their PATH.
+    For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build Polkadot binary, and manually add it to their PATH.
 
 Then, you can use the following flags to customize the behavior of the CLI:
 
