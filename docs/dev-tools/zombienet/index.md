@@ -20,7 +20,7 @@ This framework has been designed and developed by [Parity Technologies]({{ https
 
 Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
 
-In order to install Zombienet, there are some options available, depending on the user's preferences and the environment where it will be used. The following sections will guide you through the installation process for each of the available options.
+In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following sections will guide you through the installation process for each of the available options.
 
 === "Using the executable" 
 
