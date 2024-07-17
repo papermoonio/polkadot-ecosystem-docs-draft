@@ -1,2 +1,4 @@
+title: Paseo TestNet
 nav:
+  - index.md
   - 'Parachain Onboarding': 'onboarding.md'
