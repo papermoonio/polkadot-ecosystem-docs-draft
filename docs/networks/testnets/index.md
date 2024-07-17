@@ -1,7 +1,8 @@
 ---
-title: Testnets
-description: A breakdown of all the different testnets within Polkadot.
+title: TestNets
+description: A breakdown of all the different TestNets within Polkadot.
 hide: 
- - toc
- - feedback
+    - toc
+    - feedback
+template: subsection-index-page.html
 ---
