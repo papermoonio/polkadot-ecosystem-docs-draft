@@ -18,7 +18,6 @@ Documentation on smart contract development - Find resources and tutorials on de
 
 These resources provide practical benefits and best practices for working with smart contracts, pallets, and Substrate and offer guidance for those building tooling and running infrastructure.
 
-## What is Polkadot? {: #what-is-polkadot }
 
 Polkadot is a blockchain network protocol that provides shared security among all parachains and allows all connected tasks to interoperate using XCM. The XCM messaging format will enable blockchains to pass any data to other chains or consensus mechanisms, allowing for secure interoperability and scaling of connected chains. This foundation lets each parachain specialize towards a specific focus and optimize toward that goal without the risk of compromising user security or cross-chain capabilities.
 
