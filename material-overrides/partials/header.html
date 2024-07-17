@@ -21,14 +21,12 @@
         </div>
       </div>
       <div class="md-header__buttons">
-        {% if "navigation.tabs.sticky" in features %}
+         {% if "navigation.tabs.sticky" in features %}
         {% if "navigation.tabs" in features %}
             {% include "partials/tabs.html" %}
           {% endif %}
-        {% endif %}
-        <a class="md-header__button md-button faucet md-typeset" href="#">
-          Faucet
-        </a>
+        {% endif %} 
+        
         {% if config.theme.palette %}
           {% if not config.theme.palette is mapping %}
             {% include "partials/palette.html" %}

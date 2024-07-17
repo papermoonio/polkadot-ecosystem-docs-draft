@@ -1,2 +1,3 @@
 nav:
- - index.md
+ - 'Home': 'index.md'
+ - networks

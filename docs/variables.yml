@@ -1,1 +1,3 @@
-var: example
+repositories:
+  open_zeppelin:
+    release_tag_version: 1.0.0
