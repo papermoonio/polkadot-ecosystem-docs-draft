@@ -16,7 +16,7 @@ This framework has been designed and developed by [Parity Technologies]({{ https
 - [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blanket}
 - [Element public channel]( https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation ){target=_blanket}
 
-## Installation
+## Installation  {#installation}
 
 
 Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blanket}. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blanket}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
