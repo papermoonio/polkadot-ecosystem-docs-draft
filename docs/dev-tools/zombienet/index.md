@@ -11,21 +11,21 @@ Zombienet is a testing framework designed for Substrate-based blockchains. It pr
 
 The framework enables developers to create tests using natural language tools, allowing them to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
-This framework has been designed and developed by [Parity Technologies]({{ https://www.parity.io/ }}){target=_blanket}, now mantained by the Zombienet team. For further support and information, please refer to the following contact points:
+This framework has been designed and developed by [Parity Technologies]({{ https://www.parity.io/ }}){target=_blank}, now mantained by the Zombienet team. For further support and information, please refer to the following contact points:
     
-- [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blanket}
-- [Element public channel]( https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation ){target=_blanket}
+- [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}
+- [Element public channel]( https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation ){target=_blank}
 
 ## Installation
 
 
-Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blanket}. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blanket}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
+Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
 
 In order to install Zombienet, there are some options available, depending on the user's preferences and the environment where it will be used. The following sections will guide you through the installation process for each of the available options.
 
 === "Using the executable" 
 
-    Zombienet can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blanket}. You can download the executable for your operating system and architecture, and then move it to a directory in your PATH. Or you can either dowlonad it directly from the command line using `curl` or `wget`:
+    Zombienet can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture, and then move it to a directory in your PATH. Or you can either dowlonad it directly from the command line using `curl` or `wget`:
 
     === "Curl"
         ```bash
@@ -59,7 +59,7 @@ In order to install Zombienet, there are some options available, depending on th
 
 === "Using Nix"
 
-    For Nix users, Zombienet repository provides a [`flake.nix`](https://github.com/paritytech/zombienet/blob/main/flake.nix){target=_blanket} file that can be used to install Zombienet using the Nix package manager. To install Zombienet using Nix, you can run the following command, that will fetch the flake and install the Zombienet package:
+    For Nix users, Zombienet repository provides a [`flake.nix`](https://github.com/paritytech/zombienet/blob/main/flake.nix){target=_blank} file that can be used to install Zombienet using the Nix package manager. To install Zombienet using Nix, you can run the following command, that will fetch the flake and install the Zombienet package:
 
     ```bash
     nix run github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION> -- \
@@ -67,7 +67,7 @@ In order to install Zombienet, there are some options available, depending on th
     ```
 
     !!! Warning
-        To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blanket}.
+        To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank}.
 
     Alternatively, you can also include the zombienet binary in the PATH for the current shell. This can be achieved by:
     
@@ -114,7 +114,7 @@ In order to install Zombienet, there are some options available, depending on th
 
 ## Providers
 
-Internally, Zombienet is a Javascript library, designed to run on Node.js and support different backend providers to run the nodes; at this moment [Kubernetes]( https://kubernetes.io/ ){target=_blanket}, [Podman]( https://podman.io/ ){target=_blanket} and, native are supported.
+Internally, Zombienet is a Javascript library, designed to run on Node.js and support different backend providers to run the nodes; at this moment [Kubernetes]( https://kubernetes.io/ ){target=_blank}, [Podman]( https://podman.io/ ){target=_blank} and, native are supported.
 
 It's important to note that each provider has its own specific requirements and associated features. The following sections will guide you through the installation process for each provider and the necessary requirements, as well as the features that each provider offers.
 
@@ -122,7 +122,7 @@ It's important to note that each provider has its own specific requirements and 
 
 === "Requirements"
 
-    Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blanket}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blanket}, and [kind](https://kind.sigs.k8s.io/){target=_blanket}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
+    Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
 
     Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
@@ -144,9 +144,9 @@ It's important to note that each provider has its own specific requirements and 
 
     Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
 
-    - Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blanket}
-    - Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blanket}
-    - Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blanket}
+    - Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blank}
+    - Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blank}
+    - Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blank}
 
     It's important to note that Grafana is deployed with default admin access.
 
@@ -180,7 +180,7 @@ Zombienet provides a CLI tool that allows interaction with the tool. The CLI can
 
 
 !!! warning
-    For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blanket}, generate a release, and manually add it to their PATH.
+    For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, generate a release, and manually add it to their PATH.
 
 Then, you can use the following flags to customize the behavior of the CLI:
 
@@ -197,7 +197,7 @@ Then, you can use the following flags to customize the behavior of the CLI:
 
 ## Configuration Files {#configuration-files}
 
-The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](){target=_blanket} of configuration files that can be used as a reference.
+The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](){target=_blank} of configuration files that can be used as a reference.
 
 !!! note
     Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the native provider, any references to images for nodes will be disregarded.
