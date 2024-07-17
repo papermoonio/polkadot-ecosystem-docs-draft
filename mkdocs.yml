@@ -16,7 +16,6 @@
 'validation':
   'absolute_links': 'ignore'
   'unrecognized_links': 'ignore'
-  'anchors': 'ignore'
 # Theme related settings
 'theme':
   'name': 'material'
