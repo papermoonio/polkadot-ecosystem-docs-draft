@@ -20,7 +20,6 @@ These resources provide practical benefits and best practices for working with s
 
 
 
-## Get Started with Polkadot {: #get-started-with-polkadot }
 
 ### Build a Parachain {: #build-a-parachain }
 
