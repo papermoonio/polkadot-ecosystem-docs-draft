@@ -30,7 +30,7 @@ In order to install Zombienet, there are multiple options available, depending o
 
     === "Curl"
         ```bash
-        curl -LO \\
+        curl -LO \
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ``` 
     === "Wget"
