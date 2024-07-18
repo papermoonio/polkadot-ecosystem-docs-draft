@@ -1,4 +1,5 @@
+title: Developer Tools
+hide: false
 nav:
- - Zombienet:
-   - zombienet: index.md
-   - testing: testing.md
+  - index.md
+  - zombienet
