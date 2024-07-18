@@ -1,4 +1,4 @@
 nav:
  - 'Home': 'index.md'
- - paseo-testnet
  - dev-tools
+ - networks

@@ -1,2 +1,5 @@
+title: Developer Tools
+hide: false
 nav:
- - chopsticks
+  - index.md
+  - chopsticks
