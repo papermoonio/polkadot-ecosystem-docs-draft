@@ -10,7 +10,7 @@ Zombienet is a testing framework designed for Substrate-based blockchains. It pr
 
 The framework enables developers to create tests using natural language tools, allowing them to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
-This framework has been designed and developed by [Parity Technologies](https://www.parity.io/){target=_blank}, now mantained by the Zombienet team. For further support and information, please refer to the following contact points:
+This framework has been designed and developed by [Parity Technologies](https://www.parity.io/){target=_blank}, now mantained by the Zombienet team. For further support and information, refer to the following contact points:
     
 - [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}
 - [Element public channel](https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation){target=_blank}
@@ -19,32 +19,33 @@ This framework has been designed and developed by [Parity Technologies](https://
 
 Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}.
 
-In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following sections will guide you through the installation process for each of the available options.
+In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following section will guide you through the installation process for each of the available options.
 
 === "Using the executable" 
 
-    Zombienete executables can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
+    Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
 
     Alternatively, you can also download the executable using either `curl` or `wget`:
 
-    === "Curl"
+    === "curl"
         ```bash
         curl -LO \
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ``` 
-    === "Wget"
+    === "wget"
         ```bash
         wget \
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ```
     !!! note
-        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This tutorial uses v1.3.106 and zombienet-macos-arm64 as an example.
+        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. For this guide, it will be used `v1.3.106` and `zombienet-macos-arm64` as an example.
 
     Then, you should make the downloaded file executable:
 
     ```bash
     chmod +x zombienet-macos-arm64
     ```
+
     Finally, you can run the following command to check if the installation was successful, if so, it will display the version of the installed Zombienet:
 
     ```bash
@@ -268,22 +269,6 @@ The `relaychain` keyword is used to define further parameters for the relaychain
 |     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix                                                                  | `substrate`    |
 |      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis | -              |
 |          `max_nominations`           |      Number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime                  | `24`           |
-
-| Key                          | Type             | Description                                                                                                                            | Default Value |
-| :--------------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
-| `name`                       | String           | Group name, used for naming the nodes (e.g., `name-1`). Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group') | -             |
-| `count`                      | Number           | Number of nodes to launch for this group                                                                                               | -             |
-| `image`                      | String           | Override default Docker image to use for this node                                                                                     | -             |
-| `command`                    | String           | Override default command to run                                                                                                        | -             |
-| `args`                       | Array of strings | Arguments to be passed to the command                                                                                                  | -             |
-| `env`                        | Array of objects | Environment variables to set in the container                                                                                          | -             |
-| `env.name`                   | String           | Name of the environment variable                                                                                                       | -             |
-| `env.value`                  | String \| Number | Value of the environment variable                                                                                                      | -             |
-| `overrides`                  | Array of objects | Array of overrides definitions                                                                                                         | -             |
-| `prometheus_prefix`          | String           | A parameter for customizing the metric's prefix for the specific node group. Defaults to 'substrate'                                   | `substrate`   |
-| `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node                                                    | -             |
-| `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead                                                         | -             |
-
 
 ??? Nodes
     There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
