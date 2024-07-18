@@ -6,7 +6,7 @@ hide:
 - feedback
 ---
 
-# Polkadot Ecosystem Documentation
+# Polkadot Draft Ecosystem Documentation
 
 Welcome to a draft documentation site for ecosystem-related things on Polkadot, a scalable, interoperable, and secure network empowering the next generation of web builders. This site aims to serve as a central knowledge exchange for teams across the Polkadot ecosystem.
 
