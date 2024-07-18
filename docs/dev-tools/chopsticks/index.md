@@ -1,5 +1,5 @@
 ---
-title: Using chopsticks for Substrate based chains.
+title: Using Chopsticks for Substrate-based Chains
 description: Configure and fork Substrate-based blockchains locally with Chopsticks. Learn installation, configuration, and usage for streamlined blockchain development.
 ---
 
