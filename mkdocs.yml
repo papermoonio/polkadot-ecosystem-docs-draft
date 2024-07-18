@@ -1,5 +1,4 @@
-# Replace XXX with the network's name
-'site_name': 'Polkadot Ecosystem Developer Hub'
+'site_name': 'Polkadot Draft Ecosystem Developer Hub'
 'site_url': 'https://papermoonio.github.io/polkadot-ecosystem-docs-draft/'
 'docs_dir': 'docs'
 'copyright': '© 2024 Web3 Foundation'
