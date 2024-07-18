@@ -172,14 +172,14 @@ It's important to note that each provider has specific requirements and associat
 
 Zombienet provides a CLI tool that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. The following tables will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
 
-|  Command  |                                                  Description                                                  |                                                                                                                                                      Arguments                                                                                                                                                       |
-| :-------: | :-----------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  `spawn`  |                                 Spawn the network defined in the config file                                  |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section.                                                            |
-|  `test`   |                                        Run test on the network spawned                                        |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions.                                                                      |
-|  `setup`  |                 Set up the dev environment of Zombienet ready.                 |                                                                                         `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`.                                                                                          |
+|  Command  |                                            Description                                             |                                                                                                                                                      Arguments                                                                                                                                                       |
+| :-------: | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  `spawn`  |                            Spawn the network defined in the config file                            |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section                                                            |
+|  `test`   |                                  Run test on the network spawned                                   |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions                                                                      |
+|  `setup`  |                           Set up the dev environment of Zombienet ready.                           |                                                                                         `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
 | `convert` | Transforms a (now deprecated) polkadot-launch configuration file to a zombienet configuration file | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
-| `version` |                                           Prints zombienet version                                            |                                                                                                                                                          -                                                                                                                                                           |
-|  `help`   |                                            Prints help information                                            |                                                                                                                                                          -                                                                                                                                                           |
+| `version` |                                      Prints zombienet version                                      |                                                                                                                                                          -                                                                                                                                                           |
+|  `help`   |                                      Prints help information                                       |                                                                                                                                                          -                                                                                                                                                           |
 
 
 !!! warning
@@ -209,22 +209,22 @@ The network configuration can be given in either `json` or `toml` format. Zombie
 
 Through the keyword `settings`, it's possible to define the general settings for the network. The following keys are available:
 
-|                 Key                  |  Type   | Description                                                                                                | Default Value                            |
-| :----------------------------------: | :-----: | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
-|              `bootnode`              | Boolean | Add bootnode to network.                                                                                   | `true`                                   |
-|              `timeout`               | Number  | Global timeout to use for spawning the whole network.                                                      | -                                        |
-|              `provider`              | String  | Provider to use (e.g., kubernetes, podman).                                                                | kubernetes                               |
-|            `backchannel`             | Boolean | Deploy an instance of backchannel server. Only available on kubernetes.                                    | `false`                                  |
-|       `polkadot_introspector`        | Boolean | Deploy an instance of polkadot-introspector. Only available on podman and kubernetes.                      | `false`                                  |
-|            `jaeger_agent`            | String  | The Jaeger agent endpoint passed to the nodes. Only available on kubernetes.                               | -                                        |
-|           `enable_tracing`           | Boolean | Enable the tracing system. Only available on kubernetes.                                                   | `true`                                   |
-|        `tracing_collator_url`        | String  | The URL of the tracing collator used to query by the tracing assertion (Should be tempo query compatible). | -                                        |
-|   `tracing_collator_service_name`    | String  | Service name for tempo query frontend. Only available on kubernetes.                                       | `tempo-tempo-distributed-query-frontend` |
-| `tracing_collator_service_namespace` | String  | Namespace where tempo is running. Only available on kubernetes.                                            | `tempo`                                  |
-|   `tracing_collator_service_port`    | Number  | Port of the query instance of tempo. Only available on kubernetes.                                         | `3100`                                   |
-|         `node_spawn_timeout`         | Number  | Timeout to spawn pod/process.                                                                              | `per provider`                           |
-|              `local_ip`              | String  | IP used for exposing local services (rpc/metrics/monitors).                                                | `"127.0.0.1"`                            |
-|           `node_verifier`            | String  | Allow managing how to verify node readiness or disable (None). Default value is "Metric".                  | `Metric`                                 |
+|                 Key                  |  Type   | Description                                                                                               | Default Value                            |
+| :----------------------------------: | :-----: | :-------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
+|              `bootnode`              | Boolean | Add bootnode to network                                                                                   | `true`                                   |
+|              `timeout`               | Number  | Global timeout to use for spawning the whole network                                                      | -                                        |
+|              `provider`              | String  | Provider to use (e.g., kubernetes, podman)                                                                | kubernetes                               |
+|            `backchannel`             | Boolean | Deploy an instance of backchannel server. Only available on kubernetes                                    | `false`                                  |
+|       `polkadot_introspector`        | Boolean | Deploy an instance of polkadot-introspector. Only available on podman and kubernetes                      | `false`                                  |
+|            `jaeger_agent`            | String  | The Jaeger agent endpoint passed to the nodes. Only available on kubernetes                               | -                                        |
+|           `enable_tracing`           | Boolean | Enable the tracing system. Only available on kubernetes                                                   | `true`                                   |
+|        `tracing_collator_url`        | String  | The URL of the tracing collator used to query by the tracing assertion (Should be tempo query compatible) | -                                        |
+|   `tracing_collator_service_name`    | String  | Service name for tempo query frontend. Only available on kubernetes                                       | `tempo-tempo-distributed-query-frontend` |
+| `tracing_collator_service_namespace` | String  | Namespace where tempo is running. Only available on kubernetes                                            | `tempo`                                  |
+|   `tracing_collator_service_port`    | Number  | Port of the query instance of tempo. Only available on kubernetes                                         | `3100`                                   |
+|         `node_spawn_timeout`         | Number  | Timeout to spawn pod/process                                                                              | `per provider`                           |
+|              `local_ip`              | String  | IP used for exposing local services (rpc/metrics/monitors)                                                | `"127.0.0.1"`                            |
+|           `node_verifier`            | String  | Allow managing how to verify node readiness or disable (None). Default value is "Metric"                  | `Metric`                                 |
 
 For example, the following configuration file defines a minimal example for the settings:
 
@@ -256,63 +256,62 @@ For example, the following configuration file defines a minimal example for the 
 
 The `relaychain` keyword is used to define further parameters for the relaychain. The following keys are available:
 
-|                 Key                  |       Type        | Description                                                                                                       | Default Value           |
-| :----------------------------------: | :---------------: | :---------------------------------------------------------------------------------------------------------------- | :---------------------- |
-|          `default_command`           |      String       | The default command to run.                                                                                       | `polkadot`              |
-|           `default_image`            |      String       | The default image to use for the nodes of the relaychain.                                                         | `polkadot-debug:master` |
-|               `chain`                |      String       | The chain name.                                                                                                   | `rococo-local`          |
-|          `chain_spec_path`           |      String       | Path to the chain spec file. It should be the plain version to allow customizations.                            | -                       |
-|         `chain_spec_command`         |      String       | Command to generate the chain spec. It can't be used in combination with `chain_spec_path`.                     | -                       |
-|            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command.                                                   | -                       |
-| `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version.                                                                               | -                       |
-|         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes.                                                                     | -                       |
-|         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default.         | -                       |
-|     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix.                                                                  | `substrate`             |
-|      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis. | -                       |
-|          `max_nominations`           |      Number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime.                  | `24`                    |
+|                 Key                  |       Type        | Description                                                                                                      | Default Value  |
+| :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :------------- |
+|          `default_command`           |      String       | The default command to run                                                                                       | `polkadot`     |
+|               `chain`                |      String       | The chain name                                                                                                   | `rococo-local` |
+|          `chain_spec_path`           |      String       | Path to the chain spec file. It should be the plain version to allow customizations                              | -              |
+|         `chain_spec_command`         |      String       | Command to generate the chain spec. It can't be used in combination with `chain_spec_path`                       | -              |
+|            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command                                                   | -              |
+| `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version                                                                               | -              |
+|         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes                                                                     | -              |
+|         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default         | -              |
+|     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix                                                                  | `substrate`    |
+|      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis | -              |
+|          `max_nominations`           |      Number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime                  | `24`           |
 
-| Key                          | Type             | Description                                                                                                                             | Default Value |
-| :--------------------------- | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
-| `name`                       | String           | Group name, used for naming the nodes (e.g., `name-1`). Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group'). | -             |
-| `count`                      | Number           | Number of nodes to launch for this group.                                                                                               | -             |
-| `image`                      | String           | Override default Docker image to use for this node.                                                                                     | -             |
-| `command`                    | String           | Override default command to run.                                                                                                        | -             |
-| `args`                       | Array of strings | Arguments to be passed to the command.                                                                                                  | -             |
-| `env`                        | Array of objects | Environment variables to set in the container.                                                                                          | -             |
-| `env.name`                   | String           | Name of the environment variable.                                                                                                       | -             |
-| `env.value`                  | String \| Number | Value of the environment variable.                                                                                                      | -             |
-| `overrides`                  | Array of objects | Array of overrides definitions.                                                                                                         | -             |
-| `prometheus_prefix`          | String           | A parameter for customizing the metric's prefix for the specific node group. Defaults to 'substrate'.                                   | `substrate`   |
-| `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node.                                                    | -             |
-| `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead.                                                         | -             |
+| Key                          | Type             | Description                                                                                                                            | Default Value |
+| :--------------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| `name`                       | String           | Group name, used for naming the nodes (e.g., `name-1`). Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group') | -             |
+| `count`                      | Number           | Number of nodes to launch for this group                                                                                               | -             |
+| `image`                      | String           | Override default Docker image to use for this node                                                                                     | -             |
+| `command`                    | String           | Override default command to run                                                                                                        | -             |
+| `args`                       | Array of strings | Arguments to be passed to the command                                                                                                  | -             |
+| `env`                        | Array of objects | Environment variables to set in the container                                                                                          | -             |
+| `env.name`                   | String           | Name of the environment variable                                                                                                       | -             |
+| `env.value`                  | String \| Number | Value of the environment variable                                                                                                      | -             |
+| `overrides`                  | Array of objects | Array of overrides definitions                                                                                                         | -             |
+| `prometheus_prefix`          | String           | A parameter for customizing the metric's prefix for the specific node group. Defaults to 'substrate'                                   | `substrate`   |
+| `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node                                                    | -             |
+| `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead                                                         | -             |
 
 
 ??? Nodes
     There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
 
-    | Key                          | Type             | Description                                                                                       | Default Value   |
-    | :--------------------------- | :--------------- | :------------------------------------------------------------------------------------------------ | :-------------- |
-    | `name`                       | String           | Name of the node. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice'). | -               |
-    | `image`                      | String           | Override default Docker image to use for this node.                                               | -               |
-    | `command`                    | String           | Override default command to run.                                                                  | -               |
-    | `command_with_args`          | String           | Override default command and arguments.                                                           | -               |
-    | `args`                       | Array of strings | Arguments to be passed to the command.                                                            | -               |
-    | `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead.                   | -               |
-    | `validator`                  | Boolean          | Pass the --validator flag to the command.                                                         | `true`          |
-    | `invulnerable`               | Boolean          | If true, add the node to invulnerables in the chain spec.                                         | `false`         |
-    | `balance`                    | Number           | Balance to set in balances for node's account.                                                    | `2000000000000` |
-    | `env`                        | Array of objects | Environment variables to set in the container.                                                    | -               |
-    | `env.name`                   | String           | Name of the environment variable.                                                                 | -               |
-    | `env.value`                  | String \| Number | Value of the environment variable.                                                                | -               |
-    | `bootnodes`                  | Array of strings | Array of bootnodes to use.                                                                        | -               |
-    | `overrides`                  | Array of objects | Array of overrides definitions.                                                                   | -               |
-    | `add_to_bootnodes`           | Boolean          | Add this node to the bootnode list.                                                               | `false`         |
-    | `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node.              | -               |
-    | `ws_port`                    | Number           | WS port to use.                                                                                   | -               |
-    | `rpc_port`                   | Number           | RPC port to use.                                                                                  | -               |
-    | `prometheus_port`            | Number           | Prometheus port to use.                                                                           | -               |
-    | `prometheus_prefix`          | String           | Customizing the metric's prefix for the specific node.                   | `substrate`     |
-    | `keystore_key_types`         | String           | Defines which keystore keys should be created.                                                    | -               |
+    | Key                          | Type             | Description                                                                                      | Default Value   |
+    | :--------------------------- | :--------------- | :----------------------------------------------------------------------------------------------- | :-------------- |
+    | `name`                       | String           | Name of the node. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice') | -               |
+    | `image`                      | String           | Override default Docker image to use for this node                                               | -               |
+    | `command`                    | String           | Override default command to run                                                                  | -               |
+    | `command_with_args`          | String           | Override default command and arguments                                                           | -               |
+    | `args`                       | Array of strings | Arguments to be passed to the command                                                            | -               |
+    | `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead                   | -               |
+    | `validator`                  | Boolean          | Pass the --validator flag to the command                                                         | `true`          |
+    | `invulnerable`               | Boolean          | If true, add the node to invulnerables in the chain spec                                         | `false`         |
+    | `balance`                    | Number           | Balance to set in balances for node's account                                                    | `2000000000000` |
+    | `env`                        | Array of objects | Environment variables to set in the container                                                    | -               |
+    | `env.name`                   | String           | Name of the environment variable                                                                 | -               |
+    | `env.value`                  | String \| Number | Value of the environment variable                                                                | -               |
+    | `bootnodes`                  | Array of strings | Array of bootnodes to use                                                                        | -               |
+    | `overrides`                  | Array of objects | Array of overrides definitions                                                                   | -               |
+    | `add_to_bootnodes`           | Boolean          | Add this node to the bootnode list                                                               | `false`         |
+    | `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node              | -               |
+    | `ws_port`                    | Number           | WS port to use                                                                                   | -               |
+    | `rpc_port`                   | Number           | RPC port to use                                                                                  | -               |
+    | `prometheus_port`            | Number           | Prometheus port to use                                                                           | -               |
+    | `prometheus_prefix`          | String           | Customizing the metric's prefix for the specific node                                            | `substrate`     |
+    | `keystore_key_types`         | String           | Defines which keystore keys should be created                                                    | -               |
 
     So, for example, the following configuration file defines a minimal example for the relaychain, including the `nodes` key:
 
@@ -368,20 +367,20 @@ The `relaychain` keyword is used to define further parameters for the relaychain
 ??? "Node Groups"
     The `node_groups` key is used to define further parameters for the node groups. The following keys are available:
 
-    | Key                          | Type             | Description                                                                                                                             | Default Value |
-    | :--------------------------- | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
-    | `name`                       | String           | Group name, used for naming the nodes (e.g., `name-1`). Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group'). | -             |
-    | `count`                      | Number           | Number of nodes to launch for this group.                                                                                               | -             |
-    | `image`                      | String           | Override default Docker image to use for this node.                                                                                     | -             |
-    | `command`                    | String           | Override default command to run.                                                                                                        | -             |
-    | `args`                       | Array of strings | Arguments to be passed to the command.                                                                                                  | -             |
-    | `env`                        | Array of objects | Environment variables to set in the container.                                                                                          | -             |
-    | `env.name`                   | String           | Name of the environment variable.                                                                                                       | -             |
-    | `env.value`                  | String \| Number | Value of the environment variable.                                                                                                      | -             |
-    | `overrides`                  | Array of objects | Array of overrides definitions.                                                                                                         | -             |
-    | `prometheus_prefix`          | String           | A parameter for customizing the metric's prefix for the specific node group. Defaults to 'substrate'.                                   | `substrate`   |
-    | `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node.                                                    | -             |
-    | `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead.                                                         | -             |
+    | Key                          | Type             | Description                                                                                                                            | Default Value |
+    | :--------------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+    | `name`                       | String           | Group name, used for naming the nodes (e.g., `name-1`). Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group') | -             |
+    | `count`                      | Number           | Number of nodes to launch for this group                                                                                               | -             |
+    | `image`                      | String           | Override default Docker image to use for this node                                                                                     | -             |
+    | `command`                    | String           | Override default command to run.                                                                                                       | -             |
+    | `args`                       | Array of strings | Arguments to be passed to the command                                                                                                  | -             |
+    | `env`                        | Array of objects | Environment variables to set in the container                                                                                          | -             |
+    | `env.name`                   | String           | Name of the environment variable                                                                                                       | -             |
+    | `env.value`                  | String \| Number | Value of the environment variable                                                                                                      | -             |
+    | `overrides`                  | Array of objects | Array of overrides definitions                                                                                                         | -             |
+    | `prometheus_prefix`          | String           | A parameter for customizing the metric's prefix for the specific node group                                                            | `substrate`   |
+    | `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node                                                    | -             |
+    | `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead                                                         | -             |
 
     So, for example, the following configuration file defines a minimal example for the relaychain, including the `node_groups` key:
     
@@ -432,18 +431,18 @@ The `relaychain` keyword is used to define further parameters for the relaychain
 
 The `parachain` keyword is used to define further parameters for the parachain. The following keys are available:
 
-| Key                       | Type    | Description                                                                                                 | Default Value |
-| :------------------------ | :------ | :---------------------------------------------------------------------------------------------------------- | :------------ |
-| `id`                      | Number  | The id to assign to this parachain. Must be unique.                                                         | -             |
-| `add_to_genesis`          | Boolean | Flag to add parachain to genesis or register in runtime.                                                    | `true`        |
-| `cumulus_based`           | Boolean | Flag to use cumulus command generation.                                                                     | `true`        |
-| `genesis_wasm_path`       | String  | Path to the wasm file to use.                                                                               | -             |
-| `genesis_wasm_generator`  | String  | Command to generate the wasm file.                                                                          | -             |
-| `genesis_state_path`      | String  | Path to the state file to use.                                                                              | -             |
-| `genesis_state_generator` | String  | Command to generate the state file.                                                                         | -             |
-| `prometheus_prefix`       | String  | A parameter for customizing the metric's prefix for all parachain nodes/collators. Defaults to 'substrate'. | `substrate`   |
-| `onboard_as_parachain`       | Boolean  | Flag to specify whether the para should be onboarded as a parachain or stay a parathread. | `true`   |
-| `register_para`       | Boolean  | Flag to specify whether the para should be registered. The `add_to_genesis` flag must be set to false for this flag to have any effect. | `true`   |
+| Key                       | Type    | Description                                                                                                                            | Default Value |
+| :------------------------ | :------ | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| `id`                      | Number  | The id to assign to this parachain. Must be unique                                                                                     | -             |
+| `add_to_genesis`          | Boolean | Flag to add parachain to genesis or register in runtime                                                                                | `true`        |
+| `cumulus_based`           | Boolean | Flag to use cumulus command generation                                                                                                 | `true`        |
+| `genesis_wasm_path`       | String  | Path to the wasm file to use                                                                                                          | -             |
+| `genesis_wasm_generator`  | String  | Command to generate the wasm file                                                                                                      | -             |
+| `genesis_state_path`      | String  | Path to the state file to use                                                                                                         | -             |
+| `genesis_state_generator` | String  | Command to generate the state file                                                                                                     | -             |
+| `prometheus_prefix`       | String  | A parameter for customizing the metric's prefix for all parachain nodes/collators                                                      | `substrate`   |
+| `onboard_as_parachain`    | Boolean | Flag to specify whether the para should be onboarded as a parachain or stay a parathread                                               | `true`        |
+| `register_para`           | Boolean | Flag to specify whether the para should be registered. The `add_to_genesis` flag must be set to false for this flag to have any effect | `true`        |
 
 For example, the following configuration file defines a minimal example for the parachain:
 
@@ -477,18 +476,18 @@ For example, the following configuration file defines a minimal example for the 
    
     There is one specific key capable of receiving more subkeys: the `collator` key. This key is used to define further parameters for the nodes. The following keys are available:
 
-    | Key                       | Type             | Description                                                                                                       | Default Value           |
-    | ------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------- |
-    | `name`                    | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice').             | -                       |
-    | `image`                   | String           | Image to use for the collator.                                                                                    | -                       |
-    | `command`                 | String           | Command to run for the collator. Default is `polkadot-parachain`.                                                 | `polkadot-parachain`    |
-    | `args`                    | Array of strings | An array of arguments to use as defaults to pass to the command.                                                  | -                       |
-    | `substrate_cli_args_version`| 0 \| 1           | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead.    | -                       |
-    | `command_with_args`       | String           | Overrides both command and arguments for the collator.                                                             | -                       |
-    | `env`                     | Array of objects | Environment variables to set in the container for the collator.                                                   | -                       |
-    | `env.name`                | String           | Name of the environment variable.                                                                                 | -                       |
-    | `env.value`               | String \| Number | Value of the environment variable.                                                                                | -                       |
-    | `keystore_key_types`      | String           | Defines which keystore keys should be created. For more details, refer to additional documentation.                | -                       |
+    | Key                          | Type             | Description                                                                                                     | Default Value        |
+    | ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- |
+    | `name`                       | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')            | -                    |
+    | `image`                      | String           | Image to use for the collator                                                                                   | -                    |
+    | `command`                    | String           | Command to run for the collator                                                                                 | `polkadot-parachain` |
+    | `args`                       | Array of strings | An array of arguments to use as defaults to pass to the command                                                 | -                    |
+    | `substrate_cli_args_version` | 0 \| 1           | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead. | -                    |
+    | `command_with_args`          | String           | Overrides both command and arguments for the collator                                                           | -                    |
+    | `env`                        | Array of objects | Environment variables to set in the container for the collator                                                  | -                    |
+    | `env.name`                   | String           | Name of the environment variable                                                                                | -                    |
+    | `env.value`                  | String \| Number | Value of the environment variable                                                                               | -                    |
+    | `keystore_key_types`         | String           | Defines which keystore keys should be created. For more details, refer to additional documentation              | -                    |
 
     For example, the following configuration file defines a minimal example for the collator:
 
@@ -534,18 +533,18 @@ For example, the following configuration file defines a minimal example for the 
    
     The `collator_groups` key is used to define further parameters for the collator groups. The following keys are available:
 
-    | Key                       | Type             | Description                                                                                                       | Default Value           |
-    | ------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------- |
-    | `name`                    | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice').             | -                       |
-    | `count`                   | Number           | Number of collators to launch for this group.                                                                      | -                       |
-    | `image`                   | String           | Image to use for the collators.                                                                                    | -                       |
-    | `command`                 | String           | Command to run for each collator. Default is `polkadot-parachain`.                                                 | `polkadot-parachain`    |
-    | `args`                    | Array of strings | An array of arguments to use as defaults to pass to the command.                                                  | -                       |
-    | `command_with_args`       | String           | Overrides both command and arguments for each collator.                                                             | -                       |
-    | `env`                     | Array of objects | Environment variables to set in the container for each collator.                                                   | -                       |
-    | `env.name`                | String           | Name of the environment variable.                                                                                 | -                       |
-    | `env.value`               | String \| Number | Value of the environment variable.                                                                                | -                       |
-    | `substrate_cli_args_version`| 0 \| 1 \| 2      | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead.    | -                       |
+    | Key                          | Type             | Description                                                                                                     | Default Value        |
+    | ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- |
+    | `name`                       | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')            | -                    |
+    | `count`                      | Number           | Number of collators to launch for this group                                                                    | -                    |
+    | `image`                      | String           | Image to use for the collators                                                                                  | -                    |
+    | `command`                    | String           | Command to run for each collator                                                                                | `polkadot-parachain` |
+    | `args`                       | Array of strings | An array of arguments to use as defaults to pass to the command                                                 | -                    |
+    | `command_with_args`          | String           | Overrides both command and arguments for each collator                                                          | -                    |
+    | `env`                        | Array of objects | Environment variables to set in the container for each collator                                                 | -                    |
+    | `env.name`                   | String           | Name of the environment variable                                                                                | -                    |
+    | `env.value`                  | String \| Number | Value of the environment variable                                                                               | -                    |
+    | `substrate_cli_args_version` | 0 \| 1 \| 2      | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead. | -                    |
 
     For example, the following configuration file defines a minimal example for the collator groups:
 
@@ -593,11 +592,11 @@ For example, the following configuration file defines a minimal example for the 
 
 The `hrmp_channels` keyword is used to define further parameters for the HRMP channels. The following keys are available:
 
-| Key             | Type             | Description                                         |
-| --------------- | ---------------- | --------------------------------------------------- |
-| `hrmp_channels` | Array of objects | Array of HRMP channel configurations.               |
-| `sender`        | Number           | Parachain ID of the sender.                         |
-| `recipient`     | Number           | Parachain ID of the recipient.                      |
-| `max_capacity`  | Number           | Maximum capacity of the HRMP channel.               |
-| `max_message_size` | Number        | Maximum message size allowed in the HRMP channel.   |
+| Key                | Type             | Description                                      |
+| ------------------ | ---------------- | ------------------------------------------------ |
+| `hrmp_channels`    | Array of objects | Array of HRMP channel configurations             |
+| `sender`           | Number           | Parachain ID of the sender                       |
+| `recipient`        | Number           | Parachain ID of the recipient                    |
+| `max_capacity`     | Number           | Maximum capacity of the HRMP channel             |
+| `max_message_size` | Number           | Maximum message size allowed in the HRMP channel |
 
