@@ -1,2 +1,4 @@
+title: Chopsticks
 nav:
-#  - 'Chopsticks' : 'chopsticks.md'
+- index.md
+- 'Chopsticks Overview': 'overview.md'
