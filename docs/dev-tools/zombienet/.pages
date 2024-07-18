@@ -2,3 +2,4 @@ title: Zombienet
 nav:
 - index.md
 - 'Overview': 'overview.md'
+- 'Testing': 'testing.md'

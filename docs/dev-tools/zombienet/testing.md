@@ -27,9 +27,9 @@ The header is defined by the following fields:
 
 | Key            | Type     | Description                                                                                     |
 | -------------- | -------- | ----------------------------------------------------------------------------------------------- |
-| `description`  | String (optional) | Long description of the test suite.                                                  |
-| `network`      | String   | Path to the network definition file, supported in both JSON and TOML formats.                   |
-| `creds`        | String   | Credentials file name or path to use (available only with Kubernetes provider). Looks in current directory or `$HOME/.kube/` if a filename is passed. |
+| `description`  | String (optional) | Long description of the test suite                                                  |
+| `network`      | String   | Path to the network definition file, supported in both `json` and `toml` formats                   |
+| `creds`        | String   | Credentials file name or path to use (available only with Kubernetes provider). Looks in current directory or `$HOME/.kube/` if a filename is passed |
 
 The body contains the tests to run. Each test is defined by a sentence in the DSL, which is mapped to a test to run. Each test line defines an assertion or a command to be executed against the spawned network.
 
