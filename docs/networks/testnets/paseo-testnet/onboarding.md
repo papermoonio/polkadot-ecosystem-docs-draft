@@ -32,14 +32,14 @@ To deploy your parachain, you'll first need to select a unique parachain ID on t
 1. Visit [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo TestNet
 
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
-    ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-1.webp)
+    ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-1.webp)
 
 3. Review the list of active parachains and parathreads, and select an available parachain ID for your chain. Ensure the ID you choose is not currently used by examining:
     - The **parachains** column
-      ![The Parachains section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-2.webp)
+      ![The Parachains section on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-2.webp)
 
     - The **parathreads** column under the **Parathreads** tab
-      ![The Parathreads section on Polkadot.js Apps](/images/paseo-testnet/onboarding/onboarding-3.webp)
+      ![The Parathreads section on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-3.webp)
 
 ## Generate Customs Keys for Your Collators
 
@@ -202,10 +202,10 @@ Before securing a dedicated parachain slot, you'll need to generate the followin
 
 3. Create an issue in the Paseo support repository using the [Paseo Parachain Onboarding issue template](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank}
 
-    ![Paseo Support Issue Templates](/images/paseo-testnet/onboarding/onboarding-4.webp)
+    ![Paseo Support Issue Templates](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-4.webp)
 
 4. Ensure you fill in all the necessary information, including your parachain name, selected parachain ID, manager account, genesis state, and genesis Wasm files from the previous steps. After filling in the required details, submit the issue
-    ![Paseo Parachain Onboarding Issue Template](/images/paseo-testnet/onboarding/onboarding-5.webp)
+    ![Paseo Parachain Onboarding Issue Template](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-5.webp)
 
 5. Once your request is reviewed and approved, you'll be allocated a dedicated parachain slot
 
