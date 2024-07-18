@@ -200,7 +200,7 @@ Then, you can use the following flags to customize the behavior of the CLI:
 
 ## Configuration Files 
 
-The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet){target=_blank} of configuration files that can be used as a reference.
+The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
 
 !!! note
     Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the native provider, any references to images for nodes will be disregarded.
