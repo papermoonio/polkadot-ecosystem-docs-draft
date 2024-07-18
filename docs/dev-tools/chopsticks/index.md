@@ -255,31 +255,6 @@ After running it, you should see output similar to the following:
     <span data-ty>    app: "chopsticks"</span>
 </div>
 
-```bash
-[13:46:07.901] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml
-    app: "chopsticks"
-[13:46:12.631] INFO: Moonbeam RPC listening on port 8000
-    app: "chopsticks"
-[13:46:12.632] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/astar.yml
-    app: "chopsticks"
-        chopsticks::executor  TRACE: Calling Metadata_metadata
-        chopsticks::executor  TRACE: Completed Metadata_metadata
-[13:46:23.669] INFO: Astar RPC listening on port 8001
-    app: "chopsticks"
-[13:46:25.144] INFO (xcm): Connected parachains [2004,2006]
-    app: "chopsticks"
-[13:46:25.144] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot.yml
-    app: "chopsticks"
-        chopsticks::executor  TRACE: Calling Metadata_metadata
-        chopsticks::executor  TRACE: Completed Metadata_metadata
-[13:46:53.320] INFO: Polkadot RPC listening on port 8002
-    app: "chopsticks"
-[13:46:54.038] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Moonbeam'
-    app: "chopsticks"
-[13:46:55.028] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Astar'
-    app: "chopsticks"
-```
-
 Now you can interact with the forked chains using the ports specified in the output.
 
 ## WebSocket Commands
