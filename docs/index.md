@@ -1,12 +1,12 @@
 ---
-title: Polkadot Ecosystem Docs
+title: Polkadot Draft Ecosystem Docs
 description: Explore the information, tools, and tutorials needed to start building on top of Polkadot, a blockchain network protocol that provides parachains with shared security and interoperability using XCM. 
 hide:
 - footer
 - feedback
 ---
 
-# Polkadot Ecosystem Documentation
+# Polkadot Draft Ecosystem Documentation
 
 Welcome to a draft documentation site for ecosystem-related things on Polkadot, a scalable, interoperable, and secure network empowering the next generation of web builders. This site aims to serve as a central knowledge exchange for teams across the Polkadot ecosystem.
 
