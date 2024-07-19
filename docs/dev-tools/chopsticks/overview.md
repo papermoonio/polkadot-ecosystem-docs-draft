@@ -163,8 +163,8 @@ To interact with Chopsticks via the hosted user interface, visit [Polkadot.js Ap
 4. Enter `ws://localhost:8000` in the input field
 4. Click the **Switch** button
 
-![](/images/dev-tools/chopsticks/chopsticks-1.webp)
-![](/images/dev-tools/chopsticks/chopsticks-2.webp)
+![](/polkadot-ecosystem-docs-draft/images/dev-tools/chopsticks/chopsticks-1.webp)
+![](/polkadot-ecosystem-docs-draft/images/dev-tools/chopsticks/chopsticks-2.webp)
 
 You should now be connected to your local fork and can interact with it as you would with a real chain.
 
