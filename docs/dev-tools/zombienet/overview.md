@@ -477,7 +477,7 @@ The `relaychain` keyword is used to define further parameters for the relaychain
         }
         ```
 
-### Parachain
+### Parachain Configuration
 
 The `parachain` keyword is used to define further parameters for the parachain. The following keys are available:
 
