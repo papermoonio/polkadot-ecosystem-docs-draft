@@ -117,7 +117,21 @@ In order to install Zombienet, there are multiple options available, depending o
 
 ## Providers
 
-Zombienet is a JavaScript library designed to run on Node.js and support different backend providers to run the nodes. At this moment [Kubernetes]( https://kubernetes.io/ ){target=_blank}, [Podman]( https://podman.io/ ){target=_blank} and, native are supported.
+Zombienet is a JavaScript library designed to run on Node.js and support different backend providers to run the nodes. At this moment [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank} and, native are supported.
+
+To use a particular provider, you can specify it in the network file or use the `--provider` flag in the CLI:
+    
+```bash
+zombienet spawn network.toml --provider <provider>
+```
+
+Alternatively, you can set the provider in the network file:
+
+```toml
+[settings]
+provider = "<provider>"
+...
+```
 
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
@@ -136,7 +150,7 @@ It's important to note that each provider has specific requirements and associat
 
 === "Requirements"
 
-    Zombienet supports Podman rootless as a provider. To use it, you simply need to have Podman installed on your system and specify it either in the network file or using the `--provider` flag in the CLI.
+    Zombienet supports Podman rootless as a provider. To use Podman as a provider, you need to have Podman installed on your system. Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux-based systems. You can install Podman by following the instructions provided on the [Podman website](https://podman.io/getting-started/installation){target=_blank}.
 
     !!! note
         Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
