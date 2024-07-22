@@ -638,7 +638,7 @@ For example, the following configuration file defines a minimal example for the 
         }
         ```
 
-### HRMP Channels
+### XCM Configuration
 
 The `hrmp_channels` keyword is used to define further parameters for the HRMP channels. The following keys are available:
 
