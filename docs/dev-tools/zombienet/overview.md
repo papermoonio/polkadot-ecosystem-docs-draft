@@ -3,7 +3,7 @@ title: Zombienet for Ephemeral Polkadot-SDK Networks
 description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary substrate networks for testing purposes.
 ---
 
-# Chopsticks - ( :construction: WIP ) 
+# Zombienet - ( :construction: WIP ) 
 
 ## Introduction
 Zombienet is a testing framework designed for Polkadot-SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
