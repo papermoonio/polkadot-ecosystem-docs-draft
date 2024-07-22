@@ -149,7 +149,7 @@ alice: system event matches ""paraId":[0-9]+" within 10 seconds
 alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chunk-request", "answer-chunk-request"]
 ```
 
-## Running tests
+## Running Tests
 
 To run the tests by using native provider, you can use the `zombienet` binary. The binary will read the test files and execute the tests defined in the DSL. The binary will output the results of the tests in the console.
 
