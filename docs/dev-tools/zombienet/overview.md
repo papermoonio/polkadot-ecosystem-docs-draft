@@ -72,7 +72,7 @@ In order to install Zombienet, there are multiple options available, depending o
     !!! Warning
         To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank}.
 
-    Alternatively, you can also include the zombienet binary in the PATH for the current shell. This can be achieved by:
+    Alternatively, you can also include the Zombienet binary in the PATH for the current shell. This can be achieved by:
     
     ```bash
     nix shell github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION>
