@@ -10,7 +10,7 @@ Zombienet is a testing framework designed for Polkadot-SDK based blockchains. It
 
 The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
-This framework has been designed and developed by [Parity Technologies](https://www.parity.io/){target=_blank}, now mantained by the Zombienet team. For further support and information, refer to the following contact points:
+[Parity Technologies](https://www.parity.io/){target=_blank} has designed and developed this framework, now maintained by the Zombienet team. For further support and information, refer to the following contact points:
     
 - [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}
 - [Element public channel](https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation){target=_blank}
