@@ -174,7 +174,53 @@ It's important to note that each provider has specific requirements and associat
 
 === "Requirements"
     
-    The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). You can choose to set it up by configuring your network file or using the `--provider` flag in the CLI.
+    The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
+
+    To install the necessary binaries, you can use the Zombienet CLI command:
+
+    ```bash
+    zombienet setup polkadot polkadot-parachain
+    ```
+
+    This command will download the necessary binaries and prepare them for use by Zombienet.
+
+    !!! warning 
+        The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
+
+    If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [Open Zeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
+
+    First, clone the Open Zeppelin template repository:
+
+    ```bash
+    git clone https://github.com/OpenZeppelin/polkadot-runtime-templates && cd polkadot-runtime-templates/generic-template
+    ```
+
+    Then, build the custom binary:
+
+    ```bash
+    cargo build --release
+    ```
+
+    After that, add the custom binary to your PATH:
+
+    ```bash
+    export PATH=$PATH:/path/to/polkadot-runtime-templates/parachain-template-node/target/release
+    ```
+
+    Alternatively, you can specify the binary path in the network configuration file:
+
+    ```toml
+    [relaychain]
+    chain = "rococo-local"
+    default_command = "./bin-v1.6.0/polkadot"
+
+    [[parachains]]
+    id = 1000
+
+	    [[parachains.collators]]
+	    name = "collator01"
+	    command = "./target/release/parachain-template-node"
+    ```
 
     !!! note
         The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relaychain.
@@ -188,9 +234,9 @@ Zombienet provides a CLI that allows interaction with the tool. The CLI can rece
 
 |  Command  |                                            Description                                             |                                                                                                                                                      Arguments                                                                                                                                                       |
 | :-------: | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  `spawn`  |                            Spawn the network defined in the config file                            |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section                                                            |
-|  `test`   |                                  Run test on the network spawned                                   |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions                                                                      |
-|  `setup`  |                           Set up the dev environment of Zombienet ready.                           |                                                                                         `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
+|  `spawn`  |                            Spawn the network defined in the config file                            |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section                                                             |
+|  `test`   |                                  Run test on the network spawned                                   |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions                                                                       |
+|  `setup`  |                           Set up the dev environment of Zombienet ready.                           |                                                                                          `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
 | `convert` | Transforms a (now deprecated) polkadot-launch configuration file to a zombienet configuration file | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
 | `version` |                                      Prints Zombienet version                                      |                                                                                                                                                          -                                                                                                                                                           |
 |  `help`   |                                      Prints help information                                       |                                                                                                                                                          -                                                                                                                                                           |
@@ -238,7 +284,7 @@ Through the keyword `settings`, it's possible to define the general settings for
 |   `tracing_collator_service_port`    | Number  | Port of the query instance of tempo. Only available on kubernetes                                         | `3100`                                   |
 |         `node_spawn_timeout`         | Number  | Timeout to spawn pod/process                                                                              | `per provider`                           |
 |              `local_ip`              | String  | IP used for exposing local services (rpc/metrics/monitors)                                                | `"127.0.0.1"`                            |
-|           `node_verifier`            | String  | Allow managing how to verify node readiness or disable (None)                  | `Metric`                                 |
+|           `node_verifier`            | String  | Allow managing how to verify node readiness or disable (None)                                             | `Metric`                                 |
 
 For example, the following configuration file defines a minimal example for the settings:
 
@@ -434,9 +480,9 @@ The `parachain` keyword is used to define further parameters for the parachain. 
 | `id`                      | Number  | The id to assign to this parachain. Must be unique                                                                                     | -             |
 | `add_to_genesis`          | Boolean | Flag to add parachain to genesis or register in runtime                                                                                | `true`        |
 | `cumulus_based`           | Boolean | Flag to use cumulus command generation                                                                                                 | `true`        |
-| `genesis_wasm_path`       | String  | Path to the wasm file to use                                                                                                          | -             |
+| `genesis_wasm_path`       | String  | Path to the wasm file to use                                                                                                           | -             |
 | `genesis_wasm_generator`  | String  | Command to generate the wasm file                                                                                                      | -             |
-| `genesis_state_path`      | String  | Path to the state file to use                                                                                                         | -             |
+| `genesis_state_path`      | String  | Path to the state file to use                                                                                                          | -             |
 | `genesis_state_generator` | String  | Command to generate the state file                                                                                                     | -             |
 | `prometheus_prefix`       | String  | A parameter for customizing the metric's prefix for all parachain nodes/collators                                                      | `substrate`   |
 | `onboard_as_parachain`    | Boolean | Flag to specify whether the para should be onboarded as a parachain or stay a parathread                                               | `true`        |
@@ -531,17 +577,17 @@ For example, the following configuration file defines a minimal example for the 
    
     The `collator_groups` key is used to define further parameters for the collator groups. The following keys are available:
 
-    | Key                          | Type             | Description                                                                                                     | Default Value        |
-    | ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- |
-    | `name`                       | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')            | -                    |
-    | `count`                      | Number           | Number of collators to launch for this group                                                                    | -                    |
-    | `image`                      | String           | Image to use for the collators                                                                                  | -                    |
-    | `command`                    | String           | Command to run for each collator                                                                                | `polkadot-parachain` |
-    | `args`                       | Array of strings | An array of arguments to use as defaults to pass to the command                                                 | -                    |
-    | `command_with_args`          | String           | Overrides both command and arguments for each collator                                                          | -                    |
-    | `env`                        | Array of objects | Environment variables to set in the container for each collator                                                 | -                    |
-    | `env.name`                   | String           | Name of the environment variable                                                                                | -                    |
-    | `env.value`                  | String \| Number | Value of the environment variable                                                                               | -                    |
+    | Key                          | Type             | Description                                                                                                    | Default Value        |
+    | ---------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- | -------------------- |
+    | `name`                       | String           | Name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')           | -                    |
+    | `count`                      | Number           | Number of collators to launch for this group                                                                   | -                    |
+    | `image`                      | String           | Image to use for the collators                                                                                 | -                    |
+    | `command`                    | String           | Command to run for each collator                                                                               | `polkadot-parachain` |
+    | `args`                       | Array of strings | An array of arguments to use as defaults to pass to the command                                                | -                    |
+    | `command_with_args`          | String           | Overrides both command and arguments for each collator                                                         | -                    |
+    | `env`                        | Array of objects | Environment variables to set in the container for each collator                                                | -                    |
+    | `env.name`                   | String           | Name of the environment variable                                                                               | -                    |
+    | `env.value`                  | String \| Number | Value of the environment variable                                                                              | -                    |
     | `substrate_cli_args_version` | 0 \| 1 \| 2      | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead | -                    |
 
     For example, the following configuration file defines a minimal example for the collator groups:
