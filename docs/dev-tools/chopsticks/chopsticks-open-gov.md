@@ -47,10 +47,13 @@ Follow these steps to set up your project:
   npm install @polkadot/api @acala-network/chopsticks
   ```
 
-4. Create a new TypeScript file for your testing script:
+4. Create a new TypeScript file for your script:
   ```bash
   touch test-proposal.ts
   ```
+
+	!!!note
+		The `test-proposal.ts` file is where you'll write your code to simulate and test OpenGov proposals.
 
 5. Open the `tsconfig.json` file and ensure it includes these compiler options:
    ```json
@@ -69,14 +72,146 @@ Follow these steps to set up your project:
     }
    ```
 
-The `test-proposal.ts` file is where you'll write your code to simulate and test OpenGov proposals.
-Now that your environment is set up, let's proceed to the introduction and steps for submitting a proposal.
-
-
 ## Submitting and Executing a Proposal Using Chopsticks
 
 It's important to note that you should identify the right track and origin for your proposal. For example, if you're requesting funds from the treasury, select the appropriate treasury track based on the spend limits. For more detailed information, refer to [Polkadot OpenGov Origins](https://wiki.polkadot.network/docs/learn-polkadot-opengov-origins){target=_blank}.
 
-### Submitting a Preimage
+!!!note
+	In this tutorial, the focus will be on the main steps and core logic within the main function. For clarity and conciseness, the implementation details of individual functions will be available in expandable tabs below each section. At the end of the tutorial, you'll find the complete code for reference.
 
-The preimage is the actual call that you want to execute trough governance. Submitting a preimage is separate from creating a proposal because storing a large preimage can be expensive. This separation allows another account to submit the preimage and pay the fee if needed.
+
+### Spin Up the Polkadot Fork
+
+Before you can interact with the forked network, you need to start it using Chopsticks. Open a new terminal window and run the following command:
+
+```
+npx @acala-network/chopsticks --config=polkadot
+```
+
+This command will start a local fork of the Polkadot network accesible at `ws://localhost:8000`. Keep this terminal window open and running throughout your testing process.
+Once your forked network is up and running, you can proceed with the following steps.
+
+### Set Up Dependencies and Structure
+
+Begin by adding the necessary imports and a basic structure:
+
+```typescript
+import '@polkadot/api-augment/polkadot';
+import { FrameSupportPreimagesBounded } from "@polkadot/types/lookup";
+import { blake2AsHex } from "@polkadot/util-crypto";
+import { ApiPromise, Keyring, WsProvider } from "@polkadot/api";
+
+const main = async () => {
+	// We'll add our code here
+
+	process.exit(0)
+}
+
+try {
+    main()
+} catch (e) {
+    console.log(e)
+    process.exit(1)
+}
+```
+
+This structure provides the foundation for your script. It imports all the necessary dependencies and sets up a main function that will contain the core logic of your proposal submission process.
+
+### Connect to the Forked Chain
+
+Inside your `main` function, add the code to connect to your local Polkadot fork:
+
+```typescript
+const main = async () => {
+	// Connect to the forked chain
+	const api = await connectToFork();
+
+	process.exit(0)
+}
+```
+
+???+ function "**connectToFork** ()"
+
+	```typescript
+	async function connectToFork(): Promise<ApiPromise> {
+		const wsProvider = new WsProvider("ws://127.0.0.1:8000");
+		const api = await ApiPromise.create({ provider: wsProvider });
+		console.log(`Connected to chain: ${await api.rpc.system.chain()}`);
+		return api;
+	}
+	```
+
+### Create and Submit the Proposal
+
+In this step, you will perform the following actions:
+
+1. Define the call you want to execute and its origin
+2. Create a preimage using the selected call. This preimage represents the actual operation to be executed through governance.
+3. Submit the proposal. It uses the preimage hash (obtained from the call) as part of the proposal submission. The proposal is submitted with the selected origin.
+4. Place decision deposit. This deposit is required to move the referendum from the preparing phase to the deciding phase.
+
+The `generateProposal` function accomplishes these tasks using a batched transaction, which combines multiple operations into a single transaction:
+
+1. `preimage.notePreimage`: this submits the preimage of the proposal
+2. `referenda.submit`: submits the actual proposal to the referenda system
+3. `referenda.placeDecisionDeposit`: places the required decision deposit for the referendum
+
+```typescript
+const main = async () => {
+	...
+	// Select the call to execute
+    const call = api.tx.parachainStaking.setCode("0x1234")
+    // Select the origin
+    const origin = {
+        System: "Root",
+    }
+    // Submit preimage, submit proposal, and place decision deposit
+    const proposalIndex = await generateProposal(api, call, origin)
+
+	process.exit(0)
+}
+```
+
+???+ function "**generateProposal** (api, call, origin)"
+
+	```typescript
+	async function generateProposal(
+		api: ApiPromise,
+		call: SubmittableExtrinsic<"promise", ISubmittableResult>,
+		origin: any
+	): Promise<number> {
+		const keyring = new Keyring({ type: "sr25519" })
+		const alice = keyring.addFromUri("//Alice")
+
+		const proposalIndex = (
+			await api.query.referenda.referendumCount()
+		).toNumber()
+
+		await new Promise<void>(async (resolve) => {
+			const unsub = await api.tx.utility
+				.batch([
+					api.tx.preimage.notePreimage(call.method.toHex()),
+					api.tx.referenda.submit(
+						origin as any,
+						{
+							Lookup: {
+								Hash: call.method.hash.toHex(),
+								len: call.method.encodedLength,
+							},
+						},
+						{ At: 0 }
+					),
+					api.tx.referenda.placeDecisionDeposit(proposalIndex),
+				])
+				.signAndSend(alice, (status: any) => {
+					if (status.blockNumber) {
+						unsub()
+						resolve()
+					}
+				})
+		})
+		return proposalIndex
+	}
+	```
+
+
