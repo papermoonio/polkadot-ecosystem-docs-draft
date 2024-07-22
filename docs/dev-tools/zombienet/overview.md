@@ -6,7 +6,7 @@ description: Diving deeper into Zombienet, a versatile tool enabling the creatio
 # Zombienet
 
 ## Introduction
-Zombienet is a testing framework designed for Polkadot-SDK based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run blockchain nodes and interact with them in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
+Zombienet is a testing framework designed for Polkadot-SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
 
 The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
@@ -46,7 +46,7 @@ In order to install Zombienet, there are multiple options available, depending o
     chmod +x zombienet-macos-arm64
     ```
 
-    Finally, you can run the following command to check if the installation was successful, if so, it will display the version of the installed Zombienet:
+    Finally, you can run the following command to check if the installation was successful. If so, it will display the version of the installed Zombienet:
 
     ```bash
     ./zombienet-macos-arm64 version
@@ -117,7 +117,7 @@ In order to install Zombienet, there are multiple options available, depending o
 
 ## Providers
 
-Zombienet is a JavaScript library designed to run on Node.js and support different backend providers to run the nodes. At this moment [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank} and, native are supported.
+Zombienet is a JavaScript library designed to run on Node.js and support different backend providers in running the nodes. At this moment [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank} and, native are supported.
 
 To use a particular provider, you can specify it in the network file or use the `--provider` flag in the CLI:
     
@@ -144,7 +144,7 @@ It's important to note that each provider has specific requirements and associat
     Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
 === "Features"
-    In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. By using the Prometheus operator, Zombienet improves its capability to efficiently monitor and manage network activities within the Kubernetes cluster.
+    In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. Using the Prometheus operator, Zombienet improves its ability to efficiently monitor and manage network activities within the Kubernetes cluster. 
 
 ### Podman
 
@@ -157,7 +157,7 @@ It's important to note that each provider has specific requirements and associat
 
 === "Features"
     
-    Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as datasources.
+    Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as data sources.
 
     Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
 
@@ -168,7 +168,7 @@ It's important to note that each provider has specific requirements and associat
     It's important to note that Grafana is deployed with default admin access.
 
     !!! note
-        When the network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—all associated pods, including those for Prometheus, Tempo, and Grafana, are automatically removed by Zombienet.
+        When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods, including those for Prometheus, Tempo, and Grafana.
 
 ### Native
 
@@ -181,8 +181,7 @@ It's important to note that each provider has specific requirements and associat
     ```bash
     zombienet setup polkadot polkadot-parachain
     ```
-
-    This command will download the necessary binaries and prepare them for use by Zombienet.
+    This command will download and prepare the necessary binaries for Zombienet’s use.
 
     !!! warning 
         The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
@@ -223,7 +222,7 @@ It's important to note that each provider has specific requirements and associat
     ```
 
     !!! note
-        The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relaychain.
+        The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
 
 === "Features"
     Currently, the Native provider does not execute any additional layers or processes.
@@ -240,7 +239,7 @@ The following tables will guide you through the primary usage of the Zombienet C
 
 |  Command  |                                            Description                                             |                                                                                                                                                      Arguments                                                                                                                                                       |
 | :-------: | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  `spawn`  |                            Spawn the network defined in the config file                            |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out [Configuration Files](#configuration-files) section                                                             |
+|  `spawn`  |                            Spawn the network defined in the config file                            |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out the [Configuration Files](#configuration-files) section                                                             |
 |  `test`   |                                  Run test on the network spawned                                   |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions                                                                       |
 |  `setup`  |                           Set up the dev environment of Zombienet ready.                           |                                                                                          `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
 | `convert` | Transforms a (now deprecated) polkadot-launch configuration file to a zombienet configuration file | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
@@ -320,7 +319,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### Relay Chain Configuration
 
-You can use `relaychain` keyword to define further parameters for the relaychain at start up. The following keys are available:
+You can use `relaychain` keyword to define further parameters for the relaychain at start-up. The following keys are available:
 
 |                 Key                  |       Type        | Description                                                                                                      | Default Value  |
 | :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :------------- |
@@ -334,7 +333,7 @@ You can use `relaychain` keyword to define further parameters for the relaychain
 |         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default         | -              |
 |     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix                                                                  | `substrate`    |
 |      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis | -              |
-|          `max_nominations`           |      Number       | The max allowed number of nominations by a nominator. Should match the value set in the runtime                  | `24`           |
+|          `max_nominations`           |      Number       | The max number of nominations allowed by a nominator. Should match the value set in the runtime                  | `24`           |
 
 ??? Nodes
     There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
@@ -363,7 +362,7 @@ You can use `relaychain` keyword to define further parameters for the relaychain
     | `prometheus_prefix`          | String           | Customizing the metric's prefix for the specific node                                            | `substrate`     |
     | `keystore_key_types`         | String           | Defines which keystore keys should be created                                                    | -               |
 
-    So, for example, the following configuration file defines a minimal example for the relaychain, including the `nodes` key:
+    So, for example, the following configuration file defines a minimal example for the relay chain, including the `nodes` key:
 
     === "relaychain-example-nodes.toml"
         ```toml
@@ -432,7 +431,7 @@ You can use `relaychain` keyword to define further parameters for the relaychain
     | `resources`                  | Object           | Kubernetes-specific: represent the resources limits/reservations needed by the node                                                    | -             |
     | `substrate_cli_args_version` | 0 \| 1 \| 2      | Set the Substrate CLI args version directly to skip binary evaluation overhead                                                         | -             |
 
-    So, for example, the following configuration file defines a minimal example for the relaychain, including the `node_groups` key:
+    So, for example, the following configuration file defines a minimal example for the relay chain, including the `node_groups` key:
     
     === "relaychain-example-node-groups.toml"
         ```toml
@@ -524,7 +523,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ??? "Collator"
    
-    There is one specific key capable of receiving more subkeys: the `collator` key. This key is used to define further parameters for the nodes. The following keys are available:
+    One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The following keys are available:
 
     | Key                          | Type             | Description                                                                                                     | Default Value        |
     | ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -640,7 +639,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### XCM Configuration
 
-You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start up. The following keys are available:
+You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The following keys are available:
 
 | Key                | Type             | Description                                      |
 | ------------------ | ---------------- | ------------------------------------------------ |
