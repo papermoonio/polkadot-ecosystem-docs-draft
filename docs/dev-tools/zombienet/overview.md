@@ -320,7 +320,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### Relay Chain Configuration
 
-The `relaychain` keyword is used to define further parameters for the relaychain. The following keys are available:
+You can use `relaychain` keyword to define further parameters for the relaychain at start up. The following keys are available:
 
 |                 Key                  |       Type        | Description                                                                                                      | Default Value  |
 | :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :------------- |
@@ -640,7 +640,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### XCM Configuration
 
-You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at startup. The following keys are available:
+You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start up. The following keys are available:
 
 | Key                | Type             | Description                                      |
 | ------------------ | ---------------- | ------------------------------------------------ |
