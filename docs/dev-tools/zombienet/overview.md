@@ -640,7 +640,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### XCM Configuration
 
-The `hrmp_channels` keyword is used to define further parameters for the HRMP channels. The following keys are available:
+You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at startup. The following keys are available:
 
 | Key                | Type             | Description                                      |
 | ------------------ | ---------------- | ------------------------------------------------ |
