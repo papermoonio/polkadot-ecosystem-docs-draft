@@ -6,7 +6,7 @@ description: Diving deeper into Zombienet, a versatile tool enabling the creatio
 # Zombienet
 
 ## Introduction
-Zombienet is a testing framework designed for Substrate-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. It supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
+Zombienet is a testing framework designed for Polkadot-SDK based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run blockchain nodes and interact with them in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
 
 The framework enables developers to create tests using natural language tools, allowing them to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
