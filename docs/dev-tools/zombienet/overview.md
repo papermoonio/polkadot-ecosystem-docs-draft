@@ -230,7 +230,13 @@ It's important to note that each provider has specific requirements and associat
 
 ## CLI Usage
 
-Zombienet provides a CLI that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. The following tables will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
+Zombienet provides a CLI that allows interaction with the tool. The CLI can receive commands and flags to perform different kinds of operations. These operations can be initiated using the following syntax:
+
+```bash
+zombienet <arguments> <commands>
+```
+
+The following tables will guide you through the primary usage of the Zombienet CLI and the available commands and flags.
 
 |  Command  |                                            Description                                             |                                                                                                                                                      Arguments                                                                                                                                                       |
 | :-------: | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
