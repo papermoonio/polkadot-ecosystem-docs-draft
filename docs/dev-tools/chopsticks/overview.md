@@ -178,6 +178,7 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 async function connectToFork() {
   const wsProvider = new WsProvider('ws://localhost:8000');
   const api = await ApiPromise.create({ provider: wsProvider });
+  await api.isReady;
   
   // Now you can use 'api' to interact with your fork
   console.log(`Connected to chain: ${await api.rpc.system.chain()}`);
@@ -285,6 +286,7 @@ These are the methods that can be invoked and their parameters:
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
+          await api.isReady;
           await api.rpc('dev_newBlock',{ count:1 })
         }
 
@@ -307,6 +309,7 @@ These are the methods that can be invoked and their parameters:
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
+          await api.isReady;
           await api.rpc('dev_setBlockBuildMode', "Instant")
         }
 
@@ -329,6 +332,7 @@ These are the methods that can be invoked and their parameters:
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
+          await api.isReady;
           await api.rpc('dev_setHead', 500)
         }
 
@@ -351,6 +355,7 @@ These are the methods that can be invoked and their parameters:
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
+          await api.isReady;
           await api.rpc('dev_setRuntimeLogLevel', 1)
         }
 
@@ -375,6 +380,7 @@ These are the methods that can be invoked and their parameters:
         async function main() {
             const wsProvider = new WsProvider('ws://localhost:8000');
             const api = await ApiPromise.create({ provider: wsProvider });
+            await api.isReady;
             const keyring = new Keyring({ type: 'ed25519' })
             const bob = keyring.addFromUri('//Bob')
             const storage = {
@@ -405,6 +411,7 @@ These are the methods that can be invoked and their parameters:
         async function main() {
           const wsProvider = new WsProvider('ws://localhost:8000');
           const api = await ApiPromise.create({ provider: wsProvider });
+          await api.isReady;
           await api.rpc('dev_timeTravel', "2030-08-15T00:00:00")
         }
 
