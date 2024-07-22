@@ -1,6 +1,6 @@
 ---
 title: Using Zombienet to spawn ephemeral substrate based networks
-description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary substrate networks for testing purposes
+description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary substrate networks for testing purposes.
 ---
 
 # Zombienet
