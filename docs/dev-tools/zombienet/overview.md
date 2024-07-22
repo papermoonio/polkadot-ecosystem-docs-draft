@@ -17,7 +17,7 @@ The framework enables developers to create tests using natural language tools to
 
 ## Installation
 
-Zombienet releases can be found on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}.
+Zombienet releases are available on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}.
 
 In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following section will guide you through the installation process for each of the available options.
 
