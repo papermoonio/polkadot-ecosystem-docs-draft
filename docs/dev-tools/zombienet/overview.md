@@ -38,7 +38,7 @@ In order to install Zombienet, there are multiple options available, depending o
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ```
     !!! note
-        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. For this guide, it will be used `v1.3.106` and `zombienet-macos-arm64` as an example.
+        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v1.3.106` and `zombienet-macos-arm64`.
 
     Then, you should make the downloaded file executable:
 
