@@ -16,7 +16,7 @@ description: Configure and fork Substrate-based blockchains locally with Chopsti
 With Chopsticks, developers can simulate and test complex blockchain scenarios without deploying to a live network. This tool significantly reduces the complexity of building blockchain applications on Substrate, making it more accessible to developers of varying experience levels. Ultimately, Chopsticks aims to accelerate innovation in the Substrate ecosystem by providing a robust, flexible testing framework.
 
 !!!note
-    Chopsticks currently does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
+    Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=_blank} light client, which only supports the native Polkadot-SDK API.  Consequently, a Chopsticks-based fork does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
 
 ## Prerequisites
 
