@@ -13,7 +13,7 @@ Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL i
 
 These abstractions are expressed by sentences defined in a natural language style. Therefore, each test line will be mapped to a test to run. Also, the test file (`*.zndsl`) includes pre-defined header fields used to define information about the suite, such as network configuration and credentials location.
 
-## Test file 
+## The Test File
 
 ### Name
 
