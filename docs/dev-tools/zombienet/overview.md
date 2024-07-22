@@ -252,7 +252,7 @@ For example, the following configuration file defines a minimal example for the 
     }
     ```
 
-### Relaychain
+### Relay Chain Configuration
 
 The `relaychain` keyword is used to define further parameters for the relaychain. The following keys are available:
 
