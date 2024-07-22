@@ -117,7 +117,7 @@ In order to install Zombienet, there are multiple options available, depending o
 
 ## Providers
 
-Zombienet is a Javascript library designed to run on Node.js and support different backend providers to run the nodes. At this moment [Kubernetes]( https://kubernetes.io/ ){target=_blank}, [Podman]( https://podman.io/ ){target=_blank} and, native are supported.
+Zombienet is a JavaScript library designed to run on Node.js and support different backend providers to run the nodes. At this moment [Kubernetes]( https://kubernetes.io/ ){target=_blank}, [Podman]( https://podman.io/ ){target=_blank} and, native are supported.
 
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
