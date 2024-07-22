@@ -17,7 +17,7 @@ These abstractions are expressed by sentences defined in a natural language styl
 
 ### Name
 
-The test name in Zombienet is derived from the filename by removing any leading numeric characters before the first hyphen. For example, a file named “0001-zombienet-test.zndsl” will result in a test name of "zombienet-test" which will be displayed in the test runner’s report output.
+The test name in Zombienet is derived from the filename by removing any leading numeric characters before the first hyphen. For example, a file named “0001-zombienet-test.zndsl” will result in a test name of "zombienet-test" which will be displayed in the test report output of the runner.
 
 ### Structure
 
