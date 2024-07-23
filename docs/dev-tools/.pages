@@ -2,4 +2,5 @@ title: Developer Tools
 hide: false
 nav:
   - index.md
+  - chopsticks
   - zombienet
