@@ -136,6 +136,7 @@ const main = async () => {
 	async function connectToFork(): Promise<ApiPromise> {
 		const wsProvider = new WsProvider("ws://127.0.0.1:8000");
 		const api = await ApiPromise.create({ provider: wsProvider });
+		await api.isReady;
 		console.log(`Connected to chain: ${await api.rpc.system.chain()}`);
 		return api;
 	}
@@ -161,10 +162,12 @@ const main = async () => {
 	...
 	// Select the call to execute
     const call = api.tx.parachainStaking.setCode("0x1234")
+
     // Select the origin
     const origin = {
         System: "Root",
     }
+
     // Submit preimage, submit proposal, and place decision deposit
     const proposalIndex = await generateProposal(api, call, origin)
 
@@ -214,4 +217,7 @@ const main = async () => {
 	}
 	```
 
+### Force Proposal Execution
+
+After submitting your proposal, you may want to test its execution without waiting for the standard voting and enactment periods. Chopsticks allows you to force the execution of a proposal by manipulating the chain state and scheduler.
 
