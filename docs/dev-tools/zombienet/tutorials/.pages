@@ -1,0 +1,5 @@
+title: Tutorials
+nav:
+  - 'Minimal Example': 'minimal-example.md'
+  - 'Parachain Onboarding': 'parachain-onboarding.md'
+  - 'XCM Demo': 'xcm-demo.md'
