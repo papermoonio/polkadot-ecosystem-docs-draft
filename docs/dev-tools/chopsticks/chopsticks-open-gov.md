@@ -96,10 +96,12 @@ Once your forked network is up and running, you can proceed with the following s
 Begin by adding the necessary imports and a basic structure:
 
 ```typescript
-import '@polkadot/api-augment/polkadot';
-import { FrameSupportPreimagesBounded } from "@polkadot/types/lookup";
-import { blake2AsHex } from "@polkadot/util-crypto";
-import { ApiPromise, Keyring, WsProvider } from "@polkadot/api";
+import "@polkadot/api-augment/polkadot"
+import { FrameSupportPreimagesBounded } from "@polkadot/types/lookup"
+import { blake2AsHex } from "@polkadot/util-crypto"
+import { ApiPromise, Keyring, WsProvider } from "@polkadot/api"
+import { type SubmittableExtrinsic } from "@polkadot/api/types"
+import { ISubmittableResult } from "@polkadot/types/types"
 
 const main = async () => {
 	// We'll add our code here
@@ -147,19 +149,14 @@ const main = async () => {
 In this step, you will perform the following actions:
 
 1. Define the call you want to execute and its origin
-2. Create a preimage using the selected call. This preimage represents the actual operation to be executed through governance.
-3. Submit the proposal. It uses the preimage hash (obtained from the call) as part of the proposal submission. The proposal is submitted with the selected origin.
-4. Place decision deposit. This deposit is required to move the referendum from the preparing phase to the deciding phase.
-
-The `generateProposal` function accomplishes these tasks using a batched transaction, which combines multiple operations into a single transaction:
-
-1. `preimage.notePreimage`: this submits the preimage of the proposal
-2. `referenda.submit`: submits the actual proposal to the referenda system
-3. `referenda.placeDecisionDeposit`: places the required decision deposit for the referendum
+2. Create a preimage using the selected call
+3. Submit the proposal. It uses the preimage hash (obtained from the call) as part of the proposal submission. The proposal is submitted with the selected origin
+4. Place decision deposit. This deposit is required to move the referendum from the preparing phase to the deciding phase
 
 ```typescript
 const main = async () => {
-	...
+	// ... [previous code for connecting to fork]
+
 	// Select the call to execute
     const call = api.tx.parachainStaking.setCode("0x1234")
 
@@ -171,12 +168,18 @@ const main = async () => {
     // Submit preimage, submit proposal, and place decision deposit
     const proposalIndex = await generateProposal(api, call, origin)
 
-	process.exit(0)
+	// ... [rest of the code]
 }
 ```
 
 ???+ function "**generateProposal** (api, call, origin)"
 
+	The `generateProposal` function accomplishes these tasks using a batched transaction, which combines multiple operations into a single transaction:
+
+    1. `preimage.notePreimage` - this submits the preimage of the proposal
+    2. `referenda.submit` - submits the actual proposal to the referenda system
+    3. `referenda.placeDecisionDeposit` - places the required decision deposit for the referendum
+   
 	```typescript
 	async function generateProposal(
 		api: ApiPromise,
@@ -219,5 +222,128 @@ const main = async () => {
 
 ### Force Proposal Execution
 
-After submitting your proposal, you may want to test its execution without waiting for the standard voting and enactment periods. Chopsticks allows you to force the execution of a proposal by manipulating the chain state and scheduler.
+After submitting your proposal, you may want to test its execution without waiting for the standard voting and enactment periods. Chopsticks allows you to force the execution of a proposal by manipulating the chain state and the scheduler.
 
+```typescript
+const main = async () => {
+    // ... [previous code for connecting and submitting proposal]
+
+    // Force the proposal to be executed
+    await forceProposalExecution(api, proposalIndex)
+
+    process.exit(0)
+}
+```
+
+???+ function "**forceProposalExecution** (api, call, origin)"
+
+	The `forceProposalExecution` function does the following:
+
+	1. It overwrites the chain storage, modifying the parameters of the proposal to set the approvals and support to the required values for the proposal to pass
+	2. It then forces the scheduler to execute the actual call in the next block, instead of waiting for the original scheduled execution time.
+
+	```typescript
+	async function forceProposalExecution(api: ApiPromise, proposalIndex: number) {
+		const referendumData = await api.query.referenda.referendumInfoFor(
+			proposalIndex
+		)
+		const referendumKey =
+			api.query.referenda.referendumInfoFor.key(proposalIndex)
+		if (!referendumData.isSome) {
+			throw new Error(`Referendum ${proposalIndex} not found`)
+		}
+		const referendumInfo = referendumData.unwrap()
+		if (!referendumInfo.isOngoing) {
+			throw new Error(`Referendum ${proposalIndex} is not ongoing`)
+		}
+
+		const ongoingData = referendumInfo.asOngoing
+		const ongoingJson = ongoingData.toJSON()
+		// Support Lookup, Inline or Legacy
+		const callHash = ongoingData.proposal.isLookup
+			? ongoingData.proposal.asLookup.toHex()
+			: ongoingData.proposal.isInline
+			? blake2AsHex(ongoingData.proposal.asInline.toHex())
+			: ongoingData.proposal.asLegacy.toHex()
+
+		const totalIssuance = (await api.query.balances.totalIssuance()).toBigInt()
+
+		const proposalBlockTarget = (
+			await api.rpc.chain.getHeader()
+		).number.toNumber()
+		const fastProposalData = {
+			ongoing: {
+				...ongoingJson,
+				enactment: { after: 0 },
+				deciding: {
+					since: proposalBlockTarget - 1,
+					confirming: proposalBlockTarget - 1,
+				},
+				tally: {
+					ayes: totalIssuance - 1n,
+					nays: 0,
+					support: totalIssuance - 1n,
+				},
+				alarm: [proposalBlockTarget + 1, [proposalBlockTarget + 1, 0]],
+			},
+		}
+
+		let fastProposal
+		try {
+			fastProposal = api.registry.createType(
+				`Option<PalletReferendaReferendumInfo>`,
+				fastProposalData
+			)
+		} catch {
+			fastProposal = api.registry.createType(
+				`Option<PalletReferendaReferendumInfoConvictionVotingTally>`,
+				fastProposalData
+			)
+		}
+
+		const result = await api.rpc("dev_setStorage", [
+			[referendumKey, fastProposal.toHex()],
+		])
+
+		// Fast forward the nudge referendum to the next block to get the refendum to be scheduled
+		await moveScheduledCallTo(api, 1, (call) => {
+			if (!call.isInline) {
+				return false
+			}
+			const callData = api.createType("Call", call.asInline.toHex())
+			return (
+				callData.method == "nudgeReferendum" &&
+				(callData.args[0] as any).toNumber() == proposalIndex
+			)
+		})
+
+		await api.rpc("dev_newBlock", { count: 1 })
+
+		await moveScheduledCallTo(api, 1, (call) =>
+			call.isLookup
+				? call.asLookup.toHex() == callHash
+				: call.isInline
+				? blake2AsHex(call.asInline.toHex()) == callHash
+				: call.asLegacy.toHex() == callHash
+		)
+	}
+	```
+
+## Summary
+
+Certainly. Here's a brief summary and a section for the full code:
+Summary
+In this tutorial, you've learned how to use Chopsticks to test OpenGov proposals on a local fork of the Polkadot network. You've set up a TypeScript project, connected to a local fork, submitted a proposal, and even forced its execution for testing purposes. This process allows you to:
+
+1. Safely experiment with different types of proposals
+2. Test the effects of proposals without affecting the live network
+3. Rapidly iterate and debug your governance ideas
+
+By using these techniques, you can develop and refine your proposals before submitting them to the actual Polkadot network, ensuring they're well-tested and likely to achieve their intended effects.
+
+## Full Code
+
+Here's the complete code for the `test-proposal.ts` file, incorporating all the steps we've covered:
+
+```typescript
+```
