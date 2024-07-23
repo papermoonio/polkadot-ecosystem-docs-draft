@@ -252,7 +252,7 @@ The following tables will guide you through the primary usage of the Zombienet C
 
 Then, you can use the following flags to customize the behavior of the CLI:
 
-|                   Flag                    |                                                Description                                                |
+|                   Argument                    |                                                Description                                                |
 | :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
 |            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `default`, and, `native`). By default it uses `kubernetes`  |
 |           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet) |
