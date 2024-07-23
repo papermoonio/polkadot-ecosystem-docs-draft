@@ -51,14 +51,14 @@
 
 [data-ty="input"]:before,
 [data-ty-prompt]:before {
-    color: #53cbc9;
-    content: 'moonbeam@ubuntu-jammy:';
-    size: 14px;
+    color: var(--pink);
+    content: 'papermoon@ubuntu-jammy:';
+    size: 12px;
 }
 
 .file-path:before {
     content: '~$';
-    color: #E1147B;
+    color: var(--blue);
     margin-right: 0.75em;
 }
 

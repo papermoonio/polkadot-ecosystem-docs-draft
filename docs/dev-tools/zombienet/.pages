@@ -1,2 +1,5 @@
+title: Zombienet
 nav:
-    - tutorials: './tutorials/minimal-example.md'
+- index.md
+- 'Overview': 'overview.md'
+- 'Testing': 'testing.md'
