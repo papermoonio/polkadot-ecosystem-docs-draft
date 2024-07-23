@@ -1,6 +1,6 @@
 ---
 title: Chopsticks
-description: Chopsticks is a tool for Substrate-based blockchain development, enabling local forking, custom configuration experiments, and comprehensive testing. It supports block replay and XCM testing for enhanced development.
+description: Tool that enables forking multiple networks with custom configs. Supports block replay and XCM testing for enhanced Substrate development.
 template: subsection-index-page.html
 hide:
   - feedback
