@@ -6,7 +6,7 @@ description: Diving deeper into Zombienet, a versatile tool enabling the creatio
 # Zombienet
 
 ## Introduction
-Zombienet is a testing framework designed for Polkadot-SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
+Zombienet is a testing framework designed for Polkadot-SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes. 
 
 The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
@@ -23,7 +23,7 @@ In order to install Zombienet, there are multiple options available, depending o
 
 === "Using the Executable" 
 
-    Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
+    Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and macOS, which are generated using [pkg](https://github.com/vercel/pkg){target=_blank}. This allows the Zombienet CLI to operate without requiring NodeJs to be installed. 
 
     Alternatively, you can also download the executable using either `curl` or `wget`:
 
@@ -52,11 +52,16 @@ In order to install Zombienet, there are multiple options available, depending o
     ./zombienet-macos-arm64 version
     ```
 
-    !!! note
-        If you want to add the `zombienet` executable to your PATH, you can move it to a directory in your PATH, such as `/usr/local/bin`:
-        ```bash
-        mv zombienet-macos-arm64 /usr/local/bin/zombienet
-        ```
+    If you want to add the `zombienet` executable to your PATH, you can move it to a directory in your PATH, such as `/usr/local/bin`:
+    ```bash
+    mv zombienet-macos-arm64 /usr/local/bin/zombienet
+    ```
+
+    So then, you can refer to the `zombienet` executable directly:
+
+    ```bash
+    zombienet version
+    ```
 
 === "Using Nix"
 
@@ -111,13 +116,12 @@ In order to install Zombienet, there are multiple options available, depending o
     npm run zombie -- -p native spawn host-current-files/minimal.toml
     ```
 
-    !!! warning
-        The command above mounts the current directory to the `/workspace` directory inside the Docker container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
+    The command above mounts the current directory to the `/workspace` directory inside the Docker container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
 
 
 ## Providers
 
-Zombienet is a JavaScript library designed to run on Node.js and support different backend providers in running the nodes. At this moment [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank} and, native are supported.
+Zombienet is a JavaScript library designed to run on Node.js and support different backend providers in running the nodes. At this moment [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank} and, local are supported.
 
 To use a particular provider, you can specify it in the network file or use the `--provider` flag in the CLI:
     
@@ -132,6 +136,8 @@ Alternatively, you can set the provider in the network file:
 provider = "<provider>"
 ...
 ```
+
+At the moment, Zombienet supports the following providers: `kubernetes`, `podman`, and `native`.
 
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
@@ -170,11 +176,11 @@ It's important to note that each provider has specific requirements and associat
     !!! note
         When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods, including those for Prometheus, Tempo, and Grafana.
 
-### Native
+### Local
 
 === "Requirements"
     
-    The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
+    The Zombienet Local provider, also referred to as Native, enables you to run nodes as local processes in your environments. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
 
     To install the necessary binaries, you can use the Zombienet CLI command:
 
@@ -222,10 +228,10 @@ It's important to note that each provider has specific requirements and associat
     ```
 
     !!! note
-        The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
+        The local provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
 
 === "Features"
-    Currently, the Native provider does not execute any additional layers or processes.
+    Currently, the Local provider does not execute any additional layers or processes.
 
 ## CLI Usage
 
