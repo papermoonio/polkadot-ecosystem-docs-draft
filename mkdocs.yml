@@ -3,7 +3,8 @@
 'docs_dir': 'docs'
 'copyright': '© 2024 Web3 Foundation'
 # Used for extra javascript files in the `docs` repository
-# 'extra_javascript':
+'extra_javascript':
+    - 'js/copyAnchorLink.js' # Enable if you want to copy the anchor link to the clipboard
 #   - 'js/externalLinkModal.js' # Enable if you want a warning when users leave your site
 #   - 'https://widget.kapa.ai/kapa-widget.bundle.js' # Enable is project is using Kapa
 #   - 'js/initKapaWidget.js' # Enable if project is using Kapa
