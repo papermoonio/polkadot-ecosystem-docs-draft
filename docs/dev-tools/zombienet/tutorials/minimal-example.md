@@ -145,4 +145,4 @@ If successful, you will see the following output:
 
 
 !!! note 
-    Consider that the IPs and ports may vary dynamically each time the network is spawned if those parameters are not explicity defined in the configuration file, so the links provided in the output may not be the same as the ones in the example.
+    If the IPs and ports are not explicitly defined in the configuration file, they may change each time the network is started, causing the links provided in the output to differ from the example.
