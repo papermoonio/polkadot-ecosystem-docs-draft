@@ -13,7 +13,7 @@ To follow this tutorial, first you need to have zombienet installed. If you have
 
 ## Defining the network
 
-As mentioned in the [Configuration Files section](../index.md/#configuration-files), Zombienet uses a configuration file to define the ephemeral network that will be spawned. This example will use the following configuration file:
+As mentioned in the [Configuration Files section](../index.md/#configuration-files), Zombienet uses a configuration file to define the ephemeral network that will be spawned. To follow this tutorial, you can create a file named `minimal-example.toml` with the following content:
 
 ```toml
 [settings]
