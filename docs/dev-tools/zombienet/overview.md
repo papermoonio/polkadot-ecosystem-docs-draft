@@ -218,8 +218,8 @@ Alternatively, you can specify the binary path in the network configuration file
 chain = "rococo-local"
 default_command = "./bin-v1.6.0/polkadot"
 
-    [[parachains]]
-    id = 1000
+[[parachains]]
+id = 1000
 
 	[[parachains.collators]]
 	name = "collator01"
@@ -244,7 +244,7 @@ The following tables will guide you through the primary usage of the Zombienet C
 
 |  Command  |                                            Description                                             |                                                                                                                                                      Arguments                                                                                                                                                       |
 | :-------: | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  `spawn`  |                            Spawn the network defined in the config file                            |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out the [Configuration Files](#configuration-files) section                                                             |
+|  `spawn`  |                            Spawn the network defined in the config file                            |                                                          `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out the [Configuration Files](#configuration-files) section                                                           |
 |  `test`   |                                  Run test on the network spawned                                   |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions                                                                       |
 |  `setup`  |                           Set up the dev environment of Zombienet ready.                           |                                                                                          `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
 | `convert` | Transforms a (now deprecated) polkadot-launch configuration file to a zombienet configuration file | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
@@ -257,7 +257,7 @@ The following tables will guide you through the primary usage of the Zombienet C
 
 Then, you can use the following flags to customize the behavior of the CLI:
 
-|                   Argument                    |                                                Description                                                |
+|                 Argument                  |                                                Description                                                |
 | :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
 |            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `default`, and, `native`). By default it uses `kubernetes`  |
 |           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet) |
