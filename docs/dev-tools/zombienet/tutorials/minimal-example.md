@@ -52,7 +52,7 @@ This command will spawn the network defined in the `minimal-example.toml` config
 If successful, you will see the following output:
 
 <div id="termynal" data-termynal>
-  <br>
+    <span data-ty="input"><span class="file-path">zombienet -p native spawn minimal-example.toml</span>
     <table>
         <thead>
             <tr>
