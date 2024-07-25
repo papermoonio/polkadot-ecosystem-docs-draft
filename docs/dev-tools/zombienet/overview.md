@@ -17,13 +17,13 @@ The framework enables developers to create tests using natural language tools to
 
 ## Installation
 
-Zombienet releases are available on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}.
+Zombienet releases are available on the [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}.
 
 In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following section will guide you through the installation process for each of the available options.
 
 === "Using the Executable" 
 
-    Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and macOS, which are generated using [pkg](https://github.com/vercel/pkg){target=_blank}. This allows the Zombienet CLI to operate without requiring NodeJs to be installed. 
+    Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository](https://github.com/paritytech/zombienet/releases){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and macOS, which are generated using [pkg](https://github.com/vercel/pkg){target=_blank}. This allows the Zombienet CLI to operate without requiring NodeJs to be installed. 
 
     Alternatively, you can also download the executable using either `curl` or `wget`:
 
