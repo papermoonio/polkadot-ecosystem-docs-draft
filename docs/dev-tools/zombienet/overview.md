@@ -218,10 +218,10 @@ Alternatively, you can specify the binary path in the network configuration file
 chain = "rococo-local"
 default_command = "./bin-v1.6.0/polkadot"
 
-[[parachains]]
+[parachain]
 id = 1000
 
-	[[parachains.collators]]
+	[parachain.collators]
 	name = "collator01"
 	command = "./target/release/parachain-template-node"
 ```
