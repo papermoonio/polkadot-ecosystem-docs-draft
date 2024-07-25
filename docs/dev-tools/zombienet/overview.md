@@ -74,8 +74,7 @@ In order to install Zombienet, there are multiple options available, depending o
     spawn <INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
     ```
 
-    !!! Warning
-        To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank}.
+    To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank}.
 
     Alternatively, you can also include the Zombienet binary in the PATH for the current shell. This can be achieved by:
     
@@ -95,10 +94,9 @@ In order to install Zombienet, there are multiple options available, depending o
     -v $(pwd):/home/nonroot/zombie-net/host-current-files \
     paritytech/zombienet
     ```
-    !!! note
-        Command above will run the Zombienet CLI inside a Docker container and mount the current directory to the `/home/nonroot/zombie-net/host-current-files` directory inside the container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
+    Command above will run the Zombienet CLI inside a Docker container and mount the current directory to the `/home/nonroot/zombie-net/host-current-files` directory inside the container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
 
-    Now, inside the Docker container, you can run the Zombienet CLI commands. First, you need to set up ZombieNet downloading the neccessary binaries:
+    Inside the Docker container, you can run the Zombienet CLI commands. First, you need to set up ZombieNet downloading the neccessary binaries:
 
     ```bash
     npm run zombie -- setup polkadot polkadot-parachain
