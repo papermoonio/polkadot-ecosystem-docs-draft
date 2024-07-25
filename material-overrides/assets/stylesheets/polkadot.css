@@ -361,10 +361,9 @@ li > nav.md-nav[data-md-level='4'] ul.md-nav__list {
   padding-left: .8rem;
 }
 
-/* Hides paragraph mark at end of anchored text */
-.md-content .headerlink {
+/* Hides paragraph mark at end of anchored text for H1s */
+.md-typeset h1 .headerlink {
   display: none;
-  visibility: hidden;
 }
 
 /* Adjust Nav Bar styling for smaller screens*/
