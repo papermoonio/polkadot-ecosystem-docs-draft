@@ -141,95 +141,96 @@ It's important to note that each provider has specific requirements and associat
 
 ### Kubernetes
 
-=== "Requirements"
+#### Requirements
 
-    Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
+Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
 
-    Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
-=== "Features"
-    In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. Using the Prometheus operator, Zombienet improves its ability to efficiently monitor and manage network activities within the Kubernetes cluster. 
+#### Features
+In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. Using the Prometheus operator, Zombienet improves its ability to efficiently monitor and manage network activities within the Kubernetes cluster. 
 
 ### Podman
 
-=== "Requirements"
+#### Requirements
 
-    Zombienet supports Podman rootless as a provider. To use Podman as a provider, you need to have Podman installed on your system. Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux-based systems. You can install Podman by following the instructions provided on the [Podman website](https://podman.io/getting-started/installation){target=_blank}.
+Zombienet supports Podman rootless as a provider. To use Podman as a provider, you need to have Podman installed on your system. Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux-based systems. You can install Podman by following the instructions provided on the [Podman website](https://podman.io/getting-started/installation){target=_blank}.
 
-    !!! note
-        Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
+!!! note
+    Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
 
-=== "Features"
+#### Features
     
-    Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as data sources.
+Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as data sources.
 
-    Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
+Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
 
-    - Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blank}
-    - Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blank}
-    - Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blank}
+- Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blank}
+- Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blank}
+- Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blank}
 
-    It's important to note that Grafana is deployed with default admin access.
+It's important to note that Grafana is deployed with default admin access.
 
-    !!! note
-        When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods, including those for Prometheus, Tempo, and Grafana.
+!!! note
+    When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods, including those for Prometheus, Tempo, and Grafana.
 
 ### Local
 
-=== "Requirements"
+#### Requirements
     
-    The Zombienet Local provider, also referred to as Native, enables you to run nodes as local processes in your environments. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
+The Zombienet Local provider, also referred to as Native, enables you to run nodes as local processes in your environments. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
 
-    To install the necessary binaries, you can use the Zombienet CLI command:
+To install the necessary binaries, you can use the Zombienet CLI command:
 
-    ```bash
-    zombienet setup polkadot polkadot-parachain
-    ```
-    This command will download and prepare the necessary binaries for Zombienet’s use.
+```bash
+zombienet setup polkadot polkadot-parachain
+```
 
-    !!! warning 
-        The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
+This command will download and prepare the necessary binaries for Zombienet’s use.
 
-    If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [Open Zeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
+!!! warning 
+    The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
 
-    First, clone the Open Zeppelin template repository:
+If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [Open Zeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
 
-    ```bash
-    git clone https://github.com/OpenZeppelin/polkadot-runtime-templates && cd polkadot-runtime-templates/generic-template
-    ```
+First, clone the Open Zeppelin template repository:
 
-    Then, build the custom binary:
+```bash
+git clone https://github.com/OpenZeppelin/polkadot-runtime-templates && cd polkadot-runtime-templates/generic-template
+```
 
-    ```bash
-    cargo build --release
-    ```
+Then, build the custom binary:
 
-    After that, add the custom binary to your PATH:
+```bash
+cargo build --release
+```
 
-    ```bash
-    export PATH=$PATH:/path/to/polkadot-runtime-templates/parachain-template-node/target/release
-    ```
+After that, add the custom binary to your PATH:
 
-    Alternatively, you can specify the binary path in the network configuration file:
+```bash
+export PATH=$PATH:/path/to/polkadot-runtime-templates/parachain-template-node/target/release
+```
 
-    ```toml
-    [relaychain]
-    chain = "rococo-local"
-    default_command = "./bin-v1.6.0/polkadot"
+Alternatively, you can specify the binary path in the network configuration file:
+
+```toml
+[relaychain]
+chain = "rococo-local"
+default_command = "./bin-v1.6.0/polkadot"
 
     [[parachains]]
     id = 1000
 
-	    [[parachains.collators]]
-	    name = "collator01"
-	    command = "./target/release/parachain-template-node"
-    ```
+	[[parachains.collators]]
+	name = "collator01"
+	command = "./target/release/parachain-template-node"
+```
 
-    !!! note
-        The local provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
+!!! note
+    The local provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
 
-=== "Features"
-    Currently, the Local provider does not execute any additional layers or processes.
+#### Features
+Currently, the Local provider does not execute any additional layers or processes.
 
 ## CLI Usage
 
