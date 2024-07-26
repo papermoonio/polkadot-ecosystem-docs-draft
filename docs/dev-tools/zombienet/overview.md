@@ -135,7 +135,7 @@ provider = "<provider>"
 ...
 ```
 
-At the moment, Zombienet supports the following providers: `kubernetes`, `podman`, and `native`.
+At the moment, Zombienet supports the following providers: `kubernetes`, `podman`, and `native` (local).
 
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
@@ -259,7 +259,7 @@ Then, you can use the following flags to customize the behavior of the CLI:
 
 |                 Argument                  |                                                Description                                                |
 | :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
-|            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `default`, and, `native`). By default it uses `kubernetes`  |
+|            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `kubernetes`, and, `native`). By default it uses `kubernetes`  |
 |           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet) |
 |              `-f`, `--force`              |                                    Force override all prompt commands                                     |
 |        `-l`, `--logType` <logType>        |   Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`    |
@@ -273,7 +273,7 @@ Then, you can use the following flags to customize the behavior of the CLI:
 The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
 
 !!! note
-    Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the native provider, any references to images for nodes will be disregarded.
+    Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
 
 ### Settings
 
