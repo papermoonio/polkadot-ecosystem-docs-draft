@@ -96,7 +96,7 @@ In order to install Zombienet, there are multiple options available, depending o
     ```
     The command above will run the Zombienet CLI inside a Docker container and mount the current directory to the `/home/nonroot/zombie-net/host-current-files` directory inside the container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
 
-    Inside the Docker container, you can run the Zombienet CLI commands. First, you need to set up ZombieNet downloading the neccessary binaries:
+    Inside the Docker container, you can run the Zombienet CLI commands. First, you need to set up Zombienet downloading the necessary binaries:
 
     ```bash
     npm run zombie -- setup polkadot polkadot-parachain
