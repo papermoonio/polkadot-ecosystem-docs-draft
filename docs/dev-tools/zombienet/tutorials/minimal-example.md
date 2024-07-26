@@ -146,3 +146,9 @@ If successful, you will see the following output:
 
 !!! note 
     If the IPs and ports are not explicitly defined in the configuration file, they may change each time the network is started, causing the links provided in the output to differ from the example.
+
+## Interacting with the spawned network
+
+After the network is launched, you can interact with it using the Polkadot.js Apps. To do so, open the provided links in your browser. For example, to interact with the `alice` node, open the link provided in the output for the `alice` node.
+
+
