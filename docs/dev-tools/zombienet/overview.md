@@ -324,7 +324,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### Relay Chain Configuration
 
-You can use `relaychain` keyword to define further parameters for the relaychain at start-up. The following keys are available:
+You can use `relaychain` keyword to define further parameters for the relay chain at start-up. The following keys are available:
 
 |                 Key                  |       Type        | Description                                                                                                      | Default Value  |
 | :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :------------- |
