@@ -6,6 +6,7 @@ description: Diving deeper into Zombienet, a versatile tool enabling the creatio
 # Zombienet
 
 ## Introduction
+
 Zombienet is a testing framework designed for Polkadot SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes. 
 
 The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
@@ -148,6 +149,7 @@ Zombienet is designed to be compatible with a variety of Kubernetes clusters, in
 Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
 #### Features
+
 In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. Using the Prometheus operator, Zombienet improves its ability to efficiently monitor and manage network activities within the Kubernetes cluster. 
 
 ### Podman
@@ -230,6 +232,7 @@ id = 1000
     The local provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
 
 #### Features
+
 Currently, the Local provider does not execute any additional layers or processes.
 
 ## CLI Usage
