@@ -194,7 +194,7 @@ alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chu
 
 ## Running Tests
 
-To run the tests by using Native provider, you can use the `zombienet` binary. The binary will read the test files and execute the tests defined in the DSL. The binary will output the results of the tests in the console.
+To run the tests using the local provider (`native`), you can use the Zombienet binary. The binary will read the test files and execute the tests defined in the DSL. The binary will output the results of the tests in the console. 
 
 ```bash
 zombienet -p native test <INSERT_TEST_FILE_NAME>
