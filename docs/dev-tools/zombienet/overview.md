@@ -263,7 +263,7 @@ Then, you can use the following flags to customize the behavior of the CLI:
 |                 Argument                  |                                                Description                                                |
 | :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
 |            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `kubernetes`, and, `native`). By default it uses `kubernetes`  |
-|           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet) |
+|           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. `-d /home/user/my-zombienet`) |
 |              `-f`, `--force`              |                                    Force override all prompt commands                                     |
 |        `-l`, `--logType` <logType>        |   Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`    |
 |             `-m`, `--monitor`             |                              Start as monitor, do not auto clean up network                               |
@@ -273,7 +273,7 @@ Then, you can use the following flags to customize the behavior of the CLI:
 
 ## Configuration Files 
 
-The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
+The network configuration can be given in either `json` or `toml` format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
 
 !!! note
     Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
