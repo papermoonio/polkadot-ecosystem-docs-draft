@@ -7,14 +7,14 @@ description: Zombienet provides a Domain Specific Language (DSL) for writing tes
 
 Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL is designed to be human-readable and allows you to write tests using natural language expressions. You can define assertions and tests against the spawned network using this DSL. This way, users can evaluate different metrics, such as:
 
-- On-chain storage - the storage of each of the chains running via Zombienet
-- Metrics- the metrics provided by the nodes 
-- Histograms - visual representations of metrics data
-- Logs - detailed records of system activities and events 
-- System events - notifications of significant occurrences within the network
-- Tracing - detailed analysis of execution paths and operations
-- Custom API calls (through PolkadotJs) - personalized interfaces for interacting with the network 
-- Commands - instructions or directives executed by the network 
+- **On-chain storage** - the storage of each of the chains running via Zombienet
+- **Metrics** - the metrics provided by the nodes 
+- **Histograms** - visual representations of metrics data
+- **Logs** - detailed records of system activities and events 
+- **System events** - notifications of significant occurrences within the network
+- **Tracing** - detailed analysis of execution paths and operations
+- **Custom API calls (through PolkadotJs)** - personalized interfaces for interacting with the network 
+- **Commands** - instructions or directives executed by the network 
 
 These abstractions are expressed by sentences defined in a natural language style. Therefore, each test line will be mapped to a test to run. Also, the test file (`*.zndsl`) includes pre-defined header fields used to define information about the suite, such as network configuration and credentials location.
 
