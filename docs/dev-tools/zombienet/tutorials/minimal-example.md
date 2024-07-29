@@ -3,13 +3,13 @@ title: Minimal Example of the usage of Zombienet
 description: This tutorial provides an example of how to use Zombienet to spawn a basic network and run a simple test over it.
 ---
 
-# Using Zombienet: A Minimal Example
+# A Minimal Example of the usage of Zombienet
 
-This tutorial provides an example of how to use zombienet to spawn a basic network and run a simple test against it.
+This tutorial provides an example of how to use Zombienet to spawn a basic network and run a simple test against it.
 
 ## Prerequisites
 
-To follow this tutorial, first you need to have zombienet installed. If you haven't done so, please follow the instructions in the [Zombienet installation section](../index.md/#installation).
+To follow this tutorial, first, you need to have Zombienet installed. If you haven't done so, please follow the instructions in the [Zombienet installation section](../index.md/#installation).
 
 ## Defining the network
 
@@ -37,7 +37,6 @@ id = 100
 ```
 
 This configuration file defines a network with a relaychain with two nodes, `alice` and `bob`, and a parachain with a collator named `collator01`. Also, it sets a timeout of 120 seconds for the network to be ready.
-
 
 ## Running the network
 
@@ -143,12 +142,88 @@ If successful, you will see the following output:
     </table>
 </div>
 
-
 !!! note 
     If the IPs and ports are not explicitly defined in the configuration file, they may change each time the network is started, causing the links provided in the output to differ from the example.
 
 ## Interacting with the spawned network
 
-After the network is launched, you can interact with it using the Polkadot.js Apps. To do so, open the provided links in your browser. For example, to interact with the `alice` node, open the link provided in the output for the `alice` node.
+### Connecting to the nodes
 
+After the network is launched, you can interact with it using the [Polkadot.js App](https://polkadot.js.org/apps/){target=_blank}. To do so, open your browser and use the provided links listed by the output as 'direct link'. For instance, in this particular case, as the ports may vary from spawning to spawning, to interact with the `alice` node, open [https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55308#explorer](https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55308#explorer){target=_blank} as it is the link provided in the output for the `alice` node. Moreover, you can also do this for the `bob` and `collator01` nodes.
 
+If you want to interact with the nodes more programmatically, you can also use the [Polkadot.js API](https://polkadot.js.org/api/){target=_blank}. For example, the following code snippet shows how to connect to the `alice` node using the Polkadot.js API and log some information about the chain and node:
+
+```typescript
+import { ApiPromise, WsProvider } from '@polkadot/api';
+
+async function main() {
+  const wsProvider = new WsProvider('ws://127.0.0.1:55308');
+    const api = await ApiPromise.create({ provider: wsProvider });
+
+    // Retrieve the chain & node information via rpc calls
+    const [chain, nodeName, nodeVersion] = await Promise.all([
+        api.rpc.system.chain(),
+        api.rpc.system.name(),
+        api.rpc.system.version()
+    ]);
+
+    console.log(`You are connected to chain ${chain} using ${nodeName} v${nodeVersion}`);
+}
+
+main().catch(console.error).finally(() => process.exit());
+```
+
+Either way allows you to interact easily with the network and its nodes.
+
+### Checking metrics
+
+You can also check the metrics of the nodes by accessing the provided links listed by the output as 'Prometheus Link'. [Prometheus](https://prometheus.io/){target=_blank} is a monitoring and alerting toolkit that collects metrics from the nodes. By accessing the provided links, you can see the metrics of the nodes in a web interface.
+
+TODO: add a screenshot of the metrics page
+
+### Checking logs
+
+To check the nodes’ logs, you can use the provided command listed by the output as 'Log Cmd'. For instance, to check the logs of the `alice` node, you can open a new terminal and run the following command:
+
+```bash
+tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-SEzfCidQ1za4/alice.log
+```
+
+After running this command, you will see the logs of the `alice` node in real-time, which can be useful for debugging purposes. The logs of the `bob` and `collator01` nodes can be checked similarly.
+
+## Running a test
+
+To run a test against the spawned network, you can use the [Zombienet DSL](../testing.md) to define the test scenario. For example, you can create a file named `minimal-example-test.zndsl` with the following content:
+
+```toml
+Network: ./minimal-config.toml
+Creds: config
+
+alice: is up
+alice: parachain 100 is registered within 225 seconds
+alice: parachain 100 block height is at least 10 within 250 seconds
+
+bob: is up
+bob: parachain 100 is registered within 225 seconds
+bob: parachain 100 block height is at least 10 within 250 seconds
+
+# metrics
+alice: reports node_roles is 4
+alice: reports sub_libp2p_is_major_syncing is 0
+
+bob: reports node_roles is 4
+bob: reports substrate_network_gossip_expired_messages_total is 835
+
+collator01: reports node_roles is 4
+collator01: reports substrate_sub_libp2p_listeners_local_addresses is 2
+```
+
+This test scenario checks if the nodes are running, if the parachain with ID 100 is registered within a certain timeframe (255 seconds in this example), and if the parachain block height is at least a certain number within a timeframe (in this case 10 within 255 seconds), and, if the nodes report some metrics. However, you can define any test scenario you want following the [Zombienet DSL](../testing.md) syntax.
+
+To run the test, execute the following command:
+
+```bash
+zombienet -p native test minimal-example-test.zndsl
+```
+
+This command will execute the test scenario defined in the `minimal-example-test.zndsl` file on the network. If successful, the terminal will display the test output, indicating whether the test passed or failed.
