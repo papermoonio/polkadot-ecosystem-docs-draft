@@ -1,6 +1,6 @@
 ---
 title: Zombienet for Ephemeral Polkadot SDK Networks
-description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary substrate networks for testing purposes.
+description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary Substrate networks for testing purposes.
 ---
 
 # Zombienet
