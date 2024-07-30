@@ -9,11 +9,11 @@ This tutorial provides an example of how to use Zombienet to spawn a basic netwo
 
 ## Prerequisites
 
-To follow this tutorial, first, you need to have Zombienet installed. If you haven't done so, please follow the instructions in the [Zombienet installation section](../index.md/#installation).
+To follow this tutorial, first, you need to have Zombienet installed. If you haven't done so, please follow the instructions in the [Zombienet installation section](../overview.md/#installation).
 
 ## Defining the network
 
-As mentioned in the [Configuration Files section](../index.md/#configuration-files), Zombienet uses a configuration file to define the ephemeral network that will be spawned. To follow this tutorial, you can create a file named `minimal-example.toml` with the following content:
+As mentioned in the [Configuration Files section](../overview.md/#configuration-files), Zombienet uses a configuration file to define the ephemeral network that will be spawned. To follow this tutorial, you can create a file named `minimal-example.toml` with the following content:
 
 ```toml
 [settings]
