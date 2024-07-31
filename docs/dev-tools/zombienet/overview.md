@@ -7,7 +7,7 @@ description: Diving deeper into Zombienet, a versatile tool enabling the creatio
 
 ## Introduction
 
-Zombienet is a testing framework designed for Polkadot SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes. 
+Zombienet is a testing framework designed for Polkadot SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet is a JavaScript library designed to run on Node.js and supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes. 
 
 The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
@@ -120,7 +120,7 @@ In order to install Zombienet, there are multiple options available, depending o
 
 ## Providers
 
-Zombienet is a JavaScript library designed to run on Node.js and support different backend providers in running the nodes. At this moment, [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank}, and local are supported.
+Zombienet supports different backend providers in running the nodes. At this moment, [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank}, and local are supported.
 
 To use a particular provider, you can specify it in the network file or use the `--provider` flag in the CLI:
     
