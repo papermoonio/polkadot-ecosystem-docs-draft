@@ -180,7 +180,7 @@ It's important to note that Grafana is deployed with default admin access.
 
 #### Requirements
     
-The Zombienet local provider, also referred to as native, enables you to run nodes as local processes in your environments. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
+The Zombienet local provider, also referred to as native, enables you to run nodes as local processes in your environment. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
 
 To install the necessary binaries, you can use the Zombienet CLI command:
 
