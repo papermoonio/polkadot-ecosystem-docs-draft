@@ -174,7 +174,7 @@ Upon launching Zombienet, access to these monitoring services is facilitated thr
 It's important to note that Grafana is deployed with default admin access.
 
 !!! note
-    When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods, including those for Prometheus, Tempo, and Grafana.
+    When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods.
 
 ### Local
 
