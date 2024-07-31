@@ -258,7 +258,7 @@ The following tables will guide you through the primary usage of the Zombienet C
 !!! warning
     For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build Polkadot binary, and manually add it to their PATH.
 
-Then, you can use the following flags to customize the behavior of the CLI:
+Then, you can use different flags to customize the behavior of the CLI:
 
 |                 Argument                  |                                                Description                                                |
 | :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
@@ -280,7 +280,7 @@ The network configuration can be given in either `json` or `toml` format. The Zo
 
 ### Settings
 
-Through the keyword `settings`, it's possible to define the general settings for the network. The following keys are available:
+Through the keyword `settings`, it's possible to define the general settings for the network. The available keys are:
 
 |                 Key                  |  Type   | Description                                                                                               | Default Value                            |
 | :----------------------------------: | :-----: | :-------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
@@ -327,7 +327,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### Relay Chain Configuration
 
-You can use `relaychain` keyword to define further parameters for the relay chain at start-up. The following keys are available:
+You can use `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
 
 |                 Key                  |       Type        | Description                                                                                                      | Default Value  |
 | :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :------------- |
@@ -344,7 +344,7 @@ You can use `relaychain` keyword to define further parameters for the relay chai
 |          `max_nominations`           |      Number       | The max number of nominations allowed by a nominator. Should match the value set in the runtime                  | `24`           |
 
 ??? Nodes
-    There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
+    There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
 
     | Key                          | Type             | Description                                                                                      | Default Value   |
     | :--------------------------- | :--------------- | :----------------------------------------------------------------------------------------------- | :-------------- |
@@ -422,7 +422,7 @@ You can use `relaychain` keyword to define further parameters for the relay chai
         ```
 
 ??? "Node Groups"
-    The `node_groups` key is used to define further parameters for the node groups. The following keys are available:
+    The `node_groups` key is used to define further parameters for the node groups. The available keys are:
 
     | Key                          | Type             | Description                                                                                                                            | Default Value |
     | :--------------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
@@ -486,7 +486,7 @@ You can use `relaychain` keyword to define further parameters for the relay chai
 
 ### Parachain Configuration
 
-The `parachain` keyword is used to define further parameters for the parachain. The following keys are available:
+The `parachain` keyword is used to define further parameters for the parachain. The available keys are:
 
 | Key                       | Type    | Description                                                                                                                            | Default Value |
 | :------------------------ | :------ | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
@@ -531,7 +531,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ??? "Collator"
    
-    One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The following keys are available:
+    One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The available keys are:
 
     | Key                          | Type             | Description                                                                                                     | Default Value        |
     | ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -546,7 +546,7 @@ For example, the following configuration file defines a minimal example for the 
     | `env.value`                  | String \| Number | Value of the environment variable                                                                               | -                    |
     | `keystore_key_types`         | String           | Defines which keystore keys should be created. For more details, refer to additional documentation              | -                    |
 
-    For example, the following configuration file defines a minimal example for the collator:
+    For instance, the configuration file below defines a minimal example for the collator:
 
     === "collator-example.toml"
         ```toml
@@ -588,7 +588,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ??? "Collator Groups"
    
-    The `collator_groups` key is used to define further parameters for the collator groups. The following keys are available:
+    The `collator_groups` key is used to define further parameters for the collator groups. The available keys are:
 
     | Key                          | Type             | Description                                                                                                    | Default Value        |
     | ---------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -603,7 +603,7 @@ For example, the following configuration file defines a minimal example for the 
     | `env.value`                  | String \| Number | Value of the environment variable                                                                              | -                    |
     | `substrate_cli_args_version` | 0 \| 1 \| 2      | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead | -                    |
 
-    For example, the following configuration file defines a minimal example for the collator groups:
+    For instance, the configuration file below defines a minimal example for the collator groups:
 
     === "collator-groups-example.toml"
         ```toml
@@ -647,7 +647,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### XCM Configuration
 
-You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The following keys are available:
+You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The available keys are:
 
 | Key                | Type             | Description                                      |
 | ------------------ | ---------------- | ------------------------------------------------ |
