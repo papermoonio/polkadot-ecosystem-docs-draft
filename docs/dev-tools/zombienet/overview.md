@@ -75,7 +75,7 @@ In order to install Zombienet, there are multiple options available, depending o
     spawn <INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
     ```
 
-    To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank}.
+    To run the command above, you need to have [Flakes](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank} enabled.
 
     Alternatively, you can also include the Zombienet binary in the PATH for the current shell. This can be achieved by:
     
