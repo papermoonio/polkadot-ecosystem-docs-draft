@@ -174,13 +174,13 @@ Upon launching Zombienet, access to these monitoring services is facilitated thr
 It's important to note that Grafana is deployed with default admin access.
 
 !!! note
-    When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods, including those for Prometheus, Tempo, and Grafana.
+    When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods.
 
 ### Local
 
 #### Requirements
     
-The Zombienet local provider, also referred to as native, enables you to run nodes as local processes in your environments. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
+The Zombienet local provider, also referred to as native, enables you to run nodes as local processes in your environment. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
 
 To install the necessary binaries, you can use the Zombienet CLI command:
 
@@ -198,8 +198,8 @@ If you need to use a custom binary, ensure the binary is available in your PATH.
 First, clone the Open Zeppelin template repository:
 
 ```bash
-git clone https://github.com/OpenZeppelin/polkadot-runtime-templates && cd polkadot-runtime-templates/generic-template
-```
+git clone https://github.com/OpenZeppelin/polkadot-runtime-templates \
+&& cd polkadot-runtime-templates/generic-template
 
 Then, build the custom binary:
 
