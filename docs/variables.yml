@@ -1,3 +1,6 @@
 repositories:
   open_zeppelin:
     release_tag_version: 1.0.0
+dev_tools:
+  chopsticks:
+    version: 0.13.1

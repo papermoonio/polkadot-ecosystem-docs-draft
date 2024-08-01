@@ -27,16 +27,19 @@ Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/en/){target=_blank}
 - Package manager - [npm](https://www.npmjs.com/){target=_blank} should be installed with Node.js by default. Alternatively, you can use other package managers like [Yarn](https://yarnpkg.com/){target=_blank}
 
-## Getting Started
+## Install Chopsticks
 
 You can install Chopsticks either globally or locally in your project. Choose the option that best fits your development workflow.
+
+!!! note
+    This documentation explains the functionality of Chopsticks version `{{ dev_tools.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
 
 ### Global Installation
 
 To install Chopsticks globally, allowing you to use it across multiple projects, run:
 
 ```bash
-npm i -g @acala-network/chopsticks
+npm i -g @acala-network/chopsticks@{{ dev_tools.chopsticks.version }}
 ```
 
 Now, you should be able to run the `chopsticks` command from your terminal.
@@ -54,7 +57,7 @@ npm init -y
 Then, install Chopsticks as a local dependency:
 
 ```bash
-npm i @acala-network/chopsticks
+npm i @acala-network/chopsticks@{{ dev_tools.chopsticks.version }}
 ```
 
 Finally, you can run Chopsticks using the `npx` command:
