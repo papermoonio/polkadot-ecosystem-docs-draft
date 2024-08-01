@@ -30,11 +30,23 @@ The test file is a text file with the extension `.zndsl`. It is divided into two
 
 The header is defined by the following fields:
 
-| Key           | Type              | Description                                                                                                                                          |
-| ------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `description` | String (optional) | Long description of the test suite                                                                                                                   |
-| `network`     | String            | Path to the network definition file, supported in both `json` and `toml` formats                                                                     |
-| `creds`       | String            | Credentials file name or path to use (available only with Kubernetes provider). Looks in the current directory or `$HOME/.kube/` if a file name is passed |
+??? function "`description` - long description of the test suite"
+
+    === "Type"
+
+        - String (optional)
+
+??? function "`network` - path to the network definition file, supported in both `json` and `toml` formats"
+
+    === "Type"
+
+        - String
+
+??? function "`creds` - credentials file name or path to use (available only with Kubernetes provider). Looks in the current directory or `$HOME/.kube/` if a file name is passed"
+
+    === "Type"
+
+        - String
 
 The body contains the tests to run. Each test is defined by a sentence in the DSL, which is mapped to a test to run. Each test line defines an assertion or a command to be executed against the spawned network.
 
