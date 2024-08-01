@@ -54,96 +54,176 @@ The body contains the tests to run. Each test is defined by a sentence in the DS
 
 Assertions are defined by sentences in the DSL that evaluate different metrics, such as on-chain storage, metrics, histograms, logs, system events, tracing, and custom API calls. Each assertion is defined by a sentence in the DSL, which is mapped to a test to run.
 
-#### `Well know functions`
+??? function "`Well known functions` - already mapped test function"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Already mapped test function | node-name: `well-know_defined_test` [within x seconds] |
+    === "Syntax"
 
-- Examples:
-    - alice: is up
-    - alice: parachain 100 is registered within 225 seconds
-    - alice: parachain 100 block height is at least 10 within 250 seconds
+        - `node-name`: `well-known_defined_test [within x seconds]`
 
-#### `Histogram assertion`
+    === "Example Outputs"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Get metrics from Prometheus, calculate the histogram and, assert on the target value/s | node-name: `reports histogram memtric_name has comparator target_value samples in buckets ["bucket","bucket",...] [within x seconds]` |
+        ```bash
 
-- Examples:
-    - alice: reports histogram polkadot_pvf_execution_time has at least 2 samples in buckets ["0.1", "0.25", "0.5", "+Inf"] within 100 seconds
+        alice: is up
+        alice: parachain 100 is registered within 225 seconds
+        alice: parachain 100 block height is at least 10 within 250 seconds
+        
+        ```
 
-#### `Metric assertion`
+??? function "`Histogram` - get metrics from Prometheus, calculate the histogram and, assert on the target value/s"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Get metric from Prometheus and assert on the target value | node-name: `reports metric_name comparator target_value (e.g "is at least x", "is greater than x") [within x seconds]` |
+    === "Syntax"
 
-- Examples:
-    - alice: reports node_roles is 4
-    - alice: reports sub_libp2p_is_major_syncing is 0
+        - `node-name`: `reports histogram memtric_name has comparator target_value samples in buckets ["bucket","bucket",...] [within x seconds]`
 
-#### `Logs assertions`
+    === "Example Outputs"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Get logs from nodes and assert on the matching pattern | node-name: `log line (contains|matches) (regex|glob) "pattern" [within x seconds]` |
-| Get logs from nodes and assert on the number of lines matching pattern | node-name: `count of log lines (containing|matcheing) (regex|glob) "pattern" [within x seconds]` |
+        ```bash
 
-- Examples:
-    - alice: log line matches glob "rted #1" within 10 seconds
-    - alice: count of log lines matching glob "rted #1" within 10 seconds
+        alice: reports histogram polkadot_pvf_execution_time has at least 2 samples in buckets ["0.1", "0.25", "0.5", "+Inf"] within 100 seconds
+        
+        ```
 
-#### `System events assertion`
+??? function "`Metric` - get metric from Prometheus and assert on the target value"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Find a system event from subscription by matching a pattern | node-name: `system event (contains|matches)(regex| glob) "pattern" [within x seconds]` |
+    === "Syntax"
 
-- Examples:
-    - alice: system event matches ""paraId":[0-9]+" within 10 seconds
+        - `node-name`: `reports metric_name comparator target_value (e.g "is at least x", "is greater than x") [within x seconds]`
 
-#### `Tracing assertion`
+    === "Example Outputs"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Match an array of span names from the supplied traceID | node-name: `trace with traceID contains ["name", "name2",...]` |
+        ```bash
 
-- Examples:
-    - alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chunk-request", "answer-chunk-request"]
+        alice: reports node_roles is 4
+        alice: reports sub_libp2p_is_major_syncing is 0
+        
+        ```
 
-#### `Custom js scripts and custom ts scripts`
+??? function "`Log line` - get logs from nodes and assert on the matching pattern"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Run a custom JS script and assert on the return value | node-name: `js-script script_relative_path [return is comparator target_value] [within x seconds]` |
-| Run a custom TS script and assert on the return value | node-name: `ts-script script_relative_path [return is comparator target_value] [within x seconds]` |
+    === "Syntax"
 
-- Examples:
-    - alice: js-script ./0008-custom.js return is greater than 1 within 200 seconds
-    - alice: ts-script ./0008-custom-ts.ts return is greater than 1 within 200 seconds
+        - `node-name`: `log line (contains|matches) (regex|glob) "pattern" [within x seconds]`
 
-#### `Backchannel`
+    === "Example Output"
 
-| Description                  | Syntax                                             |
-| ---------------------------- | ------------------------------------------------------ |
-| Wait for a value and register to use | node-name: `wait for var name and use as X [within x seconds]` |
+        ```bash
 
-- Examples:
-  - alice: wait for name and use as X within 30 seconds
+        alice: log line matches glob "rted #1" within 10 seconds
+        
+        ```
+
+??? function "`Count of log lines` - get logs from nodes and assert on the number of lines matching pattern"
+
+    === "Syntax"
+
+        - `node-name`: `count of log lines (containing|matcheing) (regex|glob) "pattern" [within x seconds]`
+
+    === "Example Output"
+
+        ```bash
+
+        alice: count of log lines matching glob "rted #1" within 10 seconds
+        
+        ```
+
+??? function "`System events` - find a system event from subscription by matching a pattern"
+
+    === "Syntax"
+
+        - `node-name`: `system event (contains|matches)(regex| glob) "pattern" [within x seconds]`
+
+    === "Example Output"
+
+        ```bash
+
+        alice: system event matches ""paraId":[0-9]+" within 10 seconds
+        
+        ```
+
+??? function "`Tracing` - match an array of span names from the supplied traceID"
+
+    === "Syntax"
+
+        - `node-name`: `trace with traceID contains ["name", "name2",...]`
+
+    === "Example Output"
+
+        ```bash
+
+        alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chunk-request", "answer-chunk-request"]
+        
+        ```
+
+??? function "`Custom JS scripts` - run a custom JS script and assert on the return value"
+
+    === "Syntax"
+
+        - `node-name`: `js-script script_relative_path [return is comparator target_value] [within x seconds]`
+
+    === "Example Output"
+
+        ```bash
+
+        alice: js-script ./0008-custom.js return is greater than 1 within 200 seconds
+        
+        ```
+
+??? function "`Custom TS scripts` - run a custom TS script and assert on the return value"
+
+    === "Syntax"
+
+        - `node-name`: `ts-script script_relative_path [return is comparator target_value] [within x seconds]`
+
+    === "Example Output"
+
+        ```bash
+
+        alice: ts-script ./0008-custom-ts.ts return is greater than 1 within 200 seconds
+        
+        ```
+
+??? function "`Backchannel` - wait for a value and register to use"
+
+    === "Syntax"
+
+        - `node-name`: `wait for var name and use as X [within x seconds]`
+
+    === "Example Output"
+
+        ```bash
+
+        alice: wait for name and use as X within 30 seconds
+        
+        ```
 
 ### Commands
 
 Commands allow interaction with the nodes and can run pre-defined commands or an arbitrary command in the node.
 
-| Syntax                                             | Description                                                                                                                                          |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| node-name `restart [after x seconds]`              | Stop the process and start again after the x amount of seconds or innmediatly                                                                      |
-| node-name `pause`                                  | Pause (SIGSTOP) the process                                                                                                                          |
-| node-name `resume`                                 | Pause (SIGCONT) the process                                                                                                                          |
-| `sleep x`                                          | Sleep the test-runner for x amount of seconds                                                                                                       |
+??? function "`restart` - stop the process and start again after the `X` amount of seconds or innmediately"
 
+    === "Syntax"
+
+        - `node-name` `restart [after x seconds]`
+
+??? function "`pause` - pause (SIGSTOP) the process"
+
+    === "Syntax"
+
+        - `node-name` `pause`
+
+??? function "`resume` - resume (SIGCONT) the process"
+
+    === "Syntax"
+
+        - `node-name` `resume`
+
+??? function "`sleep` - sleep the test-runner for x amount of seconds"
+
+    === "Syntax"
+
+        - `sleep x`
 
 ## Example
 
