@@ -9,7 +9,7 @@ This tutorial provides an example of how to use Zombienet to spawn a basic netwo
 
 ## Prerequisites
 
-To follow this tutorial, first, you need to have Zombienet installed. If you haven't done so, please follow the instructions in the [Zombienet installation section](../overview.md/#installation).
+To follow this tutorial, first, you need to have Zombienet installed. If you haven't done so, please follow the instructions in the [Installation](../overview.md/#installation){target=_blank} section.
 
 ## Defining the network
 
