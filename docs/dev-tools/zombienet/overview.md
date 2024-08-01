@@ -16,7 +16,7 @@ The framework enables developers to create tests using natural language tools to
 - [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}
 - [Element public channel](https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation){target=_blank}
 
-## Installation
+## Install Zombienet
 
 Zombienet releases are available on the [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}.
 
@@ -39,23 +39,26 @@ In order to install Zombienet, there are multiple options available, depending o
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ```
     !!! note
-        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v1.3.106` and `zombienet-macos-arm64`.
+        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v{{ dev_tools.zombienet.version }}` and `zombienet-{{ dev_tools.zombienet.architecture }}`.
+    
+    !!! note
+        This documentation explains the functionality of Chopsticks version `{{ dev_tools.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
 
     Then, ensure the downloaded file is executable:
 
     ```bash
-    chmod +x zombienet-macos-arm64
+    chmod +x zombienet-{{ dev_tools.zombienet.architecture }}
     ```
 
     Finally, you can run the following command to check if the installation was successful. If so, it will display the version of the installed Zombienet:
 
     ```bash
-    ./zombienet-macos-arm64 version
+    ./zombienet-{{ dev_tools.zombienet.architecture }} version
     ```
 
     If you want to add the `zombienet` executable to your PATH, you can move it to a directory in your PATH, such as `/usr/local/bin`:
     ```bash
-    mv zombienet-macos-arm64 /usr/local/bin/zombienet
+    mv zombienet-{{ dev_tools.zombienet.architecture }} /usr/local/bin/zombienet
     ```
 
     So then, you can refer to the `zombienet` executable directly:
