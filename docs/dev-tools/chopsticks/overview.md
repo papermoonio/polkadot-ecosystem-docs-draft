@@ -231,7 +231,7 @@ npx @acala-network/chopsticks run-block  \
 --block 1000
 ```
 
-??? function "**Output file content**"
+??? code "Output file content"
   
     ```json
     {
