@@ -201,7 +201,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
 Commands allow interaction with the nodes and can run pre-defined commands or an arbitrary command in the node.
 
-??? function "`restart` - stop the process and start again after the `X` amount of seconds or innmediately"
+??? function "`restart` - stop the process and start again after the `X` amount of seconds or immediately"
 
     === "Syntax"
 
@@ -219,7 +219,7 @@ Commands allow interaction with the nodes and can run pre-defined commands or an
 
         - `node-name` `resume`
 
-??? function "`sleep` - sleep the test-runner for x amount of seconds"
+??? function "`sleep` - sleep the test-runner for `x` amount of seconds"
 
     === "Syntax"
 

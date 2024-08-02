@@ -265,11 +265,11 @@ The following sections will guide you through the primary usage of the Zombienet
 
         - `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`
 
-??? function "`convert` - transforms a (now deprecated) polkadot-launch configuration file to a zombienet configuration file"
+??? function "`convert` - transforms a (now deprecated) polkadot-launch configuration file to a Zombienet configuration file"
 
     === "Argument"
 
-        - `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank}
+        - `<filePath>` - path to a [polkadot-launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a `.js` or `.json` extension defined by [the `LaunchConfig` interface](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank}
 
 ??? function "`version` - prints Zombienet version"
 
@@ -519,7 +519,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### Relay Chain Configuration
 
-You can use `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
+You can use the `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
 
 ??? function "`default_command` - the default command to run"
 
