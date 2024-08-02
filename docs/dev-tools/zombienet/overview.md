@@ -252,7 +252,7 @@ The following tables will guide you through the primary usage of the Zombienet C
 | :-------: | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |  `spawn`  |                            Spawn the network defined in the config file                            |                                                          `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out the [Configuration Files](#configuration-files) section                                                           |
 |  `test`   |                                  Run test on the network spawned                                   |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions                                                                       |
-|  `setup`  |                             Set up the Zombienet development environment                           |                                                                                          `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
+|  `setup`  |                            Set up the Zombienet development environment                            |                                                                                          `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
 | `convert` | Transforms a (now deprecated) polkadot-launch configuration file to a zombienet configuration file | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
 | `version` |                                      Prints Zombienet version                                      |                                                                                                                                                          -                                                                                                                                                           |
 |  `help`   |                                      Prints help information                                       |                                                                                                                                                          -                                                                                                                                                           |
@@ -263,15 +263,15 @@ The following tables will guide you through the primary usage of the Zombienet C
 
 Then, you can use different flags to customize the behavior of the CLI:
 
-|                 Argument                  |                                                Description                                                |
-| :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
-|            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `kubernetes`, and, `native`). By default it uses `kubernetes`  |
+|                 Argument                  |                                                 Description                                                 |
+| :---------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
+|            `-p`, `--provider`             | Override provider to use (choices: `podman`, `kubernetes`, and, `native`). By default it uses `kubernetes`  |
 |           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. `-d /home/user/my-zombienet`) |
-|              `-f`, `--force`              |                                    Force override all prompt commands                                     |
-|        `-l`, `--logType` <logType>        |   Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`    |
-|             `-m`, `--monitor`             |                              Start as monitor, do not auto clean up network                               |
-| `-c`, `--spawn-concurrency` <concurrency> |                   Number of concurrent spawning process to launch. By default it is `1`                   |
-|              `-h`, `--help`               |                                         Display help for command                                          |
+|              `-f`, `--force`              |                                     Force override all prompt commands                                      |
+|        `-l`, `--logType` <logType>        |    Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`     |
+|             `-m`, `--monitor`             |                               Start as monitor, do not auto clean up network                                |
+| `-c`, `--spawn-concurrency` <concurrency> |                    Number of concurrent spawning process to launch. By default it is `1`                    |
+|              `-h`, `--help`               |                                          Display help for command                                           |
 
 
 ## Configuration Files 
@@ -332,19 +332,20 @@ For example, the following configuration file defines a minimal example for the 
 
 You can use `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
 
-|                 Key                  |       Type        | Description                                                                                                      | Default Value  |
-| :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :------------- |
-|          `default_command`           |      String       | The default command to run                                                                                       | `polkadot`     |
-|               `chain`                |      String       | The chain name                                                                                                   | `rococo-local` |
-|          `chain_spec_path`           |      String       | Path to the chain spec file. It should be the plain version to allow customizations                              | -              |
-|         `chain_spec_command`         |      String       | Command to generate the chain spec. It can't be used in combination with `chain_spec_path`                       | -              |
-|            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command                                                   | -              |
-| `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version                                                                               | -              |
-|         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes                                                                     | -              |
-|         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default         | -              |
-|     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix                                                                  | `substrate`    |
-|      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis | -              |
-|          `max_nominations`           |      Number       | The max number of nominations allowed by a nominator. Should match the value set in the runtime                  | `24`           |
+|                 Key                  |       Type        | Description                                                                                                      | Default Value     |
+| :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :---------------- |
+|          `default_command`           |      String       | The default command to run                                                                                       | `polkadot`        |
+|           `default_image`            |      String       | The default Docker image to use for the relay chain nodes                                                        | `polkadot:latest` |
+|               `chain`                |      String       | The chain name                                                                                                   | `rococo-local`    |
+|          `chain_spec_path`           |      String       | Path to the chain spec file. It should be the plain version to allow customizations                              | -                 |
+|         `chain_spec_command`         |      String       | Command to generate the chain spec. It can't be used in combination with `chain_spec_path`                       | -                 |
+|            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command                                                   | -                 |
+| `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version                                                                               | -                 |
+|         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes                                                                     | -                 |
+|         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default         | -                 |
+|     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix                                                                  | `substrate`       |
+|      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis | -                 |
+|          `max_nominations`           |      Number       | The max number of nominations allowed by a nominator. Should match the value set in the runtime                  | `24`              |
 
 ??? Nodes
     There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
@@ -542,7 +543,6 @@ For example, the following configuration file defines a minimal example for the 
     | `image`                      | String           | Image to use for the collator                                                                                   | -                    |
     | `command`                    | String           | Command to run for the collator                                                                                 | `polkadot-parachain` |
     | `args`                       | Array of strings | An array of arguments to use as defaults to pass to the command                                                 | -                    |
-    | `substrate_cli_args_version` | 0 \| 1           | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead. | -                    |
     | `command_with_args`          | String           | Overrides both command and arguments for the collator                                                           | -                    |
     | `env`                        | Array of objects | Environment variables to set in the container for the collator                                                  | -                    |
     | `env.name`                   | String           | Name of the environment variable                                                                                | -                    |
@@ -604,7 +604,6 @@ For example, the following configuration file defines a minimal example for the 
     | `env`                        | Array of objects | Environment variables to set in the container for each collator                                                | -                    |
     | `env.name`                   | String           | Name of the environment variable                                                                               | -                    |
     | `env.value`                  | String \| Number | Value of the environment variable                                                                              | -                    |
-    | `substrate_cli_args_version` | 0 \| 1 \| 2      | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead | -                    |
 
     For instance, the configuration file below defines a minimal example for the collator groups:
 
