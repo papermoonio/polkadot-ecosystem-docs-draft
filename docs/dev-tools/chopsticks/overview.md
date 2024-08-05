@@ -88,25 +88,7 @@ The Chopsticks source repository includes a collection of [YAML](https://yaml.or
 An example of a configuration file for Polkadot is as follows:
 
 ```yaml
-endpoint:
-  - wss://rpc.ibp.network/polkadot
-  - wss://polkadot-rpc.dwellir.com
-mock-signature-host: true
-block: ${env.POLKADOT_BLOCK_NUMBER}
-db: ./db.sqlite
-runtime-log-level: 5
-
-import-storage:
-  System:
-    Account:
-      -
-        -
-          - 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
-        - providers: 1
-          data:
-            free: '10000000000000000000'
-  ParasDisputes:
-    $removePrefix: ['disputes'] # those can makes block building super slow
+--8<-- 'code/developer-tools/chopsticks/overview/example-config.yml'
 ```
 
 To run Chopsticks using a configuration file, utilize the `--config` flag. You can use a raw GitHub URL, a path to a local file, or simply the chain's name. For example, the following commands all use Polkadot's configuration in the same way:
@@ -174,18 +156,7 @@ You should now be connected to your local fork and can interact with it as you w
 For programmatic interaction, you can use the Polkadot.js library. Here's a basic example:
 
 ```js
-import { ApiPromise, WsProvider } from '@polkadot/api';
-
-async function connectToFork() {
-  const wsProvider = new WsProvider('ws://localhost:8000');
-  const api = await ApiPromise.create({ provider: wsProvider });
-  await api.isReady;
-  
-  // Now you can use 'api' to interact with your fork
-  console.log(`Connected to chain: ${await api.rpc.system.chain()}`);
-}
-
-connectToFork();
+--8<-- 'code/developer-tools/chopsticks/overview/basic-example.js'
 ```
 
 ## Replaying Blocks
@@ -227,35 +198,7 @@ npx @acala-network/chopsticks xcm \
 
 After running it, you should see output similar to the following:
 
-<div id="termynal" data-termynal>
-    <span data-ty="input"><span class="file-path"></span>npx @acala-network/chopsticks xcm \
---r polkadot \
---p moonbeam \
---p astar</span>
-    <br>
-    <span data-ty>[13:46:07.901] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/moonbeam.yml</span>
-    <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>[13:46:12.631] INFO: Moonbeam RPC listening on port 8000</span>
-    <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>[13:46:12.632] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/astar.yml</span>
-    <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>        chopsticks::executor  TRACE: Calling Metadata_metadata</span>
-    <span data-ty>        chopsticks::executor  TRACE: Completed Metadata_metadata</span>
-    <span data-ty>[13:46:23.669] INFO: Astar RPC listening on port 8001</span>
-    <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>[13:46:25.144] INFO (xcm): Connected parachains [2004,2006]</span>
-    <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>[13:46:25.144] INFO: Loading config file https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot.yml</span>
-        <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>        chopsticks::executor  TRACE: Calling Metadata_metadata</span>
-    <span data-ty>        chopsticks::executor  TRACE: Completed Metadata_metadata</span>
-    <span data-ty>[13:46:53.320] INFO: Polkadot RPC listening on port 8002</span>
-    <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>[13:46:54.038] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Moonbeam'</span>
-    <span data-ty>    app: "chopsticks"</span>
-    <span data-ty>[13:46:55.028] INFO (xcm): Connected relaychain 'Polkadot' with parachain 'Astar'</span>
-    <span data-ty>    app: "chopsticks"</span>
-</div>
+--8<-- 'code/developer-tools/chopsticks/overview/terminal/fork-output.md'
 
 Now you can interact with the forked chains using the ports specified in the output.
 
@@ -265,56 +208,43 @@ Chopstick's internal WebSocket server has special endpoints that allow the manip
 
 These are the methods that can be invoked and their parameters:
 
-???+ function "**dev_newBlock** (newBlockParams) — Generates one or more new blocks"
+??? function "**dev_newBlock** (newBlockParams) — Generates one or more new blocks"
 
     === "Parameters"
 
         |        Name         |                                 Type                                  |                    Description                     |
         | :-----------------: | :-------------------------------------------------------------------: | :------------------------------------------------: |
-        |       `count`       |                                number                                 |           The number of blocks to build            |
-        |        `dmp`        |                { msg: 0x${string} ; sentAt: number }[]                |   The downward messages to include in the block    |
-        |       `hrmp`        | Record < string \| number, { data: 0x${string} ; sentAt: number }[] > |  The horizontal messages to include in the block   |
-        |        `to`         |                                number                                 |            The block number to build to            |
-        |   `transactions`    |                             0x${string}[]                             |      The transactions to include in the block      |
-        |        `ump`        |                   Record < number, 0x${string}[] >                    |    The upward messages to include in the block     |
-        | `unsafeBlockHeight` |                                number                                 | Build block using a specific block height (unsafe) |
+        |       `count`       |                                ++"number"++              |           The number of blocks to build            |
+        |        `dmp`        |                ++"string"++, ++"number"++                |   The downward messages to include in the block    |
+        |       `hrmp`        |                 ++"string"++, ++"number"++               |  The horizontal messages to include in the block   |
+        |        `to`         |                                ++"number"++                                |            The block number to build to            |
+        |   `transactions`    |                             ++"string[]"++                             |      The transactions to include in the block      |
+        |        `ump`        |                    ++"number"++, ++"string[]"++                    |    The upward messages to include in the block     |
+        | `unsafeBlockHeight` |                                ++"number"++                                 | Build block using a specific block height (unsafe) |
 
     === "Example"
 
         ```js
-        import { ApiPromise, WsProvider } from '@polkadot/api';
-
-        async function main() {
-          const wsProvider = new WsProvider('ws://localhost:8000');
-          const api = await ApiPromise.create({ provider: wsProvider });
-          await api.isReady;
-          await api.rpc('dev_newBlock',{ count:1 })
-        }
-
-        main()
+        --8<-- 'code/developer-tools/chopsticks/overview/dev-newblock-example.js'
         ```
 
 ??? function "**dev_setBlockBuildMode** (buildBlockMode) — Sets block build mode"
 
     === "Parameter"
 
-        |       Name       |               Type               | Description |
-        | :--------------: | :------------------------------: | :---------: |
-        | `buildBlockMode` | "Batch" \| "Instant" \| "Manual" | Build mode  |
+        |       Name       |               Type               | Description           |
+        | :--------------: | :------------------------------: | :-------------------: |
+        | `buildBlockMode` | ++"enum"++ | The build mode |
+        | Options: |          |             |
+        | - `Batch` *One block per batch (default)* |
+        | - `Instant` *One block per transaction* |
+        | - `Manual` *Only build when triggered* |
+
 
     === "Example"
 
         ```js
-        import { ApiPromise, WsProvider } from '@polkadot/api';
-
-        async function main() {
-          const wsProvider = new WsProvider('ws://localhost:8000');
-          const api = await ApiPromise.create({ provider: wsProvider });
-          await api.isReady;
-          await api.rpc('dev_setBlockBuildMode', "Instant")
-        }
-
-        main()
+        --8<-- 'code/developer-tools/chopsticks/overview/dev-setBlockBuildMode-example.js'
         ```
 
 ??? function "**dev_setHead** (hashOrNumber) — Sets the head of the blockchain to a specific hash or number"
@@ -323,21 +253,12 @@ These are the methods that can be invoked and their parameters:
 
         |     Name     |         Type          |               Description               |
         | :----------: | :-------------------: | :-------------------------------------: |
-        | hashOrNumber | number \| 0x${string} | The block hash or number to set as head |
+        | `hashOrNumber` | ++"string"++ | The block hash or number to set as head |
 
     === "Example"
 
         ```js
-        import { ApiPromise, WsProvider } from '@polkadot/api';
-
-        async function main() {
-          const wsProvider = new WsProvider('ws://localhost:8000');
-          const api = await ApiPromise.create({ provider: wsProvider });
-          await api.isReady;
-          await api.rpc('dev_setHead', 500)
-        }
-
-        main()
+        --8<-- 'code/developer-tools/chopsticks/overview/dev-setHead-example.js'
         ```
 
 ??? function "**dev_setRuntimeLogLevel** (runtimeLogLevel) — Sets the runtime log level"
@@ -346,21 +267,12 @@ These are the methods that can be invoked and their parameters:
 
         |      Name       |  Type  |         Description          |
         | :-------------: | :----: | :--------------------------: |
-        | runtimeLogLevel | number | The runtime log level to set |
+        | `runtimeLogLevel` | ++"number"++ | The runtime log level to set |
 
     === "Example"
 
         ```js
-        import { ApiPromise, WsProvider } from '@polkadot/api';
-
-        async function main() {
-          const wsProvider = new WsProvider('ws://localhost:8000');
-          const api = await ApiPromise.create({ provider: wsProvider });
-          await api.isReady;
-          await api.rpc('dev_setRuntimeLogLevel', 1)
-        }
-
-        main()
+        --8<-- 'code/developer-tools/chopsticks/overview/dev-setRuntimeLogLevel-example.js'
         ```
 
 ??? function "**dev_setStorage** (values, blockHash) — Creates or overwrites the value of any storage"
@@ -369,31 +281,13 @@ These are the methods that can be invoked and their parameters:
 
         |   Name    |    Type     |                    Description                     |
         | :-------: | :---------: | :------------------------------------------------: |
-        |  values   |   Object    | JSON object resembling the path to a storage value |
-        | blockHash | 0x${string} |      The block hash to set the storage value       |
+        |  `values`   |   ++"object"++    | JSON object resembling the path to a storage value |
+        | `blockHash` | ++"string"++ |      The block hash to set the storage value       |
 
     === "Example"
 
         ```js
-        import { ApiPromise, WsProvider } from '@polkadot/api';
-
-        import { Keyring } from '@polkadot/keyring'
-        async function main() {
-            const wsProvider = new WsProvider('ws://localhost:8000');
-            const api = await ApiPromise.create({ provider: wsProvider });
-            await api.isReady;
-            const keyring = new Keyring({ type: 'ed25519' })
-            const bob = keyring.addFromUri('//Bob')
-            const storage = {
-              System: {
-                Account: [[[bob.address], { data: { free: 100000 }, nonce: 1 }]],
-              },
-            }
-            await api.rpc('dev_setStorage', storage)
-          }
-
-        main()
-
+        --8<-- 'code/developer-tools/chopsticks/overview/dev-setStorage-example.js'
         ```
 
 ??? function "**dev_timeTravel** (date) — Sets the timestamp of the block to a specific date"
@@ -402,19 +296,10 @@ These are the methods that can be invoked and their parameters:
         
         | Name  |       Type       |                                               Description                                                |
         | :---: | :--------------: | :------------------------------------------------------------------------------------------------------: |
-        | date  | string \| number | Timestamp or date string to set. All future blocks will be sequentially created after this point in time |
+        | `date`  | ++"string"++ | Timestamp or date string to set. All future blocks will be sequentially created after this point in time |
 
     === "Example"
 
         ```js
-        import { ApiPromise, WsProvider } from '@polkadot/api';
-
-        async function main() {
-          const wsProvider = new WsProvider('ws://localhost:8000');
-          const api = await ApiPromise.create({ provider: wsProvider });
-          await api.isReady;
-          await api.rpc('dev_timeTravel', "2030-08-15T00:00:00")
-        }
-
-        main()
+        --8<-- 'code/developer-tools/chopsticks/overview/dev-timeTravel-example.js'
         ```
