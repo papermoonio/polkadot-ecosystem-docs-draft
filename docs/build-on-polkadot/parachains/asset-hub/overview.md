@@ -7,9 +7,18 @@ description: Guide to learn and implement Asset Hub parachain on Polkadot, a dec
 
 ## Introduction
 
-Asset Hub is a [System Parachain](https://wiki.polkadot.network/docs/learn-system-chains){target=_blank} designed to manage and operate assets within the Polkadot network. It specializes in creating, managing, and using assets and is considered the primary hub for asset operations in the network. 
+Asset Hub is a [System Parachain](https://wiki.polkadot.network/docs/learn-system-chains){target=_blank} designed to manage and operate assets within the Polkadot network. It specializes in creating, managing, and, using assets. It is considered the primary hub for asset operations in the network. 
 
-DOT is the native token used in the Asset Hub, and it maintains a trusted relationship with the Relay Chain, enabling it to transfer DOT between the two.
+For the Polkadot Asset Hub, the native token is DOT, and for the Kusama Asset Hub, the native token is KSM. Both cases maintain a trusted relationship with the relay chain.
+
+To transfer either DOT or KSM to the Asset Hub, you can refer to [this guide](https://support.polkadot.network/support/solutions/articles/65000181119){target=_blank}.
+
+Some common use cases for Asset Hub include:
+
+- Creating and managing assets
+- Transferring non-native tokens and creating NFTs
+- Reducing transfer fees and [existential deposits](https://support.polkadot.network/support/solutions/articles/65000168651){target=_blank}
+- Meeting the existential deposit requirement for insufficient assets
 
 ## Assets
 
@@ -17,7 +26,22 @@ An asset on the blockchain is a digital representation of value, such as cryptoc
 
 The [Asset Pallet](https://paritytech.github.io/polkadot-sdk/master/pallet_assets/index.html){target=_blank} facilitates the management of these assets by providing essential functions for handling them.
 
+Asset Hub acts as a management portal for asset creators, letting them mint and burn tokens, and get an overview of the total issuance across the Polkadot network, including tokens sent elsewhere in the network.
+
 ### Local Assets
+
+Instead of using custom contracts for each asset, Asset Hub incorporates built-in asset logic, treating them as primary primitives. All assets have identical functionality.
+
+These assets, identified by claimable, integer-based asset IDs, are known as `local assets`. This approach simplifies the process of managing assets, as users can interact with them using the same set of functions.
+
+The protocol ensures that each asset ID (an integer) is unique, enabling creators to assign metadata such as the asset symbol. Therefore, users should verify their assets to confirm that they possess the correct ID. For instance, although anyone can label their asset as USDT, users will probably seek the one issued by [Tether](https://tether.to/en/){target=_blank} (asset ID 1984).
+
+For more information on how to verify the legitimacy of an asset on Asset Hub, you can read [this article](https://support.polkadot.network/support/solutions/articles/65000181800){target=_blank}
 
 ### Foreign Assets
 
+Foreign assets in Asset Hub are assets that originate from a different blockchain than Asset Hub itself. These assets can be native tokens from different parachains or tokens from other consensus systems, such as Ethereum. Once a foreign asset is added to Asset Hub, users have the ability to transfer this token from its original blockchain to Asset Hub and utilize it like any other asset.
+
+A significant difference lies in the method used for their identification. Unlike the Assets pallet, foreign assets use [`XCM Multilocation`](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=_blank} instead of integers to identify assets, making asset identification much more versatile.
+
+Foreign assets are implemented as an [instance of Assets pallet](https://github.com/paritytech/polkadot-sdk/blob/035211d707d0a74a2a768fd658160721f09d5b44/cumulus/parachains/runtimes/assets/asset-hub-rococo/src/lib.rs#L408){target=_blank}, but with a specialized configuration that enables support for xcm operations.
