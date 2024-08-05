@@ -251,7 +251,10 @@ The following sections will guide you through the primary usage of the Zombienet
 
     === "Argument"
 
-        - `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out the [Configuration Files](#configuration-files) section
+        - `<networkConfig>` - a file that declares the desired network to be spawned in `.toml` or `.json` format. For further information, check out the [Configuration Files](#configuration-files) section
+
+    !!! warning
+    For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build Polkadot binary, and manually add it to their PATH.
 
 ??? function "`test` - run test on the network spawned"
 
@@ -275,71 +278,67 @@ The following sections will guide you through the primary usage of the Zombienet
 
     === "Argument"
 
-        - none 
+        None 
 
 ??? function "`help` - prints help information"
 
     === "Argument"
 
-        - none 
-
-!!! warning
-    For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build Polkadot binary, and manually add it to their PATH.
+        None 
 
 ### CLI Flags
 
 You can use the following flags to customize the behavior of the CLI:
 
-??? function "`-p`, `--provider` - override provider to use"
+??? function "`-p`, `--provider` - override provider to use. Defaults to `kubernetes`"
     
-    === "Options"
+    === "Argument"
 
-        - `podman`
-        - `kubernetes` (default)
-        - `native`
+        - `<provider>` - the provider to use. Options: `podman`, `kubernetes`, `native`
 
 ??? function "`-d`, `--dir` - directory path for placing the network files instead of random temp one"
 
-    === "Options"
+    === "Argument"
 
-        - `<path>` 
-        - example: `-d /home/user/my-zombienet`
+        - `<path>` - desired path for network files  
+
+    === "Example"
+
+        - `-d /home/user/my-zombienet`
 
 ??? function "`-f`, `--force` - force override all prompt commands"
 
-    === "Options"
+    === "Argument"
 
-        - none
+        None
 
-??? function "`-l`, `--logType` - type of logging on the console"
+??? function "`-l`, `--logType` - type of logging on the console. Defaults to `table`"
 
-    === "Options"
+    === "Argument"
 
-        - `table` (default)
-        - `text`
-        - `silent`
+        - `<logType>` desired type of logging. Options: `table`, `text`, `silent`
 
 ??? function "`-m`, `--monitor` - start as monitor, do not auto clean up network"
 
-    === "Options"
+    === "Argument"
 
-        - none
+        None
 
-??? function "`-c`, `--spawn-concurrency` - number of concurrent spawning processes to launch"
+??? function "`-c`, `--spawn-concurrency` - number of concurrent spawning processes to launch. Defaults to `1`"
 
-    === "Options"
+    === "Argument"
 
-        - defaults to `1`
+        - `<concurrency>` - desired quantity of processes
 
 ??? function "`-h`, `--help` - display help for command"
 
-    === "Options"
+    === "Argument"
 
-        - none
+        None
 
 ## Configuration Files 
 
-The network configuration can be given in either `json` or `toml` format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
+The network configuration can be given in either `.json` or `.toml` format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
 
 !!! note
     Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
@@ -348,146 +347,20 @@ The network configuration can be given in either `json` or `toml` format. The Zo
 
 Through the keyword `settings`, it's possible to define the general settings for the network. The available keys are:
 
-??? function "`bootnode` - add bootnode to network"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `true`
-
-??? function "`timeout` - global timeout to use for spawning the whole network"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`provider` - provider to use (e.g., Kubernetes, Podman)"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `kubernetes`
-
-??? function "`backchannel` - deploy an instance of backchannel server. Only available on Kubernetes"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `false`
-
-??? function "`polkadot_introspector` - Deploy an instance of polkadot-introspector. Only available on Podman and Kubernetes"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `false`
-
-??? function "`jaeger_agent` - the Jaeger agent endpoint passed to the nodes. Only available on Kubernetes"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`enable_tracing` - enable the tracing system. Only available on Kubernetes"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `true`
-
-??? function "`tracing_collator_url` - the URL of the tracing collator used to query by the tracing assertion"
-
-    === "Type"
-
-        - String
-        - Should be tempo query compatible
-
-    === "Default Value"
-
-        - none
-
-??? function "`tracing_collator_service_name` - service name for tempo query frontend. Only available on Kubernetes"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `tempo-tempo-distributed-query-frontend`
-
-??? function "`tracing_collator_service_namespace` - namespace where tempo is running. Only available on Kubernetes"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `tempo`
-
-??? function "`tracing_collator_service_port` - port of the query instance of tempo. Only available on Kubernetes"
-
-    === "Type"
-
-        - Number
-        
-    === "Default Value"
-    
-        - `3100`
-
-??? function "`node_spawn_timeout` - timeout to spawn pod/process"
-
-    === "Type"
-
-        - Number
-        
-    === "Default Value"
-    
-        - `per provider`
-
-??? function "`local_ip` - IP used for exposing local services (rpc/metrics/monitors)"
-
-    === "Type"
-
-        - String
-        
-    === "Default Value"
-    
-        - `"127.0.0.1"`
-
-??? function "`node_verifier` - allow managing how to verify node readiness or disable by using `none`"
-
-    === "Type"
-
-        - String
-        
-    === "Default Value"
-    
-        - `Metric`
+- `bootnode` ++"boolean"++ - add bootnode to network. Default is `true`
+- `timeout` ++"number"++ - global timeout to use for spawning the whole network"
+- `provider` ++"string"++ - provider to use. Default is `kubernetes`"
+- `backchannel` ++"boolean"++ - deploy an instance of backchannel server. Only available on Kubernetes. Defaults to `false`
+- `polkadot_introspector` ++"boolean"++ - deploy an instance of polkadot-introspector. Only available on Podman and Kubernetes. Defaults to `false`
+- `jaeger_agent` ++"string"++ - the Jaeger agent endpoint passed to the nodes. Only available on Kubernetes
+- `enable_tracing` ++"boolean"++ - enable the tracing system. Only available on Kubernetes. Defaults to `true`
+- `tracing_collator_url` ++"string"++ - the URL of the tracing collator used to query by the tracing assertion. Should be tempo query compatible
+- `tracing_collator_service_name` ++"string"++ - service name for tempo query frontend. Only available on Kubernetes. Defaults to `tempo-tempo-distributed-query-frontend`
+- `tracing_collator_service_namespace` ++"string"++ - namespace where tempo is running. Only available on Kubernetes. Defaults to `tempo`
+- `tracing_collator_service_port` ++"number"++ - port of the query instance of tempo. Only available on Kubernetes. Defaults to `3100`
+- `node_spawn_timeout` ++"number"++ - timeout to spawn pod/process. Defaults to `per provider`
+- `local_ip` ++"string"++ - IP used for exposing local services (rpc/metrics/monitors). Defaults to `"127.0.0.1"`
+- `node_verifier` ++"string"++ - allow managing how to verify node readiness or disable by using `none`. Defaults to `Metric`
 
 For example, the following configuration file defines a minimal example for the settings:
 
@@ -521,332 +394,43 @@ For example, the following configuration file defines a minimal example for the 
 
 You can use the `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
 
-??? function "`default_command` - the default command to run"
-
-    === "Type" 
-
-        - String
-
-    === "Default Value"
-
-        - `polkadot`
-
-??? function "`chain` - the chain name"
-
-    === "Type" 
-
-        - String
-
-    === "Default Value"
-
-        - `rococo-local`
-
-??? function "`chain_spec_path` - path to the chain spec file"
-
-    === "Type" 
-
-        - String
-        - Should be the plain version to allow customizations
-
-    === "Default Value"
-
-        - none
-
-??? function "`chain_spec_command` - command to generate the chain spec. It can't be used in combination with `chain_spec_path`"
-
-    === "Type" 
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`default_args` - an array of arguments to use as default to pass to the command"
-
-    === "Type" 
-
-        - Array of strings
-
-    === "Default Value"
-
-        - none
-
-??? function "`default_substrate_cli_args_version` - set the Substrate CLI args version"
-
-    === "Type" 
-
-        - 0 \| 1 \| 2
-
-    === "Default Value"
-
-        - none
-
-??? function "`default_overrides` - an array of overrides to upload to the nodes"
-
-    === "Type" 
-
-        - Array of objects
-
-    === "Default Value"
-
-        - none
-
-??? function "`default_resources` - represents the resources limits/reservations needed by the nodes by default. Only available on Kubernetes"
-
-    === "Type" 
-
-        - Object
-
-    === "Default Value"
-
-        - none
-
-??? function "`default_prometheus_prefix` - a parameter for customizing the metric's prefix"
-
-    === "Type" 
-
-        - String
-
-    === "Default Value"
-
-        - `substrate`
-
-??? function "`random_nominators_count` - if set and the stacking pallet is enabled, Zombienet will generate the input quantity of nominators and inject them into the genesis"
-
-    === "Type" 
-
-        - Number (optional)
-
-    === "Default Value"
-
-        - none
-
-??? function "`max_nominations` - the max number of nominations allowed by a nominator"
-
-    === "Type" 
-
-        - Number
-
-    === "Default Value"
-
-        - `24`
-        - should match the value set in the runtime
+- `default_command` ++"string"++ - the default command to run. Defaults to `polkadot`
+- `chain` ++"string"++ - the chain name
+- `chain_spec_path` ++"string"++ - path to the chain spec file. Should be the plain version to allow customizations
+- `chain_spec_command` ++"string"++ - command to generate the chain spec. It can't be used in combination with `chain_spec_path`
+- `default_args` ++"string[]"++ - an array of arguments to use as default to pass to the command
+- `default_substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version
+- `default_overrides` ++"Override object[]"++ - an array of overrides to upload to the nodes
+- `default_resources` ++"Resources object"++ - represents the resources limits/reservations needed by the nodes by default. Only available on Kubernetes
+- `default_prometheus_prefix` ++"string"++ - a parameter for customizing the metric's prefix. Defaults to `substrate`
+- `random_nominators_count` ++"number"++ - if set and the stacking pallet is enabled, Zombienet will generate the input quantity of nominators and inject them into the genesis
+- `max_nominations` ++"number"++ - the max number of nominations allowed by a nominator. Should match the value set in the rumtime. Defaults to `24`
 
 ### Node Configuration
 
 There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
 
-??? function "`name` - name of the node"
-
-    === "Type"
-
-        - String
-        -  Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
-
-    === "Default Value"
-
-        - none
-
-??? function "`image` - override default Docker image to use for this node"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`command` - override default command to run"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`command_with_args` - override default command and arguments"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`args` - arguments to be passed to the command"
-
-    === "Type"
-
-        - Array of strings
-
-    === "Default Value"
-
-        - none
-
-??? function "`substrate_cli_args_version` - set the Substrate CLI args version directly to skip binary evaluation overhead"
-
-    === "Type"
-
-        - | 0 \| 1 \| 2
-
-    === "Default Value"
-
-        - none
-
-??? function "`validator` - pass the `--validator` flag to the command"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `true`
-
-??? function "`invulnerable` - if true, add the node to invulnerables in the chain spec"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `false`
-
-??? function "`balance` - balance to set in balances for node's account"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - `2000000000000`
-
-??? function "`env` - environment variables to set in the container"
-
-    === "Type"
-
-        - Array of objects
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.name` - name of the environment variable"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.value` - value of the environment variable"
-
-    === "Type"
-
-        - String \| Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`bootnodes` - array of bootnodes to use"
-
-    === "Type"
-
-        - Array of strings
-
-    === "Default Value"
-
-        - none
-
-??? function "`overrides` - array of overrides definitions"
-
-    === "Type"
-
-        - Array of objects
-
-    === "Default Value"
-
-        - none
-
-??? function "`add_to_bootnodes` - add this node to the bootnode list"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `false`
-
-??? function "`resources` - represent the resources limits/reservations needed by the node. Only available on Kubernetes"
-
-    === "Type"
-
-        - Object
-
-    === "Default Value"
-
-        - none
-
-??? function "`ws_port` - WS port to use"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`rpc_port` - RPC port to use"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`prometheus_port` - Prometheus port to use"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`prometheus_prefix` - customizes the metric's prefix for the specific node"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `substrate`
-
-??? function "`keystore_key_types` - defines which keystore keys should be created"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
+- `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
+- `image` ++"string"++ - override default Docker image to use for this node
+- `command` ++"string"++ - override default command to run
+- `command_with_args` ++"string"++ - override default command and arguments
+- `args` ++"string[]"++ - arguments to be passed to the command
+- `substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version directly to skip binary evaluation overhead
+- `validator` ++"boolean"++ - pass the `--validator` flag to the command. Defaults to `true`
+- `invulnerable` ++"boolean"++ - if true, add the node to invulnerables in the chain spec. Defaults to `false`
+- `balance` ++"number"++ - balance to set in balances for node's account. Defaults to `2000000000000`
+- `env` ++"objects[]"++ - environment variables to set in the container
+- `env.name` ++"string"++ - name of the environment variable
+- `env.value` ++"string"++ - value of the environment variable
+- `bootnodes` ++"string[]"++ - array of bootnodes to use
+- `overrides` ++"object[]"++ - array of overrides definitions
+- `add_to_bootnodes` ++"boolean"++ - add this node to the bootnode list. Defaults to `false`
+- `resources` ++"object"++ - represent the resources limits/reservations needed by the node. Only available on Kubernetes
+- `ws_port` ++"number"++ - WS port to use
+- `rpc_port` ++"number"++ - RPC port to use
+- `prometheus_port` ++"number"++ - Prometheus port to use
+- `prometheus_prefix` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
+- `keystore_key_types` ++"string"++ - defines which keystore keys should be created
     
 The following configuration file defines a minimal example for the relay chain, including the `nodes` key:
 
@@ -907,127 +491,18 @@ The following configuration file defines a minimal example for the relay chain, 
 
 The `node_groups` key is used to define further parameters for the node groups. The available keys are:
 
-??? function "`name` - Group name, used for naming the nodes"
-
-    === "Type"
-
-        - String (e.g., `name-1`)
-        - any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group')
-
-    === "Default Value"
-
-        - none
-
-??? function "`count` - number of nodes to launch for this group"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`image` - override default Docker image to use for this node"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`command` - override default command to run"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`args` - arguments to be passed to the command"
-
-    === "Type"
-
-        - Array of strings
-
-    === "Default Value"
-
-        - none
-
-??? function "`env` - environment variables to set in the container"
-
-    === "Type"
-
-        - Array of objects
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.name` - name of the environment variable"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.value` - value of the environment variable"
-
-    === "Type"
-
-        - String \| Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`overrides` - array of overrides definitions"
-
-    === "Type"
-
-        - Array of objects
-
-    === "Default Value"
-
-        - none
-
-??? function "`prometheus_prefix` - a parameter for customizing the metric's prefix for the specific node group"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `substrate`
-
-??? function "`resources` - represent the resources limits/reservations needed by the node. Only available on Kubernetes"
-
-    === "Type"
-
-        - Object
-
-    === "Default Value"
-
-        - none
-
-??? function "`substrate_cli_args_version` - set the Substrate CLI args version directly to skip binary evaluation overhead"
-
-    === "Type"
-
-        - | 0 \| 1 \| 2
-
-    === "Default Value"
-
-        - none
-
+- `name` ++"string"++ - group name, used for naming the nodes. Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group')
+- `count` ++"number"++ - number of nodes to launch for this group
+- `image` ++"string"++ - override default Docker image to use for this node
+- `command` ++"string"++ - override default command to run
+- `args` ++"string[]"++ - arguments to be passed to the command
+- `env` ++"object[]"++ - environment variables to set in the container
+- `env.name` ++"string"++ - name of the environment variable
+- `env.value` ++"string"++ - value of the environment variable
+- `overrides` ++"object[]"++ - array of overrides definitions
+- `prometheus_prefix` ++"string"++ - a parameter for customizing the metric's prefix for the specific node group. Defaults to `substrate`
+- `resources` ++"object[]"++ - represent the resources limits/reservations needed by the node. Only available on Kubernetes
+- `substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version directly to skip binary evaluation overhead
 
 The following configuration file defines a minimal example for the relay chain, including the `node_groups` key:
     
@@ -1080,106 +555,16 @@ The following configuration file defines a minimal example for the relay chain, 
 
 The `parachain` keyword is used to define further parameters for the parachain. The available keys are:
 
-??? function "`id` - the id to assign to this parachain. Must be unique"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`add_to_genesis` - flag to add parachain to genesis or register in runtime"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `true`
-
-??? function "`cumulus_based` - flag to use cumulus command generation"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `true`
-
-??? function "`genesis_wasm_path` - path to the wasm file to use"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`genesis_wasm_generator` - command to generate the wasm file"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`genesis_state_path` - path to the state file to use"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`genesis_state_generator` - command to generate the state file"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`prometheus_prefix` - parameter for customizing the metric's prefix for all parachain nodes/collators"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `substrate`
-
-??? function "`onboard_as_parachain` - flag to specify whether the para should be onboarded as a parachain or stay a parathread"
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `true`
-
-??? function "`register_para` - flag to specify whether the para should be registered."
-
-    === "Type"
-
-        - Boolean
-
-    === "Default Value"
-
-        - `true`
-        - The `add_to_genesis` flag must be set to false for this flag to have any effect
+- `id` ++"number"++ - the id to assign to this parachain. Must be unique
+- `add_to_genesis` ++"boolean"++ - flag to add parachain to genesis or register in runtime. Defaults to `true`
+- `cumulus_based` ++"boolean"++ - flag to use cumulus command generation. Defaults to `true`
+- `genesis_wasm_path` ++"string"++ - path to the wasm file to use
+- `genesis_wasm_generator` ++"string"++ - command to generate the wasm file
+- `genesis_state_path` ++"string"++ - path to the state file to use
+- `genesis_state_generator` ++"string"++ - command to generate the state file
+- `prometheus_prefix` ++"string"++ - parameter for customizing the metric's prefix for all parachain nodes/collators. Defaults to `substrate`
+- `onboard_as_parachain` ++"boolean"++ - flag to specify whether the para should be onboarded as a parachain, rather than remaining a parathread. Defaults to `true`
+- `register_para` ++"boolean"++ - flag to specify whether the para should be registered. The `add_to_genesis` flag must be set to false for this flag to have any effect. Defaults to `true`
 
 For example, the following configuration file defines a minimal example for the parachain:
 
@@ -1215,106 +600,16 @@ For example, the following configuration file defines a minimal example for the 
    
 One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The available keys are:
 
-??? function "`name` - name of the collator"
-
-    === "Type"
-
-        - String
-        - Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
-
-    === "Default Value"
-
-        - none
-
-??? function "`image` - image to use for the collator"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`command` - command to run for the collator"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `polkadot-parachain`
-
-??? function "`args` - an array of arguments to use as defaults to pass to the command"
-
-    === "Type"
-
-        - Array of strings
-
-    === "Default Value"
-
-        - none
-
-??? function "`substrate_cli_args_version` - sets the version directly to skip default Zombienet behavior of evaluating the binary to determine and set the correct version"
-
-    === "Type"
-
-        - | 0 \| 1
-
-    === "Default Value"
-
-        - none
-
-??? function "`command_with_args` - overrides both command and arguments for the collator"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`env` - environment variables to set in the container for the collator"
-
-    === "Type"
-
-        - Array of objects
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.name` - name of the environment variable"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.value` - value of the environment variable"
-
-    === "Type"
-
-        - String \| Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`keystore_key_types` - defines which keystore keys should be created. For more details, refer to additional documentation"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
+- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
+- `image` ++"string"++ - image to use for the collator
+- `command` ++"string"++ - command to run for the collator. Defaults to `polkadot-parachain`
+- `args` ++"string[]"++ - an array of arguments to use as defaults to pass to the command
+- `substrate_cli_args_version` ++"enum"++ - sets the version directly to skip default Zombienet behavior of evaluating the binary to determine and set the correct version
+- `command_with_args` ++"string"++ - overrides both command and arguments for the collator
+- `env` ++"object[]"++ - environment variables to set in the container for the collator
+- `env.name` ++"string"++ - name of the environment variable
+- `env.value` ++"string"++ - value of the environment variable
+- `keystore_key_types` ++"string"++ - defines which keystore keys should be created. For more details, refer to additional documentation
 
 The configuration file below defines a minimal example for the collator:
 
@@ -1362,126 +657,16 @@ The configuration file below defines a minimal example for the collator:
    
 The `collator_groups` key is used to define further parameters for the collator groups. The available keys are:
 
-??? function "`name`  - name of the collator"
-
-    === "Type"
-
-        - String
-        - Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
-
-    === "Default Value"
-
-        - none
-
-??? function "`count`  - number of collators to launch for this group"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`count`  - number of collators to launch for this group"
-
-    === "Type"
-
-        - Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`image`  - image to use for the collators"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`command`  - command to run for each collator"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - `polkadot-parachain`
-
-??? function "`args`  - an array of arguments to use as defaults to pass to the command"
-
-    === "Type"
-
-        - Array of strings
-
-    === "Default Value"
-
-        - none
-
-??? function "`args`  - an array of arguments to use as defaults to pass to the command"
-
-    === "Type"
-
-        - Array of strings
-
-    === "Default Value"
-
-        - none
-
-??? function "`command_with_args`  - overrides both command and arguments for each collator"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`env`  - environment variables to set in the container for each collator"
-
-    === "Type"
-
-        - Array of objects
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.name`  - name of the environment variable"
-
-    === "Type"
-
-        - String
-
-    === "Default Value"
-
-        - none
-
-??? function "`env.value`  - value of the environment variable"
-
-    === "Type"
-
-        - String \| Number
-
-    === "Default Value"
-
-        - none
-
-??? function "`substrate_cli_args_version`  - sets the version directly to skip default Zombienet behavior of evaluating the binary to determine and set the correct version"
-
-    === "Type"
-
-        - | 0 \| 1 \| 2
-
-    === "Default Value"
-
-        - none
+- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
+- `count` ++"number"++ - number of collators to launch for this group
+- `image` ++"string"++ - image to use for the collators
+- `command` ++"string"++ - command to run for each collator. Defaults to `polkadot-parachain`
+- `args` ++"string[]"++ - an array of arguments to use as defaults to pass to the command
+- `command_with_args` ++"string"++ - overrides both command and arguments for each collator
+- `env` ++"object[]"++ - environment variables to set in the container for each collator
+- `env.name` ++"string"++ - name of the environment variable
+- `env.value` ++"string"++ - value of the environment variable
+- `substrate_cli_args_version` ++"enum"++ - sets the version directly to skip default Zombienet behavior of evaluating the binary to determine and set the correct version
 
 For instance, the configuration file below defines a minimal example for the collator groups:
 
@@ -1531,33 +716,8 @@ For instance, the configuration file below defines a minimal example for the col
 
 You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The available keys are:
 
-??? function "`hrmp_channels` - array of HRMP channel configurations"
-
-    === "Type"
-
-        - Array of objects
-
-??? function "`sender` - parachain ID of the sender"
-
-    === "Type"
-
-        - Number
-
-??? function "`recipient` - parachain ID of the recipient"
-
-    === "Type"
-
-        - Number
-
-??? function "`max_capacity` - maximum capacity of the HRMP channel"
-
-    === "Type"
-
-        - Number
-
-??? function "`max_message_size` - maximum message size allowed in the HRMP channel"
-
-    === "Type"
-
-        - Number
-
+- `hrmp_channels` ++"object[]"++ - array of HRMP channel configurations
+- `sender` ++"number"++ - parachain ID of the sender
+- `recipient` ++"number"++ - parachain ID of the recipient
+- `max_capacity` ++"number"++ - maximum capacity of the HRMP channel
+- `max_message_size` ++"number"++ - maximum message size allowed in the HRMP channel
