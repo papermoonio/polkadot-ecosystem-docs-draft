@@ -30,23 +30,9 @@ The test file is a text file with the extension `.zndsl`. It is divided into two
 
 The header is defined by the following fields:
 
-??? function "`description` - long description of the test suite"
-
-    === "Type"
-
-        - String (optional)
-
-??? function "`network` - path to the network definition file, supported in both `json` and `toml` formats"
-
-    === "Type"
-
-        - String
-
-??? function "`creds` - credentials file name or path to use (available only with Kubernetes provider). Looks in the current directory or `$HOME/.kube/` if a file name is passed"
-
-    === "Type"
-
-        - String
+- `description` ++"string"++ - long description of the test suite (optional)
+- `network` ++"string"++ - path to the network definition file, supported in both `.json` and `.toml` formats
+- `creds` ++"string"++ - credentials file name or path to use (available only with Kubernetes provider). Looks in the current directory or `$HOME/.kube/` if a file name is passed
 
 The body contains the tests to run. Each test is defined by a sentence in the DSL, which is mapped to a test to run. Each test line defines an assertion or a command to be executed against the spawned network.
 
@@ -60,7 +46,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `well-known_defined_test [within x seconds]`
 
-    === "Example Outputs"
+    === "Examples"
 
         ```bash
 
@@ -76,7 +62,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `reports histogram memtric_name has comparator target_value samples in buckets ["bucket","bucket",...] [within x seconds]`
 
-    === "Example Outputs"
+    === "Example"
 
         ```bash
 
@@ -90,7 +76,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `reports metric_name comparator target_value (e.g "is at least x", "is greater than x") [within x seconds]`
 
-    === "Example Outputs"
+    === "Examples"
 
         ```bash
 
@@ -105,7 +91,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `log line (contains|matches) (regex|glob) "pattern" [within x seconds]`
 
-    === "Example Output"
+    === "Example"
 
         ```bash
 
@@ -119,7 +105,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `count of log lines (containing|matcheing) (regex|glob) "pattern" [within x seconds]`
 
-    === "Example Output"
+    === "Example"
 
         ```bash
 
@@ -133,7 +119,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `system event (contains|matches)(regex| glob) "pattern" [within x seconds]`
 
-    === "Example Output"
+    === "Example"
 
         ```bash
 
@@ -147,7 +133,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `trace with traceID contains ["name", "name2",...]`
 
-    === "Example Output"
+    === "Example"
 
         ```bash
 
@@ -161,7 +147,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `js-script script_relative_path [return is comparator target_value] [within x seconds]`
 
-    === "Example Output"
+    === "Example"
 
         ```bash
 
@@ -175,7 +161,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `ts-script script_relative_path [return is comparator target_value] [within x seconds]`
 
-    === "Example Output"
+    === "Example"
 
         ```bash
 
@@ -189,7 +175,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
         - `node-name`: `wait for var name and use as X [within x seconds]`
 
-    === "Example Output"
+    === "Example"
 
         ```bash
 
