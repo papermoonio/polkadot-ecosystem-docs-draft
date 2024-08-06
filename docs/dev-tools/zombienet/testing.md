@@ -44,7 +44,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `well-known_defined_test [within x seconds]`
+        - `node-name well-known_defined_test [within x seconds]`
 
     === "Examples"
 
@@ -60,7 +60,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `reports histogram memtric_name has comparator target_value samples in buckets ["bucket","bucket",...] [within x seconds]`
+        - `node-name reports histogram memtric_name has comparator target_value samples in buckets ["bucket","bucket",...] [within x seconds]`
 
     === "Example"
 
@@ -74,7 +74,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `reports metric_name comparator target_value (e.g "is at least x", "is greater than x") [within x seconds]`
+        - `node-name reports metric_name comparator target_value (e.g "is at least x", "is greater than x") [within x seconds]`
 
     === "Examples"
 
@@ -89,7 +89,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `log line (contains|matches) (regex|glob) "pattern" [within x seconds]`
+        - `node-name log line (contains|matches) (regex|glob) "pattern" [within x seconds]`
 
     === "Example"
 
@@ -103,7 +103,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `count of log lines (containing|matcheing) (regex|glob) "pattern" [within x seconds]`
+        - `node-name count of log lines (containing|matcheing) (regex|glob) "pattern" [within x seconds]`
 
     === "Example"
 
@@ -117,7 +117,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `system event (contains|matches)(regex| glob) "pattern" [within x seconds]`
+        - `node-name system event (contains|matches)(regex| glob) "pattern" [within x seconds]`
 
     === "Example"
 
@@ -131,7 +131,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `trace with traceID contains ["name", "name2",...]`
+        - `node-name trace with traceID contains ["name", "name2",...]`
 
     === "Example"
 
@@ -145,7 +145,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `js-script script_relative_path [return is comparator target_value] [within x seconds]`
+        - `node-name js-script script_relative_path [return is comparator target_value] [within x seconds]`
 
     === "Example"
 
@@ -159,7 +159,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `ts-script script_relative_path [return is comparator target_value] [within x seconds]`
+        - `node-name ts-script script_relative_path [return is comparator target_value] [within x seconds]`
 
     === "Example"
 
@@ -173,7 +173,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
 
     === "Syntax"
 
-        - `node-name`: `wait for var name and use as X [within x seconds]`
+        - `node-name wait for var name and use as X [within x seconds]`
 
     === "Example"
 
@@ -191,19 +191,19 @@ Commands allow interaction with the nodes and can run pre-defined commands or an
 
     === "Syntax"
 
-        - `node-name` `restart [after x seconds]`
+        - `node-name restart [after x seconds]`
 
 ??? function "`pause` - pause (SIGSTOP) the process"
 
     === "Syntax"
 
-        - `node-name` `pause`
+        - `node-name pause`
 
 ??? function "`resume` - resume (SIGCONT) the process"
 
     === "Syntax"
 
-        - `node-name` `resume`
+        - `node-name resume`
 
 ??? function "`sleep` - sleep the test-runner for `x` amount of seconds"
 

@@ -254,7 +254,7 @@ The following sections will guide you through the primary usage of the Zombienet
         - `<networkConfig>` - a file that declares the desired network to be spawned in `.toml` or `.json` format. For further information, check out the [Configuration Files](#configuration-files) section
 
     !!! warning
-    For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build Polkadot binary, and manually add it to their PATH.
+        For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build Polkadot binary, and manually add it to their PATH.
 
 ??? function "`test` - run test on the network spawned"
 
@@ -304,7 +304,7 @@ You can use the following flags to customize the behavior of the CLI:
 
     === "Example"
 
-        - `-d /home/user/my-zombienet`
+        ```zombienet -d /home/user/my-zombienet```
 
 ??? function "`-f`, `--force` - force override all prompt commands"
 
@@ -396,7 +396,7 @@ You can use the `relaychain` keyword to define further parameters for the relay 
 
 There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
 
-- `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
+- `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
 - `image` ++"string"++ - override default Docker image to use for this node
 - `command` ++"string"++ - override default command to run
 - `command_with_args` ++"string"++ - override default command and arguments
@@ -436,7 +436,7 @@ The following configuration file defines a minimal example for the relay chain, 
 
 The `node_groups` key is used to define further parameters for the node groups. The available keys are:
 
-- `name` ++"string"++ - group name, used for naming the nodes. Any whitespace will be replaced with a dash (e.g., 'new group' -> 'new-group')
+- `name` ++"string"++ - group name, used for naming the nodes. Any whitespace will be replaced with a dash (e.g., `new group` -> `new-group`)
 - `count` ++"number"++ - number of nodes to launch for this group
 - `image` ++"string"++ - override default Docker image to use for this node
 - `command` ++"string"++ - override default command to run
@@ -496,7 +496,7 @@ For example, the following configuration file defines a minimal example for the 
    
 One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The available keys are:
 
-- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
+- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
 - `image` ++"string"++ - image to use for the collator
 - `command` ++"string"++ - command to run for the collator. Defaults to `polkadot-parachain`
 - `args` ++"string[]"++ - an array of arguments to use as defaults to pass to the command
@@ -525,7 +525,7 @@ The configuration file below defines a minimal example for the collator:
    
 The `collator_groups` key is used to define further parameters for the collator groups. The available keys are:
 
-- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., 'new alice' -> 'new-alice')
+- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
 - `count` ++"number"++ - number of collators to launch for this group
 - `image` ++"string"++ - image to use for the collators
 - `command` ++"string"++ - command to run for each collator. Defaults to `polkadot-parachain`
