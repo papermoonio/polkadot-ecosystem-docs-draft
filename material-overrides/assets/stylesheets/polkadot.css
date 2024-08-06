@@ -22,9 +22,12 @@ body {
   --pink-transparent-50: rgba(230, 0, 122, .5);
   --lime: #D3FF33;
   --purple: #552BBF;
-  --purple-transparent-20: rgba(134,124, 179, .2);
+  --purple-transparent-25: rgba(85, 43, 191, .2);
   --blue: #00B2FF;
   --green: #56F39A;
+
+  --md-admonition-icon--note: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNDEwLjMgMjMxbDExLjMtMTEuMy0zMy45LTMzLjktNjIuMS02Mi4xTDI5MS43IDg5LjhsLTExLjMgMTEuMy0yMi42IDIyLjZMNTguNiAzMjIuOWMtMTAuNCAxMC40LTE4IDIzLjMtMjIuMiAzNy40TDEgNDgwLjdjLTIuNSA4LjQtLjIgMTcuNSA2LjEgMjMuN3MxNS4zIDguNSAyMy43IDYuMWwxMjAuMy0zNS40YzE0LjEtNC4yIDI3LTExLjggMzcuNC0yMi4yTDM4Ny43IDI1My43IDQxMC4zIDIzMXpNMTYwIDM5OS40bC05LjEgMjIuN2MtNCAzLjEtOC41IDUuNC0xMy4zIDYuOUw1OS40IDQ1MmwyMy03OC4xYzEuNC00LjkgMy44LTkuNCA2LjktMTMuM2wyMi43LTkuMXYzMmMwIDguOCA3LjIgMTYgMTYgMTZoMzJ6TTM2Mi43IDE4LjdMMzQ4LjMgMzMuMiAzMjUuNyA1NS44IDMxNC4zIDY3LjFsMzMuOSAzMy45IDYyLjEgNjIuMSAzMy45IDMzLjkgMTEuMy0xMS4zIDIyLjYtMjIuNiAxNC41LTE0LjVjMjUtMjUgMjUtNjUuNSAwLTkwLjVMNDUzLjMgMTguN2MtMjUtMjUtNjUuNS0yNS05MC41IDB6bS00Ny40IDE2OGwtMTQ0IDE0NGMtNi4yIDYuMi0xNi40IDYuMi0yMi42IDBzLTYuMi0xNi40IDAtMjIuNmwxNDQtMTQ0YzYuMi02LjIgMTYuNC02LjIgMjIuNiAwczYuMiAxNi40IDAgMjIuNnoiLz48L3N2Zz4=');
+  --md-admonition-icon--code: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE0LjYsMTYuNkwxOS4yLDEyTDE0LjYsNy40TDE2LDZMMjIsMTJMMTYsMThMMTQuNiwxNi42TTkuNCwxNi42TDQuOCwxMkw5LjQsNy40TDgsNkwyLDEyTDgsMThMOS40LDE2LjZaIiAvPjwvc3ZnPg==');
 }
 
 :root,
@@ -57,8 +60,6 @@ body {
 
   /* Admonition SVGs (base64 encoded) - use Material icons */
   --md-admonition-icon-color--note: #4a93d1;
-  --md-admonition-icon--note: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNDEwLjMgMjMxbDExLjMtMTEuMy0zMy45LTMzLjktNjIuMS02Mi4xTDI5MS43IDg5LjhsLTExLjMgMTEuMy0yMi42IDIyLjZMNTguNiAzMjIuOWMtMTAuNCAxMC40LTE4IDIzLjMtMjIuMiAzNy40TDEgNDgwLjdjLTIuNSA4LjQtLjIgMTcuNSA2LjEgMjMuN3MxNS4zIDguNSAyMy43IDYuMWwxMjAuMy0zNS40YzE0LjEtNC4yIDI3LTExLjggMzcuNC0yMi4yTDM4Ny43IDI1My43IDQxMC4zIDIzMXpNMTYwIDM5OS40bC05LjEgMjIuN2MtNCAzLjEtOC41IDUuNC0xMy4zIDYuOUw1OS40IDQ1MmwyMy03OC4xYzEuNC00LjkgMy44LTkuNCA2LjktMTMuM2wyMi43LTkuMXYzMmMwIDguOCA3LjIgMTYgMTYgMTZoMzJ6TTM2Mi43IDE4LjdMMzQ4LjMgMzMuMiAzMjUuNyA1NS44IDMxNC4zIDY3LjFsMzMuOSAzMy45IDYyLjEgNjIuMSAzMy45IDMzLjkgMTEuMy0xMS4zIDIyLjYtMjIuNiAxNC41LTE0LjVjMjUtMjUgMjUtNjUuNSAwLTkwLjVMNDUzLjMgMTguN2MtMjUtMjUtNjUuNS0yNS05MC41IDB6bS00Ny40IDE2OGwtMTQ0IDE0NGMtNi4yIDYuMi0xNi40IDYuMi0yMi42IDBzLTYuMi0xNi40IDAtMjIuNmwxNDQtMTQ0YzYuMi02LjIgMTYuNC02LjIgMjIuNiAwczYuMiAxNi40IDAgMjIuNnoiLz48L3N2Zz4=');
-  --md-admonition-icon--code: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE0LjYsMTYuNkwxOS4yLDEyTDE0LjYsNy40TDE2LDZMMjIsMTJMMTYsMThMMTQuNiwxNi42TTkuNCwxNi42TDQuOCwxMkw5LjQsNy40TDgsNkwyLDEyTDgsMThMOS40LDE2LjZaIiAvPjwvc3ZnPg==');
 
   --md-home-hero-bg-color: #dcdcdc;
 
@@ -365,10 +366,9 @@ li > nav.md-nav[data-md-level='4'] ul.md-nav__list {
   padding-left: .8rem;
 }
 
-/* Hides paragraph mark at end of anchored text */
-.md-content .headerlink {
+/* Hides paragraph mark at end of anchored text for H1s */
+.md-typeset h1 .headerlink {
   display: none;
-  visibility: hidden;
 }
 
 /* Adjust Nav Bar styling for smaller screens*/
@@ -477,22 +477,22 @@ li > nav.md-nav[data-md-level='4'] ul.md-nav__list {
 /* Styling for custom Admonition notes used for code */
 .md-typeset .admonition.code,
 .md-typeset details.code {
-  border-color: XXX;
+  border-color: var(--purple);
 }
 
 /* Admonition icon background color */
 /* Should be the same as the border color above */
 .md-typeset .code > .admonition-title,
 .md-typeset .code > summary {
-  background-color: XXX;
+  background-color: var(--purple-transparent-25);
 }
 
 /* Admonition top background color */
 .md-typeset .code > .admonition-title::before,
 .md-typeset .code > summary::before {
-  background-color: XXX;
-  -webkit-mask-image: XXX;
-  mask-image: XXX;
+  background-color: var(--purple);
+  -webkit-mask-image: var(--md-admonition-icon--code);
+  mask-image: var(--md-admonition-icon--code);
 }
 
 /* Styling for function description admonition */

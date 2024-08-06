@@ -8,13 +8,13 @@ description: Zombienet provides a Domain Specific Language (DSL) for writing tes
 Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL is designed to be human-readable and allows you to write tests using natural language expressions. You can define assertions and tests against the spawned network using this DSL. This way, users can evaluate different metrics, such as:
 
 - **On-chain storage** - the storage of each of the chains running via Zombienet
-- **Metrics** - the metrics provided by the nodes 
+- **Metrics** - the metrics provided by the nodes
 - **Histograms** - visual representations of metrics data
-- **Logs** - detailed records of system activities and events 
+- **Logs** - detailed records of system activities and events
 - **System events** - notifications of significant occurrences within the network
 - **Tracing** - detailed analysis of execution paths and operations
-- **Custom API calls (through Polkadot.js)** - personalized interfaces for interacting with the network 
-- **Commands** - instructions or directives executed by the network 
+- **Custom API calls (through Polkadot.js)** - personalized interfaces for interacting with the network
+- **Commands** - instructions or directives executed by the network
 
 These abstractions are expressed by sentences defined in a natural language style. Therefore, each test line will be mapped to a test to run. Also, the test file (`*.zndsl`) includes pre-defined header fields used to define information about the suite, such as network configuration and credentials location.
 
@@ -108,9 +108,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
     === "Example"
 
         ```bash
-
         alice: count of log lines matching glob "rted #1" within 10 seconds
-        
         ```
 
 ??? function "`System events` - find a system event from subscription by matching a pattern"
@@ -122,9 +120,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
     === "Example"
 
         ```bash
-
         alice: system event matches ""paraId":[0-9]+" within 10 seconds
-        
         ```
 
 ??? function "`Tracing` - match an array of span names from the supplied traceID"
@@ -136,9 +132,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
     === "Example"
 
         ```bash
-
         alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chunk-request", "answer-chunk-request"]
-        
         ```
 
 ??? function "`Custom JS scripts` - run a custom JS script and assert on the return value"
@@ -150,9 +144,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
     === "Example"
 
         ```bash
-
         alice: js-script ./0008-custom.js return is greater than 1 within 200 seconds
-        
         ```
 
 ??? function "`Custom TS scripts` - run a custom TS script and assert on the return value"
@@ -164,9 +156,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
     === "Example"
 
         ```bash
-
         alice: ts-script ./0008-custom-ts.ts return is greater than 1 within 200 seconds
-        
         ```
 
 ??? function "`Backchannel` - wait for a value and register to use"
@@ -178,9 +168,7 @@ Assertions are defined by sentences in the DSL that evaluate different metrics, 
     === "Example"
 
         ```bash
-
         alice: wait for name and use as X within 30 seconds
-        
         ```
 
 ### Commands
@@ -217,7 +205,7 @@ For example, the following test file defines two tests: a small network test and
 
 The tests define assertions to evaluate the network’s metrics and logs. The assertions are defined by sentences in the DSL, which are mapped to tests to run.
 
-``` toml
+```toml
 Description: Small Network test
 Network: ./0000-test-config-small-network.toml
 Creds: config
@@ -233,7 +221,7 @@ bob: log line matches "Imported #[0-9]+" within 10 seconds
 
 And the second test file:
 
-``` toml
+```toml
 Description: Big Network test
 Network: ./0001-test-config-big-network.toml
 Creds: config
@@ -272,12 +260,11 @@ alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chu
 
 ## Running Tests
 
-To run the tests using the local provider (`native`), you can use the Zombienet binary. The binary will read the test files and execute the tests defined in the DSL. The binary will output the results of the tests in the console. 
+To run the tests using the local provider (`native`), you can use the Zombienet binary. The binary will read the test files and execute the tests defined in the DSL. The binary will output the results of the tests in the console.
 
 ```bash
-zombienet -p native test <INSERT_TEST_FILE_NAME>
+zombienet -p native test INSERT_TEST_FILE_NAME
 ```
 
 !!! note
-    Replace `<INSERT_TEST_FILE_NAME>` with the path to the test file you want to run.
-
+    Replace `INSERT_TEST_FILE_NAME` with the path to the test file you want to run.

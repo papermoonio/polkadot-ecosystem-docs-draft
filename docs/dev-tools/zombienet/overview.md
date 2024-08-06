@@ -16,46 +16,54 @@ The framework enables developers to create tests using natural language tools to
 - [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}
 - [Element public channel](https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation){target=_blank}
 
-## Installation
+## Install Zombienet
 
 Zombienet releases are available on the [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}.
 
 In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following section will guide you through the installation process for each of the available options.
 
-=== "Using the Executable" 
+=== "Using the Executable"
 
     Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository](https://github.com/paritytech/zombienet/releases){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and macOS, which are generated using [pkg](https://github.com/vercel/pkg){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
 
     Alternatively, you can also download the executable using either `curl` or `wget`:
 
     === "curl"
+
         ```bash
         curl -LO \
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
-        ``` 
+        ```
+
     === "wget"
+
         ```bash
         wget \
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ```
+
     !!! note
-        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v1.3.106` and `zombienet-macos-arm64`.
+        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v{{ dev_tools.zombienet.version }}` and `zombienet-{{ dev_tools.zombienet.architecture }}`.
+    
+    !!! note
+        This documentation explains the functionality of Chopsticks version `{{ dev_tools.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
 
     Then, ensure the downloaded file is executable:
 
     ```bash
-    chmod +x zombienet-macos-arm64
+    chmod +x zombienet-{{ dev_tools.zombienet.architecture }}
     ```
 
     Finally, you can run the following command to check if the installation was successful. If so, it will display the version of the installed Zombienet:
 
     ```bash
-    ./zombienet-macos-arm64 version
+    ./zombienet-{{ dev_tools.zombienet.architecture }} version
     ```
 
     If you want to add the `zombienet` executable to your PATH, you can move it to a directory in your PATH, such as `/usr/local/bin`:
+
     ```bash
-    mv zombienet-macos-arm64 /usr/local/bin/zombienet
+    mv zombienet-{{ dev_tools.zombienet.architecture }} /usr/local/bin/zombienet
     ```
 
     So then, you can refer to the `zombienet` executable directly:
@@ -71,20 +79,20 @@ In order to install Zombienet, there are multiple options available, depending o
     To install Zombienet utilizing Nix, users can run the following command, triggering the fetching of the flake and subsequently installing the Zombienet package:
 
     ```bash
-    nix run github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION> -- \
-    spawn <INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
+    nix run github:paritytech/zombienet/INSERT_ZOMBIENET_VERSION -- \
+    spawn INSERT_ZOMBIENET_CONFIG_FILE_NAME.toml
     ```
+
+    !!! note
+        Ensure to replace the `INSERT_ZOMBIENET_VERSION` with the desired version of Zombienet. Also, replace the `INSERT_ZOMBIENET_CONFIG_FILE_NAME` with the name of the configuration file you want to use.
 
     To run the command above, you need to have [Flakes](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank} enabled.
 
     Alternatively, you can also include the Zombienet binary in the PATH for the current shell. This can be achieved by:
     
     ```bash
-    nix shell github:paritytech/zombienet/<INSERT_ZOMBIENET_VERSION>
+    nix shell github:paritytech/zombienet/INSERT_ZOMBIENET_VERSION
     ```
-
-    !!! note
-        Ensure to replace the `<INSERT_ZOMBIENET_VERSION>` with the desired version of Zombienet. Also, replace the `<INSERT_ZOMBIENET_CONFIG_FILE_NAME>` with the name of the configuration file you want to use.
 
 === "Using Docker"
 
@@ -117,22 +125,21 @@ In order to install Zombienet, there are multiple options available, depending o
 
     The command above mounts the current directory to the `/workspace` directory inside the Docker container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
 
-
 ## Providers
 
-Zombienet supports different backend providers in running the nodes. At this moment, [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank}, and local are supported.
+Zombienet supports different backend providers for running the nodes. At this moment, [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank}, and local are supported, which can be declared as `kubernetes`, `podman`, or `native`, respectively.
 
 To use a particular provider, you can specify it in the network file or use the `--provider` flag in the CLI:
-    
+
 ```bash
-zombienet spawn network.toml --provider <provider>
+zombienet spawn network.toml --provider INSERT_PROVIDER
 ```
 
 Alternatively, you can set the provider in the network file:
 
 ```toml
 [settings]
-provider = "<provider>"
+provider = "INSERT_PROVIDER"
 ...
 ```
 
@@ -162,7 +169,7 @@ Zombienet supports Podman rootless as a provider. To use Podman as a provider, y
     Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
 
 #### Features
-    
+
 Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for [Prometheus](https://prometheus.io/){target=_blank}, [Tempo](https://grafana.com/docs/tempo/latest/operations/monitor/){target=_blank}, and [Grafana](https://grafana.com/){target=_blank} are included in the deployment. Grafana is configured with Prometheus and Tempo as data sources.
 
 Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
@@ -174,12 +181,12 @@ Upon launching Zombienet, access to these monitoring services is facilitated thr
 It's important to note that Grafana is deployed with default admin access.
 
 !!! note
-    When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods.
+    When network operations cease —either by halting a running spawn with Ctrl+C or upon completion of the test— Zombienet automatically removes all associated pods.
 
 ### Local
 
 #### Requirements
-    
+
 The Zombienet local provider, also referred to as native, enables you to run nodes as local processes in your environment. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
 
 To install the necessary binaries, you can use the Zombienet CLI command:
@@ -190,12 +197,12 @@ zombienet setup polkadot polkadot-parachain
 
 This command will download and prepare the necessary binaries for Zombienet’s use.
 
-!!! warning 
+!!! warning
     The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
 
-If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [Open Zeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
+If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [OpenZeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
 
-First, clone the Open Zeppelin template repository:
+First, clone the OpenZeppelin template repository:
 
 ```bash
 git clone https://github.com/OpenZeppelin/polkadot-runtime-templates \
@@ -291,7 +298,7 @@ The following sections will guide you through the primary usage of the Zombienet
 You can use the following flags to customize the behavior of the CLI:
 
 ??? function "`-p`, `--provider` - override provider to use. Defaults to `kubernetes`"
-    
+
     === "Argument"
 
         - `<provider>` - the provider to use. Options: `podman`, `kubernetes`, `native`
@@ -336,9 +343,9 @@ You can use the following flags to customize the behavior of the CLI:
 
         None
 
-## Configuration Files 
+## Configuration Files
 
-The network configuration can be given in either `.json` or `.toml` format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
+The network configuration can be given in either JSON or TOML format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
 
 !!! note
     Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
@@ -417,18 +424,18 @@ There is one specific key capable of receiving more subkeys: the `nodes` key. Th
 - `prometheus_port` ++"number"++ - Prometheus port to use
 - `prometheus_prefix` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
 - `keystore_key_types` ++"string"++ - defines which keystore keys should be created
-    
+
 The following configuration file defines a minimal example for the relay chain, including the `nodes` key:
 
 === "TOML"
         
-    ``` toml title="relaychain-example-nodes.toml"
+    ```toml title="relaychain-example-nodes.toml"
     --8<-- 'code/developer-tools/zombienet/overview/relaychain-example-nodes.toml'
     ```
 
 === "JSON"
 
-    ``` json title="relaychain-example-nodes.json"
+    ```json title="relaychain-example-nodes.json"
     --8<-- 'code/developer-tools/zombienet/overview/relaychain-example-nodes.json'
     ```
 
@@ -450,7 +457,7 @@ The `node_groups` key is used to define further parameters for the node groups. 
 - `substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version directly to skip binary evaluation overhead
 
 The following configuration file defines a minimal example for the relay chain, including the `node_groups` key:
-    
+
 === "TOML"
 
     ```toml title="relaychain-example-node-groups.toml"
@@ -493,7 +500,7 @@ For example, the following configuration file defines a minimal example for the 
     ```
 
 ### Collator Configuration
-   
+
 One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The available keys are:
 
 - `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
@@ -522,7 +529,7 @@ The configuration file below defines a minimal example for the collator:
     ```
 
 ### Collator Groups
-   
+
 The `collator_groups` key is used to define further parameters for the collator groups. The available keys are:
 
 - `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
