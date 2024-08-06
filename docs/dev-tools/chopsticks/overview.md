@@ -7,7 +7,7 @@ description: Configure and fork Substrate-based blockchains locally with Chopsti
 
 ## Introduction
 
-[Chopsticks](https://github.com/AcalaNetwork/chopsticks/){target=_blank}, created and maintained by the [Acala Foundation](https://github.com/AcalaNetwork){target=_blank}, is a powerful tool designed to enhance the development process for Substrate-based blockchains. It offers developers a user-friendly method to locally fork existing chains, enabling them to:
+[Chopsticks](https://github.com/AcalaNetwork/chopsticks/){target=\_blank}, created and maintained by the [Acala Foundation](https://github.com/AcalaNetwork){target=\_blank}, is a powerful tool designed to enhance the development process for Substrate-based blockchains. It offers developers a user-friendly method to locally fork existing chains, enabling them to:
 
 - Experiment with custom blockchain configurations in a local environment
 - Replay blocks and analyze how extrinsics affect state
@@ -16,14 +16,14 @@ description: Configure and fork Substrate-based blockchains locally with Chopsti
 With Chopsticks, developers can simulate and test complex blockchain scenarios without deploying to a live network. This tool significantly reduces the complexity of building blockchain applications on Substrate, making it more accessible to developers of varying experience levels. Ultimately, Chopsticks aims to accelerate innovation in the Substrate ecosystem by providing a robust, flexible testing framework.
 
 !!!note
-    Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=_blank} light client, which only supports the native Polkadot-SDK API.  Consequently, a Chopsticks-based fork does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
+Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=\_blank} light client, which only supports the native Polkadot-SDK API. Consequently, a Chopsticks-based fork does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/en/){target=_blank}
-- Package manager - [npm](https://www.npmjs.com/){target=_blank} should be installed with Node.js by default. Alternatively, you can use other package managers like [Yarn](https://yarnpkg.com/){target=_blank}
+- [Node.js](https://nodejs.org/en/){target=\_blank}
+- Package manager - [npm](https://www.npmjs.com/){target=\_blank} should be installed with Node.js by default. Alternatively, you can use other package managers like [Yarn](https://yarnpkg.com/){target=\_blank}
 
 ## Getting Started
 
@@ -83,7 +83,7 @@ To run Chopsticks, you need to configure some parameters. This can be set either
 
 ### Using a Configuration File
 
-The Chopsticks source repository includes a collection of [YAML](https://yaml.org/){target=_blank} files that can be used to set up various Substrate chains locally. You can download these configuration files from the [repository's `configs` folder](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=_blank}.
+The Chopsticks source repository includes a collection of [YAML](https://yaml.org/){target=\_blank} files that can be used to set up various Substrate chains locally. You can download these configuration files from the [repository's `configs` folder](https://github.com/AcalaNetwork/chopsticks/tree/master/configs){target=\_blank}.
 
 An example of a configuration file for Polkadot is as follows:
 
@@ -113,7 +113,7 @@ To run Chopsticks using a configuration file, utilize the `--config` flag. You c
     ```
 
 !!! note
-    If using a file path, make sure you've downloaded the [Polkadot configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/polkadot.yml){target=_blank}, or have created your own.
+If using a file path, make sure you've downloaded the [Polkadot configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/polkadot.yml){target=\_blank}, or have created your own.
 
 ### Using Command Line Interface (CLI)
 
@@ -133,19 +133,18 @@ When running a fork, it's accessible by default at:
 ws://localhost:8000
 ```
 
-You can interact with the forked chain using various [libraries](https://wiki.polkadot.network/docs/build-tools-index#libraries){target=_blank} such as [Polkadot.js](https://polkadot.js.org/docs/){target=_blank} and its user interface, [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=_blank}.
+You can interact with the forked chain using various [libraries](https://wiki.polkadot.network/docs/build-tools-index#libraries){target=\_blank} such as [Polkadot.js](https://polkadot.js.org/docs/){target=\_blank} and its user interface, [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=\_blank}.
 
 ### Using Polkadot.js Apps
 
-To interact with Chopsticks via the hosted user interface, visit [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=_blank} and follow these steps:
+To interact with Chopsticks via the hosted user interface, visit [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=\_blank} and follow these steps:
 
-1. Click the network icon in the top left corner 
-  ![](/polkadot-ecosystem-docs-draft/images/dev-tools/chopsticks/chopsticks-1.webp)
+1. Click the network icon in the top left corner
+   ![](/polkadot-ecosystem-docs-draft/images/dev-tools/chopsticks/chopsticks-1.webp)
 2. Scroll to the bottom and select **Development**
 3. Choose **Custom**
 4. Enter `ws://localhost:8000` in the input field
 5. Click the **Switch** button
-
 
 ![](/polkadot-ecosystem-docs-draft/images/dev-tools/chopsticks/chopsticks-2.webp)
 
@@ -161,7 +160,7 @@ For programmatic interaction, you can use the Polkadot.js library. Here's a basi
 
 ## Replaying Blocks
 
-Chopsticks allows you to replay specific blocks from a chain, which is useful for debugging and analyzing state changes.  You can use the parameters in the [Configuration](#configuration) section to set up the chain configuration, and then use the run-block subcommand with additional options:
+Chopsticks allows you to replay specific blocks from a chain, which is useful for debugging and analyzing state changes. You can use the parameters in the [Configuration](#configuration) section to set up the chain configuration, and then use the run-block subcommand with additional options:
 
 |    Option     |           Description           |
 | :-----------: | :-----------------------------: |
@@ -179,13 +178,13 @@ npx @acala-network/chopsticks run-block  \
 ```
 
 ## XCM Testing
-To test XCM (Cross-Consensus Messaging) messages between networks, you can fork multiple parachains and a relay chain locally using Chopsticks. 
+
+To test XCM (Cross-Consensus Messaging) messages between networks, you can fork multiple parachains and a relay chain locally using Chopsticks.
 
 |    Option    |      Description       |
 | :----------: | :--------------------: |
 | `relaychain` | Relaychain config file |
 | `parachain`  | Parachain config file  |
-
 
 For example, to fork Moonbeam, Astar, and Polkadot enabling XCM between them, you can use the following command:
 
@@ -229,14 +228,17 @@ These are the methods that can be invoked and their parameters:
 ??? function "**dev_setBlockBuildMode** (buildBlockMode) — Sets block build mode"
 
     === "Parameter"
+    
+        - `buildBlockMode` ++"BuildBlockMode"++ - the build mode. Can be any of the following modes as defined by the enum:
 
-        - `buildBlockMode` ++"enum"++ - the build mode 
-        - Options:
-            - `Batch` *One block per batch (default)*
-            - `Instant` *One block per transaction* 
-            - `Manual` *Only build when triggered* 
-
-
+            ```ts
+            export enum BuildBlockMode {
+              Batch = 'Batch', /** One block per batch (default) */
+              Instant = 'Instant', /** One block per transaction */
+              Manual = 'Manual', /** Only build when triggered */
+            }
+            ```
+            
     === "Example"
 
         ```js
@@ -245,7 +247,7 @@ These are the methods that can be invoked and their parameters:
 
 ??? function "**dev_setHead** (hashOrNumber) — Sets the head of the blockchain to a specific hash or number"
 
-    === "Parameter"      
+    === "Parameter"
 
         - `hashOrNumber` ++"string"++ - the block hash or number to set as head
 
@@ -283,7 +285,7 @@ These are the methods that can be invoked and their parameters:
 ??? function "**dev_timeTravel** (date) — Sets the timestamp of the block to a specific date"
 
     === "Parameter"
-        
+
         - `date` ++"string"++ - timestamp or date string to set. All future blocks will be sequentially created after this point in time
 
     === "Example"
