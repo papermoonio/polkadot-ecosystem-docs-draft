@@ -1,123 +1,122 @@
-'site_name': 'Polkadot Draft Ecosystem Developer Hub'
-'site_url': 'https://papermoonio.github.io/polkadot-ecosystem-docs-draft/'
-'docs_dir': 'docs'
-'copyright': '© 2024 Web3 Foundation'
+site_name: Polkadot Draft Ecosystem Developer Hub
+site_url: https://papermoonio.github.io/polkadot-ecosystem-docs-draft/
+docs_dir: docs
+copyright: © 2024 Web3 Foundation
 # Used for extra javascript files in the `docs` repository
-# 'extra_javascript':
-#   - 'js/externalLinkModal.js' # Enable if you want a warning when users leave your site
-#   - 'https://widget.kapa.ai/kapa-widget.bundle.js' # Enable is project is using Kapa
-#   - 'js/initKapaWidget.js' # Enable if project is using Kapa
+# extra_javascript:
+#   - js/externalLinkModal.js # Enable if you want a warning when users leave your site
+#   - https://widget.kapa.ai/kapa-widget.bundle.js # Enable is project is using Kapa
+#   - js/initKapaWidget.js # Enable if project is using Kapa
 # Used for additional CSS files and custom fonts. If you're using a publicly available font, this is not necessary
-'extra_css':
-  - 'assets/stylesheets/extra.css'
-  - 'assets/stylesheets/terminal.css'
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/terminal.css
 # Diagnostic messages when validating links to documents
-'validation':
-  'absolute_links': 'ignore'
-  'unrecognized_links': 'ignore'
+validation:
+  absolute_links: ignore
+  unrecognized_links: ignore
 # Theme related settings
-'theme':
-  'name': 'material'
-  'custom_dir': 'material-overrides'
-  'favicon': 'assets/images/favicon.png'
-  'logo': 'assets/images/logo.png'
-  'logo_dark_mode': 'assets/images/logo-dark.png'
-  'font':
-    'text': 'Inter' # Add the name of the font. The default is Roboto
-    #'code': 'XXX' # This is optional. The default is Roboto Mono
-  'features':
-    - 'content.code.annotate' # Adds annotations to code blocks
-    - 'content.code.copy' # Adds copy to clipboard button to code snippets
-    - 'content.tooltips' # Adds tooltips
-    - 'navigation.footer' # Shows previous and next on the footer
-    # - 'navigation.tabs' # Top-level sections are rendered below the header (can be modified to in-line with CSS)
-    # - 'navigation.tabs.sticky' # When scrolling, the tabs remain at the top of the page
-    - 'navigation.sections' # Render top-level sections as groups in the sidebar
-    - 'navigation.indexes' # Index pages
+theme:
+  name: material
+  custom_dir: material-overrides
+  favicon: assets/images/favicon.png
+  logo: assets/images/logo.png
+  logo_dark_mode: assets/images/logo-dark.png
+  font:
+    text: Inter # Add the name of the font. The default is Roboto
+    #code: XXX # This is optional. The default is Roboto Mono
+  features:
+    - content.code.annotate # Adds annotations to code blocks
+    - content.code.copy # Adds copy to clipboard button to code snippets
+    - content.tooltips # Adds tooltips
+    - navigation.footer # Shows previous and next on the footer
+    # - navigation.tabs # Top-level sections are rendered below the header (can be modified to in-line with CSS)
+    # - navigation.tabs.sticky # When scrolling, the tabs remain at the top of the page
+    - navigation.sections # Render top-level sections as groups in the sidebar
+    - navigation.indexes # Index pages
   # Used for light and dark mode feature
-  'palette':
+  palette:
     # Palette toggle for light mode
-    - 'media': '(prefers-color-scheme: light)'
-      'scheme': default
-      'toggle':
-        'icon': material/weather-night
-        'name': Switch to dark mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
     # Palette toggle for dark mode
-    - 'media': '(prefers-color-scheme: dark)'
-      'scheme': slate
-      'toggle':
-        'icon': material/weather-sunny
-        'name': Switch to light mode
-
-'nav':
-
-'markdown_extensions':
-  - 'abbr'
-  - 'admonition'
-  - 'attr_list'
-  - 'codehilite'
-  - 'md_in_html'
-  - 'meta'
-  - 'pymdownx.details'
-  - 'pymdownx.emoji':
-      'emoji_index': !!python/name:material.extensions.emoji.twemoji
-      'emoji_generator': !!python/name:material.extensions.emoji.to_svg
-  - 'pymdownx.highlight':
-      'anchor_linenums': !!bool 'true'
-      'line_spans': __span
-      'pygments_lang_class': !!bool 'true'
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - codehilite
+  - md_in_html
+  - meta
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: True
+      line_spans: __span
+      pygments_lang_class: True
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - 'pymdownx.snippets':
-      'base_path': 'docs/.snippets'
-      'url_download': !!bool 'true'
-  - 'pymdownx.superfences'
-  - 'pymdownx.tabbed':
-      'alternate_style': !!bool 'true'
-  - 'toc':
-      'title': 'Sections'
-'plugins':
-  - 'search'
-  - 'awesome-pages'
-  # - 'git-revision-date-localized':
-  #     'enabled': !ENV [ENABLED_GIT_REVISION_DATE, True]
-  #     'enable_creation_date': !!bool 'true'
-  - 'redirects':
-      'redirect_maps':
+  - pymdownx.snippets:
+      base_path: docs/.snippets
+      url_download: True
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: True
+  - toc:
+      title: Sections
+      permalink: True
+
+plugins:
+  - search
+  - awesome-pages
+  # - git-revision-date-localized:
+  #     enabled: !ENV [ENABLED_GIT_REVISION_DATE, True]
+  #     enable_creation_date: True
+  - redirects:
+      redirect_maps:
         # Redirects will go here as pages get moved around in the following format:
-        # 'old-page.md': 'new-page.md'
-  - 'macros':
-      'include_yaml':
-        - 'docs/variables.yml'
-'extra':
-  'generator': !!bool 'false'
-  'social':
-    - 'icon': 'fontawesome/brands/twitter'
-      'link': 'https://twitter.com/Polkadot'
-      'name': 'Twitter'
-    - 'icon': 'fontawesome/brands/discord'
-      'link': 'https://dot.li/discord'
-      'name': 'Discord'
-    - 'icon': 'fontawesome/brands/github'
-      'link': 'https://github.com/paritytech/polkadot-sdk'
-      'name': 'GitHub'
-    - 'icon': 'fontawesome/brands/youtube'
-      'link': 'https://www.youtube.com/channel/UCB7PbjuZLEba_znc7mEGNgw'
-      'name': 'YouTube'
-#   'analytics':
-#     'provider': 'google'
-#     'property': 'G-pepe'
-#     'feedback':
-#       'title': 'Was this page helpful?'
-#       'ratings':
-#         - 'icon': 'material/emoticon-happy-outline'
-#           'name': 'This page was helpful'
-#           'data': 1
-#           'note': >-
+        # old-page.md: new-page.md
+  - macros:
+      include_yaml:
+        - docs/variables.yml
+extra:
+  generator: False
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/Polkadot
+      name: Twitter
+    - icon: fontawesome/brands/discord
+      link: https://dot.li/discord
+      name: Discord
+    - icon: fontawesome/brands/github
+      link: https://github.com/paritytech/polkadot-sdk
+      name: GitHub
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCB7PbjuZLEba_znc7mEGNgw
+      name: YouTube
+#   analytics:
+#     provider: google
+#     property: G-pepe
+#     feedback:
+#       title: Was this page helpful?
+#       ratings:
+#         - icon: material/emoticon-happy-outline
+#           name: This page was helpful
+#           data: 1
+#           note: >-
 #             Thanks for your feedback!
-#         - 'icon': 'material/emoticon-sad-outline'
-#           'name': 'This page could be improved'
-#           'data': 0
-#           'note': >-
+#         - icon: material/emoticon-sad-outline
+#           name: This page could be improved
+#           data: 0
+#           note: >-
 #             Thanks for your feedback! Help us improve this page by submitting
 #             <a href="https://github.com/papermoonio/demo-docs/pepe/issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">additional feedback</a>.
