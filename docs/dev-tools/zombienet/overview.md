@@ -123,7 +123,7 @@ In order to install Zombienet, there are multiple options available, depending o
 
 ## Providers
 
-Zombienet supports different backend providers in running the nodes. At this moment, [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank}, and local are supported.
+Zombienet supports different backend providers for running the nodes. At this moment, [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank}, and local are supported, which can be declared as `kubernetes`, `podman`, or `native`, respectively.
 
 To use a particular provider, you can specify it in the network file or use the `--provider` flag in the CLI:
     
@@ -138,8 +138,6 @@ Alternatively, you can set the provider in the network file:
 provider = "<provider>"
 ...
 ```
-
-At the moment, Zombienet supports the following providers: `kubernetes`, `podman`, and `native` (local).
 
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
@@ -276,7 +274,7 @@ Then, you can use different flags to customize the behavior of the CLI:
 
 ## Configuration Files 
 
-The network configuration can be given in either `json` or `toml` format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
+The network configuration can be given in either `json` or `toml` format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=\_blank} of configuration files that can be used as a reference.
 
 !!! note
     Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
@@ -348,7 +346,7 @@ You can use `relaychain` keyword to define further parameters for the relay chai
 |          `max_nominations`           |      Number       | The max number of nominations allowed by a nominator. Should match the value set in the runtime                  | `24`              |
 
 ??? Nodes
-    There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
+    There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys are:
 
     | Key                          | Type             | Description                                                                                      | Default Value   |
     | :--------------------------- | :--------------- | :----------------------------------------------------------------------------------------------- | :-------------- |
