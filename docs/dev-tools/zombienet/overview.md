@@ -1,12 +1,13 @@
 ---
-title: Zombienet for Ephemeral Polkadot-SDK Networks
-description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary substrate networks for testing purposes.
+title: Zombienet for Ephemeral Polkadot SDK Networks
+description: Diving deeper into Zombienet, a versatile tool enabling the creation of temporary Substrate networks for testing purposes.
 ---
 
-# Zombienet - ( 🚧 WIP ) 
+# Zombienet
 
 ## Introduction
-Zombienet is a testing framework designed for Polkadot-SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet supports various backend providers, including Kubernetes, Podman, and native setups for running blockchain nodes. 
+
+Zombienet is a testing framework designed for Polkadot SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet is a JavaScript library designed to run on Node.js and supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes. 
 
 The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
@@ -15,15 +16,15 @@ The framework enables developers to create tests using natural language tools to
 - [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}
 - [Element public channel](https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation){target=_blank}
 
-## Installation
+## Install Zombienet
 
-Zombienet releases are available on the [Zombienet repository]( https://github.com/paritytech/zombienet ){target=_blank}.
+Zombienet releases are available on the [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}.
 
 In order to install Zombienet, there are multiple options available, depending on the user's preferences and the environment where it will be used. The following section will guide you through the installation process for each of the available options.
 
 === "Using the Executable" 
 
-    Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository]( https://github.com/paritytech/zombienet/releases ){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and Macos, which are generated using [pkg]( https://github.com/vercel/pkg ){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
+    Zombienet executables can be downloaded using the latest release uploaded on the [Zombienet repository](https://github.com/paritytech/zombienet/releases){target=_blank}. You can download the executable for your operating system and architecture and then move it to a directory in your PATH. Each release includes executables for Linux and macOS, which are generated using [pkg](https://github.com/vercel/pkg){target=_blank}. This allows the Zombienet CLI to operate without requiring Node.js to be installed. 
 
     Alternatively, you can also download the executable using either `curl` or `wget`:
 
@@ -38,25 +39,33 @@ In order to install Zombienet, there are multiple options available, depending o
         https://github.com/paritytech/zombienet/releases/download/<INSERT_ZOMBIENET_VERSION>/<INSERT_ZOMBIENET_EXECUTABLE>
         ```
     !!! note
-        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v1.3.106` and `zombienet-macos-arm64`.
+        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v{{ dev_tools.zombienet.version }}` and `zombienet-{{ dev_tools.zombienet.architecture }}`.
+    
+    !!! note
+        This documentation explains the functionality of Chopsticks version `{{ dev_tools.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
 
-    Then, ensure the downloaded file executable:
+    Then, ensure the downloaded file is executable:
 
     ```bash
-    chmod +x zombienet-macos-arm64
+    chmod +x zombienet-{{ dev_tools.zombienet.architecture }}
     ```
 
     Finally, you can run the following command to check if the installation was successful. If so, it will display the version of the installed Zombienet:
 
     ```bash
-    ./zombienet-macos-arm64 version
+    ./zombienet-{{ dev_tools.zombienet.architecture }} version
     ```
 
-    !!! note
-        If you want to add the `zombienet` executable to your PATH, you can move it to a directory in your PATH, such as `/usr/local/bin`:
-        ```bash
-        mv zombienet-macos-arm64 /usr/local/bin/zombienet
-        ```
+    If you want to add the `zombienet` executable to your PATH, you can move it to a directory in your PATH, such as `/usr/local/bin`:
+    ```bash
+    mv zombienet-{{ dev_tools.zombienet.architecture }} /usr/local/bin/zombienet
+    ```
+
+    So then, you can refer to the `zombienet` executable directly:
+
+    ```bash
+    zombienet version
+    ```
 
 === "Using Nix"
 
@@ -69,8 +78,7 @@ In order to install Zombienet, there are multiple options available, depending o
     spawn <INSERT_ZOMBIENET_CONFIG_FILE_NAME>.toml
     ```
 
-    !!! Warning
-        To run the command above, you need to have [nix flakes enabled](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank}.
+    To run the command above, you need to have [Flakes](https://nixos.wiki/wiki/Flakes#Enable_flakes){target=_blank} enabled.
 
     Alternatively, you can also include the Zombienet binary in the PATH for the current shell. This can be achieved by:
     
@@ -90,10 +98,9 @@ In order to install Zombienet, there are multiple options available, depending o
     -v $(pwd):/home/nonroot/zombie-net/host-current-files \
     paritytech/zombienet
     ```
-    !!! note
-        Command above will run the Zombienet CLI inside a Docker container and mount the current directory to the `/home/nonroot/zombie-net/host-current-files` directory inside the container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
+    The command above will run the Zombienet CLI inside a Docker container and mount the current directory to the `/home/nonroot/zombie-net/host-current-files` directory inside the container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
 
-    Now, inside the Docker container, you can run the Zombienet CLI commands. First, you need to set up ZombieNet downloading the neccessary binaries:
+    Inside the Docker container, you can run the Zombienet CLI commands. First, you need to set up Zombienet downloading the necessary binaries:
 
     ```bash
     npm run zombie -- setup polkadot polkadot-parachain
@@ -111,13 +118,12 @@ In order to install Zombienet, there are multiple options available, depending o
     npm run zombie -- -p native spawn host-current-files/minimal.toml
     ```
 
-    !!! warning
-        The command above mounts the current directory to the `/workspace` directory inside the Docker container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
+    The command above mounts the current directory to the `/workspace` directory inside the Docker container. This allows Zombienet to access the configuration file and other files in the current directory. If you want to mount a different directory, replace `$(pwd)` with the desired directory path.
 
 
 ## Providers
 
-Zombienet is a JavaScript library designed to run on Node.js and support different backend providers in running the nodes. At this moment [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank} and, native are supported.
+Zombienet supports different backend providers for running the nodes. At this moment, [Kubernetes](https://kubernetes.io/){target=_blank}, [Podman](https://podman.io/){target=_blank}, and local are supported, which can be declared as `kubernetes`, `podman`, or `native`, respectively.
 
 To use a particular provider, you can specify it in the network file or use the `--provider` flag in the CLI:
     
@@ -137,95 +143,98 @@ It's important to note that each provider has specific requirements and associat
 
 ### Kubernetes
 
-=== "Requirements"
+#### Requirements
 
-    Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters.
+Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/){target=_blank} is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters. If you don't have `kubectl` installed, you can follow the instructions provided on the [Kubernetes website](https://kubernetes.io/docs/tasks/tools/#kubectl){target=_blank}.
 
-    Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
-=== "Features"
-    In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. Using the Prometheus operator, Zombienet improves its ability to efficiently monitor and manage network activities within the Kubernetes cluster. 
+#### Features
+
+In Kubernetes, Zombienet uses the Prometheus operator (if available) to oversee monitoring and visibility. This configuration ensures that only essential networking-related pods are deployed. Using the Prometheus operator, Zombienet improves its ability to efficiently monitor and manage network activities within the Kubernetes cluster. 
 
 ### Podman
 
-=== "Requirements"
+#### Requirements
 
-    Zombienet supports Podman rootless as a provider. To use Podman as a provider, you need to have Podman installed on your system. Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux-based systems. You can install Podman by following the instructions provided on the [Podman website](https://podman.io/getting-started/installation){target=_blank}.
+Zombienet supports Podman rootless as a provider. To use Podman as a provider, you need to have Podman installed on your system. Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux-based systems. You can install Podman by following the instructions provided on the [Podman website](https://podman.io/getting-started/installation){target=_blank}.
 
-    !!! note
-        Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
+!!! warning
+    Currently, Podman can only be used with Zombienet on Linux machines. Although Podman has support for macOS through an internal VM, the Zombienet provider code requires Podman to run natively on Linux.
 
-=== "Features"
+#### Features
     
-    Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for Prometheus, Tempo, and Grafana are included in the deployment. Grafana is configured with Prometheus and Tempo as data sources.
+Using Podman, Zombienet deploys additional pods to enhance the monitoring and visibility of the active network. Specifically, pods for [Prometheus](https://prometheus.io/){target=_blank}, [Tempo](https://grafana.com/docs/tempo/latest/operations/monitor/){target=_blank}, and [Grafana](https://grafana.com/){target=_blank} are included in the deployment. Grafana is configured with Prometheus and Tempo as data sources.
 
-    Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
+Upon launching Zombienet, access to these monitoring services is facilitated through specific URLs provided in the output:
 
-    - Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blank}
-    - Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blank}
-    - Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blank}
+- Prometheus - [http://127.0.0.1:34123](http://127.0.0.1:34123){target=_blank}
+- Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blank}
+- Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blank}
 
-    It's important to note that Grafana is deployed with default admin access.
+It's important to note that Grafana is deployed with default admin access.
 
-    !!! note
-        When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods, including those for Prometheus, Tempo, and Grafana.
+!!! note
+    When network operations cease—either by halting a running spawn with Ctrl+C or upon completion of the test—Zombienet automatically removes all associated pods.
 
-### Native
+### Local
 
-=== "Requirements"
+#### Requirements
     
-    The Zombienet Native provider enables you to run nodes as local processes in your environments. You simply need to have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
+The Zombienet local provider, also referred to as native, enables you to run nodes as local processes in your environment. You must have the necessary binaries for your network (such as `polkadot` and `polkadot-parachain`). These binaries should be available in your PATH, allowing Zombienet to spawn the nodes as local processes.
 
-    To install the necessary binaries, you can use the Zombienet CLI command:
+To install the necessary binaries, you can use the Zombienet CLI command:
 
-    ```bash
-    zombienet setup polkadot polkadot-parachain
-    ```
-    This command will download and prepare the necessary binaries for Zombienet’s use.
+```bash
+zombienet setup polkadot polkadot-parachain
+```
 
-    !!! warning 
-        The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
+This command will download and prepare the necessary binaries for Zombienet’s use.
 
-    If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [Open Zeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
+!!! warning 
+    The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
 
-    First, clone the Open Zeppelin template repository:
+If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [Open Zeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
 
-    ```bash
-    git clone https://github.com/OpenZeppelin/polkadot-runtime-templates && cd polkadot-runtime-templates/generic-template
-    ```
+First, clone the Open Zeppelin template repository:
 
-    Then, build the custom binary:
+```bash
+git clone https://github.com/OpenZeppelin/polkadot-runtime-templates \
+&& cd polkadot-runtime-templates/generic-template
 
-    ```bash
-    cargo build --release
-    ```
+Then, build the custom binary:
 
-    After that, add the custom binary to your PATH:
+```bash
+cargo build --release
+```
 
-    ```bash
-    export PATH=$PATH:/path/to/polkadot-runtime-templates/parachain-template-node/target/release
-    ```
+After that, add the custom binary to your PATH:
 
-    Alternatively, you can specify the binary path in the network configuration file:
+```bash
+export PATH=$PATH:/path/to/polkadot-runtime-templates/parachain-template-node/target/release
+```
 
-    ```toml
-    [relaychain]
-    chain = "rococo-local"
-    default_command = "./bin-v1.6.0/polkadot"
+Alternatively, you can specify the binary path in the network configuration file:
 
-    [[parachains]]
-    id = 1000
+```toml
+[relaychain]
+chain = "rococo-local"
+default_command = "./bin-v1.6.0/polkadot"
 
-	    [[parachains.collators]]
-	    name = "collator01"
-	    command = "./target/release/parachain-template-node"
-    ```
+[parachain]
+id = 1000
 
-    !!! note
-        The native provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
+	[parachain.collators]
+	name = "collator01"
+	command = "./target/release/parachain-template-node"
+```
 
-=== "Features"
-    Currently, the Native provider does not execute any additional layers or processes.
+!!! note
+    The local provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
+
+#### Features
+
+Currently, the local provider does not execute any additional layers or processes.
 
 ## CLI Usage
 
@@ -239,9 +248,9 @@ The following tables will guide you through the primary usage of the Zombienet C
 
 |  Command  |                                            Description                                             |                                                                                                                                                      Arguments                                                                                                                                                       |
 | :-------: | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  `spawn`  |                            Spawn the network defined in the config file                            |                                                            `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out the [Configuration Files](#configuration-files) section                                                             |
+|  `spawn`  |                            Spawn the network defined in the config file                            |                                                          `<networkConfig>` - a file that declares the desired network to be spawned in `toml` or `json` format. For further information, check out the [Configuration Files](#configuration-files) section                                                           |
 |  `test`   |                                  Run test on the network spawned                                   |                                                                      `<testFile>` - a file that defines assertions and tests against the spawned network, using natural language expressions to evaluate metrics, logs, and built-in functions                                                                       |
-|  `setup`  |                           Set up the dev environment of Zombienet ready.                           |                                                                                          `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
+|  `setup`  |                            Set up the Zombienet development environment                            |                                                                                          `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`                                                                                          |
 | `convert` | Transforms a (now deprecated) polkadot-launch configuration file to a zombienet configuration file | `<filePath>` - path to a [Polkadot Launch](https://github.com/paritytech/polkadot-launch){target=_blank} configuration file with a .js or .json extension defined by [this structure](https://github.com/paritytech/polkadot-launch/blob/295a6870dd363b0b0108e745887f51e7141d7b5f/src/types.d.ts#L10){target=_blank} |
 | `version` |                                      Prints Zombienet version                                      |                                                                                                                                                          -                                                                                                                                                           |
 |  `help`   |                                      Prints help information                                       |                                                                                                                                                          -                                                                                                                                                           |
@@ -250,29 +259,29 @@ The following tables will guide you through the primary usage of the Zombienet C
 !!! warning
     For the `spawn` command to work on macOS, users need to be aware that the Polkadot binary is currently not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build Polkadot binary, and manually add it to their PATH.
 
-Then, you can use the following flags to customize the behavior of the CLI:
+Then, you can use different flags to customize the behavior of the CLI:
 
-|                   Flag                    |                                                Description                                                |
-| :---------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
-|            `-p`, `--provider`             |  Override provider to use (choices: `podman`, `default`, and, `native`). By default it uses `kubernetes`  |
-|           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. -d /home/user/my-zombienet) |
-|              `-f`, `--force`              |                                    Force override all prompt commands                                     |
-|        `-l`, `--logType` <logType>        |   Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`    |
-|             `-m`, `--monitor`             |                              Start as monitor, do not auto clean up network                               |
-| `-c`, `--spawn-concurrency` <concurrency> |                   Number of concurrent spawning process to launch. By default it is `1`                   |
-|              `-h`, `--help`               |                                         Display help for command                                          |
+|                 Argument                  |                                                 Description                                                 |
+| :---------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
+|            `-p`, `--provider`             | Override provider to use (choices: `podman`, `kubernetes`, and, `native`). By default it uses `kubernetes`  |
+|           `-d`, `--dir` <path>            | Directory path for placing the network files instead of random temp one (e.g. `-d /home/user/my-zombienet`) |
+|              `-f`, `--force`              |                                     Force override all prompt commands                                      |
+|        `-l`, `--logType` <logType>        |    Type of logging on the console (choices: `table`, `text`, and, `silent`). By default it uses `table`     |
+|             `-m`, `--monitor`             |                               Start as monitor, do not auto clean up network                                |
+| `-c`, `--spawn-concurrency` <concurrency> |                    Number of concurrent spawning process to launch. By default it is `1`                    |
+|              `-h`, `--help`               |                                          Display help for command                                           |
 
 
 ## Configuration Files 
 
-The network configuration can be given in either `json` or `toml` format. Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
+The network configuration can be given in either `json` or `toml` format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=\_blank} of configuration files that can be used as a reference.
 
 !!! note
-    Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the native provider, any references to images for nodes will be disregarded.
+    Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
 
 ### Settings
 
-Through the keyword `settings`, it's possible to define the general settings for the network. The following keys are available:
+Through the keyword `settings`, it's possible to define the general settings for the network. The available keys are:
 
 |                 Key                  |  Type   | Description                                                                                               | Default Value                            |
 | :----------------------------------: | :-----: | :-------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
@@ -319,24 +328,25 @@ For example, the following configuration file defines a minimal example for the 
 
 ### Relay Chain Configuration
 
-You can use `relaychain` keyword to define further parameters for the relaychain at start-up. The following keys are available:
+You can use `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
 
-|                 Key                  |       Type        | Description                                                                                                      | Default Value  |
-| :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :------------- |
-|          `default_command`           |      String       | The default command to run                                                                                       | `polkadot`     |
-|               `chain`                |      String       | The chain name                                                                                                   | `rococo-local` |
-|          `chain_spec_path`           |      String       | Path to the chain spec file. It should be the plain version to allow customizations                              | -              |
-|         `chain_spec_command`         |      String       | Command to generate the chain spec. It can't be used in combination with `chain_spec_path`                       | -              |
-|            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command                                                   | -              |
-| `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version                                                                               | -              |
-|         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes                                                                     | -              |
-|         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default         | -              |
-|     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix                                                                  | `substrate`    |
-|      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis | -              |
-|          `max_nominations`           |      Number       | The max number of nominations allowed by a nominator. Should match the value set in the runtime                  | `24`           |
+|                 Key                  |       Type        | Description                                                                                                      | Default Value     |
+| :----------------------------------: | :---------------: | :--------------------------------------------------------------------------------------------------------------- | :---------------- |
+|          `default_command`           |      String       | The default command to run                                                                                       | `polkadot`        |
+|           `default_image`            |      String       | The default Docker image to use for the relay chain nodes                                                        | `polkadot:latest` |
+|               `chain`                |      String       | The chain name                                                                                                   | `rococo-local`    |
+|          `chain_spec_path`           |      String       | Path to the chain spec file. It should be the plain version to allow customizations                              | -                 |
+|         `chain_spec_command`         |      String       | Command to generate the chain spec. It can't be used in combination with `chain_spec_path`                       | -                 |
+|            `default_args`            | Array of strings  | An array of arguments to use as default to pass to the command                                                   | -                 |
+| `default_substrate_cli_args_version` |    0 \| 1 \| 2    | Set the substrate cli args version                                                                               | -                 |
+|         `default_overrides`          | Array of objects  | An array of overrides to upload to the nodes                                                                     | -                 |
+|         `default_resources`          |      Object       | Only available in kubernetes, represent the resources limits/reservations needed by the nodes by default         | -                 |
+|     `default_prometheus_prefix`      |      String       | A parameter for customizing the metric's prefix                                                                  | `substrate`       |
+|      `random_nominators_count`       | Number (optional) | If set and the stacking pallet is enabled, Zombienet will generate x nominators and inject them into the genesis | -                 |
+|          `max_nominations`           |      Number       | The max number of nominations allowed by a nominator. Should match the value set in the runtime                  | `24`              |
 
 ??? Nodes
-    There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The following keys are available:
+    There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys are:
 
     | Key                          | Type             | Description                                                                                      | Default Value   |
     | :--------------------------- | :--------------- | :----------------------------------------------------------------------------------------------- | :-------------- |
@@ -414,7 +424,7 @@ You can use `relaychain` keyword to define further parameters for the relaychain
         ```
 
 ??? "Node Groups"
-    The `node_groups` key is used to define further parameters for the node groups. The following keys are available:
+    The `node_groups` key is used to define further parameters for the node groups. The available keys are:
 
     | Key                          | Type             | Description                                                                                                                            | Default Value |
     | :--------------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
@@ -478,7 +488,7 @@ You can use `relaychain` keyword to define further parameters for the relaychain
 
 ### Parachain Configuration
 
-The `parachain` keyword is used to define further parameters for the parachain. The following keys are available:
+The `parachain` keyword is used to define further parameters for the parachain. The available keys are:
 
 | Key                       | Type    | Description                                                                                                                            | Default Value |
 | :------------------------ | :------ | :------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
@@ -523,7 +533,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ??? "Collator"
    
-    One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The following keys are available:
+    One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The available keys are:
 
     | Key                          | Type             | Description                                                                                                     | Default Value        |
     | ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -531,14 +541,13 @@ For example, the following configuration file defines a minimal example for the 
     | `image`                      | String           | Image to use for the collator                                                                                   | -                    |
     | `command`                    | String           | Command to run for the collator                                                                                 | `polkadot-parachain` |
     | `args`                       | Array of strings | An array of arguments to use as defaults to pass to the command                                                 | -                    |
-    | `substrate_cli_args_version` | 0 \| 1           | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead. | -                    |
     | `command_with_args`          | String           | Overrides both command and arguments for the collator                                                           | -                    |
     | `env`                        | Array of objects | Environment variables to set in the container for the collator                                                  | -                    |
     | `env.name`                   | String           | Name of the environment variable                                                                                | -                    |
     | `env.value`                  | String \| Number | Value of the environment variable                                                                               | -                    |
     | `keystore_key_types`         | String           | Defines which keystore keys should be created. For more details, refer to additional documentation              | -                    |
 
-    For example, the following configuration file defines a minimal example for the collator:
+    For instance, the configuration file below defines a minimal example for the collator:
 
     === "collator-example.toml"
         ```toml
@@ -580,7 +589,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ??? "Collator Groups"
    
-    The `collator_groups` key is used to define further parameters for the collator groups. The following keys are available:
+    The `collator_groups` key is used to define further parameters for the collator groups. The available keys are:
 
     | Key                          | Type             | Description                                                                                                    | Default Value        |
     | ---------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -593,9 +602,8 @@ For example, the following configuration file defines a minimal example for the 
     | `env`                        | Array of objects | Environment variables to set in the container for each collator                                                | -                    |
     | `env.name`                   | String           | Name of the environment variable                                                                               | -                    |
     | `env.value`                  | String \| Number | Value of the environment variable                                                                              | -                    |
-    | `substrate_cli_args_version` | 0 \| 1 \| 2      | By default zombienet evaluates the binary and sets the correct version. Set this key directly to skip overhead | -                    |
 
-    For example, the following configuration file defines a minimal example for the collator groups:
+    For instance, the configuration file below defines a minimal example for the collator groups:
 
     === "collator-groups-example.toml"
         ```toml
@@ -639,7 +647,7 @@ For example, the following configuration file defines a minimal example for the 
 
 ### XCM Configuration
 
-You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The following keys are available:
+You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The available keys are:
 
 | Key                | Type             | Description                                      |
 | ------------------ | ---------------- | ------------------------------------------------ |

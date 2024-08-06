@@ -3,18 +3,18 @@ title: Testing DSL
 description: Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL is designed to be human-readable and allows you to write tests using natural language expressions.
 ---
 
-# Testing DSL - ( 🚧 WIP )
+# Testing DSL
 
 Zombienet provides a Domain Specific Language (DSL) for writing tests. The DSL is designed to be human-readable and allows you to write tests using natural language expressions. You can define assertions and tests against the spawned network using this DSL. This way, users can evaluate different metrics, such as:
 
-- On-chain storage - the storage of each of the chains running via Zombienet
-- Metrics- the metrics provided by the nodes 
-- Histograms - visual representations of metrics data
-- Logs - detailed records of system activities and events 
-- System events - notifications of significant occurrences within the network
-- Tracing - detailed analysis of execution paths and operations
-- Custom API calls (through PolkadotJs) - personalized interfaces for interacting with the network 
-- Commands - instructions or directives executed by the network 
+- **On-chain storage** - the storage of each of the chains running via Zombienet
+- **Metrics** - the metrics provided by the nodes 
+- **Histograms** - visual representations of metrics data
+- **Logs** - detailed records of system activities and events 
+- **System events** - notifications of significant occurrences within the network
+- **Tracing** - detailed analysis of execution paths and operations
+- **Custom API calls (through Polkadot.js)** - personalized interfaces for interacting with the network 
+- **Commands** - instructions or directives executed by the network 
 
 These abstractions are expressed by sentences defined in a natural language style. Therefore, each test line will be mapped to a test to run. Also, the test file (`*.zndsl`) includes pre-defined header fields used to define information about the suite, such as network configuration and credentials location.
 
@@ -22,7 +22,7 @@ These abstractions are expressed by sentences defined in a natural language styl
 
 ### Name
 
-The test name in Zombienet is derived from the filename by removing any leading numeric characters before the first hyphen. For example, a file named `0001-zombienet-test.zndsl` will result in a test name of `zombienet-test`, which will be displayed in the test report output of the runner.
+The test name in Zombienet is derived from the file name by removing any leading numeric characters before the first hyphen. For example, a file named `0001-zombienet-test.zndsl` will result in a test name of `zombienet-test`, which will be displayed in the test report output of the runner.
 
 ### Structure
 
@@ -34,7 +34,7 @@ The header is defined by the following fields:
 | ------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `description` | String (optional) | Long description of the test suite                                                                                                                   |
 | `network`     | String            | Path to the network definition file, supported in both `json` and `toml` formats                                                                     |
-| `creds`       | String            | Credentials file name or path to use (available only with Kubernetes provider). Looks in the current directory or `$HOME/.kube/` if a filename is passed |
+| `creds`       | String            | Credentials file name or path to use (available only with Kubernetes provider). Looks in the current directory or `$HOME/.kube/` if a file name is passed |
 
 The body contains the tests to run. Each test is defined by a sentence in the DSL, which is mapped to a test to run. Each test line defines an assertion or a command to be executed against the spawned network.
 
@@ -194,7 +194,7 @@ alice: trace with traceID 94c1501a78a0d83c498cc92deec264d9 contains ["answer-chu
 
 ## Running Tests
 
-To run the tests by using Native provider, you can use the `zombienet` binary. The binary will read the test files and execute the tests defined in the DSL. The binary will output the results of the tests in the console.
+To run the tests using the local provider (`native`), you can use the Zombienet binary. The binary will read the test files and execute the tests defined in the DSL. The binary will output the results of the tests in the console. 
 
 ```bash
 zombienet -p native test <INSERT_TEST_FILE_NAME>
