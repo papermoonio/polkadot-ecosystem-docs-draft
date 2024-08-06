@@ -211,13 +211,14 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameters"
 
-        - `count` ++"number"++ - the number of blocks to build
-        - `dmp` ++"string"++, ++"number"++ - the downward messages to include in the block
-        - `hrmp` ++"string"++, ++"number"++ - the horizontal messages to include in the block
-        - `to` ++"number"++ - the block number to build to
-        - `transactions` ++"string[]"++ - the transactions to include in the block
-        - `ump` ++"number"++, ++"string[]"++ - the upward messages to include in the block
-        - `unsafeBlockHeight` ++"number"++ - build block using a specific block height (unsafe)
+        - `newBlockParams` ++"NewBlockParams"++  - the parameters to build the new block with. Where the `NewBlockParams` interface includes the following properties:
+            - `count` ++"number"++ - the number of blocks to build
+            - `dmp` ++"{ msg: string, sentAt: number }[]"++ - the downward messages to include in the block
+            - `hrmp` ++"Record<string | number, { data: string, sentAt: number }[]>"++ - the horizontal messages to include in the block
+            - `to` ++"number"++ - the block number to build to
+            - `transactions` ++"string[]"++ - the transactions to include in the block
+            - `ump` ++"Record<number, string[]>"++ - the upward messages to include in the block
+            - `unsafeBlockHeight` ++"number"++ - build block using a specific block height (unsafe)
 
     === "Example"
 
@@ -229,8 +230,7 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
     
-        - `buildBlockMode` ++"BuildBlockMode"++ - the build mode. Can be any of the following modes as defined by the enum:
-
+        - `buildBlockMode` ++"BuildBlockMode"++ - the build mode. Can be any of the following modes:
             ```ts
             export enum BuildBlockMode {
               Batch = 'Batch', /** One block per batch (default) */
@@ -249,7 +249,7 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
 
-        - `hashOrNumber` ++"string"++ - the block hash or number to set as head
+        - `hashOrNumber` ++"string | number"++ - the block hash or number to set as head
 
     === "Example"
 
