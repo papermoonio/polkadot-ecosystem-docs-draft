@@ -212,15 +212,13 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameters"
 
-        |        Name         |                                 Type                                  |                    Description                     |
-        | :-----------------: | :-------------------------------------------------------------------: | :------------------------------------------------: |
-        |       `count`       |                                ++"number"++              |           The number of blocks to build            |
-        |        `dmp`        |                ++"string"++, ++"number"++                |   The downward messages to include in the block    |
-        |       `hrmp`        |                 ++"string"++, ++"number"++               |  The horizontal messages to include in the block   |
-        |        `to`         |                                ++"number"++                                |            The block number to build to            |
-        |   `transactions`    |                             ++"string[]"++                             |      The transactions to include in the block      |
-        |        `ump`        |                    ++"number"++, ++"string[]"++                    |    The upward messages to include in the block     |
-        | `unsafeBlockHeight` |                                ++"number"++                                 | Build block using a specific block height (unsafe) |
+        - `count` ++"number"++ - the number of blocks to build
+        - `dmp` ++"string"++, ++"number"++ - the downward messages to include in the block
+        - `hrmp` ++"string"++, ++"number"++ - the horizontal messages to include in the block
+        - `to` ++"number"++ - the block number to build to
+        - `transactions` ++"string[]"++ - the transactions to include in the block
+        - `ump` ++"number"++, ++"string[]"++ - the upward messages to include in the block
+        - `unsafeBlockHeight` ++"number"++ - build block using a specific block height (unsafe)
 
     === "Example"
 
@@ -232,13 +230,11 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
 
-        |       Name       |               Type               | Description           |
-        | :--------------: | :------------------------------: | :-------------------: |
-        | `buildBlockMode` | ++"enum"++ | The build mode |
-        | Options: |          |             |
-        | - `Batch` *One block per batch (default)* |
-        | - `Instant` *One block per transaction* |
-        | - `Manual` *Only build when triggered* |
+        - `buildBlockMode` ++"enum"++ - the build mode 
+        - Options:
+            - `Batch` *One block per batch (default)*
+            - `Instant` *One block per transaction* 
+            - `Manual` *Only build when triggered* 
 
 
     === "Example"
@@ -251,9 +247,7 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"      
 
-        |     Name     |         Type          |               Description               |
-        | :----------: | :-------------------: | :-------------------------------------: |
-        | `hashOrNumber` | ++"string"++ | The block hash or number to set as head |
+        - `hashOrNumber` ++"string"++ - the block hash or number to set as head
 
     === "Example"
 
@@ -265,9 +259,7 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
 
-        |      Name       |  Type  |         Description          |
-        | :-------------: | :----: | :--------------------------: |
-        | `runtimeLogLevel` | ++"number"++ | The runtime log level to set |
+        - `runtimeLogLevel` ++"number"++ - the runtime log level to set
 
     === "Example"
 
@@ -279,10 +271,8 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameters"
 
-        |   Name    |    Type     |                    Description                     |
-        | :-------: | :---------: | :------------------------------------------------: |
-        |  `values`   |   ++"object"++    | JSON object resembling the path to a storage value |
-        | `blockHash` | ++"string"++ |      The block hash to set the storage value       |
+        - `values` ++"object"++ - JSON object resembling the path to a storage value
+        - `blockHash` ++"string"++ - the block hash to set the storage value
 
     === "Example"
 
@@ -294,9 +284,7 @@ These are the methods that can be invoked and their parameters:
 
     === "Parameter"
         
-        | Name  |       Type       |                                               Description                                                |
-        | :---: | :--------------: | :------------------------------------------------------------------------------------------------------: |
-        | `date`  | ++"string"++ | Timestamp or date string to set. All future blocks will be sequentially created after this point in time |
+        - `date` ++"string"++ - timestamp or date string to set. All future blocks will be sequentially created after this point in time
 
     === "Example"
 
