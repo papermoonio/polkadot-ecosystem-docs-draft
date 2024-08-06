@@ -15,8 +15,8 @@ description: Configure and fork Substrate-based blockchains locally with Chopsti
 
 With Chopsticks, developers can simulate and test complex blockchain scenarios without deploying to a live network. This tool significantly reduces the complexity of building blockchain applications on Substrate, making it more accessible to developers of varying experience levels. Ultimately, Chopsticks aims to accelerate innovation in the Substrate ecosystem by providing a robust, flexible testing framework.
 
-!!!note
-Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=\_blank} light client, which only supports the native Polkadot-SDK API. Consequently, a Chopsticks-based fork does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
+!!! note
+    Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=\_blank} light client, which only supports the native Polkadot-SDK API. Consequently, a Chopsticks-based fork does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
 
 ## Prerequisites
 
@@ -63,23 +63,21 @@ npx @acala-network/chopsticks
 
 ## Configuration
 
-To run Chopsticks, you need to configure some parameters. This can be set either through using a configuration file or the command line interface (CLI).
+To run Chopsticks, you need to configure some parameters. This can be set either through using a configuration file or the command line interface (CLI). Available parameter options are as follows:
 
-|           Option           |                                                 Description                                                 |
-| :------------------------: | :---------------------------------------------------------------------------------------------------------: |
-|         `genesis`          |          The link to a parachain's raw genesis file to build the fork from, instead of an endpoint          |
-|        `timestamp`         |                                     Timestamp of the block to fork from                                     |
-|         `endpoint`         |                                    The endpoint of the parachain to fork                                    |
-|          `block`           |                       Use to specify at which block hash or number to replay the fork                       |
-|      `wasm-override`       |             Path of the WASM to use as the parachain runtime, instead of an endpoint's runtime              |
-|            `db`            |               Path to the name of the file that stores or will store the parachain's database               |
-|          `config`          |                                       Path or URL of the config file                                        |
-|           `port`           |                                      The port to expose an endpoint on                                      |
-|     `build-block-mode`     |                       How blocks should be built in the fork: batch, manual, instant                        |
-|      `import-storage`      |              A pre-defined JSON/YAML storage file path to override in the parachain's storage               |
-| `allow-unresolved-imports` |              Whether to allow WASM unresolved imports when using a WASM to build the parachain              |
-|           `html`           |                           Include to generate storage diff preview between blocks                           |
-|   `mock-signature-host`    | Mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid |
+- `genesis` - the link to a parachain's raw genesis file to build the fork from, instead of an endpoint
+- `timestamp` - timestamp of the block to fork from
+- `endpoint` - the endpoint of the parachain to fork
+- `block` - use to specify at which block hash or number to replay the fork
+- `wasm-override` - path of the WASM to use as the parachain runtime, instead of an endpoint's runtime
+- `db` - path to the name of the file that stores or will store the parachain's database
+- `config` - path or URL of the config file
+- `port` - the port to expose an endpoint on
+- `build-block-mode` - how blocks should be built in the fork: batch, manual, instant
+- `import-storage` - a pre-defined JSON/YAML storage file path to override in the parachain's storage
+- `allow-unresolved-imports` - whether to allow WASM unresolved imports when using a WASM to build the parachain
+- `html` - include to generate storage diff preview between blocks
+- `mock-signature-host` - mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid
 
 ### Using a Configuration File
 
@@ -113,7 +111,7 @@ To run Chopsticks using a configuration file, utilize the `--config` flag. You c
     ```
 
 !!! note
-If using a file path, make sure you've downloaded the [Polkadot configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/polkadot.yml){target=\_blank}, or have created your own.
+    If using a file path, make sure you've downloaded the [Polkadot configuration file](https://github.com/AcalaNetwork/chopsticks/blob/master/configs/polkadot.yml){target=\_blank}, or have created your own.
 
 ### Using Command Line Interface (CLI)
 
@@ -162,11 +160,9 @@ For programmatic interaction, you can use the Polkadot.js library. Here's a basi
 
 Chopsticks allows you to replay specific blocks from a chain, which is useful for debugging and analyzing state changes. You can use the parameters in the [Configuration](#configuration) section to set up the chain configuration, and then use the run-block subcommand with additional options:
 
-|    Option     |           Description           |
-| :-----------: | :-----------------------------: |
-| `output-path` |    File path to print output    |
-|    `html`     | Generate html with storage diff |
-|    `open`     |       Open generated html       |
+- `output-path` - file path to print output
+- `html` - generate html with storage diff
+- `open` - open generated html
 
 For example, to replay block 1000 from Polkadot and save the output to a JSON file:
 
@@ -181,10 +177,8 @@ npx @acala-network/chopsticks run-block  \
 
 To test XCM (Cross-Consensus Messaging) messages between networks, you can fork multiple parachains and a relay chain locally using Chopsticks.
 
-|    Option    |      Description       |
-| :----------: | :--------------------: |
-| `relaychain` | Relaychain config file |
-| `parachain`  | Parachain config file  |
+- `relaychain` - relaychain config file
+- `parachain` - parachain config file  
 
 For example, to fork Moonbeam, Astar, and Polkadot enabling XCM between them, you can use the following command:
 
