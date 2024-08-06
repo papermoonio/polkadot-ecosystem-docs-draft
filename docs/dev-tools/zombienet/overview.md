@@ -143,8 +143,6 @@ provider = "INSERT_PROVIDER"
 ...
 ```
 
-At the moment, Zombienet supports the following providers: `kubernetes`, `podman`, and `native` (local).
-
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
 ### Kubernetes
