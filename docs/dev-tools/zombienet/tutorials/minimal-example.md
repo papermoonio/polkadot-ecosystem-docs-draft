@@ -147,7 +147,7 @@ If successful, you will see the following output:
 
 ## Interacting with the Spawned Network
 
-### Connecting to the nodes
+### Connecting to the Nodes
 
 After the network is launched, you can interact with it using the [Polkadot.js App](https://polkadot.js.org/apps/){target=_blank}. To do so, open your browser and use the provided links listed by the output as 'direct link'. For instance, in this particular case, as the ports may vary from spawning to spawning, to interact with the `alice` node, open [https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55308#explorer](https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55308#explorer){target=_blank} as it is the link provided in the output for the `alice` node. Moreover, you can also do this for the `bob` and `collator01` nodes.
 
