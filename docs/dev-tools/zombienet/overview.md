@@ -7,12 +7,12 @@ description: Diving deeper into Zombienet, a versatile tool enabling the creatio
 
 ## Introduction
 
-Zombienet is a testing framework designed for Polkadot SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet is a JavaScript library designed to run on Node.js and supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes. 
+Zombienet is a testing framework designed for Polkadot SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet is a JavaScript library designed to run on Node.js and supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes.
 
 The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
 
 [Parity Technologies](https://www.parity.io/){target=_blank} has designed and developed this framework, now maintained by the Zombienet team. For further support and information, refer to the following contact points:
-    
+
 - [Zombienet repository](https://github.com/paritytech/zombienet){target=_blank}
 - [Element public channel](https://matrix.to/#/!FWyuEyNvIFygLnWNMh:parity.io?via=parity.io&via=matrix.org&via=web3.foundation){target=_blank}
 
@@ -142,8 +142,6 @@ Alternatively, you can set the provider in the network file:
 provider = "INSERT_PROVIDER"
 ...
 ```
-
-At the moment, Zombienet supports the following providers: `kubernetes`, `podman`, and `native` (local).
 
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 
@@ -456,11 +454,11 @@ You can use the `relaychain` keyword to define further parameters for the relay 
   }
   ```
 
-### Node Configuration
+#### Node Configuration
 
 There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
 
-- `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
+- `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
 - `image` ++"string"++ - override default Docker image to use for this node
 - `command` ++"string"++ - override default command to run
 - `command_with_args` ++"string"++ - override default command and arguments
@@ -485,7 +483,7 @@ There is one specific key capable of receiving more subkeys: the `nodes` key. Th
 The following configuration file defines a minimal example for the relay chain, including the `nodes` key:
 
 === "TOML"
-        
+
     ```toml title="relaychain-example-nodes.toml"
     --8<-- 'code/developer-tools/zombienet/overview/relaychain-example-nodes.toml'
     ```
@@ -496,11 +494,11 @@ The following configuration file defines a minimal example for the relay chain, 
     --8<-- 'code/developer-tools/zombienet/overview/relaychain-example-nodes.json'
     ```
 
-### Node Group Configuration
+#### Node Group Configuration
 
 The `node_groups` key is used to define further parameters for the node groups. The available keys are:
 
-- `name` ++"string"++ - group name, used for naming the nodes. Any whitespace will be replaced with a dash (e.g., `new group` -> `new-group`)
+- `name` ++"string"++ - group name, used for naming the nodes. Any whitespace will be replaced with a dash (e.g., `new group` will be converted to `new-group`)
 - `count` ++"number"++ - number of nodes to launch for this group
 - `image` ++"string"++ - override default Docker image to use for this node
 - `command` ++"string"++ - override default command to run
@@ -556,11 +554,11 @@ For example, the following configuration file defines a minimal example for the 
     --8<-- 'code/developer-tools/zombienet/overview/parachain-example.json'
     ```
 
-### Collator Configuration
+#### Collator Configuration
 
 One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The available keys are:
 
-- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
+- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
 - `image` ++"string"++ - image to use for the collator
 - `command` ++"string"++ - command to run for the collator. Defaults to `polkadot-parachain`
 - `args` ++"string[]"++ - an array of arguments to use as defaults to pass to the command
@@ -585,11 +583,11 @@ The configuration file below defines a minimal example for the collator:
     --8<-- 'code/developer-tools/zombienet/overview/collator-example.json'
     ```
 
-### Collator Groups
+#### Collator Groups
 
 The `collator_groups` key is used to define further parameters for the collator groups. The available keys are:
 
-- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` -> `new-alice`)
+- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
 - `count` ++"number"++ - number of collators to launch for this group
 - `image` ++"string"++ - image to use for the collators
 - `command` ++"string"++ - command to run for each collator. Defaults to `polkadot-parachain`
@@ -607,7 +605,7 @@ For instance, the configuration file below defines a minimal example for the col
     ```toml title="collator-groups-example.toml"
     --8<-- 'code/developer-tools/zombienet/overview/collator-groups-example.toml'
     ```
-    
+
 === "JSON"
 
     ```json title="collator-groups-example.json"
