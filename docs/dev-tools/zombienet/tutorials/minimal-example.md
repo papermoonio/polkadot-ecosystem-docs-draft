@@ -3,7 +3,7 @@ title: Minimal Example of the Usage of Zombienet
 description: This tutorial provides an example of how to use Zombienet to spawn a basic network and run a simple test over it.
 ---
 
-# A Minimal Example of the usage of Zombienet
+# A Minimal Example of the Usage of Zombienet
 
 This tutorial provides an example of how to use Zombienet to spawn a basic network and run a simple test against it.
 
