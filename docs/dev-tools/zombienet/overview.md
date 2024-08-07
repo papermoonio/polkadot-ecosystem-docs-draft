@@ -352,20 +352,34 @@ The network configuration can be given in either JSON or TOML format. The Zombie
 
 Through the keyword `settings`, it's possible to define the general settings for the network. The available keys are:
 
+- `global_volumes?` ++"GlobalVolume[]"++ - a list of global volumes to use. The `GlobalVolume` interface is defined as follows: 
+  ```js
+  export interface GlobalVolume {
+    name: string;
+    fs_type: string;
+    mount_path: string;
+  }
+  ```
 - `bootnode` ++"boolean"++ - add bootnode to network. Default is `true`
+- `bootnode_domain?` ++"string"++ - domain to use for bootnode
 - `timeout` ++"number"++ - global timeout to use for spawning the whole network"
+- `node_spawn_timeout?` ++"number"++ - timeout to spawn pod/process
+- `grafana?` ++"boolean"++ - deploy an instance of Grafana
+- `prometheus?` ++"boolean"++ - deploy an instance of Prometheus
+- `telemetry?` ++"boolean"++ - enable telemetry for the network
+- `jaeger_agent?` ++"string"++ - the Jaeger agent endpoint passed to the nodes. Only available on Kubernetes
+- `tracing_collator_url?` ++"string"++ - the URL of the tracing collator used to query by the tracing assertion. Should be tempo query compatible
+- `tracing_collator_service_name?` ++"string"++ - service name for tempo query frontend. Only available on Kubernetes. Defaults to `tempo-tempo-distributed-query-frontend`
+- `tracing_collator_service_namespace?` ++"string"++ - namespace where tempo is running. Only available on Kubernetes. Defaults to `tempo`
+- `tracing_collator_service_port?` ++"number"++ - port of the query instance of tempo. Only available on Kubernetes. Defaults to `3100`
+- `enable_tracing?` ++"boolean"++ - enable the tracing system. Only available on Kubernetes. Defaults to `true`
 - `provider` ++"string"++ - provider to use. Default is `kubernetes`"
-- `backchannel` ++"boolean"++ - deploy an instance of backchannel server. Only available on Kubernetes. Defaults to `false`
-- `polkadot_introspector` ++"boolean"++ - deploy an instance of polkadot-introspector. Only available on Podman and Kubernetes. Defaults to `false`
-- `jaeger_agent` ++"string"++ - the Jaeger agent endpoint passed to the nodes. Only available on Kubernetes
-- `enable_tracing` ++"boolean"++ - enable the tracing system. Only available on Kubernetes. Defaults to `true`
-- `tracing_collator_url` ++"string"++ - the URL of the tracing collator used to query by the tracing assertion. Should be tempo query compatible
-- `tracing_collator_service_name` ++"string"++ - service name for tempo query frontend. Only available on Kubernetes. Defaults to `tempo-tempo-distributed-query-frontend`
-- `tracing_collator_service_namespace` ++"string"++ - namespace where tempo is running. Only available on Kubernetes. Defaults to `tempo`
-- `tracing_collator_service_port` ++"number"++ - port of the query instance of tempo. Only available on Kubernetes. Defaults to `3100`
-- `node_spawn_timeout` ++"number"++ - timeout to spawn pod/process. Defaults to `per provider`
-- `local_ip` ++"string"++ - IP used for exposing local services (rpc/metrics/monitors). Defaults to `"127.0.0.1"`
-- `node_verifier` ++"string"++ - allow managing how to verify node readiness or disable by using `none`. Defaults to `Metric`
+- `polkadot_introspector?` ++"boolean"++ - deploy an instance of polkadot-introspector. Only available on Podman and Kubernetes. Defaults to `false`
+- `backchannel?` ++"boolean"++ - deploy an instance of backchannel server. Only available on Kubernetes. Defaults to `false`
+- `image_pull_policy?` ++"string"++ - image pull policy to use in the network. Possible values are `Always`, `IfNotPresent`, and `Never`
+- `local_ip?` ++"string"++ - IP used for exposing local services (rpc/metrics/monitors). Defaults to `"127.0.0.1"`
+- `global_delay_network_global_settings?` ++"number"++ - delay in seconds to apply to the network
+- `node_verifier?` ++"string"++ - allow managing how to verify node readiness or disable by using `None`. Possible values are `None` and `Metric`. Defaults to `Metric`
 
 For example, the following configuration file defines a minimal example for the settings:
 
@@ -385,43 +399,128 @@ For example, the following configuration file defines a minimal example for the 
 
 You can use the `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
 
-- `default_command` ++"string"++ - the default command to run. Defaults to `polkadot`
-- `chain` ++"string"++ - the chain name
-- `chain_spec_path` ++"string"++ - path to the chain spec file. Should be the plain version to allow customizations
-- `chain_spec_command` ++"string"++ - command to generate the chain spec. It can't be used in combination with `chain_spec_path`
-- `default_args` ++"string[]"++ - an array of arguments to use as default to pass to the command
-- `default_substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version
-- `default_overrides` ++"Override object[]"++ - an array of overrides to upload to the nodes
-- `default_resources` ++"Resources object"++ - represents the resources limits/reservations needed by the nodes by default. Only available on Kubernetes
+- `default_command?` ++"string"++ - the default command to run. Defaults to `polkadot`
+- `default_image?` ++"string"++ - the default Docker image to use
+- `default_resources?` ++"Resources"++ - represents the resources limits/reservations needed by the nodes by default. Only available on Kubernetes. The `Resources` interface is defined as follows:
+  ```js
+  export interface Resources {
+    resources: {
+      requests?: {
+        memory?: string;
+        cpu?: string;
+      };
+      limits?: {
+        memory?: string;
+        cpu?: string;
+      };
+    };
+  }
+  ```
+- `default_db_snapshot?` ++"string"++ - the default database snapshot to use
 - `default_prometheus_prefix` ++"string"++ - a parameter for customizing the metric's prefix. Defaults to `substrate`
-- `random_nominators_count` ++"number"++ - if set and the stacking pallet is enabled, Zombienet will generate the input quantity of nominators and inject them into the genesis
+- `default_substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version. The `SubstrateCliArgsVersion` enum is defined as follows:
+  ```js
+  export enum SubstrateCliArgsVersion {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+  }
+  ```
+- `default_keystore_key_types?` ++"string[]"++ - defines which keystore keys should be created 
+- `chain` ++"string"++ - the chain name
+- `chain_spec_path?` ++"string"++ - path to the chain spec file. Should be the plain version to allow customizations
+- `chain_spec_command?` ++"string"++ - command to generate the chain spec. It can't be used in combination with `chain_spec_path`
+- `default_args?` ++"string[]"++ - an array of arguments to use as default to pass to the command
+- `default_overrides?` ++"Override[]"++ - an array of overrides to upload to the node. The `Override` interface is defined as follows:
+  ```js
+  export interface Override {
+    local_path: string;
+    remote_name: string;
+  } 
+  ```
+- `random_nominators_count?` ++"number"++ - if set and the stacking pallet is enabled, Zombienet will generate the input quantity of nominators and inject them into the genesis
 - `max_nominations` ++"number"++ - the max number of nominations allowed by a nominator. Should match the value set in the rumtime. Defaults to `24`
+- `nodes?` ++"Node[]"++ - an array of nodes to spawn. It is further defined on the [Node Configuration](#node-configuration) section
+- `node_groups?` ++"NodeGroup[]"++ - an array of node groups to spawn. It is further defined on the [Node Group Configuration](#node-group-configuration) section
+- `total_node_in_group?` ++"number"++ - the total number of nodes in the group. Defaults to `1`
+- `genesis` ++"JSON"++ - the genesis configuration
+- `default_delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
 
 #### Node Configuration
 
 There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
 
 - `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
-- `image` ++"string"++ - override default Docker image to use for this node
-- `command` ++"string"++ - override default command to run
-- `command_with_args` ++"string"++ - override default command and arguments
-- `args` ++"string[]"++ - arguments to be passed to the command
-- `substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version directly to skip binary evaluation overhead
+- `image?` ++"string"++ - override default Docker image to use for this node
+- `command?` ++"string"++ - override default command to run
+- `command_with_args?` ++"string"++ - override default command and arguments
+- `args?` ++"string[]"++ - arguments to be passed to the command
+- `env?` ++"envVars[]"++ - environment variables to set in the container. The `envVars` interface is defined as follows:
+  ```js
+  export interface EnvVars {
+    name: string;
+    value: string;
+  }
+  ```
+- `overrides?` ++"Override[]"++ - array of overrides definitions. The `Override` interface is defined as follows:
+  ```js
+  export interface Override {
+    local_path: string;
+    remote_name: string;
+  }
+  ```
+- `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
+- `db_snapshot?` ++"string"++ - database snapshot to use
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+  ```js
+  export enum SubstrateCliArgsVersion {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+  }
+  ```
+- `resources?` ++"Resources"++ - represent the resources limits/reservations needed by the node. The `Resources` interface is defined as follows:
+  ```js
+  export interface Resources {
+    resources: {
+      requests?: {
+        memory?: string;
+        cpu?: string;
+      };
+      limits?: {
+        memory?: string;
+        cpu?: string;
+      };
+    };
+  }
+  ```
+- `keystore_key_types?` ++"string[]"++ - defines which keystore keys should be created
 - `validator` ++"boolean"++ - pass the `--validator` flag to the command. Defaults to `true`
 - `invulnerable` ++"boolean"++ - if true, add the node to invulnerables in the chain spec. Defaults to `false`
 - `balance` ++"number"++ - balance to set in balances for node's account. Defaults to `2000000000000`
-- `env` ++"objects[]"++ - environment variables to set in the container
-- `env.name` ++"string"++ - name of the environment variable
-- `env.value` ++"string"++ - value of the environment variable
-- `bootnodes` ++"string[]"++ - array of bootnodes to use
-- `overrides` ++"object[]"++ - array of overrides definitions
-- `add_to_bootnodes` ++"boolean"++ - add this node to the bootnode list. Defaults to `false`
-- `resources` ++"object"++ - represent the resources limits/reservations needed by the node. Only available on Kubernetes
-- `ws_port` ++"number"++ - WS port to use
-- `rpc_port` ++"number"++ - RPC port to use
-- `prometheus_port` ++"number"++ - Prometheus port to use
-- `prometheus_prefix` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
-- `keystore_key_types` ++"string"++ - defines which keystore keys should be created
+- `bootnodes?` ++"string[]"++ - array of bootnodes to use
+- `add_to_bootnodes?` ++"boolean"++ - add this node to the bootnode list. Defaults to `false`
+- `ws_port?` ++"number"++ - WS port to use
+- `rpc_port?` ++"number"++ - RPC port to use
+- `prometheus_port?` ++"number"++ - Prometheus port to use
+- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webrtc transport
+- `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
 
 The following configuration file defines a minimal example for the relay chain, including the `nodes` key:
 
@@ -441,18 +540,60 @@ The following configuration file defines a minimal example for the relay chain, 
 
 The `node_groups` key is used to define further parameters for the node groups. The available keys are:
 
-- `name` ++"string"++ - group name, used for naming the nodes. Any whitespace will be replaced with a dash (e.g., `new group` will be converted to `new-group`)
-- `count` ++"number"++ - number of nodes to launch for this group
-- `image` ++"string"++ - override default Docker image to use for this node
-- `command` ++"string"++ - override default command to run
-- `args` ++"string[]"++ - arguments to be passed to the command
-- `env` ++"object[]"++ - environment variables to set in the container
-- `env.name` ++"string"++ - name of the environment variable
-- `env.value` ++"string"++ - value of the environment variable
-- `overrides` ++"object[]"++ - array of overrides definitions
-- `prometheus_prefix` ++"string"++ - a parameter for customizing the metric's prefix for the specific node group. Defaults to `substrate`
-- `resources` ++"object[]"++ - represent the resources limits/reservations needed by the node. Only available on Kubernetes
-- `substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version directly to skip binary evaluation overhead
+- `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
+- `image?` ++"string"++ - override default Docker image to use for this node
+- `command?` ++"string"++ - override default command to run
+- `args?` ++"string[]"++ - arguments to be passed to the command
+- `env?` ++"envVars[]"++ - environment variables to set in the container. The `envVars` interface is defined as follows:
+  ```js
+  export interface EnvVars {
+    name: string;
+    value: string;
+  }
+  ```
+- `overrides?` ++"Override[]"++ - array of overrides definitions. The `Override` interface is defined as follows:
+  ```js
+  export interface Override {
+    local_path: string;
+    remote_name: string;
+  }
+  ```
+- `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
+- `db_snapshot?` ++"string"++ - database snapshot to use
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+  ```js
+  export enum SubstrateCliArgsVersion {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+  }
+  ```
+- `resources?` ++"Resources"++ - represent the resources limits/reservations needed by the node. The `Resources` interface is defined as follows:
+  ```js
+  export interface Resources {
+    resources: {
+      requests?: {
+        memory?: string;
+        cpu?: string;
+      };
+      limits?: {
+        memory?: string;
+        cpu?: string;
+      };
+    };
+  }
+  ```
+- `keystore_key_types?` ++"string[]"++ - defines which keystore keys should be created
+- `count` ++"number | string"++ - number of nodes to launch for this group
+- `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
 
 The following configuration file defines a minimal example for the relay chain, including the `node_groups` key:
 
@@ -473,15 +614,34 @@ The following configuration file defines a minimal example for the relay chain, 
 The `parachain` keyword is used to define further parameters for the parachain. The available keys are:
 
 - `id` ++"number"++ - the id to assign to this parachain. Must be unique
-- `add_to_genesis` ++"boolean"++ - flag to add parachain to genesis or register in runtime. Defaults to `true`
-- `cumulus_based` ++"boolean"++ - flag to use cumulus command generation. Defaults to `true`
-- `genesis_wasm_path` ++"string"++ - path to the wasm file to use
-- `genesis_wasm_generator` ++"string"++ - command to generate the wasm file
-- `genesis_state_path` ++"string"++ - path to the state file to use
-- `genesis_state_generator` ++"string"++ - command to generate the state file
-- `prometheus_prefix` ++"string"++ - parameter for customizing the metric's prefix for all parachain nodes/collators. Defaults to `substrate`
-- `onboard_as_parachain` ++"boolean"++ - flag to specify whether the para should be onboarded as a parachain, rather than remaining a parathread. Defaults to `true`
-- `register_para` ++"boolean"++ - flag to specify whether the para should be registered. The `add_to_genesis` flag must be set to false for this flag to have any effect. Defaults to `true`
+- `chain?` ++"string"++ - the chain name
+- `force_decorator?` ++"string"++ - force the use of a specific decorator
+- `genesis?` ++"JSON"++ - the genesis configuration
+- `balance?` ++"number"++ - balance to set in balances for parachain's account
+- `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
+- `add_to_genesis?` ++"boolean"++ - flag to add parachain to genesis or register in runtime. Defaults to `true`
+- `register_para?` ++"boolean"++ - flag to specify whether the para should be registered. The `add_to_genesis` flag must be set to false for this flag to have any effect. Defaults to `true`
+- `onboard_as_parachain?` ++"boolean"++ - flag to specify whether the para should be onboarded as a parachain, rather than remaining a parathread. Defaults to `true`
+- `genesis_wasm_path?` ++"string"++ - path to the wasm file to use
+- `genesis_wasm_generator?` ++"string"++ - command to generate the wasm file
+- `genesis_state_path?` ++"string"++ - path to the state file to use
+- `genesis_state_generator?` ++"string"++ - command to generate the state file
+- `chain_spec_path?` ++"string"++ - path to the chain spec file
+- `chain_spec_command?` ++"string"++ - command to generate the chain spec
+- `cumulus_based?` ++"boolean"++ - flag to use cumulus command generation. Defaults to `true`
+- `bootnodes?` ++"string[]"++ - array of bootnodes to use
+- `prometheus_prefix?` ++"string"++ - parameter for customizing the metric's prefix for all parachain nodes/collators. Defaults to `substrate`
+- `collator?` ++"Collator"++ - further defined on the [Collator Configuration](#collator-configuration) section
+- `collators?` ++"Collator[]"++ - an array of collators to spawn. It is further defined on the [Collator Configuration](#collator-configuration) section
+- `collator_groups?` ++"CollatorGroup[]"++ - an array of collator groups to spawn. It is further defined on the [Collator Groups](#collator-groups) section
+ 
 
 For example, the following configuration file defines a minimal example for the parachain:
 
@@ -502,15 +662,69 @@ For example, the following configuration file defines a minimal example for the 
 One specific key capable of receiving more subkeys is the `collator` key. This key is used to define further parameters for the nodes. The available keys are:
 
 - `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
-- `image` ++"string"++ - image to use for the collator
-- `command` ++"string"++ - command to run for the collator. Defaults to `polkadot-parachain`
-- `args` ++"string[]"++ - an array of arguments to use as defaults to pass to the command
-- `substrate_cli_args_version` ++"enum"++ - sets the version directly to skip default Zombienet behavior of evaluating the binary to determine and set the correct version
-- `command_with_args` ++"string"++ - overrides both command and arguments for the collator
-- `env` ++"object[]"++ - environment variables to set in the container for the collator
-- `env.name` ++"string"++ - name of the environment variable
-- `env.value` ++"string"++ - value of the environment variable
-- `keystore_key_types` ++"string"++ - defines which keystore keys should be created. For more details, refer to additional documentation
+- `image?` ++"string"++ - image to use for the collator
+- `command_with_args?` ++"string"++ - overrides both command and arguments for the collator
+- `validator` ++"boolean"++ - pass the `--validator` flag to the command. Defaults to `true`
+- `invulnerable` ++"boolean"++ - if true, add the collator to invulnerables in the chain spec. Defaults to `false`
+- `balance` ++"number"++ - balance to set in balances for collator's account. Defaults to `2000000000000`
+- `bootnodes?` ++"string[]"++ - array of bootnodes to use
+- `add_to_bootnodes?` ++"boolean"++ - add this collator to the bootnode list. Defaults to `false`
+- `ws_port?` ++"number"++ - WS port to use
+- `rpc_port?` ++"number"++ - RPC port to use
+- `prometheus_port?` ++"number"++ - Prometheus port to use
+- `p2p_port?` ++"number"++ - P2P port to use
+- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webrtc transport
+- `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
+- `command?` ++"string"++ - override default command to run
+- `args?` ++"string[]"++ - arguments to be passed to the command
+- `env?` ++"envVars[]"++ - environment variables to set in the container. The `envVars` interface is defined as follows:
+  ```js
+  export interface EnvVars {
+    name: string;
+    value: string;
+  }
+  ```
+- `overrides?` ++"Override[]"++ - array of overrides definitions. The `Override` interface is defined as follows:
+  ```js
+  export interface Override {
+    local_path: string;
+    remote_name: string;
+  }
+  ```
+- `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
+- `db_snapshot?` ++"string"++ - database snapshot to use
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+  ```js
+  export enum SubstrateCliArgsVersion {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+  }
+  ```
+- `resources?` ++"Resources"++ - represent the resources limits/reservations needed by the node. The `Resources` interface is defined as follows:
+  ```js
+  export interface Resources {
+    resources: {
+      requests?: {
+        memory?: string;
+        cpu?: string;
+      };
+      limits?: {
+        memory?: string;
+        cpu?: string;
+      };
+    };
+  }
+  ```
+- `keystore_key_types?` ++"string[]"++ - defines which keystore keys should be created
 
 The configuration file below defines a minimal example for the collator:
 
@@ -530,16 +744,60 @@ The configuration file below defines a minimal example for the collator:
 
 The `collator_groups` key is used to define further parameters for the collator groups. The available keys are:
 
-- `name` ++"string"++ - name of the collator. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
-- `count` ++"number"++ - number of collators to launch for this group
-- `image` ++"string"++ - image to use for the collators
-- `command` ++"string"++ - command to run for each collator. Defaults to `polkadot-parachain`
-- `args` ++"string[]"++ - an array of arguments to use as defaults to pass to the command
-- `command_with_args` ++"string"++ - overrides both command and arguments for each collator
-- `env` ++"object[]"++ - environment variables to set in the container for each collator
-- `env.name` ++"string"++ - name of the environment variable
-- `env.value` ++"string"++ - value of the environment variable
-- `substrate_cli_args_version` ++"enum"++ - sets the version directly to skip default Zombienet behavior of evaluating the binary to determine and set the correct version
+- `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
+- `image?` ++"string"++ - override default Docker image to use for this node
+- `command?` ++"string"++ - override default command to run
+- `args?` ++"string[]"++ - arguments to be passed to the command
+- `env?` ++"envVars[]"++ - environment variables to set in the container. The `envVars` interface is defined as follows:
+  ```js
+  export interface EnvVars {
+    name: string;
+    value: string;
+  }
+  ```
+- `overrides?` ++"Override[]"++ - array of overrides definitions. The `Override` interface is defined as follows:
+  ```js
+  export interface Override {
+    local_path: string;
+    remote_name: string;
+  }
+  ```
+- `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
+- `db_snapshot?` ++"string"++ - database snapshot to use
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+  ```js
+  export enum SubstrateCliArgsVersion {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+  }
+  ```
+- `resources?` ++"Resources"++ - represent the resources limits/reservations needed by the node. The `Resources` interface is defined as follows:
+  ```js
+  export interface Resources {
+    resources: {
+      requests?: {
+        memory?: string;
+        cpu?: string;
+      };
+      limits?: {
+        memory?: string;
+        cpu?: string;
+      };
+    };
+  }
+  ```
+- `keystore_key_types?` ++"string[]"++ - defines which keystore keys should be created
+- `count` ++"number | string"++ - number of nodes to launch for this group
+- `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
 
 For instance, the configuration file below defines a minimal example for the collator groups:
 
@@ -559,7 +817,17 @@ For instance, the configuration file below defines a minimal example for the col
 
 You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The available keys are:
 
-- `hrmp_channels` ++"object[]"++ - array of HRMP channel configurations
+- `hrmp_channels` ++"HrmpChannelsConfig[]"++ - array of HRMP channel configurations. The `HrmpChannelsConfig` interface is defined as follows:
+  ```js
+  export interface HrmpChannelsConfig {
+    sender: number;
+    recipient: number;
+    max_capacity: number;
+    max_message_size: number;
+  }
+  ```
+Each of the `HrmpChannelsConfig` keys are defined as follows:
+
 - `sender` ++"number"++ - parachain ID of the sender
 - `recipient` ++"number"++ - parachain ID of the recipient
 - `max_capacity` ++"number"++ - maximum capacity of the HRMP channel
