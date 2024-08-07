@@ -401,17 +401,60 @@ For example, the following configuration file defines a minimal example for the 
 
 You can use the `relaychain` keyword to define further parameters for the relay chain at start-up. The available keys are:
 
-- `default_command` ++"string"++ - the default command to run. Defaults to `polkadot`
-- `chain` ++"string"++ - the chain name
-- `chain_spec_path` ++"string"++ - path to the chain spec file. Should be the plain version to allow customizations
-- `chain_spec_command` ++"string"++ - command to generate the chain spec. It can't be used in combination with `chain_spec_path`
-- `default_args` ++"string[]"++ - an array of arguments to use as default to pass to the command
-- `default_substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version
-- `default_overrides` ++"Override object[]"++ - an array of overrides to upload to the nodes
-- `default_resources` ++"Resources object"++ - represents the resources limits/reservations needed by the nodes by default. Only available on Kubernetes
+- `default_command?` ++"string"++ - the default command to run. Defaults to `polkadot`
+- `default_image?` ++"string"++ - the default Docker image to use
+- `default_resources?` ++"Resources"++ - represents the resources limits/reservations needed by the nodes by default. Only available on Kubernetes. The `Resources` interface is defined as follows:
+  ```js
+  export interface Resources {
+    resources: {
+      requests?: {
+        memory?: string;
+        cpu?: string;
+      };
+      limits?: {
+        memory?: string;
+        cpu?: string;
+      };
+    };
+  }
+  ```
+- `default_db_snapshot?` ++"string"++ - the default database snapshot to use
 - `default_prometheus_prefix` ++"string"++ - a parameter for customizing the metric's prefix. Defaults to `substrate`
-- `random_nominators_count` ++"number"++ - if set and the stacking pallet is enabled, Zombienet will generate the input quantity of nominators and inject them into the genesis
+- `default_substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version. The `SubstrateCliArgsVersion` enum is defined as follows:
+  ```js
+  export enum SubstrateCliArgsVersion {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+  }
+  ```
+- `default_keystore_key_types?` ++"string[]"++ - defines which keystore keys should be created 
+- `chain` ++"string"++ - the chain name
+- `chain_spec_path?` ++"string"++ - path to the chain spec file. Should be the plain version to allow customizations
+- `chain_spec_command?` ++"string"++ - command to generate the chain spec. It can't be used in combination with `chain_spec_path`
+- `default_args?` ++"string[]"++ - an array of arguments to use as default to pass to the command
+- `default_overrides?` ++"Override[]"++ - an array of overrides to upload to the node. The `Override` interface is defined as follows:
+  ```js
+  export interface Override {
+    local_path: string;
+    remote_name: string;
+  } 
+  ```
+- `random_nominators_count?` ++"number"++ - if set and the stacking pallet is enabled, Zombienet will generate the input quantity of nominators and inject them into the genesis
 - `max_nominations` ++"number"++ - the max number of nominations allowed by a nominator. Should match the value set in the rumtime. Defaults to `24`
+- `nodes?` ++"Node[]"++ - an array of nodes to spawn. It is further defined on the [Node Configuration](#node-configuration) section
+- `node_groups?` ++"NodeGroup[]"++ - an array of node groups to spawn. It is further defined on the [Node Group Configuration](#node-group-configuration) section
+- `total_node_in_group?` ++"number"++ - the total number of nodes in the group. Defaults to `1`
+- `genesis` ++"JSON"++ - the genesis configuration
+- `default_delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
 
 ### Node Configuration
 
