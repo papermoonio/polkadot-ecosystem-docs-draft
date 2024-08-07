@@ -354,20 +354,34 @@ The network configuration can be given in either JSON or TOML format. The Zombie
 
 Through the keyword `settings`, it's possible to define the general settings for the network. The available keys are:
 
+- `global_volumes?` ++"GlobalVolume[]"++ - a list of global volumes to use. The `GlobalVolume` interface is defined as follows: 
+  ```js
+  export interface GlobalVolume {
+    name: string;
+    fs_type: string;
+    mount_path: string;
+  }
+  ```
 - `bootnode` ++"boolean"++ - add bootnode to network. Default is `true`
+- `bootnode_domain?` ++"string"++ - domain to use for bootnode
 - `timeout` ++"number"++ - global timeout to use for spawning the whole network"
+- `node_spawn_timeout?` ++"number"++ - timeout to spawn pod/process
+- `grafana?` ++"boolean"++ - deploy an instance of Grafana
+- `prometheus?` ++"boolean"++ - deploy an instance of Prometheus
+- `telemetry?` ++"boolean"++ - enable telemetry for the network
+- `jaeger_agent?` ++"string"++ - the Jaeger agent endpoint passed to the nodes. Only available on Kubernetes
+- `tracing_collator_url?` ++"string"++ - the URL of the tracing collator used to query by the tracing assertion. Should be tempo query compatible
+- `tracing_collator_service_name?` ++"string"++ - service name for tempo query frontend. Only available on Kubernetes. Defaults to `tempo-tempo-distributed-query-frontend`
+- `tracing_collator_service_namespace?` ++"string"++ - namespace where tempo is running. Only available on Kubernetes. Defaults to `tempo`
+- `tracing_collator_service_port?` ++"number"++ - port of the query instance of tempo. Only available on Kubernetes. Defaults to `3100`
+- `enable_tracing?` ++"boolean"++ - enable the tracing system. Only available on Kubernetes. Defaults to `true`
 - `provider` ++"string"++ - provider to use. Default is `kubernetes`"
-- `backchannel` ++"boolean"++ - deploy an instance of backchannel server. Only available on Kubernetes. Defaults to `false`
-- `polkadot_introspector` ++"boolean"++ - deploy an instance of polkadot-introspector. Only available on Podman and Kubernetes. Defaults to `false`
-- `jaeger_agent` ++"string"++ - the Jaeger agent endpoint passed to the nodes. Only available on Kubernetes
-- `enable_tracing` ++"boolean"++ - enable the tracing system. Only available on Kubernetes. Defaults to `true`
-- `tracing_collator_url` ++"string"++ - the URL of the tracing collator used to query by the tracing assertion. Should be tempo query compatible
-- `tracing_collator_service_name` ++"string"++ - service name for tempo query frontend. Only available on Kubernetes. Defaults to `tempo-tempo-distributed-query-frontend`
-- `tracing_collator_service_namespace` ++"string"++ - namespace where tempo is running. Only available on Kubernetes. Defaults to `tempo`
-- `tracing_collator_service_port` ++"number"++ - port of the query instance of tempo. Only available on Kubernetes. Defaults to `3100`
-- `node_spawn_timeout` ++"number"++ - timeout to spawn pod/process. Defaults to `per provider`
-- `local_ip` ++"string"++ - IP used for exposing local services (rpc/metrics/monitors). Defaults to `"127.0.0.1"`
-- `node_verifier` ++"string"++ - allow managing how to verify node readiness or disable by using `none`. Defaults to `Metric`
+- `polkadot_introspector?` ++"boolean"++ - deploy an instance of polkadot-introspector. Only available on Podman and Kubernetes. Defaults to `false`
+- `backchannel?` ++"boolean"++ - deploy an instance of backchannel server. Only available on Kubernetes. Defaults to `false`
+- `image_pull_policy?` ++"string"++ - image pull policy to use in the network. Possible values are `Always`, `IfNotPresent`, and `Never`
+- `local_ip?` ++"string"++ - IP used for exposing local services (rpc/metrics/monitors). Defaults to `"127.0.0.1"`
+- `global_delay_network_global_settings?` ++"number"++ - delay in seconds to apply to the network
+- `node_verifier?` ++"string"++ - allow managing how to verify node readiness or disable by using `None`. Possible values are `None` and `Metric`. Defaults to `Metric`
 
 For example, the following configuration file defines a minimal example for the settings:
 
