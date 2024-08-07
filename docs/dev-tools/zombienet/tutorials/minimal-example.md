@@ -175,7 +175,7 @@ main().catch(console.error).finally(() => process.exit());
 
 Either way allows you to interact easily with the network and its nodes.
 
-### Checking metrics
+### Checking Metrics
 
 You can also check the metrics of the nodes by accessing the provided links listed by the output as 'Prometheus Link'. [Prometheus](https://prometheus.io/){target=_blank} is a monitoring and alerting toolkit that collects metrics from the nodes. By accessing the provided links, you can see the metrics of the nodes in a web interface.
 
