@@ -218,7 +218,12 @@ collator01: reports node_roles is 4
 collator01: reports substrate_sub_libp2p_listeners_local_addresses is 2
 ```
 
-This test scenario checks if the nodes are running, if the parachain with ID 100 is registered within a certain timeframe (255 seconds in this example), and if the parachain block height is at least a certain number within a timeframe (in this case 10 within 255 seconds), and, if the nodes report some metrics. However, you can define any test scenario you want following the [Zombienet DSL](../testing.md) syntax.
+This test scenario checks to verify the following:
+-  the nodes are running 
+- the parachain with ID 100 is registered within a certain timeframe (255 seconds in this example) 
+- the parachain block height is at least a certain number within a timeframe (in this case, 10 within 255 seconds)
+- the nodes report metrics 
+However, you can define any test scenario following the [Zombienet DSL](../testing.md) syntax.
 
 To run the test, execute the following command:
 
