@@ -191,7 +191,7 @@ tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f
 
 After running this command, you will see the logs of the `alice` node in real-time, which can be useful for debugging purposes. The logs of the `bob` and `collator01` nodes can be checked similarly.
 
-## Running a test
+## Running a Test
 
 To run a test against the spawned network, you can use the [Zombienet DSL](../testing.md) to define the test scenario. For example, you can create a file named `minimal-example-test.zndsl` with the following content:
 
