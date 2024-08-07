@@ -459,26 +459,68 @@ You can use the `relaychain` keyword to define further parameters for the relay 
 There is one specific key capable of receiving more subkeys: the `nodes` key. This key is used to define further parameters for the nodes. The available keys:
 
 - `name` ++"string"++ - name of the node. Any whitespace will be replaced with a dash (e.g., `new alice` will be converted to `new-alice`)
-- `image` ++"string"++ - override default Docker image to use for this node
-- `command` ++"string"++ - override default command to run
-- `command_with_args` ++"string"++ - override default command and arguments
-- `args` ++"string[]"++ - arguments to be passed to the command
-- `substrate_cli_args_version` ++"enum"++ - set the Substrate CLI args version directly to skip binary evaluation overhead
+- `image?` ++"string"++ - override default Docker image to use for this node
+- `command?` ++"string"++ - override default command to run
+- `command_with_args?` ++"string"++ - override default command and arguments
+- `args?` ++"string[]"++ - arguments to be passed to the command
+- `env?` ++"envVars[]"++ - environment variables to set in the container. The `envVars` interface is defined as follows:
+  ```js
+  export interface EnvVars {
+    name: string;
+    value: string;
+  }
+  ```
+- `overrides?` ++"Override[]"++ - array of overrides definitions. The `Override` interface is defined as follows:
+  ```js
+  export interface Override {
+    local_path: string;
+    remote_name: string;
+  }
+  ```
+- `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
+- `db_snapshot?` ++"string"++ - database snapshot to use
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+  ```js
+  export enum SubstrateCliArgsVersion {
+    V0 = 0,
+    V1 = 1,
+    V2 = 2,
+    V3 = 3,
+  }
+  ```
+- `resources?` ++"Resources"++ - represent the resources limits/reservations needed by the node. The `Resources` interface is defined as follows:
+  ```js
+  export interface Resources {
+    resources: {
+      requests?: {
+        memory?: string;
+        cpu?: string;
+      };
+      limits?: {
+        memory?: string;
+        cpu?: string;
+      };
+    };
+  }
+  ```
+- `keystore_key_types?` ++"string[]"++ - defines which keystore keys should be created
 - `validator` ++"boolean"++ - pass the `--validator` flag to the command. Defaults to `true`
 - `invulnerable` ++"boolean"++ - if true, add the node to invulnerables in the chain spec. Defaults to `false`
 - `balance` ++"number"++ - balance to set in balances for node's account. Defaults to `2000000000000`
-- `env` ++"objects[]"++ - environment variables to set in the container
-- `env.name` ++"string"++ - name of the environment variable
-- `env.value` ++"string"++ - value of the environment variable
-- `bootnodes` ++"string[]"++ - array of bootnodes to use
-- `overrides` ++"object[]"++ - array of overrides definitions
-- `add_to_bootnodes` ++"boolean"++ - add this node to the bootnode list. Defaults to `false`
-- `resources` ++"object"++ - represent the resources limits/reservations needed by the node. Only available on Kubernetes
-- `ws_port` ++"number"++ - WS port to use
-- `rpc_port` ++"number"++ - RPC port to use
-- `prometheus_port` ++"number"++ - Prometheus port to use
-- `prometheus_prefix` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
-- `keystore_key_types` ++"string"++ - defines which keystore keys should be created
+- `bootnodes?` ++"string[]"++ - array of bootnodes to use
+- `add_to_bootnodes?` ++"boolean"++ - add this node to the bootnode list. Defaults to `false`
+- `ws_port?` ++"number"++ - WS port to use
+- `rpc_port?` ++"number"++ - RPC port to use
+- `prometheus_port?` ++"number"++ - Prometheus port to use
+- `p2p_cert_hash?` ++"string"++ - certhash peer to peer cert hash to use with webrtc transport
+- `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
+  ```js
+  export interface DelayNetworkSettings {
+    latency: string;
+    correlation?: string; // should be parsable as float by k8s
+    jitter?: string;
+  }
+  ```
 
 The following configuration file defines a minimal example for the relay chain, including the `nodes` key:
 
