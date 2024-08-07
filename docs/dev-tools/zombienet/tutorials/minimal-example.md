@@ -100,11 +100,11 @@ If successful, you will see the following output:
         </tr>
         <tr>
             <th>Direct Link</th>
-            <td><a href="https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55312#explorer">https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55312#explorer</a></td>
+            <td><a href="https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:50312#explorer">https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55312#explorer</a></td>
         </tr>
         <tr>
             <th>Prometheus Link</th>
-            <td><a href="http://127.0.0.1:55314/metrics">http://127.0.0.1:55314/metrics</a></td>
+            <td><a href="http://127.0.0.1:50108/metrics">http://127.0.0.1:50108/metrics</a></td>
         </tr>
         <tr>
             <th>Log Cmd</th>
@@ -177,9 +177,9 @@ Either way allows you to interact easily with the network and its nodes.
 
 ### Checking Metrics
 
-You can also check the metrics of the nodes by accessing the provided links listed by the output as 'Prometheus Link'. [Prometheus](https://prometheus.io/){target=_blank} is a monitoring and alerting toolkit that collects metrics from the nodes. By accessing the provided links, you can see the metrics of the nodes in a web interface.
+You can also check the metrics of the nodes by accessing the provided links listed by the output as `Prometheus Link`. [Prometheus](https://prometheus.io/){target=_blank} is a monitoring and alerting toolkit that collects metrics from the nodes. By accessing the provided links, you can see the metrics of the nodes in a web interface.
 
-TODO: add a screenshot of the metrics page
+![Prometheus metrics for Bob’s node from the Zombienet test](/polkadot-ecosystem-docs-draft/images/dev-tools/zombienet/tutorials/zombienet-1.webp)
 
 ### Checking logs
 
@@ -219,7 +219,7 @@ collator01: reports substrate_sub_libp2p_listeners_local_addresses is 2
 ```
 
 This test scenario checks to verify the following:
--  the nodes are running 
+- the nodes are running 
 - the parachain with ID 100 is registered within a certain timeframe (255 seconds in this example) 
 - the parachain block height is at least a certain number within a timeframe (in this case, 10 within 255 seconds)
 - the nodes report metrics 
