@@ -117,6 +117,9 @@ public async createTransferTransaction<T extends Format>(
 - `destChainId` ++"string"++ - ID of the destination chain ('0' for Relay chain, other values for parachains)
 - `destAddr` ++"string"++ - Address of the recipient account on the destination chain
 - `assetIds` ++"string[]"++ - Array of asset identifiers to be transferred
+  
+  If a token or assetId is provided as input, the API will resolve to using the `tokens` pallet. When no asset is passed in, the API will default to using the `balances` pallet.
+
 - `amounts` ++"string[]"++ - Array of amounts corresponding to each asset in `assetIds`
 - `opts` ++"TransferArgsOpts<T>"++ - Additional options for the transfer transaction
 
@@ -275,3 +278,182 @@ export interface TxResult<T> {
 		- Submittable Format - if the format field is set to 'submittable', the ConstructedFormat type will return a [SubmittableExtrinsic](https://github.com/polkadot-js/api/blob/3b7b44f048ff515579dd233ea6964acec39c0589/packages/api-base/src/types/submittable.ts#L56). This is a Polkadot-JS type that represents a transaction that can be submitted to the blockchain
 
 ## Examples
+
+### Relay to System Parachain
+
+This example demonstrates how to initiate a cross-chain token transfer from a relay chain to a system parachain. Specifically, 1 WND will be transfered from a Westend (Relay Chain) account to a Westmint (System Parachain) account.
+
+```javascript
+import {
+  AssetTransferApi,
+  constructApiPromise,
+} from "@substrate/asset-transfer-api";
+
+async function main() {
+  const { api, specName, safeXcmVersion } = await constructApiPromise(
+    "wss://westend-rpc.polkadot.io"
+  );
+  const assetApi = new AssetTransferApi(api, specName, safeXcmVersion);
+  let callInfo;
+  try {
+    callInfo = await assetApi.createTransferTransaction(
+      "1000",
+      "5EWNeodpcQ6iYibJ3jmWVe85nsok1EDG8Kk3aFg8ZzpfY1qX",
+      ["WND"],
+      ["1000000000000"],
+      {
+        format: "call",
+        xcmVersion: safeXcmVersion,
+      }
+    );
+
+    console.log(`Call data:\n${JSON.stringify(callInfo, null, 4)}`);
+  } catch (e) {
+    console.error(e);
+    throw Error(e as string);
+  }
+
+  const decoded = assetApi.decodeExtrinsic(callInfo.tx, "call");
+  console.log(
+    `\nDecoded tx:\n ${JSON.stringify(JSON.parse(decoded), null, 4)}`
+  );
+}
+
+main()
+  .catch((err) => console.error(err))
+  .finally(() => process.exit());
+```
+
+<div id="termynal" data-termynal>
+    <span data-ty="input"><span class="file-path"></span>ts-node relayToSystem.ts</span>
+    <br>
+	<span data-ty>Call data:</span>
+	<span data-ty>{</span>
+	<span data-ty>    "origin": "westend",</span>
+	<span data-ty>    "dest": "westmint",</span>
+	<span data-ty>    "direction": "RelayToSystem",</span>
+	<span data-ty>    "xcmVersion": 3,</span>
+	<span data-ty>    "method": "transferAssets",</span>
+	<span data-ty>    "format": "call",</span>
+	<span data-ty>    "tx": "0x630b03000100a10f03000101006c0c32faf970eacb2d4d8e538ac0dab3642492561a1be6f241c645876c056c1d030400000000070010a5d4e80000000000"</span>
+	<span data-ty>}</span>
+	<span data-ty></span>
+	<span data-ty>Decoded tx:</span>
+	<span data-ty> {</span>
+	<span data-ty>    "args": {</span>
+	<span data-ty>        "dest": {</span>
+	<span data-ty>            "V3": {</span>
+	<span data-ty>                "parents": "0",</span>
+	<span data-ty>                "interior": {</span>
+	<span data-ty>                    "X1": {</span>
+	<span data-ty>                        "Parachain": "1,000"</span>
+	<span data-ty>                    }</span>
+	<span data-ty>                }</span>
+	<span data-ty>            }</span>
+	<span data-ty>        },</span>
+	<span data-ty>        "beneficiary": {</span>
+	<span data-ty>            "V3": {</span>
+	<span data-ty>                "parents": "0",</span>
+	<span data-ty>                "interior": {</span>
+	<span data-ty>                    "X1": {</span>
+	<span data-ty>                        "AccountId32": {</span>
+	<span data-ty>                            "network": null,</span>
+	<span data-ty>                            "id": "0x6c0c32faf970eacb2d4d8e538ac0dab3642492561a1be6f241c645876c056c1d"</span>
+	<span data-ty>                        }</span>
+	<span data-ty>                    }</span>
+	<span data-ty>                }</span>
+	<span data-ty>            }</span>
+	<span data-ty>        },</span>
+	<span data-ty>        "assets": {</span>
+	<span data-ty>            "V3": [</span>
+	<span data-ty>                {</span>
+	<span data-ty>                    "id": {</span>
+	<span data-ty>                        "Concrete": {</span>
+	<span data-ty>                            "parents": "0",</span>
+	<span data-ty>                            "interior": "Here"</span>
+	<span data-ty>                        }</span>
+	<span data-ty>                    },</span>
+	<span data-ty>                    "fun": {</span>
+	<span data-ty>                        "Fungible": "1,000,000,000,000"</span>
+	<span data-ty>                    }</span>
+	<span data-ty>                }</span>
+	<span data-ty>            ]</span>
+	<span data-ty>        },</span>
+	<span data-ty>        "fee_asset_item": "0",</span>
+	<span data-ty>        "weight_limit": "Unlimited"</span>
+	<span data-ty>    },</span>
+	<span data-ty>    "method": "transferAssets",</span>
+	<span data-ty>    "section": "xcmPallet"</span>
+	<span data-ty>}</span>
+</div>
+
+### Local Parachain Transfer
+
+The following example demonstrates a local transfer using the `balances` pallet on a parachain.
+
+```javascript
+import {
+  AssetTransferApi,
+  constructApiPromise,
+} from "@substrate/asset-transfer-api";
+
+async function main() {
+  const { api, specName, safeXcmVersion } = await constructApiPromise(
+    "wss://wss.api.moonbeam.network"
+  );
+  const assetApi = new AssetTransferApi(api, specName, safeXcmVersion);
+
+  let callInfo;
+  try {
+    callInfo = await assetApi.createTransferTransaction(
+      "2004",
+      "0xF977814e90dA44bFA03b6295A0616a897441aceC",
+      [],
+      ["100000"],
+      {
+        format: "call",
+        keepAlive: true,
+      }
+    );
+
+    console.log(`Call data:\n${JSON.stringify(callInfo, null, 4)}`);
+  } catch (e) {
+    console.error(e);
+    throw Error(e as string);
+  }
+
+  const decoded = assetApi.decodeExtrinsic(callInfo.tx, "call");
+  console.log(
+    `\nDecoded tx:\n ${JSON.stringify(JSON.parse(decoded), null, 4)}`
+  );
+}
+
+main()
+  .catch((err) => console.error(err))
+  .finally(() => process.exit());
+```
+<div id="termynal" data-termynal>
+    <span data-ty="input"><span class="file-path"></span>ts-node localParachainTx.ts</span>
+    <br>
+	<span data-ty>Call data:</span>
+	<span data-ty>{</span>
+	<span data-ty>    "origin": "moonbeam",</span>
+	<span data-ty>    "dest": "moonbeam",</span>
+	<span data-ty>    "direction": "local",</span>
+	<span data-ty>    "xcmVersion": null,</span>
+	<span data-ty>    "method": "balances::transferKeepAlive",</span>
+	<span data-ty>    "format": "call",</span>
+	<span data-ty>    "tx": "0x0a03f977814e90da44bfa03b6295a0616a897441acec821a0600"</span>
+	<span data-ty>}</span>
+	<span data-ty></span>
+	<span data-ty>Decoded tx:</span>
+	<span data-ty> {</span>
+	<span data-ty>    "args": {</span>
+	<span data-ty>        "dest": "0xF977814e90dA44bFA03b6295A0616a897441aceC",</span>
+	<span data-ty>        "value": "100,000"</span>
+	<span data-ty>    },</span>
+	<span data-ty>    "method": "transferKeepAlive",</span>
+	<span data-ty>    "section": "balances"</span>
+	<span data-ty>}</span>
+</div>
+
