@@ -1,6 +1,12 @@
 repositories:
   open_zeppelin:
     release_tag_version: 1.0.0
+dev_tools:
+  chopsticks:
+    version: 0.13.1
+  zombienet:
+    version: 1.3.106
+    architecture: macos-arm64
 build_on_polkadot:
   xcm:
     asset_transfer_api:
