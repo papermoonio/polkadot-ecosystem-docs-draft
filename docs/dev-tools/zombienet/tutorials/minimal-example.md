@@ -33,7 +33,7 @@ validator = true
 id = 100
 
   [parachains.collator]
-  name = "collator01
+  name = "collator01"
 ```
 
 This configuration file defines a network with a relaychain with two nodes, `alice` and `bob`, and a parachain with a collator named `collator01`. Also, it sets a timeout of 120 seconds for the network to be ready.
