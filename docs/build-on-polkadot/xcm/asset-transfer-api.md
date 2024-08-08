@@ -421,7 +421,7 @@ main()
 
 ### Local Parachain Transfer
 
-The following example demonstrates a local transfer using the `balances` pallet on a parachain.
+The following example demonstrates a local GLMR transfer within Moonbeam, using the `balances` pallet. It transfers 1 GLMR token from one account to another account, where both the sender and recipient accounts are located on the same parachain.
 
 ```javascript
 import {
@@ -441,7 +441,7 @@ async function main() {
       "2004",
       "0xF977814e90dA44bFA03b6295A0616a897441aceC",
       [],
-      ["100000"],
+      ["1000000000000000000"],
       {
         format: "call",
         keepAlive: true,
@@ -482,7 +482,7 @@ main()
 	<span data-ty> {</span>
 	<span data-ty>    "args": {</span>
 	<span data-ty>        "dest": "0xF977814e90dA44bFA03b6295A0616a897441aceC",</span>
-	<span data-ty>        "value": "100,000"</span>
+	<span data-ty>        "value": "1,000,000,000,000,000,000"</span>
 	<span data-ty>    },</span>
 	<span data-ty>    "method": "transferKeepAlive",</span>
 	<span data-ty>    "section": "balances"</span>
