@@ -177,9 +177,9 @@ Either way allows you to interact easily with the network and its nodes.
 
 ### Checking Metrics
 
-You can also check the metrics of the nodes by accessing the provided links listed by the output as `Prometheus Link`. [Prometheus](https://prometheus.io/){target=_blank} is a monitoring and alerting toolkit that collects metrics from the nodes. By accessing the provided links, you can see the metrics of the nodes in a web interface.
+You can also check the metrics of the nodes by accessing the provided links listed by the output as `Prometheus Link`. [Prometheus](https://prometheus.io/){target=_blank} is a monitoring and alerting toolkit that collects metrics from the nodes. By accessing the provided links, you can see the metrics of the nodes in a web interface. So, for example, the following image shows the Prometheus metrics for Bob’s node from the Zombienet test:
 
-![Prometheus metrics for Bob’s node from the Zombienet test](/polkadot-ecosystem-docs-draft/images/dev-tools/zombienet/tutorials/zombienet-1.webp)
+![Prometheus metrics for Bob’s node from the Zombienet test](/polkadot-ecosystem-docs-draft/images/dev-tools/zombienet/tutorials/zombienet-tutorials-1.webp)
 
 ### Checking logs
 
