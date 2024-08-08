@@ -196,6 +196,7 @@ After running this command, you will see the logs of the `alice` node in real-ti
 To run a test against the spawned network, you can use the [Zombienet DSL](../testing.md) to define the test scenario. For example, you can create a file named `minimal-example-test.zndsl` with the following content:
 
 ```toml
+Description: Test the basic functionality of the network (minimal example)
 Network: ./minimal-config.toml
 Creds: config
 
@@ -212,10 +213,8 @@ alice: reports node_roles is 4
 alice: reports sub_libp2p_is_major_syncing is 0
 
 bob: reports node_roles is 4
-bob: reports substrate_network_gossip_expired_messages_total is 835
 
 collator01: reports node_roles is 4
-collator01: reports substrate_sub_libp2p_listeners_local_addresses is 2
 ```
 
 This test scenario checks to verify the following:
