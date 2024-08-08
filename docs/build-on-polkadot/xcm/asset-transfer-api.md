@@ -16,6 +16,8 @@ The Asset Transfer API supports Parachain to Parachain transfers, currently limi
 
 By using this API, developers can manage asset transfers more efficiently, reducing the complexity associated with cross-chain transactions and enabling smoother operations within the ecosystem.
 
+For additional support and information, please reach out through [GitHub Issues](https://github.com/paritytech/asset-transfer-api/issues){target=_blank}.
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -174,12 +176,42 @@ public async createTransferTransaction<T extends Format>(
 			Default is false
 
 		- `assetTransferType` ++"string"++ - XCM TransferType used to transfer assets
+
+			The `AssetTransferType` type defines the possible values for this parameter.
+			??? code "Type `AssetTransferType`"
+				```javascript
+				export type AssetTransferType = LocalReserve | DestinationReserve | Teleport | RemoteReserve;
+				```
+
+			!!!note
+				To use the `assetTransferType` parameter, which is a string, you should use the `AssetTransferType` type as if each of its variants are strings. For example, assetTransferType = 'LocalReserve'.
+
 		- `remoteReserveAssetTransferTypeLocation` ++"string"++ - RemoteReserve location for XCM transfer
+
+			Should be provided when specifying an `assetTransferType` of `RemoteReserve`.
+
 		- `feesTransferType` ++"string"++ - XCM TransferType used to pay fees for XCM transfer
+  
+			The `AssetTransferType` type defines the possible values for this parameter.
+			??? code "Type `AssetTransferType`"
+				```javascript
+				export type AssetTransferType = LocalReserve | DestinationReserve | Teleport | RemoteReserve;
+				```
+
+			!!!note
+				To use the `feesTransferType` parameter, which is a string, you should use the `AssetTransferType` type as if each of its variants are strings. For example, feesTransferType = 'LocalReserve'.
+
+
 		- `remoteReserveFeesTransferTypeLocation` ++"string"++ - RemoteReserve location for XCM transfer fees
+
+			Should be provided when specfying a `feesTransferType` of `RemoteReserve`.
+
 		- `customXcmOnDest` ++"string"++ - Optional custom XCM message to be executed on destination chain
 		
-				Should be provided if a custom xcm message is needed after transfering assets. Defaults to `Xcm(vec![DepositAsset { assets: Wild(AllCounted(assets.len())), beneficiary }])`
+			Should be provided if a custom xcm message is needed after transfering assets. Defaults to:
+			```bash
+			Xcm(vec![DepositAsset { assets: Wild(AllCounted(assets.len())), beneficiary }])
+			```
 
 ### Return value
 
