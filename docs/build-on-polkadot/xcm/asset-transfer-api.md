@@ -45,7 +45,7 @@ npm install @substrate/asset-transfer-api@{{build_on_polkadot.xcm.asset_transfer
 ```
 
 !!!note
-    This documentation covers version {{build_on_polkadot.xcm.asset_transfer_api.version}} of Asset Transfer API.
+    This documentation covers version `{{build_on_polkadot.xcm.asset_transfer_api.version}}` of Asset Transfer API.
 
 ## Set Up Asset Transfer API
 
@@ -87,7 +87,7 @@ async function main() {
     // Your code using assetsApi goes here
 }
 
-main()
+main();
 ```
 
 !!!note
@@ -96,29 +96,26 @@ main()
 
 ## Asset Transfer API Overview
 
-The AssetTransferApi provides a powerful method for cross-chain asset transfers: `createTransferTransaction`. This function allows you to create XCM transactions for transferring assets or native tokens between different chains in the Polkadot ecosystem.
+The AssetTransferApi provides a powerful method for cross-chain asset transfers: `createTransferTransaction`. This function allows you to create XCM transactions for transferring assets or native tokens between different chains.
+This method takes several parameters to specify the details of the transfer, including the destination chain, recipient address, assets to be transferred, their amounts and an optional parameter for further customization.
 
 ```javascript
-/**
- * Create an XCM transaction to transfer Assets, or native tokens from one
- * chain to another.
- *
- * @param destChainId ID of the destination (para) chain ('0' for Relaychain)
- * @param destAddr Address of destination account
- * @param assetIds Array of assetId's to be transferred
- * @param amounts Array of the amounts of each token to transfer
- * @param opts Options
- */
-AssetTransferApi.createTransferTransaction(
+public async createTransferTransaction<T extends Format>(
   destChainId: string,
   destAddr: string,
   assetIds: string[],
   amounts: string[],
-  opts?: TransferArgsOpts<T>
-)
+  opts: TransferArgsOpts<T> = {},
+): Promise<TxResult<T>>
 ```
 
-This method takes several parameters to specify the details of the transfer, including the destination chain, recipient address, assets to be transferred, and their amounts. Additionally, it accepts an optional `opts` parameter for further customization.
+### Parameters
+
+- `destChainId` ++"string"++ - ID of the destination chain ('0' for Relay chain, other values for parachains)
+- `destAddr` ++"string"++ - Address of the recipient account on the destination chain
+- `assetIds` ++"string[]"++ - Array of asset identifiers to be transferred
+- `amounts` ++"string[]"++ - Array of amounts corresponding to each asset in `assetIds`
+- `opts` ++"TransferArgsOpts<T>"++ - Additional options for the transfer transaction
 
 <!-- It can be configured with various options to tailor its behavior to your specific needs. These options include the ability to inject custom registry values, override existing registry data, and specify the registry type.
 
@@ -150,16 +147,112 @@ interface TransferArgsOpts<T extends Format> {
 }
 ```
 
-By utilizing these options, you can fine-tune your asset transfers to meet specific requirements, such as specifying custom XCM messages, handling different asset types, and managing fee payments across chains.
+<!-- TODO: Add more information regarding what the parameters do -->
+
+- `format` ++"T"++ - Specifies the format for returning a transaction (payload, call, or submittable)
+
+	```javascript
+	export type Format = 'payload' | 'call' | 'submittable';
+	```
+
+	AssetTransferApi supports three formats to be returned:
+
+	- payload - returns a Polkadot-js `ExtrinsicPayload` as a hex. Default
+	- call - returns a Polkadot-js `Call` as a hex
+	- submittable - returns a Polkadot-js `SubmittableExtrinsic`
+  
+- `paysWithFeeOrigin` ++"string"++ - AssetId to pay fees on the current common good parachain
+
+        - Polkadot AssetHub - default DOT
+        - Kusama AssetHub - default KSM
+
+- `paysWithFeeDest` ++"string"++ - AssetId to pay fees on the destination parachain
+- `weightLimit` ++{ refTime?: string, proofSize?: string }++ - Custom weightLimit option
+
+		If not inputted it will default to `Unlimited`
+
+- `xcmVersion` ++"number"++ - Sets the xcmVersion for message construction
+
+		If this is not present a supported version will be queried, and if there is no supported version a safe version will be queried
+
+- `keepAlive` ++"boolean"++ - Enables transferKeepAlive for local asset transfers
+  
+  		For creating local asset transfers, if true this will allow for a `transferKeepAlive` as oppose to a `transfer`
+
+- `transferLiquidToken` ++"boolean"++ - Declares if this will transfer liquidity tokens
+  
+		Default is false
+
+- `assetTransferType` ++"string"++ - XCM TransferType used to transfer assets
+- `remoteReserveAssetTransferTypeLocation` ++"string"++ - RemoteReserve location for XCM transfer
+- `feesTransferType` ++"string"++ - XCM TransferType used to pay fees for XCM transfer
+- `remoteReserveFeesTransferTypeLocation` ++"string"++ - RemoteReserve location for XCM transfer fees
+- `customXcmOnDest` ++"string"++ - Optional custom XCM message to be executed on destination chain
+  
+  		Should be provided if a custom xcm message is needed after transfering assets. Defaults to `Xcm(vec![DepositAsset { assets: Wild(AllCounted(assets.len())), beneficiary }])`
+
+By utilizing these options, you can fine-tune your asset transfers to meet specific requirements, such as specifying custom XCM messages, handling different asset types, and managing fee payments across chains
+
+### Result
+
+```javascript
+export interface TxResult<T> {
+    dest: string;
+    origin: string;
+    format: Format | 'local';
+    xcmVersion: number | null;
+    direction: Direction | 'local';
+    method: Methods;
+    tx: ConstructedFormat<T>;
+}
+```
+
+- `dest` ++"string"++ - The destination specName of the transaction
+- `origin` ++"string"++ - The origin specName of the transaction
+- `format` ++"Format | 'local'"++ - The format type the tx is outputted in
+- `xcmVersion` ++"number | null"++ - The xcm version that was used to construct the tx
+- `direction` ++"Direction | 'local'"++ - The direction of the cross chain transfer
+- `method` ++"Methods"++ - The method used in the transaction
+- `tx` ++"ConstructedFormat<T>"++ - The constructed transaction
 
 
 ## Asset Transfer Capabilities
 
-The `AssetTransferApi.createTransferTransaction` is able to infer what kind of transaction is necessary given the inputs. When sending cross-chain transfers, the API performs extensive validation to ensure the inputs are valid, and the assets either exist or don't.
+The `AssetTransferApi.createTransferTransaction` is able to infer what kind of transaction is necessary given the inputs. When sending cross-chain transfers, the API performs extensive validation to ensure the inputs are valid, and the assets either exist or don't
 
 Each possible transfer types can be initiated using the same `createTransferTransaction` method, with the API intelligently determining the appropriate transaction type based on the provided parameters and options.
 
-There are different types of transfers supported by the API:
+## Examples
+
+### Using xTokens pallet
+
+When initiating a transfer from a parachain that implements the `xTokens` pallet, the API automatically detects this configuration and constructs the appropriate transaction. Depending on the transfer requirements, the API will generate one of three possible calls:
+
+- [`transferMultiasset`](https://github.com/open-web3-stack/open-runtime-module-library/blob/144a9625bc0cbd1afb81088f4d8a79a931811b49/xtokens/src/lib.rs#L249){target=_blank}
+- [`transferMultiassets`](https://github.com/open-web3-stack/open-runtime-module-library/blob/144a9625bc0cbd1afb81088f4d8a79a931811b49/xtokens/src/lib.rs#L383){target=_blank}
+- [`transferMultiassetWithFee`](https://github.com/open-web3-stack/open-runtime-module-library/blob/144a9625bc0cbd1afb81088f4d8a79a931811b49/xtokens/src/lib.rs#L321){target=_blank}
+
+```javascript
+
+import { AssetTransferApi, constructApiPromise } from '@substrate/asset-transfer-api';
+
+async function main() {
+    const { api, specName, safeXcmVersion } = await constructApiPromise('<INSERT_PARACHAIN_ENDPOINT>');
+
+    const assetsApi = new AssetTransferApi(api, specName, safeXcmVersion);
+
+    assetsApi.createTransferTransaction(
+		'1000',
+		'0xc4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a063',
+		['xcUSDT'],
+		['1000000'],
+	);
+}
+
+main();
+```
+
+
 
 
 
