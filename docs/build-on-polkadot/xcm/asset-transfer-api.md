@@ -93,7 +93,7 @@ main();
 ```
 
 !!!note
-    The code examples are enclosed in an async main function to provide the necessary asynchronous context. However, if you're already working within an async environment, you can use the code directly. The key is to ensure you're in an async context when working with these asynchronous operations, regardless of your specific setup.
+    The code examples are enclosed in an async main function to provide the necessary asynchronous context. However, you can use the code directly if you're already working within an async environment. The key is to ensure you're in an async context when working with these asynchronous operations, regardless of your specific setup.
 
 
 ## Asset Transfer API Overview
