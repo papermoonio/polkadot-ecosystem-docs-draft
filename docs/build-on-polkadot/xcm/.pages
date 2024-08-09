@@ -1,0 +1,5 @@
+title: XCM
+hide: false
+nav:
+  - index.md
+  - 'Asset Transfer API': 'asset-transfer-api.md'
