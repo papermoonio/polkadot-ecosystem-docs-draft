@@ -218,10 +218,12 @@ collator01: reports node_roles is 4
 ```
 
 This test scenario checks to verify the following:
-- the nodes are running 
-- the parachain with ID 100 is registered within a certain timeframe (255 seconds in this example) 
+
+- the nodes are running
+- the parachain with ID 100 is registered within a certain timeframe (255 seconds in this example)
 - the parachain block height is at least a certain number within a timeframe (in this case, 10 within 255 seconds)
 - the nodes report metrics 
+
 However, you can define any test scenario following the [Zombienet DSL](../testing.md) syntax.
 
 To run the test, execute the following command:
