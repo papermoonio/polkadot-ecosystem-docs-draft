@@ -98,8 +98,8 @@ main();
 
 ## Asset Transfer API Overview
 
-The AssetTransferApi provides a powerful method for cross-chain asset transfers: `createTransferTransaction`. This function allows you to create XCM transactions for transferring assets or native tokens between different chains.
-This method takes several parameters to specify the details of the transfer, including the destination chain, recipient address, assets to be transferred, their amounts and an optional parameter for further customization. It is able to infer what kind of transaction is necessary given the inputs. When sending cross-chain transfers, the API performs extensive validation to ensure the inputs are valid, and the assets either exist or don't.
+The AssetTransferApi provides a powerful method for cross-chain asset transfers: `createTransferTransaction`. This function allows you to create XCM transactions to transfer assets or native tokens between different chains. 
+This method takes several parameters to specify the transfer details, including the destination chain, recipient address, assets to be transferred, and their amounts, as well as an optional parameter for further customization. It can infer what kind of transaction is necessary given the inputs. When sending cross-chain transfers, the API performs extensive validation to ensure the inputs are valid and the assets either exist or don't.
 
 !!! note
 	The `createTransferTransaction` function is designed to be a utility that simplifies the creation of the transaction. It does not sign or submit the created transaction on the blockchain. It simply generates the transaction in the requested format (e.g., payload, call, or submittable). After obtaining the transaction from the `createTransferTransaction` function, you will need to handle the signing and submission process separately.
