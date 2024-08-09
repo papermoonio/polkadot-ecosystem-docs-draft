@@ -74,7 +74,7 @@ const assetsApi = new AssetTransferApi(api, specName, safeXcmVersion);
 
 ### Using helper function from library
 
-For a simpler setup process, you can leverage the `constructApiPromise` helper function provided by the library. 
+For a simpler setup process, you can leverage the `constructApiPromise` helper function provided by the library. It not only constructs a Polkadot.js ApiPromise but also automatically retrieves the chain's specName and fetches a safe XCM version. By using this function, developers can significantly reduce boilerplate code and potential configuration errors, making the initial setup both quicker and more robust.
 
 <!-- This method automatically initializes the Polkadot.js API, retrieves the specName, and determines the safe XCM version. -->
 
