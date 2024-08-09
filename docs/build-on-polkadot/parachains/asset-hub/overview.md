@@ -7,7 +7,7 @@ description: Guide to learn and implement Asset Hub parachain on Polkadot, a dec
 
 ## Introduction
 
-Asset Hub is a [System Parachain](https://wiki.polkadot.network/docs/learn-system-chains){target=_blank} designed to manage and operate assets within the Polkadot network. It specializes in creating, managing, and, using assets. It is considered the primary hub for asset operations in the network. 
+Asset Hub is a [System Parachain](https://wiki.polkadot.network/docs/learn-system-chains){target=_blank} designed to manage and operate assets within the Polkadot network. It specializes in creating, managing, and using assets. It is considered the primary hub for asset operations in the network. 
 
 For the Polkadot Asset Hub, the native token is DOT, and for the Kusama Asset Hub, the native token is KSM. Both cases maintain a trusted relationship with the relay chain.
 
@@ -36,7 +36,7 @@ These assets, identified by claimable, integer-based asset IDs, are known as `lo
 
 The protocol ensures that each asset ID (an integer) is unique, enabling creators to assign metadata such as the asset symbol. Therefore, users should verify their assets to confirm that they possess the correct ID. For instance, although anyone can label their asset as USDT, users will probably seek the one issued by [Tether](https://tether.to/en/){target=_blank} (asset ID 1984).
 
-For more information on how to verify the legitimacy of an asset on Asset Hub, you can read [this article](https://support.polkadot.network/support/solutions/articles/65000181800){target=_blank}
+For more information on how to verify the legitimacy of an asset on Asset Hub, you can read [this article](https://support.polkadot.network/support/solutions/articles/65000181800){target=_blank}.
 
 ### Foreign Assets
 
