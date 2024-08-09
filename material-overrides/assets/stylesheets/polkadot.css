@@ -154,6 +154,10 @@ body {
   border-radius: var(--md-border-radius);
 }
 
+.md-typeset .tabbed-block p {
+  margin-left: 1em
+}
+
 [data-md-color-scheme='default'] img[src$='#only-dark'],
 [data-md-color-scheme='slate'] img[src$='#only-light'] {
   /* Hide dark images in light mode and vice versa */
