@@ -356,6 +356,8 @@ main()
   .finally(() => process.exit());
 ```
 
+After running the script, you'll see the following output in the terminal, which shows the call data for the cross-chain transfer and its decoded extrinsic details:
+
 <div id="termynal" data-termynal>
     <span data-ty="input"><span class="file-path"></span>ts-node relayToSystem.ts</span>
     <br>
@@ -464,6 +466,9 @@ main()
   .catch((err) => console.error(err))
   .finally(() => process.exit());
 ```
+
+Upon executing this script, the terminal will display the following output, illustrating the encoded extrinsic for the cross-chain message and its corresponding decoded format:
+
 <div id="termynal" data-termynal>
     <span data-ty="input"><span class="file-path"></span>ts-node localParachainTx.ts</span>
     <br>
