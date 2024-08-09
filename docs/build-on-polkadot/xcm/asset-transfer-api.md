@@ -120,7 +120,7 @@ public async createTransferTransaction<T extends Format>(
 - `destAddr` ++"string"++ - Address of the recipient account on the destination chain
 - `assetIds` ++"string[]"++ - Array of asset identifiers to be transferred
   
-  If a token or assetId is provided as input, the API will resolve to using the `tokens` pallet. When no asset is passed in, the API will default to using the `balances` pallet.
+  If a token or asset ID is provided as input, the API will resolve to using the `tokens` pallet. When no asset is passed in, the API will default to using the `balances` pallet.
 
 - `amounts` ++"string[]"++ - Array of amounts corresponding to each asset in `assetIds`
 - `opts` ++"TransferArgsOpts<T>"++ - Additional options for the transfer transaction
@@ -153,12 +153,12 @@ public async createTransferTransaction<T extends Format>(
 				export type Format = 'payload' | 'call' | 'submittable';
 				```
 		
-		- `paysWithFeeOrigin` ++"string"++ - AssetId to pay fees on the current common good parachain
+		- `paysWithFeeOrigin` ++"string"++ - Asset ID to pay fees on the current common good parachain
 
     		- Polkadot AssetHub - default DOT
     		- Kusama AssetHub - default KSM
 
-		- `paysWithFeeDest` ++"string"++ - AssetId to pay fees on the destination parachain
+		- `paysWithFeeDest` ++"string"++ - Asset ID to pay fees on the destination parachain
 		- `weightLimit` ++"{ refTime?: string, proofSize?: string }"++ - Custom weightLimit option
 
 			If not inputted it will default to unlimited
