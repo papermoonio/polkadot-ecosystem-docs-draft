@@ -40,7 +40,7 @@ To use `asset-transfer-api`, you need a JavaScript project. If you don't have on
     npm init -y
     ```
 
-Once you have a project set up, you can install the asset-transfer-api package:
+Once you have a project set up, you can install the `asset-transfer-api` package:
 
 ```bash
 npm install @substrate/asset-transfer-api@{{build_on_polkadot.xcm.asset_transfer_api.version}}
