@@ -17,11 +17,11 @@ Before you begin, ensure you have access to the [Polkadot.js Apps](https://polka
 
 You need to ensure that your Asset Hub account balance is a bit more than the sum of those two deposits, which should seamlessly account for the required deposits and transaction fees.
 
-## Enviroment setup
+## Environment setup
 
 It might be beneficial to set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks documentation](../../../dev-tools/chopsticks/overview.md){target=_blank}.
 
-To set up a test enviroment then, execute the following command:
+To set up a test environment then, execute the following command:
 
 ```bash
 npx @acala-network/chopsticks \
@@ -29,9 +29,9 @@ npx @acala-network/chopsticks \
 ```
 
 !!!note 
-    The above command will spawn a lazy fork of Polkadot Asset Hub, with the latest block data from the network. If you need to test Kusama Asset Hub, replace `polkadot-asset-hub.yml` with `kusama-asset-hub.yml` in the command.
+    The above command will spawn a lazy fork of Polkadot Asset Hub with the latest block data from the network. If you need to test Kusama Asset Hub, replace `polkadot-asset-hub.yml` with `kusama-asset-hub.yml` in the command.
 
-Now, an Asset Hub instance is running locally, and you can proceed with the asset registration process. Note that the local registering process does not differ from the live network process, so you can use the same steps for both.
+Now, an Asset Hub instance is running locally, and you can proceed with the asset registration process. Note that the local registering process does not differ from the live network process so that you can use the same steps for both.
 
 ## Steps to register a local asset
 
@@ -42,18 +42,20 @@ To register a local asset on the Asset Hub parachain, follow these steps:
       - For the live network, connect to the `Asset Hub` parachain. Either Polkadot or Kusama Asset Hub can be selected from the dropdown list.
     
 2. Click on the `Network` tab on the left sidebar and select the `Asset Hub` parachain from the dropdown list.
+ 
       ![Access to Asset Hub through Polkadot.JS](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-1.webp) 
 
-3. Now, you need to examine all the assets IDs that are already registered. This step is crucial to ensure that the asset ID you are about to register is unique. Assets IDs are displayed in the `assets` column.
+4. Now, you need to examine all the registered asset IDs. This step is crucial to ensure that the asset ID you are about to register is unique. Asset IDs are displayed in the `assets` column.
+
       ![Asset IDs on Asset Hub](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-2.webp)
 
-4. Once you have confirmed that the asset ID is unique, click on the `Create` button on the top right corner of the page.
+5. Once you have confirmed that the asset ID is unique, click on the `Create` button on the top right corner of the page.
    
       ![Create a new asset](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-3.webp)
 
-5. Fill in the required fields in the `Create Asset` form:
+6. Fill in the required fields in the `Create Asset` form and click on the `Create` button.
    
-    - `creator account`: The account to be used for creating this asset and setting up the initial metadata.
+    - `creator account` - the account to be used for creating this asset and setting up the initial metadata.
     - `asset name` - the descriptive name of the asset you are registering.
     - `asset symbol` - the symbol that will be used to represent the asset.
     - `asset decimals` - the number of decimal places for this token, with a maximum of 20 allowed through the user interface.
@@ -61,3 +63,19 @@ To register a local asset on the Asset Hub parachain, follow these steps:
     - `asset ID` - the selected id for the asset. This should not match an already-existing asset id.
  
     ![Create Asset Form](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-4.webp)
+
+7. Select the `admin account`, `issuer-account` and `freezer-account`.
+
+    - `admin account` - the account designated for continuous administration of the token      
+    - `issuer account` - the account that will be used for issuing this token
+    - `freezer account` - the account that will be used for performing token freezing operations
+
+    ![Admin, Issuer, Freezer accounts](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-5.webp)
+
+8. Finally, click on the `Sign and Submit` button to complete the asset registration process.
+
+    ![Sign and Submit](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-6.webp)
+
+After completing these steps, the asset will be successfully registered on the Asset Hub parachain. You can now view your asset listed on the [`Assets` section](https://polkadot.js.org/apps/#/assets){target=_blank} of the Polkadot.js Apps interface.
+      
+![Asset listed on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-7.webp)
