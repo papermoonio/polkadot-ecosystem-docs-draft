@@ -64,7 +64,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
  
     ![Create Asset Form](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-4.webp)
 
-7. Select the `admin account`, `issuer-account` and `freezer-account`.
+7. Select the `admin account`, `issuer-account` and `freezer-account`, and then click on the **Create** button.
 
     - `admin account` - the account designated for continuous administration of the token      
     - `issuer account` - the account that will be used for issuing this token
