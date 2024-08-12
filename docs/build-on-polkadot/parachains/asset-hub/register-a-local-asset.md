@@ -53,7 +53,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
    
       ![Create a new asset](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-3.webp)
 
-6. Fill in the required fields in the `Create Asset` form and click on the `Create` button.
+6. Fill in the required fields in the `Create Asset` form and click on the **Next** button.
    
     - `creator account` - the account to be used for creating this asset and setting up the initial metadata.
     - `asset name` - the descriptive name of the asset you are registering.
