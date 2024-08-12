@@ -1150,3 +1150,109 @@ html .md-typeset details.function div.tabbed-set,
     box-shadow: none;
   }
 }
+
+/* API styling: child admonition */
+.api-reference-link {
+  position: absolute;
+  margin-top: -1em;
+  left: 69%;
+}
+
+details.child summary::before {
+  display: none;
+}
+
+details.child {
+  width: fit-content;
+}
+
+[dir=ltr] .md-typeset details.child summary {
+  width: fit-content;
+  padding-left: 1em;
+}
+
+[dir=ltr] .md-typeset details.child[open] {
+  width: 100%;
+}
+
+.md-typeset details.child summary {
+  background-color: unset;
+}
+
+.md-typeset details.child {
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, .2);
+  box-shadow: none;
+}
+
+@media screen and (min-width: 60em) {
+  .md-sidebar--secondary:not([hidden]) {
+      display: block;
+      margin-left: 1em;
+  }
+}
+
+/* Remove inline code background */
+.md-typeset p code {
+  background-color: unset;
+}
+
+/* Remove type background and adjust font size */
+.md-typeset kbd {
+  background-color: unset;
+  font-size: .7em;
+  padding-left: 0;
+}
+
+/* Add background for required paramaters */
+.md-typeset .required kbd {
+  background-color: rgba(249, 105, 14, .7);
+  text-transform: capitalize;
+  padding-left: .6666666667em;
+}
+
+/* API Styling: interface admonition */
+details.interface>summary::before {
+  display: none;
+}
+
+.md-typeset details.interface {
+  border: 1px solid rgba(255, 255, 255, .2);
+  box-shadow: none;
+}
+
+[dir=ltr] .md-typeset details.interface>summary {
+  padding: 1em 0 1em 1em;
+  background-color: rgba(255,255,255,.05);
+}
+
+.md-typeset details.interface>summary:after {
+  top: auto;
+}
+
+.md-typeset details.interface {
+  width: 100%;
+}
+
+.md-typeset details.interface .tabbed-set {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--md-border-radius);
+}
+
+.md-typeset details.interface .tabbed-set .tabbed-labels {
+  color: rgba(255,255,255, .5);
+}
+
+.md-typeset details.interface .tabbed-set > input:first-child:checked ~ .tabbed-labels > :first-child,
+.md-typeset details.interface .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2) {
+  color: var(--white);
+}
+
+.md-typeset .grid {
+  grid-gap: 1rem;
+}
+
+.md-typeset .grid.cards>ul>li:hover {
+  border-color: var(--md-default-fg-color--lightest);
+}

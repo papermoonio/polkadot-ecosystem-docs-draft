@@ -30,12 +30,14 @@ Before you begin, ensure you have the following installed:
 To use `asset-transfer-api`, you need a JavaScript project. If you don't have one, you can create a new one:
 
 1. Create a new directory for your project:
+
     ```bash
     mkdir my-asset-transfer-project \
     && cd my-asset-transfer-project
     ```
 
 2. Initialize a new project:
+
     ```bash
     npm init -y
     ```
@@ -95,10 +97,10 @@ main();
 !!!note
     The code examples are enclosed in an async main function to provide the necessary asynchronous context. However, you can use the code directly if you're already working within an async environment. The key is to ensure you're in an async context when working with these asynchronous operations, regardless of your specific setup.
 
-
 ## Asset Transfer API Overview
 
-The AssetTransferApi provides a powerful method for cross-chain asset transfers: `createTransferTransaction`. This function allows you to create XCM transactions to transfer assets or native tokens between different chains. 
+The Asset Transfer API provides a powerful method for cross-chain asset transfers: `createTransferTransaction`. This function allows you to create XCM transactions to transfer assets or native tokens between different chains.
+
 This method takes several parameters to specify the transfer details, including the destination chain, recipient address, assets to be transferred, and their amounts, as well as an optional parameter for further customization. It can infer what kind of transaction is necessary given the inputs. When sending cross-chain transfers, the API performs extensive validation to ensure the inputs are valid and the assets either exist or don't.
 
 !!! note
