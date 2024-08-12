@@ -2,4 +2,5 @@ title: XCM
 hide: false
 nav:
   - index.md
+  - asset-transfer-api
   - 'Asset Transfer API': 'asset-transfer-api.md'
