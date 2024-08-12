@@ -37,34 +37,34 @@ Now, an Asset Hub instance is running locally, and you can proceed with the asse
 
 To register a local asset on the Asset Hub parachain, follow these steps:
 
-1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and connect to the `Asset Hub` parachain.
+1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and connect to the `Asset Hub` parachain
       - For the local environment, connect to `Local Node (Chopsticks)`, available on `ws://localhost:8000`
-      - For the live network, connect to the `Asset Hub` parachain. Either Polkadot or Kusama Asset Hub can be selected from the dropdown list.
+      - For the live network, connect to the `Asset Hub` parachain. Either Polkadot or Kusama Asset Hub can be selected from the dropdown list
     
-2. Click on the `Network` tab on the left sidebar and select the `Asset Hub` parachain from the dropdown list.
+2. Click on the `Network` tab on the left sidebar and select the `Asset Hub` parachain from the dropdown list
  
       ![Access to Asset Hub through Polkadot.JS](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-1.webp) 
 
-4. Now, you need to examine all the registered asset IDs. This step is crucial to ensure that the asset ID you are about to register is unique. Asset IDs are displayed in the `assets` column.
+3. Now, you need to examine all the registered asset IDs. This step is crucial to ensure that the asset ID you are about to register is unique. Asset IDs are displayed in the `assets` column
 
       ![Asset IDs on Asset Hub](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-2.webp)
 
-5. Once you have confirmed that the asset ID is unique, click on the `Create` button on the top right corner of the page.
+4. Once you have confirmed that the asset ID is unique, click on the `Create` button on the top right corner of the page
    
       ![Create a new asset](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-3.webp)
 
-6. Fill in the required fields in the `Create Asset` form and click on the **Next** button.
+5. Fill in the required fields in the `Create Asset` form and click on the **Next** button
    
-    - `creator account` - the account to be used for creating this asset and setting up the initial metadata.
-    - `asset name` - the descriptive name of the asset you are registering.
-    - `asset symbol` - the symbol that will be used to represent the asset.
-    - `asset decimals` - the number of decimal places for this token, with a maximum of 20 allowed through the user interface.
-    - `minimum balance` - the minimum balance for the asset. This is specified in the units and decimals as requested.
-    - `asset ID` - the selected id for the asset. This should not match an already-existing asset id.
+    - `creator account` - the account to be used for creating this asset and setting up the initial metadata
+    - `asset name` - the descriptive name of the asset you are registering
+    - `asset symbol` - the symbol that will be used to represent the asset
+    - `asset decimals` - the number of decimal places for this token, with a maximum of 20 allowed through the user interface
+    - `minimum balance` - the minimum balance for the asset. This is specified in the units and decimals as requested
+    - `asset ID` - the selected id for the asset. This should not match an already-existing asset id
  
     ![Create Asset Form](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-4.webp)
 
-7. Select the `admin account`, `issuer-account` and `freezer-account`, and then click on the **Create** button.
+6. Select the `admin account`, `issuer-account` and `freezer-account`, and then click on the **Create** button
 
     - `admin account` - the account designated for continuous administration of the token      
     - `issuer account` - the account that will be used for issuing this token
