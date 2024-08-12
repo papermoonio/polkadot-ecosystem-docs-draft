@@ -10,7 +10,7 @@ As detailed in the [Asset Hub Overview](./overview.md#local-assets){target=_blan
 
 ## Prerequisites
 
-Before you begin, ensure you have access to the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and a Polkadot.js account with a balance of DOT or KSM.
+Before you begin, ensure you have access to the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and a funded wallet with DOT or KSM.
 
 - For Polkadot Asset Hub, you would need a `deposit of 10 DOT` and around `0.201 DOT for the metadata`
 - For Kusama Asset Hub, the `deposit is 0.1 KSM` and around `0.000669 KSM for the metadata`
