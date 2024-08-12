@@ -17,22 +17,6 @@ Before you begin, ensure you have access to the [Polkadot.js Apps](https://polka
 
 You need to ensure that your Asset Hub account balance is a bit more than the sum of those two deposits, which should seamlessly account for the required deposits and transaction fees.
 
-## Environment setup
-
-It might be beneficial to set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks documentation](../../../dev-tools/chopsticks/overview.md){target=_blank}.
-
-To set up a test environment then, execute the following command:
-
-```bash
-npx @acala-network/chopsticks \
---config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot-asset-hub.yml
-```
-
-!!!note 
-    The above command will spawn a lazy fork of Polkadot Asset Hub with the latest block data from the network. If you need to test Kusama Asset Hub, replace `polkadot-asset-hub.yml` with `kusama-asset-hub.yml` in the command.
-
-Now, an Asset Hub instance is running locally, and you can proceed with the asset registration process. Note that the local registering process does not differ from the live network process so that you can use the same steps for both.
-
 ## Steps to register a local asset
 
 To register a local asset on the Asset Hub parachain, follow these steps:
@@ -82,3 +66,19 @@ After completing these steps, the asset will be successfully registered. You can
 
 !!! note
     Take into consideration that the `Assets section` link will be different according to the network you are using. For the local environment, the link will be `ws://127.0.0.1:8000/#/assets`.
+
+## Environment setup
+
+It might be beneficial to set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks](../../../dev-tools/chopsticks/overview.md){target=_blank} documentation.
+
+To set up a test environment then, execute the following command:
+
+```bash
+npx @acala-network/chopsticks \
+--config=https://raw.githubusercontent.com/AcalaNetwork/chopsticks/master/configs/polkadot-asset-hub.yml
+```
+
+!!!note 
+    The above command will spawn a lazy fork of Polkadot Asset Hub with the latest block data from the network. If you need to test Kusama Asset Hub, replace `polkadot-asset-hub.yml` with `kusama-asset-hub.yml` in the command.
+
+Now, an Asset Hub instance is running locally, and you can proceed with the asset registration process. Note that the local registering process does not differ from the live network process so that you can use the same steps for both.
