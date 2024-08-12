@@ -347,7 +347,7 @@ async function main() {
 
   const decoded = assetApi.decodeExtrinsic(callInfo.tx, "call");
   console.log(
-    `\nDecoded tx:\n ${JSON.stringify(JSON.parse(decoded), null, 4)}`
+    `\nDecoded tx:\n${JSON.stringify(JSON.parse(decoded), null, 4)}`
   );
 }
 
@@ -373,7 +373,7 @@ After running the script, you'll see the following output in the terminal, which
 	<span data-ty>}</span>
 	<span data-ty></span>
 	<span data-ty>Decoded tx:</span>
-	<span data-ty> {</span>
+	<span data-ty>{</span>
 	<span data-ty>    "args": {</span>
 	<span data-ty>        "dest": {</span>
 	<span data-ty>            "V3": {</span>
@@ -458,7 +458,7 @@ async function main() {
 
   const decoded = assetApi.decodeExtrinsic(callInfo.tx, "call");
   console.log(
-    `\nDecoded tx:\n ${JSON.stringify(JSON.parse(decoded), null, 4)}`
+    `\nDecoded tx:\n${JSON.stringify(JSON.parse(decoded), null, 4)}`
   );
 }
 
@@ -484,7 +484,7 @@ Upon executing this script, the terminal will display the following output, illu
 	<span data-ty>}</span>
 	<span data-ty></span>
 	<span data-ty>Decoded tx:</span>
-	<span data-ty> {</span>
+	<span data-ty>{</span>
 	<span data-ty>    "args": {</span>
 	<span data-ty>        "dest": "0xF977814e90dA44bFA03b6295A0616a897441aceC",</span>
 	<span data-ty>        "value": "1,000,000,000,000,000,000"</span>
