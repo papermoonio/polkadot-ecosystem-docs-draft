@@ -72,6 +72,12 @@ In order to install Zombienet, there are multiple options available, depending o
     zombienet version
     ```
 
+    So then, you can refer to the `zombienet` executable directly:
+
+    ```bash
+    zombienet version
+    ```
+
 === "Using Nix"
 
     For Nix users, the Zombienet repository provides a [`flake.nix`](https://github.com/paritytech/zombienet/blob/main/flake.nix){target=_blank} file that can be used to install Zombienet. This means that users can easily incorporate Zombienet into their Nix-based projects. 
@@ -142,6 +148,8 @@ Alternatively, you can set the provider in the network file:
 provider = "INSERT_PROVIDER"
 ...
 ```
+
+At the moment, Zombienet supports the following providers: `kubernetes`, `podman`, and `native`.
 
 It's important to note that each provider has specific requirements and associated features. The subsequent sections will guide you through the installation process for each provider and the requirements and features each provider offers.
 

@@ -65,3 +65,9 @@
 [data-ty][data-ty-prompt]:before {
     content: attr(data-ty-prompt);
 }
+
+.md-typeset .table-termynal .md-typeset__table table th.left-header {
+    background-color: unset;
+    border-bottom: .05rem solid var(--md-typeset-table-color);
+    border-right: .05rem solid var(--md-typeset-table-color);
+}
