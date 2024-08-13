@@ -5,7 +5,9 @@ description: This tutorial gets you started with Zombienet by providing a minima
 
 # A Minimal Example of the Usage of Zombienet
 
-This tutorial provides an example of how to use Zombienet to spawn a basic network and run a simple test against it.
+## Introduction
+
+In this tutorial, you'll learn how to set up a basic network using Zombienet and run a simple test to validate its functionality. The example provided walks you through defining a minimal network configuration, spawning the network, and interacting with the nodes. By the end, you'll clearly understand how to use Zombienet to deploy and test ephemeral blockchain networks, setting the stage for more complex scenarios.
 
 ## Prerequisites
 
