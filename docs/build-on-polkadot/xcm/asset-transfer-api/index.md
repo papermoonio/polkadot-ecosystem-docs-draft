@@ -1,6 +1,6 @@
 ---
-title: XCM
-description: XCM is a language for cross-consensus communication, enabling blockchains to interact, transfer assets, and leverage each other's capabilities.
+title: Asset Transfer API
+description: Asset Transfer API is a library that simplifies the transfer of assets for Substrate based chains. It provides methods for cross-chain and local transfers.
 template: subsection-index-page.html
 hide:
   - feedback
