@@ -50,7 +50,7 @@ This command will spawn the network defined in the `minimal-example.toml` config
 
 If successful, you will see the following output:
 
-<div id="termynal" data-termynal>
+<div id="termynal" class="table-termynal" data-termynal>
     <span data-ty="input"><span class="file-path">zombienet -p native spawn minimal-example.toml</span>
     <table>
         <thead>
@@ -61,11 +61,11 @@ If successful, you will see the following output:
             </tr>
         </thead>
         <tr>
-            <th>Namespace</th>
+            <th class="left-header">Namespace</th>
             <td>zombie-75a01b93c92d571f6198a67bcb380fcd</td>
         </tr>
         <tr>
-            <th>Provider</th>
+            <th class="left-header">Provider</th>
             <td>native</td>
         </tr>
             <tr>
@@ -74,19 +74,19 @@ If successful, you will see the following output:
                 </th>
             </tr>
         <tr>
-            <th>Name</th>
+            <th class="left-header">Name</th>
             <td>alice</td>
         </tr>
         <tr>
-            <th>Direct Link</th>
+            <th class="left-header">Direct Link</th>
             <td><a href="https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55308#explorer">https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55308#explorer</a></td>
         </tr>
         <tr>
-            <th>Prometheus Link</th>
+            <th class="left-header">Prometheus Link</th>
             <td><a href="http://127.0.0.1:55310/metrics">http://127.0.0.1:55310/metrics</a></td>
         </tr>
         <tr>
-            <th>Log Cmd</th>
+            <th class="left-header">Log Cmd</th>
             <td>tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-2</td>
         </tr>
             <tr>
@@ -95,19 +95,19 @@ If successful, you will see the following output:
                 </th>
             </tr>
         <tr>
-            <th>Name</th>
+            <th class="left-header">Name</th>
             <td>bob</td>
         </tr>
         <tr>
-            <th>Direct Link</th>
+            <th class="left-header">Direct Link</th>
             <td><a href="https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:50312#explorer">https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55312#explorer</a></td>
         </tr>
         <tr>
-            <th>Prometheus Link</th>
+            <th class="left-header">Prometheus Link</th>
             <td><a href="http://127.0.0.1:50108/metrics">http://127.0.0.1:50108/metrics</a></td>
         </tr>
         <tr>
-            <th>Log Cmd</th>
+            <th class="left-header">Log Cmd</th>
             <td>tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-2</td>
         </tr>
             <tr>
@@ -116,27 +116,27 @@ If successful, you will see the following output:
                 </th>
             </tr>
         <tr>
-            <th>Name</th>
+            <th class="left-header">Name</th>
             <td>collator01</td>
         </tr>
         <tr>
-            <th>Direct Link</th>
+            <th class="left-header">Direct Link</th>
             <td><a href="https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55316#explorer">https://polkadot.js.org/apps/?rpc=ws://127.0.0.1:55316#explorer</a></td>
         </tr>
         <tr>
-            <th>Prometheus Link</th>
+            <th class="left-header">Prometheus Link</th>
             <td><a href="http://127.0.0.1:55318/metrics">http://127.0.0.1:55318/metrics</a></td>
         </tr>
         <tr>
-            <th>Log Cmd</th>
+            <th class="left-header">Log Cmd</th>
             <td>tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-2</td>
         </tr>
         <tr>
-            <th>Parachain ID</th>
+            <th class="left-header">Parachain ID</th>
             <td>100</td>
         </tr>
         <tr>
-            <th>ChainSpec Path</th>
+            <th class="left-header">ChainSpec Path</th>
             <td>/var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-2</td>
         </tr>
     </table>
