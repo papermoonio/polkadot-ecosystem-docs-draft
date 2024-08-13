@@ -181,7 +181,7 @@ You can also check the metrics of the nodes by accessing the provided links list
 
 ![Prometheus metrics for Bob’s node from the Zombienet test](/polkadot-ecosystem-docs-draft/images/dev-tools/zombienet/tutorials/zombienet-tutorials-1.webp)
 
-### Checking logs
+### Checking Logs
 
 To check the nodes’ logs, you can use the provided command listed by the output as 'Log Cmd'. For instance, to check the logs of the `alice` node, you can open a new terminal and run the following command:
 
