@@ -1,4 +1,4 @@
 title: Tutorials
 nav:
   - 'index.md'
-  - 'Minimal Example': 'minimal-example.md'
+  - 'Spawn a Basic Network' : 'spawn-a-basic-network.md'

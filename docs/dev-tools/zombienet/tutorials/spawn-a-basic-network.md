@@ -1,9 +1,9 @@
 ---
-title: Minimal Example of the Usage of Zombienet
+title: Spawn a Basic Network Using Zombienet
 description: This tutorial gets you started with Zombienet by providing a minimal example of how to use Zombienet to spawn a basic network and run a simple test over it.
 ---
 
-# A Minimal Example of the Usage of Zombienet
+# Spawn a Basic Network
 
 ## Introduction
 
@@ -15,7 +15,7 @@ To follow this tutorial, first, you need to have Zombienet installed. If you hav
 
 ## Defining the Network
 
-As mentioned in the [Configuration Files](../overview.md/#configuration-files){target=_blank} section, Zombienet uses a configuration file to define the ephemeral network that will be spawned. To follow this tutorial, create a file named `minimal-example.toml` with the following content:
+As mentioned in the [Configuration Files](../overview.md/#configuration-files){target=_blank} section, Zombienet uses a configuration file to define the ephemeral network that will be spawned. To follow this tutorial, create a file named `spawn-a-basic-network.toml` with the following content:
 
 ```toml
 [settings]
@@ -45,15 +45,15 @@ This configuration file defines a network with a relaychain with two nodes, `ali
 To spawn the network, run the following command:
 
 ```bash
-zombienet -p native spawn minimal-example.toml
+zombienet -p native spawn spawn-a-basic-network.toml
 ```
 
-This command will spawn the network defined in the `minimal-example.toml` configuration file. The `-p native` flag specifies that the network will be spawned using the native provider.
+This command will spawn the network defined in the `spawn-a-basic-network.toml` configuration file. The `-p native` flag specifies that the network will be spawned using the native provider.
 
 If successful, you will see the following output:
 
 <div id="termynal" class="table-termynal" data-termynal>
-    <span data-ty="input"><span class="file-path">zombienet -p native spawn minimal-example.toml</span>
+    <span data-ty="input"><span class="file-path">zombienet -p native spawn spawn-a-basic-network.toml</span>
     <table>
         <thead>
             <tr>
@@ -195,11 +195,11 @@ After running this command, you will see the logs of the `alice` node in real-ti
 
 ## Running a Test
 
-To run a test against the spawned network, you can use the [Zombienet DSL](../testing.md) to define the test scenario. For example, you can create a file named `minimal-example-test.zndsl` with the following content:
+To run a test against the spawned network, you can use the [Zombienet DSL](../testing.md) to define the test scenario. For example, you can create a file named `spawn-a-basic-network-test.zndsl` with the following content:
 
 ```toml
 Description: Test the basic functionality of the network (minimal example)
-Network: ./minimal-config.toml
+Network: ./spawn-a-basic-network.toml
 Creds: config
 
 alice: is up
@@ -231,7 +231,7 @@ However, you can define any test scenario following the [Zombienet DSL](../testi
 To run the test, execute the following command:
 
 ```bash
-zombienet -p native test minimal-example-test.zndsl
+zombienet -p native test spawn-a-basic-network-test.zndsl
 ```
 
-This command will execute the test scenario defined in the `minimal-example-test.zndsl` file on the network. If successful, the terminal will display the test output, indicating whether the test passed or failed.
+This command will execute the test scenario defined in the `spawn-a-basic-network-test.zndsl` file on the network. If successful, the terminal will display the test output, indicating whether the test passed or failed.
