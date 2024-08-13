@@ -38,7 +38,7 @@ id = 100
 
 This configuration file defines a network with a relaychain with two nodes, `alice` and `bob`, and a parachain with a collator named `collator01`. Also, it sets a timeout of 120 seconds for the network to be ready.
 
-## Running the network
+## Running the Network
 
 To spawn the network, run the following command:
 
