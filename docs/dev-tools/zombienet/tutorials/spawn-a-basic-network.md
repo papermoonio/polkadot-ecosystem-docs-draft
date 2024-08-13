@@ -11,11 +11,11 @@ In this tutorial, you'll learn how to set up a basic network using Zombienet and
 
 ## Prerequisites
 
-To follow this tutorial, first, you need to have Zombienet installed. If you haven't done so, please follow the instructions in the [Installation](../overview.md/#installation){target=_blank} section.
+To follow this tutorial, first, you need to have Zombienet installed. If you haven't done so, please follow the instructions in the [Installation](../overview.md/#installation){target=\_blank} section.
 
 ## Defining the Network
 
-As mentioned in the [Configuration Files](../overview.md/#configuration-files){target=_blank} section, Zombienet uses a configuration file to define the ephemeral network that will be spawned. To follow this tutorial, create a file named `spawn-a-basic-network.toml` with the following content:
+As mentioned in the [Configuration Files](../overview.md/#configuration-files){target=\_blank} section, Zombienet uses a configuration file to define the ephemeral network that will be spawned. To follow this tutorial, create a file named `spawn-a-basic-network.toml` with the following content:
 
 ```toml
 [settings]
