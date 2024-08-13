@@ -106,7 +106,7 @@ If successful, you will see the following output:
         </tr>
         <tr>
             <th class="left-header">Prometheus Link</th>
-            <td><a href="http://127.0.0.1:50108/metrics">http://127.0.0.1:50108/metrics</a></td>
+            <td><a href="http://127.0.0.1:50634/metrics">http://127.0.0.1:50634/metrics</a></td>
         </tr>
         <tr>
             <th class="left-header">Log Cmd</th>
