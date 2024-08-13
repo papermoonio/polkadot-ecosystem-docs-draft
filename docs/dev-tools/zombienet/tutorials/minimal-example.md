@@ -48,7 +48,7 @@ To spawn the network, run the following command:
 zombienet -p native spawn minimal-example.toml
 ```
 
-This command will spawn the network defined in the `minimal-example.toml` configuration file. The `-p native` flag specifies that the network will be spawned using the native runtime.
+This command will spawn the network defined in the `minimal-example.toml` configuration file. The `-p native` flag specifies that the network will be spawned using the native provider.
 
 If successful, you will see the following output:
 
