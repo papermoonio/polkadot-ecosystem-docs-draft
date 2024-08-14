@@ -145,7 +145,7 @@ A promise containing the result of constructing the transaction.
 
     ??? child "Type `ConstructedFormat<T>`"
 
-        ```javascript
+        ```ts
         export type ConstructedFormat<T> = T extends 'payload'
         ? GenericExtrinsicPayload
         : T extends 'call'
