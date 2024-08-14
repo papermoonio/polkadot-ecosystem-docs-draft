@@ -13,3 +13,66 @@ In order to register a foreign asset on Asset Hub, it's important to notice that
 
 ## Prerequisites
 
+Asset Hub parachain exists as a one of the system parachains on a relay chain, such as [Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank} or [Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank}. To interact with those parachains, you can use the [Polkadot.js App](https://polkadot.js.org/apps/#/explorer){target=_blank} interface. For example:
+
+- [Polkadot Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/explorer){target=\_blank}
+- [Kusama Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fsys.ibp.network%2Fstatemine#/explorer){target=\_blank}
+- And for testing purposes, [Rococo Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-rococo-rpc.dwellir.com#/explorer){target=\_blank}
+
+So, before you start, ensure that you have:
+
+- Access to the Polkadot.js App interface and you are connected to the desired chain
+- A parachain that supports the XCMP protocol and is able to send the foreign asset to Asset Hub
+- A funded wallet to pay for the transaction fees and consequent registration of the foreign asset
+
+This guide will focus on using Rococo and its Asset Hub instance spawned locally, as stated on the [Test Enviroment Setup](./register-a-foreign-asset.md/#enviroment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using.
+
+## Steps to Register a Foreign Asset
+
+
+## Test Enviroment Setup
+
+It might be beneficial to set up a local testing environment to first check out the asset registration process before deploying it on the live network. This guide uses `zombienet` to simulate that process. For further information on zombienet usage, refer to the [Zombienet](../../../dev-tools/zombienet/overview.md){target=\_blank} documentation.
+
+To set up a test environment then, create a file named `minimal-config-asset-hub-rococo.toml` with the following content:
+
+```toml
+[relaychain]
+chain = "rococo-local"
+
+  [[relaychain.nodes]]
+  name = "alice"
+  validator = true
+
+  [[relaychain.nodes]]
+  name = "bob"
+  validator = true
+
+[[parachains]]
+id = 100
+chain = "asset-hub-rococo-local"
+
+  [parachains.collator]
+  name = "collator01"
+  command = "polkadot-parachain"
+
+
+[[parachains]]
+id = 101
+
+  [parachains.collator]
+  name = "collator02"
+  command = "polkadot-parachain"
+```
+
+Then, execute the following command:
+
+```bash
+./zombienet -p native spawn minimal-config-asset-hub-rococo.toml
+```
+
+!!!note 
+    The above command will spawn a Rococo relay chain with two validators: alice and bob. Also, it will spawn an Asset Hub parachain instance with ID 100 and a collator named collator01. Finally, it will spawn another parachain instance with ID 101 and a collator named collator02, which will be used to simulate the source parachain of the foreign asset.
+    
+Now, you have a Rococo relay chain running locally and can proceed with the asset registration process. Note that the local registering process does not differ from the live network process, so you can use the same steps for both.
+
