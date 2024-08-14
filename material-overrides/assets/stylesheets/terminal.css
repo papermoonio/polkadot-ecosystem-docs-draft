@@ -66,8 +66,19 @@
     content: attr(data-ty-prompt);
 }
 
+.md-typeset .table-termynal .md-typeset__table table th.center-header {
+    text-align: center;
+    padding-right: 22%;
+    width: 100%;
+}
+
 .md-typeset .table-termynal .md-typeset__table table th.left-header {
     background-color: unset;
-    border-bottom: .05rem solid var(--md-typeset-table-color);
+    border-top: .05rem solid var(--md-typeset-table-color);
     border-right: .05rem solid var(--md-typeset-table-color);
+    color: var(--md-typeset-table-color);
+}
+
+.md-typeset .table-termynal .md-typeset__table table td {
+    color: var(--md-typeset-table-color);
 }
