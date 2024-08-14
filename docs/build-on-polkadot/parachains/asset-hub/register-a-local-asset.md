@@ -62,7 +62,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
 
 ## Verify asset registration
 
-After completing these steps, the asset will be successfully registered. You can now view your asset listed on the [`Assets` section](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/assets){target=_blank} of the Polkadot.js Apps interface.
+After completing these steps, the asset will be successfully registered. You can now view your asset listed on the [`Assets`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/assets){target=_blank} section of the Polkadot.js Apps interface.
       
 ![Asset listed on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-7.webp)
 
