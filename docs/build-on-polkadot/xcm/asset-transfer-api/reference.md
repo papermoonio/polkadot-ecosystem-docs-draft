@@ -33,6 +33,8 @@ description: Explore the Asset Transfer API Reference for comprehensive details 
 
 Holds open an API connection to a specified chain within the ApiPromise in order to help construct transactions for assets and estimate fees.
 
+For a more in-depth explanation of the Asset Transfer API class structure, check the [source code](https://github.com/paritytech/asset-transfer-api/blob/f2aa50db83882f23492f975221dd5501c35a26d5/src/AssetTransferApi.ts#L106).
+
 ### Methods
 
 #### createTransferTransaction
@@ -46,11 +48,11 @@ It takes several parameters to specify the transfer details, including the desti
 
 ```ts
 public async createTransferTransaction<T extends Format>(
-  destChainId: string,
-  destAddr: string,
-  assetIds: string[],
-  amounts: string[],
-  opts: TransferArgsOpts<T> = {},
+  	destChainId: string,
+  	destAddr: string,
+  	assetIds: string[],
+  	amounts: string[],
+  	opts: TransferArgsOpts<T> = {},
 ): Promise<TxResult<T>>
 ```
 
@@ -161,8 +163,139 @@ public async claimAssets<T extends Format>(
 	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ca-example-response.md'
 
 
-#### fetchFeeInfo
-
 #### decodeExtrinsic
 
-#### initializeRegistry
+Decodes the hex of an extrinsic into a string readable format.
+
+```ts
+public decodeExtrinsic<T extends Format>(
+	encodedTransaction: string,
+	format: T
+): string
+```
+
+??? interface "Request parameters"
+
+	`encodedTransaction` ++"string"++ <span class="required" markdown>++"required"++</span>
+
+	A hex encoded extrinsic
+
+	---
+
+	`format` ++"T extends Format"++ <span class="required" markdown>++"required"++</span>
+        
+    Specifies the format for returning a transaction
+
+    ??? child "Type `Format`"
+
+        ```ts
+        export type Format = 'payload' | 'call' | 'submittable';
+        ```
+
+??? interface "Response parameters"
+
+	++"string"++
+
+	Decoded extrinsic in string readable format.
+
+??? interface "Example"
+
+	***Request***
+
+	```ts
+	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-example-request.ts'
+	```
+
+	***Response***
+
+	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-example-response.md'
+
+#### fetchFeeInfo
+
+Fetch estimated fee information for an extrinsic.
+
+```ts
+public async fetchFeeInfo<T extends Format>(
+	tx: ConstructedFormat<T>,
+	format: T,
+): Promise<RuntimeDispatchInfo | RuntimeDispatchInfoV1 | null>
+```
+
+??? interface "Request parameters"
+
+	`tx` ++"ConstructedFormat<T>"++ <span class="required" markdown>++"required"++</span>
+
+    The constructed transaction.
+
+    ??? child "Type `ConstructedFormat<T>`"
+
+        ```ts
+        export type ConstructedFormat<T> = T extends 'payload'
+        ? GenericExtrinsicPayload
+        : T extends 'call'
+        ? `0x${string}`
+        : T extends 'submittable'
+            ? SubmittableExtrinsic<'promise', ISubmittableResult>
+            : never;
+        ```
+
+        The `ConstructedFormat` type is a conditional type that returns a specific type based on the value of the TxResult `format` field.
+
+        - Payload Format - if the format field is set to 'payload', the ConstructedFormat type will return a [GenericExtrinsicPayload](https://github.com/polkadot-js/api/blob/3b7b44f048ff515579dd233ea6964acec39c0589/packages/types/src/extrinsic/ExtrinsicPayload.ts#L48)
+        - Call Format - if the format field is set to 'call', the ConstructedFormat type will return a hexadecimal string (0x${string}). This is the encoded representation of the extrinsic call
+        - Submittable Format - if the format field is set to 'submittable', the ConstructedFormat type will return a [SubmittableExtrinsic](https://github.com/polkadot-js/api/blob/3b7b44f048ff515579dd233ea6964acec39c0589/packages/api-base/src/types/submittable.ts#L56). This is a Polkadot-JS type that represents a transaction that can be submitted to the blockchain
+
+	---
+
+	`format` ++"T extends Format"++ <span class="required" markdown>++"required"++</span>
+        
+    Specifies the format for returning a transaction
+
+    ??? child "Type `Format`"
+
+        ```ts
+        export type Format = 'payload' | 'call' | 'submittable';
+        ```
+
+??? interface "Response parameters"
+
+	++"Promise<RuntimeDispatchInfo | RuntimeDispatchInfoV1 | null>"++
+
+	A promise containing the estimated fee information for the provided extrinsic.
+
+	??? child "Type `RuntimeDispatchInfo`"
+
+		```ts
+		export interface RuntimeDispatchInfo extends Struct {
+			readonly weight: Weight;
+			readonly class: DispatchClass;
+			readonly partialFee: Balance;
+		}
+		```
+
+		For more information on the underlying types and fields of `RuntimeDispatchInfo`, check the [RuntimeDispatchInfo](https://github.com/polkadot-js/api/blob/2329af239eaf194696daeaa58ebf89f0080a5e0d/packages/types/src/interfaces/payment/types.ts#L21) source code.
+
+
+	??? child "Type `RuntimeDispatchInfoV1`"
+
+		```ts
+		export interface RuntimeDispatchInfoV1 extends Struct {
+			readonly weight: WeightV1;
+			readonly class: DispatchClass;
+			readonly partialFee: Balance;
+		}
+		```
+
+		For more information on the underlying types and fields of `RuntimeDispatchInfoV1`, check the [RuntimeDispatchInfoV1](https://github.com/polkadot-js/api/blob/2329af239eaf194696daeaa58ebf89f0080a5e0d/packages/types/src/interfaces/payment/types.ts#L28) source code.
+
+??? interface "Example"
+
+	***Request***
+
+	```ts
+	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ffi-example-request.ts'
+	```
+
+	***Response***
+
+	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ffi-example-response.md'
