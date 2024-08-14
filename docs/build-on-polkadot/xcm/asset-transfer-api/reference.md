@@ -144,7 +144,7 @@ public async claimAssets<T extends Format>(
 
 ??? interface "Response parameters"
 
-    ++"Promise<TxResult<T>"++
+    ++"Promise<TxResult<T>>"++
 
     --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/tx-result.md'
 
