@@ -20,7 +20,7 @@ A promise containing the result of constructing the transaction.
 
     ??? child "Type `Format`"
 
-        ``ts
+        ```ts
         type Format = 'payload' | 'call' | 'submittable';
         ```
 
