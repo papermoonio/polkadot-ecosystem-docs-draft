@@ -107,7 +107,7 @@ For detailed information on the Asset Transfer API, including available methods,
 
 ### Relay to System Parachain
 
-This example demonstrates how to initiate a cross-chain token transfer from a relay chain to a system parachain. Specifically, 1 WND will be transfered from a Westend (Relay Chain) account to a Westmint (System Parachain) account.
+This example demonstrates how to initiate a cross-chain token transfer from a relay chain to a system parachain. Specifically, 1 WND will be transferred from a Westend (relay chain) account to a Westmint (system parachain) account.
 
 ```ts
 --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/overview/relayToSystem.ts'
