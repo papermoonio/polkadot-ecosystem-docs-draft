@@ -60,7 +60,7 @@ public async createTransferTransaction<T extends Format>(
 
 	`destChainId` ++"string"++ <span class="required" markdown>++"required"++</span>
 	
-	ID of the destination chain ('0' for Relay chain, other values for parachains)
+	ID of the destination chain ('0' for relay chain, other values for parachains)
 
 	---
 
