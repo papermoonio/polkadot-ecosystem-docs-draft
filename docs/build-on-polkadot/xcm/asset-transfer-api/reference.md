@@ -3,8 +3,7 @@ title: Asset Transfer API Reference
 description: Explore the Asset Transfer API Reference for comprehensive details on methods, data types, and functionalities. Essential for cross-chain asset transfers.
 ---
 
-# Asset Transfer API Reference 
-# ( 🚧 WIP )
+# Asset Transfer API Reference
 
 <br>
 <div class="grid cards" markdown>
@@ -33,7 +32,7 @@ description: Explore the Asset Transfer API Reference for comprehensive details 
 
 Holds open an API connection to a specified chain within the `ApiPromise` to help construct transactions for assets and estimate fees.
 
-For a more in-depth explanation of the Asset Transfer API class structure, check the [source code](https://github.com/paritytech/asset-transfer-api/blob/f2aa50db83882f23492f975221dd5501c35a26d5/src/AssetTransferApi.ts#L106).
+For a more in-depth explanation of the Asset Transfer API class structure, check the [source code](https://github.com/paritytech/asset-transfer-api/blob/f2aa50db83882f23492f975221dd5501c35a26d5/src/AssetTransferApi.ts#L106){target=_blank}.
 
 ### Methods
 
@@ -44,47 +43,47 @@ This function allows you to create XCM transactions to transfer assets or native
 It takes several parameters to specify the transfer details, including the destination chain, recipient address, assets to be transferred, and their amounts, as well as an optional parameter for further customization. It can infer what kind of transaction is necessary given the inputs. When sending cross-chain transfers, the API performs extensive validation to ensure the inputs are valid and the assets either exist or don't.
 
 !!! note
-	The `createTransferTransaction` function is designed to be a utility that simplifies the creation of the transaction. It does not sign or submit the created transaction on the blockchain. It simply generates the transaction in the requested format (e.g., payload, call, or submittable). After obtaining the transaction from the `createTransferTransaction` function, you will need to handle the signing and submission process separately.
+    The `createTransferTransaction` function is designed to be a utility that simplifies the creation of the transaction. It does not sign or submit the created transaction on the blockchain. It simply generates the transaction in the requested format (e.g., payload, call, or submittable). After obtaining the transaction from the `createTransferTransaction` function, you will need to handle the signing and submission process separately.
 
 ```ts
 public async createTransferTransaction<T extends Format>(
-  	destChainId: string,
-  	destAddr: string,
-  	assetIds: string[],
-  	amounts: string[],
-  	opts: TransferArgsOpts<T> = {},
+      destChainId: string,
+      destAddr: string,
+      assetIds: string[],
+      amounts: string[],
+      opts: TransferArgsOpts<T> = {},
 ): Promise<TxResult<T>>
 ```
 
 ??? interface "Request parameters"
 
-	`destChainId` ++"string"++ <span class="required" markdown>++"required"++</span>
-	
-	ID of the destination chain ('0' for relay chain, other values for parachains)
+    `destChainId` ++"string"++ <span class="required" markdown>++"required"++</span>
+    
+    ID of the destination chain ('0' for relay chain, other values for parachains).
 
-	---
+    ---
 
-	`destAddr` ++"string"++ <span class="required" markdown>++"required"++</span>
+    `destAddr` ++"string"++ <span class="required" markdown>++"required"++</span>
 
-	Address of the recipient account on the destination chain
+    Address of the recipient account on the destination chain.
 
-	---
+    ---
 
-	`assetIds` ++"string[]"++ <span class="required" markdown>++"required"++</span>
+    `assetIds` ++"string[]"++ <span class="required" markdown>++"required"++</span>
 
-	Array of asset IDs to be transferred
-      
+    Array of asset IDs to be transferred.
+
     If a token or asset ID is provided as input, the API will resolve to using the `tokens` pallet. When no asset is passed in, the API will default to using the `balances` pallet.
 
-	---
+    ---
 
-	`amounts` ++"string[]"++ <span class="required" markdown>++"required"++</span>
+    `amounts` ++"string[]"++ <span class="required" markdown>++"required"++</span>
 
-	Array of amounts corresponding to each asset in `assetIds`
+    Array of amounts corresponding to each asset in `assetIds`.
 
-	---
+    ---
 
-	`opts` ++"TransferArgsOpts<T>"++
+    `opts` ++"TransferArgsOpts<T>"++
 
     --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/transfer-arg-opts.md'
 
@@ -96,15 +95,15 @@ public async createTransferTransaction<T extends Format>(
 
 ??? interface "Example"
 
-	***Request***
+    ***Request***
 
-	```ts
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ctt-example-request.ts'
-	```
+    ```ts
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ctt-example-request.ts'
+    ```
 
-	***Response***
+    ***Response***
 
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ctt-example-response.md'
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ctt-example-response.md'
 
 #### claimAssets
 
@@ -113,34 +112,34 @@ Creates a local XCM transaction to retrieve trapped assets. This function can be
 
 ```ts
 public async claimAssets<T extends Format>(
-	assetIds: string[],
-	amounts: string[],
-	beneficiary: string,
-	opts: TransferArgsOpts<T>,
+    assetIds: string[],
+    amounts: string[],
+    beneficiary: string,
+    opts: TransferArgsOpts<T>,
 ): Promise<TxResult<T>>
 ```
 
 ??? interface "Request parameters"
 
-	`assetIds` ++"string[]"++ <span class="required" markdown>++"required"++</span>
+    `assetIds` ++"string[]"++ <span class="required" markdown>++"required"++</span>
 
-	Array of asset IDs to be claimed from the `AssetTrap`
+    Array of asset IDs to be claimed from the `AssetTrap`.
 
-	---
+    ---
 
-	`amounts` ++"string[]"++ <span class="required" markdown>++"required"++</span>
+    `amounts` ++"string[]"++ <span class="required" markdown>++"required"++</span>
 
-	Array of amounts corresponding to each asset in `assetIds`
+    Array of amounts corresponding to each asset in `assetIds`.
 
-	---
+    ---
 
-	`beneficiary` ++"string"++ <span class="required" markdown>++"required"++</span>
+    `beneficiary` ++"string"++ <span class="required" markdown>++"required"++</span>
 
-	Address of the account to receive the trapped assets
+    Address of the account to receive the trapped assets.
 
-	---
+    ---
 
-	`opts` ++"TransferArgsOpts<T>"++
+    `opts` ++"TransferArgsOpts<T>"++
 
     --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/transfer-arg-opts.md'
 
@@ -152,15 +151,15 @@ public async claimAssets<T extends Format>(
 
 ???+ interface "Example"
 
-	***Request***
+    ***Request***
 
-	```ts
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ca-example-request.ts'
-	```
+    ```ts
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ca-example-request.ts'
+    ```
 
-	***Response***
+    ***Response***
 
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ca-example-response.md'
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ca-example-response.md'
 
 
 #### decodeExtrinsic
@@ -169,22 +168,22 @@ Decodes the hex of an extrinsic into a string readable format.
 
 ```ts
 public decodeExtrinsic<T extends Format>(
-	encodedTransaction: string,
-	format: T
+    encodedTransaction: string,
+    format: T
 ): string
 ```
 
 ??? interface "Request parameters"
 
-	`encodedTransaction` ++"string"++ <span class="required" markdown>++"required"++</span>
+    `encodedTransaction` ++"string"++ <span class="required" markdown>++"required"++</span>
 
-	A hex encoded extrinsic
+    A hex encoded extrinsic.
 
-	---
+    ---
 
-	`format` ++"T extends Format"++ <span class="required" markdown>++"required"++</span>
-        
-    Specifies the format for returning a transaction
+    `format` ++"T extends Format"++ <span class="required" markdown>++"required"++</span>
+    
+    Specifies the format for returning a transaction.
 
     ??? child "Type `Format`"
 
@@ -194,21 +193,21 @@ public decodeExtrinsic<T extends Format>(
 
 ??? interface "Response parameters"
 
-	++"string"++
+    ++"string"++
 
-	Decoded extrinsic in string readable format.
+    Decoded extrinsic in string readable format.
 
 ??? interface "Example"
 
-	***Request***
+    ***Request***
 
-	```ts
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-example-request.ts'
-	```
+    ```ts
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-example-request.ts'
+    ```
 
-	***Response***
+    ***Response***
 
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-example-response.md'
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-example-response.md'
 
 #### fetchFeeInfo
 
@@ -216,14 +215,14 @@ Fetch estimated fee information for an extrinsic.
 
 ```ts
 public async fetchFeeInfo<T extends Format>(
-	tx: ConstructedFormat<T>,
-	format: T,
+    tx: ConstructedFormat<T>,
+    format: T,
 ): Promise<RuntimeDispatchInfo | RuntimeDispatchInfoV1 | null>
 ```
 
 ??? interface "Request parameters"
 
-	`tx` ++"ConstructedFormat<T>"++ <span class="required" markdown>++"required"++</span>
+    `tx` ++"ConstructedFormat<T>"++ <span class="required" markdown>++"required"++</span>
 
     The constructed transaction.
 
@@ -245,11 +244,11 @@ public async fetchFeeInfo<T extends Format>(
         - Call Format - if the format field is set to 'call', the `ConstructedFormat` type will return a hexadecimal string (`0x${string}`). This is the encoded representation of the extrinsic call
         - Submittable Format - if the format field is set to 'submittable', the ConstructedFormat type will return a [SubmittableExtrinsic](https://github.com/polkadot-js/api/blob/3b7b44f048ff515579dd233ea6964acec39c0589/packages/api-base/src/types/submittable.ts#L56). This is a Polkadot-JS type that represents a transaction that can be submitted to the blockchain
 
-	---
+    ---
 
-	`format` ++"T extends Format"++ <span class="required" markdown>++"required"++</span>
-        
-    Specifies the format for returning a transaction
+    `format` ++"T extends Format"++ <span class="required" markdown>++"required"++</span>
+
+    Specifies the format for returning a transaction.
 
     ??? child "Type `Format`"
 
@@ -259,43 +258,43 @@ public async fetchFeeInfo<T extends Format>(
 
 ??? interface "Response parameters"
 
-	++"Promise<RuntimeDispatchInfo | RuntimeDispatchInfoV1 | null>"++
+    ++"Promise<RuntimeDispatchInfo | RuntimeDispatchInfoV1 | null>"++
 
-	A promise containing the estimated fee information for the provided extrinsic.
+    A promise containing the estimated fee information for the provided extrinsic.
 
-	??? child "Type `RuntimeDispatchInfo`"
+    ??? child "Type `RuntimeDispatchInfo`"
 
-		```ts
-		export interface RuntimeDispatchInfo extends Struct {
-			readonly weight: Weight;
-			readonly class: DispatchClass;
-			readonly partialFee: Balance;
-		}
-		```
+        ```ts
+        export interface RuntimeDispatchInfo extends Struct {
+            readonly weight: Weight;
+            readonly class: DispatchClass;
+            readonly partialFee: Balance;
+        }
+        ```
 
-		For more information on the underlying types and fields of `RuntimeDispatchInfo`, check the [RuntimeDispatchInfo](https://github.com/polkadot-js/api/blob/2329af239eaf194696daeaa58ebf89f0080a5e0d/packages/types/src/interfaces/payment/types.ts#L21) source code.
+        For more information on the underlying types and fields of `RuntimeDispatchInfo`, check the [RuntimeDispatchInfo](https://github.com/polkadot-js/api/blob/2329af239eaf194696daeaa58ebf89f0080a5e0d/packages/types/src/interfaces/payment/types.ts#L21) source code.
 
 
-	??? child "Type `RuntimeDispatchInfoV1`"
+    ??? child "Type `RuntimeDispatchInfoV1`"
 
-		```ts
-		export interface RuntimeDispatchInfoV1 extends Struct {
-			readonly weight: WeightV1;
-			readonly class: DispatchClass;
-			readonly partialFee: Balance;
-		}
-		```
+        ```ts
+        export interface RuntimeDispatchInfoV1 extends Struct {
+            readonly weight: WeightV1;
+            readonly class: DispatchClass;
+            readonly partialFee: Balance;
+        }
+        ```
 
-		For more information on the underlying types and fields of `RuntimeDispatchInfoV1`, check the [RuntimeDispatchInfoV1](https://github.com/polkadot-js/api/blob/2329af239eaf194696daeaa58ebf89f0080a5e0d/packages/types/src/interfaces/payment/types.ts#L28) source code.
+        For more information on the underlying types and fields of `RuntimeDispatchInfoV1`, check the [RuntimeDispatchInfoV1](https://github.com/polkadot-js/api/blob/2329af239eaf194696daeaa58ebf89f0080a5e0d/packages/types/src/interfaces/payment/types.ts#L28) source code.
 
 ??? interface "Example"
 
-	***Request***
+    ***Request***
 
-	```ts
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ffi-example-request.ts'
-	```
+    ```ts
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ffi-example-request.ts'
+    ```
 
-	***Response***
+    ***Response***
 
-	--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ffi-example-response.md'
+    --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ffi-example-response.md'

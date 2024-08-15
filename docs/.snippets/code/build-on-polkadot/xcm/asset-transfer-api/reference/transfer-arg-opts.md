@@ -4,7 +4,7 @@ Options for customizing the claim assets transaction. These options allow you to
 
     `format` ++"T extends Format"++ 
         
-    Specifies the format for returning a transaction
+    Specifies the format for returning a transaction.
 
     ??? child "Type `Format`"
 
@@ -31,25 +31,25 @@ Options for customizing the claim assets transaction. These options allow you to
 
     `weightLimit` ++"{ refTime?: string, proofSize?: string }"++
     
-    Custom weight limit option. If not provided, it will default to unlimited
+    Custom weight limit option. If not provided, it will default to unlimited.
 
     ---
 
     `xcmVersion` ++"number"++
     
-    Sets the XCM version for message construction. If this is not present a supported version will be queried, and if there is no supported version a safe version will be queried
+    Sets the XCM version for message construction. If this is not present a supported version will be queried, and if there is no supported version a safe version will be queried.
 
     ---
 
     `keepAlive` ++"boolean"++
     
-    Enables `transferKeepAlive` for local asset transfers. For creating local asset transfers, if true this will allow for a `transferKeepAlive` as opposed to a `transfer`
+    Enables `transferKeepAlive` for local asset transfers. For creating local asset transfers, if true this will allow for a `transferKeepAlive` as opposed to a `transfer`.
 
     ---
 
     `transferLiquidToken` ++"boolean"++
     
-    Declares if this will transfer liquidity tokens. Default is false
+    Declares if this will transfer liquidity tokens. Default is false.
 
     ---
 
