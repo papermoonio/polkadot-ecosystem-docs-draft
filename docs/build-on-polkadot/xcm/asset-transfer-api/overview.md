@@ -36,10 +36,12 @@ To use `asset-transfer-api`, you need a ts project. If you don't have one, you c
     && cd my-asset-transfer-project
     ```
 
-2. Initialize a new project:
+2. Initialize a new TypeScript project:
 
     ```bash
-    npm init -y
+    npm init -y \
+    && npm install typescript ts-node @types/node --save-dev \
+    && npx tsc --init
     ```
 
 Once you have a project set up, you can install the `asset-transfer-api` package:
