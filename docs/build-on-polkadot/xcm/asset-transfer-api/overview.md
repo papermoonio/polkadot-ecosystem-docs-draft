@@ -127,9 +127,7 @@ The following example demonstrates a local GLMR transfer within Moonbeam, using 
 
 Upon executing this script, the terminal will display the following output, illustrating the encoded extrinsic for the cross-chain message and its corresponding decoded format:
 
-```ts
 --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/overview/localParachainTx.md'
-```
 
 ### Parachain to Parachain
 
