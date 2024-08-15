@@ -124,7 +124,7 @@ public async claimAssets<T extends Format>(
 
 	`assetIds` ++"string[]"++ <span class="required" markdown>++"required"++</span>
 
-	Array of asset IDs to be claimed from the AssetTrap
+	Array of asset IDs to be claimed from the `AssetTrap`
 
 	---
 
