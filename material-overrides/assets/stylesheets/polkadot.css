@@ -81,7 +81,7 @@ body {
   /* Comments */
   --md-code-hl-comment-color: #545454;
   /* Table content */
-  --md-typeset-table-color: #545454;
+  --md-typeset-table-color: rgba(0, 0, 0, .15);
 }
 
 [data-md-color-scheme='slate'] {
