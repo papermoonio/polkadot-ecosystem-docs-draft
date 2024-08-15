@@ -38,12 +38,9 @@ For a more in-depth explanation of the Asset Transfer API class structure, check
 
 #### Create Transfer Transaction
 
-This function allows you to create XCM transactions to transfer assets or native tokens between different chains.
+Generates an XCM transaction for transferring assets between chains. It simplifies the process by inferring what type of transaction is required given the inputs, ensuring that the assets are valid, and that the transaction details are correctly formatted.
 
-It takes several parameters to specify the transfer details, including the destination chain, recipient address, assets to be transferred, and their amounts, as well as an optional parameter for further customization. It can infer what kind of transaction is necessary given the inputs. When sending cross-chain transfers, the API performs extensive validation to ensure the inputs are valid and the assets either exist or don't.
-
-!!! note
-    The `createTransferTransaction` function is designed to be a utility that simplifies the creation of the transaction. It does not sign or submit the created transaction on the blockchain. It simply generates the transaction in the requested format (e.g., payload, call, or submittable). After obtaining the transaction from the `createTransferTransaction` function, you will need to handle the signing and submission process separately.
+After obtaining the transaction, you must handle the signing and submission process separately.
 
 ```ts
 public async createTransferTransaction<T extends Format>(
