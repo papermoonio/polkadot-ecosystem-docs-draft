@@ -12,8 +12,6 @@ description: Asset Transfer API is a library that simplifies the transfer of ass
 - Execute asset transfers to other parachains or locally within the same chain
 - Facilitate transactions involving system parachains like Asset Hub (Polkadot and Kusama)
 
-The Asset Transfer API supports Parachain to Parachain transfers, currently limited to XCM V2, except for primary asset transactions. 
-
 Using this API, developers can manage asset transfers more efficiently, reducing the complexity of cross-chain transactions and enabling smoother operations within the ecosystem.
 
 For additional support and information, please reach out through [GitHub Issues](https://github.com/paritytech/asset-transfer-api/issues){target=_blank}.
