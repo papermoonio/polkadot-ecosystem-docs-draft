@@ -70,7 +70,7 @@ public async createTransferTransaction<T extends Format>(
 
     Array of asset IDs to be transferred.
 
-    If a token or asset ID is provided as input, the API will resolve to using the `tokens` pallet. When no asset is passed in, the API will default to using the `balances` pallet.
+    When asset IDs are provided, the API dynamically selects the appropriate pallet for the current chain to handle these specific assets. If the array is empty, the API defaults to using the `balances` pallet.
 
     ---
 
@@ -104,7 +104,7 @@ public async createTransferTransaction<T extends Format>(
 
 #### Claim Assets
 
-Creates a local XCM transaction to retrieve trapped assets. This function can be used to claim assets either locally on a system parachain, on the relay chain, or on any chain that supports the pallet-xcm `claimAssets` runtime call.
+Creates a local XCM transaction to retrieve trapped assets. This function can be used to claim assets either locally on a system parachain, on the relay chain, or on any chain that supports the `claimAssets` runtime call.
 
 
 ```ts
