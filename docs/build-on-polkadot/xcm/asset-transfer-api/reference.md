@@ -31,7 +31,7 @@ description: Explore the Asset Transfer API Reference for comprehensive details 
 
 ## Asset Transfer API Class
 
-Holds open an API connection to a specified chain within the ApiPromise in order to help construct transactions for assets and estimate fees.
+Holds open an API connection to a specified chain within the `ApiPromise` to help construct transactions for assets and estimate fees.
 
 For a more in-depth explanation of the Asset Transfer API class structure, check the [source code](https://github.com/paritytech/asset-transfer-api/blob/f2aa50db83882f23492f975221dd5501c35a26d5/src/AssetTransferApi.ts#L106).
 
