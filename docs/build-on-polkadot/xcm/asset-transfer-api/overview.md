@@ -103,7 +103,7 @@ For detailed information on the Asset Transfer API, including available methods,
 
 ## Examples
 
-### Relay to System Parachain
+### Relay to System Parachain Transfer
 
 This example demonstrates how to initiate a cross-chain token transfer from a relay chain to a system parachain. Specifically, 1 WND will be transferred from a Westend (relay chain) account to a Westmint (system parachain) account.
 
@@ -127,7 +127,7 @@ Upon executing this script, the terminal will display the following output, illu
 
 --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/overview/localParachainTx.md'
 
-### Parachain to Parachain
+### Parachain to Parachain Transfer
 
 This example demonstrates creating a cross-chain asset transfer between two parachains. It shows how to send vMOVR and vBNC from a Moonriver account to a Bifrost Kusama account using the safe XCM version. It connects to Moonriver, initializes the API, and uses the `createTransferTransaction` method to prepare a transaction.
 
