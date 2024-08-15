@@ -36,7 +36,7 @@ For a more in-depth explanation of the Asset Transfer API class structure, check
 
 ### Methods
 
-#### createTransferTransaction
+#### Create Transfer Transaction
 
 This function allows you to create XCM transactions to transfer assets or native tokens between different chains.
 
@@ -105,7 +105,7 @@ public async createTransferTransaction<T extends Format>(
 
     --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ctt-example-response.md'
 
-#### claimAssets
+#### Claim Assets
 
 Creates a local XCM transaction to retrieve trapped assets. This function can be used to claim assets either locally on a system parachain, on the relay chain, or on any chain that supports the pallet-xcm `claimAssets` runtime call.
 
@@ -162,7 +162,7 @@ public async claimAssets<T extends Format>(
     --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ca-example-response.md'
 
 
-#### decodeExtrinsic
+#### Decode Extrinsic
 
 Decodes the hex of an extrinsic into a string readable format.
 
@@ -209,7 +209,7 @@ public decodeExtrinsic<T extends Format>(
 
     --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-example-response.md'
 
-#### fetchFeeInfo
+#### Fetch Fee Info
 
 Fetch estimated fee information for an extrinsic.
 
