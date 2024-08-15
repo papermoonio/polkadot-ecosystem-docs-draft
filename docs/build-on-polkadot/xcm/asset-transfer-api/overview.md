@@ -27,7 +27,7 @@ Before you begin, ensure you have the following installed:
 
 ## Install Asset Transfer API
 
-To use `asset-transfer-api`, you need a ts project. If you don't have one, you can create a new one:
+To use `asset-transfer-api`, you need a TypeScript project. If you don't have one, you can create a new one:
 
 1. Create a new directory for your project:
 
