@@ -43,13 +43,7 @@ Generates an XCM transaction for transferring assets between chains. It simplifi
 After obtaining the transaction, you must handle the signing and submission process separately.
 
 ```ts
-public async createTransferTransaction<T extends Format>(
-      destChainId: string,
-      destAddr: string,
-      assetIds: string[],
-      amounts: string[],
-      opts: TransferArgsOpts<T> = {},
-): Promise<TxResult<T>>
+--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ctt-fn-signature.ts'
 ```
 
 ??? interface "Request parameters"
@@ -108,12 +102,7 @@ Creates a local XCM transaction to retrieve trapped assets. This function can be
 
 
 ```ts
-public async claimAssets<T extends Format>(
-    assetIds: string[],
-    amounts: string[],
-    beneficiary: string,
-    opts: TransferArgsOpts<T>,
-): Promise<TxResult<T>>
+--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ca-fn-signature.ts'
 ```
 
 ??? interface "Request parameters"
@@ -146,7 +135,7 @@ public async claimAssets<T extends Format>(
 
     --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/tx-result.md'
 
-???+ interface "Example"
+??? interface "Example"
 
     ***Request***
 
@@ -164,10 +153,7 @@ public async claimAssets<T extends Format>(
 Decodes the hex of an extrinsic into a string readable format.
 
 ```ts
-public decodeExtrinsic<T extends Format>(
-    encodedTransaction: string,
-    format: T
-): string
+--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/de-fn-signature.ts'
 ```
 
 ??? interface "Request parameters"
@@ -211,10 +197,7 @@ public decodeExtrinsic<T extends Format>(
 Fetch estimated fee information for an extrinsic.
 
 ```ts
-public async fetchFeeInfo<T extends Format>(
-    tx: ConstructedFormat<T>,
-    format: T,
-): Promise<RuntimeDispatchInfo | RuntimeDispatchInfoV1 | null>
+--8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/ffi-fn-signature.ts'
 ```
 
 ??? interface "Request parameters"
@@ -231,8 +214,8 @@ public async fetchFeeInfo<T extends Format>(
         : T extends 'call'
         ? `0x${string}`
         : T extends 'submittable'
-            ? SubmittableExtrinsic<'promise', ISubmittableResult>
-            : never;
+          ? SubmittableExtrinsic<'promise', ISubmittableResult>
+          : never;
         ```
 
         The `ConstructedFormat` type is a conditional type that returns a specific type based on the value of the TxResult `format` field.
@@ -263,9 +246,9 @@ public async fetchFeeInfo<T extends Format>(
 
         ```ts
         export interface RuntimeDispatchInfo extends Struct {
-            readonly weight: Weight;
-            readonly class: DispatchClass;
-            readonly partialFee: Balance;
+          readonly weight: Weight;
+          readonly class: DispatchClass;
+          readonly partialFee: Balance;
         }
         ```
 
@@ -276,9 +259,9 @@ public async fetchFeeInfo<T extends Format>(
 
         ```ts
         export interface RuntimeDispatchInfoV1 extends Struct {
-            readonly weight: WeightV1;
-            readonly class: DispatchClass;
-            readonly partialFee: Balance;
+          readonly weight: WeightV1;
+          readonly class: DispatchClass;
+          readonly partialFee: Balance;
         }
         ```
 
