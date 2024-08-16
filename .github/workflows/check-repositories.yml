@@ -8,6 +8,8 @@ on:
 jobs:
   check-repositories:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
