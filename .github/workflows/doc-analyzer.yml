@@ -1,4 +1,4 @@
-name: Check Repositories
+name: Document Analyzer
 
 on:
   pull_request:
