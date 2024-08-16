@@ -18,4 +18,4 @@ jobs:
 
     - name: Run Document Analyzer
       run: |
-        python .github/scripts/doc_analyzer.py
+        python .github/scripts/analyze_docs.py
