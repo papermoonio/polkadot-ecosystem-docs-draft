@@ -29,6 +29,29 @@ This guide will focus on using Rococo and its Asset Hub instance spawned locally
 
 ## Steps to Register a Foreign Asset
 
+1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and connect to the `Asset Hub` parachain
+
+      - For the local environment, connect to `Local Node (Zombienet)`, available the link your terminal will provide
+      - For the live network, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama or Rococo Asset Hub
+
+2. Click on the **Developer** tab on the left sidebar and select the **Extrinsics** section
+
+    ![Access to Developer Extrinsics section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-1.webp)
+
+3. Select the `Foreign Asset` pallet from the dropdown list and choose the `create` extrinsic
+
+    ![Select the Foreign Asset pallet](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-2.webp)
+
+4. Fill out the required fields
+
+    - `id` - as this is a foreign asset, the ID will be represented with a `Multilocation` that reflects its origin.
+    - `admin` - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the asset that is being registered corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain. This account can be obtained through the [this utility](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.
+
+        ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
+
+    !!!note 
+        Ensure that `Sibling` is selected and the `Parachain ID` is the one of the source parachain, in this case, as the guide is following the test setup stated on the [Test Enviroment Setup](./register-a-foreign-asset.md/#enviroment-setup) section, the `Parachain ID` should be `101`.
+
 
 ## Test Enviroment Setup
 
