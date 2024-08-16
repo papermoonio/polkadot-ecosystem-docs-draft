@@ -83,10 +83,10 @@ def main():
 
     for repo in data.get("outdated_repos", []):
         owner, repo_name = parse_github_url(repo["repository"])
-        title = f"Update needed: {repo_name} ({repo['current_tag']} -> {repo['latest_tag']})"
+        title = f"Update needed: {repo_name} ({repo['current_version']} -> {repo['latest_version']})"
         body = f"""A new release has been detected for {repo['repository']}.
-Current version: {repo['current_tag']}
-Latest version: {repo['latest_tag']}
+Current version: {repo['current_version']}
+Latest version: {repo['latest_version']}
 
 Please review the change log and update the documentation accordingly."""
 

@@ -2,6 +2,7 @@ import requests
 import json
 from urllib.parse import urlparse
 import sys
+import yaml
 
 
 def get_latest_release(repo_url):
@@ -26,33 +27,35 @@ def get_latest_release(repo_url):
         sys.exit(1)
 
 
-def check_releases(json_file):
+def check_releases(yaml_file):
     """Check the release tags for a list of repositories."""
     try:
-        with open(json_file, "r") as file:
-            repos = json.load(file)
+        with open(yaml_file, "r") as file:
+            data = yaml.safe_load(file)
+            repos = data.get("dependencies", {})
+            print(repos)
     except Exception as e:
-        print(f"Error reading JSON file '{json_file}': {e}")
+        print(f"Error reading YAML file '{yaml_file}': {e}")
         sys.exit(1)
 
     outdated_repos = []
 
-    for repo in repos:
-        repo_url = repo.get("repository")
-        current_tag = repo.get("tag")
+    for name, repo_info in repos.items():
+        repo_url = repo_info.get("repository_url")
+        current_version = repo_info.get("version")
 
-        if not repo_url or not current_tag:
-            print(f"Invalid repository entry: {repo}")
+        if not repo_url or not current_version:
+            print(f"Invalid repository entry: {name}")
             continue
 
-        latest_tag = get_latest_release(repo_url)
+        latest_version = get_latest_release(repo_url)
 
-        if latest_tag and latest_tag != current_tag:
+        if latest_version and latest_version != current_version:
             outdated_repos.append(
                 {
                     "repository": repo_url,
-                    "current_tag": current_tag,
-                    "latest_tag": latest_tag,
+                    "current_version": current_version,
+                    "latest_version": latest_version,
                 }
             )
 
@@ -83,4 +86,4 @@ def main(json_file):
 
 
 if __name__ == "__main__":
-    main("repositories.json")
+    main("docs/variables.yml")
