@@ -57,7 +57,7 @@ If successful, you will see the following output:
     <table>
         <thead>
             <tr>
-                <th colspan="3" align="center">
+                <th colspan="2" class="center-header">
                     Network launched 🚀🚀
                 </th>
             </tr>
@@ -71,7 +71,7 @@ If successful, you will see the following output:
             <td>native</td>
         </tr>
             <tr>
-                <th colspan="3" align="center">
+                <th colspan="3" class="center-header">
                 Node Information
                 </th>
             </tr>
@@ -92,7 +92,7 @@ If successful, you will see the following output:
             <td>tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-2</td>
         </tr>
             <tr>
-                <th colspan="3" align="center">
+                <th colspan="3" class="center-header">
                 Node Information
                 </th>
             </tr>
@@ -113,7 +113,7 @@ If successful, you will see the following output:
             <td>tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-2</td>
         </tr>
             <tr>
-                <th colspan="3" align="center">
+                <th colspan="3" class="center-header">
                 Node Information
                 </th>
             </tr>

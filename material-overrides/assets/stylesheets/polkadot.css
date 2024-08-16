@@ -80,6 +80,8 @@ body {
   --md-code-hl-keyword-color: var(--blue);
   /* Comments */
   --md-code-hl-comment-color: #545454;
+  /* Table content */
+  --md-typeset-table-color: rgba(0, 0, 0, .15);
 }
 
 [data-md-color-scheme='slate'] {
@@ -134,6 +136,8 @@ body {
   --md-code-hl-comment-color: #545454;
   /* Comments */
   --md-code-hl-comment-color: #D9D9D9;
+  /* Table content */
+  --md-typeset-table-color: rgba(255,255,255,.15);
 }
 
 /* General styling */
