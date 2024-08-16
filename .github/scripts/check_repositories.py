@@ -27,15 +27,15 @@ def get_latest_release(repo_url):
         sys.exit(1)
 
 
-def check_releases(yaml_file):
+def check_releases(releases_source_file):
     """Check the release tags for a list of repositories."""
     try:
-        with open(yaml_file, "r") as file:
+        with open(releases_source_file, "r") as file:
             data = yaml.safe_load(file)
             repos = data.get("dependencies", {})
             print(repos)
     except Exception as e:
-        print(f"Error reading YAML file '{yaml_file}': {e}")
+        print(f"Error reading releases source file '{releases_source_file}': {e}")
         sys.exit(1)
 
     outdated_repos = []
@@ -62,10 +62,10 @@ def check_releases(yaml_file):
     return outdated_repos
 
 
-def main(json_file):
+def main(releases_source_file):
     """Main function to check releases and generate an output file."""
     try:
-        outdated_repos = check_releases(json_file)
+        outdated_repos = check_releases(releases_source_file)
 
         # Output results in a format suitable for GitHub Actions
         output = {
