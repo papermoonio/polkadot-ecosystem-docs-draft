@@ -45,11 +45,11 @@ To use `asset-transfer-api`, you need a TypeScript project. If you don't have on
 Once you have a project set up, you can install the `asset-transfer-api` package:
 
 ```bash
-npm install @substrate/asset-transfer-api@{{build_on_polkadot.xcm.asset_transfer_api.version}}
+npm install @substrate/asset-transfer-api@{{dependencies.asset_transfer_api.version}}
 ```
 
 !!!note
-    This documentation covers version `{{build_on_polkadot.xcm.asset_transfer_api.version}}` of Asset Transfer API.
+    This documentation covers version `{{dependencies.asset_transfer_api.version}}` of Asset Transfer API.
 
 ## Set Up Asset Transfer API
 
