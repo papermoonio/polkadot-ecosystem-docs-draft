@@ -1,5 +1,5 @@
 ---
-title: Register a local asset
+title: Register a Local Asset
 description: Comprehensive guide to registering a local asset on the Asset Hub system parachain, including step-by-step instructions.
 ---
 
