@@ -87,4 +87,4 @@ npx @acala-network/chopsticks \
 !!!note 
     The above command will spawn a lazy fork of Polkadot Asset Hub with the latest block data from the network. If you need to test Kusama Asset Hub, replace `polkadot-asset-hub.yml` with `kusama-asset-hub.yml` in the command.
 
-Now, an Asset Hub instance is running locally, and you can proceed with the asset registration process. Note that the local registering process does not differ from the live network process so that you can use the same steps for both.
+An Asset Hub instance is now running locally, and you can proceed with the asset registration process. Note that the local registration process does not differ from the live network process. Once you have a successful TestNet transaction, you can use the same steps to register the asset on MainNet.
