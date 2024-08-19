@@ -40,7 +40,7 @@ You can read the [What is Asset Hub and How Do I Use it?](https://support.polkad
 
 ### Foreign Assets
 
-Foreign assets in Asset Hub are assets that originate from a different blockchain than Asset Hub itself. These assets can be native tokens from different parachains or tokens from other consensus systems, such as Ethereum. Once a foreign asset is added to Asset Hub, users have the ability to transfer this token from its original blockchain to Asset Hub and utilize it like any other asset.
+Asset Hub considers assets originating from a different blockchain to be foreign assets. These assets can be native tokens from various parachains or other consensus systems like Ethereum. Once a foreign asset is added to Asset Hub, users can transfer this token from its original blockchain to Asset Hub and utilize it like any other asset.
 
 A significant difference lies in the method used for their identification. Unlike the Assets pallet, foreign assets use [`XCM Multilocation`](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=_blank} instead of integers to identify assets, making asset identification much more versatile.
 
