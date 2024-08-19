@@ -9,7 +9,7 @@ description: Guide to learn and implement Asset Hub parachain on Polkadot, a dec
 
 Asset Hub is a [System Parachain](https://wiki.polkadot.network/docs/learn-system-chains){target=_blank} designed to manage and operate assets within the Polkadot network. It specializes in creating, managing, and using assets. It is considered the primary hub for asset operations in the network. 
 
-For the Polkadot Asset Hub, the native token is DOT, and for the Kusama Asset Hub, the native token is KSM. Both cases maintain a trusted relationship with the relay chain.
+The native token for the Polkadot Asset Hub is DOT, and for the Kusama Asset Hub, it is KSM. Both cases maintain a trusted relationship with the relay chain.
 
 To transfer either DOT or KSM to the Asset Hub, you can refer to [this guide](https://support.polkadot.network/support/solutions/articles/65000181119){target=_blank}.
 
