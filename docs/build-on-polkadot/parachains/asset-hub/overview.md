@@ -32,7 +32,7 @@ Asset Hub acts as a management portal for asset creators, letting them mint and 
 
 Instead of using custom contracts for each asset, Asset Hub incorporates built-in asset logic, treating them as primary primitives. All assets have identical functionality.
 
-These assets, identified by claimable, integer-based asset IDs, are known as `local assets`. This approach simplifies the process of managing assets, as users can interact with them using the same set of functions.
+These assets, identified by claimable, integer-based asset IDs, are known as `local assets`. This approach simplifies asset management, as users can interact with them using the same set of functions.
 
 The protocol ensures that each asset ID (an integer) is unique, enabling creators to assign metadata such as the asset symbol. Therefore, users should verify their assets to confirm that they possess the correct ID. For instance, although anyone can label their asset as USDT, users will probably seek the one issued by [Tether](https://tether.to/en/){target=_blank} (asset ID 1984).
 
