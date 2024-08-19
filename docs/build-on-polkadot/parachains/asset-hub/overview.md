@@ -11,7 +11,7 @@ Asset Hub is a [System Parachain](https://wiki.polkadot.network/docs/learn-syste
 
 The native token for the Polkadot Asset Hub is DOT, and for the Kusama Asset Hub, it is KSM. Both cases maintain a trusted relationship with the relay chain.
 
-To transfer either DOT or KSM to the Asset Hub, you can refer to [this guide](https://support.polkadot.network/support/solutions/articles/65000181119){target=_blank}.
+You can refer to [this guide](https://support.polkadot.network/support/solutions/articles/65000181119){target=_blank} to transfer either DOT or KSM to the Asset Hub.
 
 Some common use cases for Asset Hub include:
 
