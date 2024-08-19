@@ -26,7 +26,7 @@ An asset on the blockchain is a digital representation of value, such as cryptoc
 
 The [Asset Pallet](https://paritytech.github.io/polkadot-sdk/master/pallet_assets/index.html){target=_blank} facilitates the management of these assets by providing essential functions for handling them.
 
-Asset Hub acts as a management portal for asset creators, letting them mint and burn tokens, and get an overview of the total issuance across the Polkadot network, including tokens sent elsewhere in the network.
+Asset Hub acts as a management portal for asset creators, letting them mint and burn tokens and get an overview of the total issuance across the Polkadot network, including tokens sent elsewhere in the network.
 
 ### Local Assets
 
