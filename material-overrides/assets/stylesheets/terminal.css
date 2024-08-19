@@ -65,3 +65,27 @@
 [data-ty][data-ty-prompt]:before {
     content: attr(data-ty-prompt);
 }
+
+.md-typeset .table-termynal table:not([class]) {
+    border: none;
+}
+
+.md-typeset .table-termynal .md-typeset__table table th.left-header {
+    border-bottom: .05rem solid rgba(255,255,255,.1);
+    border-right: .05rem solid rgba(255,255,255,.1);
+    border-color: rgba(255,255,255,.1);
+    background-color: var(--black);
+}
+
+.md-typeset .table-termynal .md-typeset__table table th.center-header {
+    text-align: center;
+    width: 100%;
+    color: var(--white);
+    background-color: var(--pink);
+    padding: 0 22% 0 0;
+}
+
+.md-typeset .table-termynal table:not([class]) td {
+    background-color: var(--black);
+    border-color: rgba(255,255,255,.1);
+}
