@@ -3,7 +3,7 @@ title: Register a local asset
 description: Comprehensive guide to registering a local asset on the Asset Hub system parachain, including step-by-step instructions.
 ---
 
-# Register a local asset on Asset Hub
+# Register a Local Asset on Asset Hub
 
 ## Introduction
 As detailed in the [Asset Hub Overview](./overview.md#local-assets){target=_blank} page, Asset Hub accommodates two types of assets: local and foreign. Local assets are those that were created in Asset Hub and are identifiable by an integer ID. This guide will take you through the steps of registering a local asset on the Asset Hub parachain.
