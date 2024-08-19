@@ -75,7 +75,7 @@ For an in-depth explanation of Asset Hub and its features, please refer to the P
 
 ## Environment Setup
 
-It might be beneficial to set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks](../../../dev-tools/chopsticks/overview.md){target=_blank} documentation.
+You can set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks](../../../dev-tools/chopsticks/overview.md){target=_blank} documentation.
 
 To set up a test environment then, execute the following command:
 
