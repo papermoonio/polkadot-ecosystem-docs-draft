@@ -73,7 +73,7 @@ In this way, you have successfully registered a local asset on the Asset Hub par
 
 For an in-depth explanation of Asset Hub and its features, please refer to the Polkadot Wiki page on [Asset Hub](https://wiki.polkadot.network/docs/learn-assets){target=\_blank}.
 
-## Environment Setup
+## Test Setup Environment
 
 You can set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks](../../../dev-tools/chopsticks/overview.md){target=_blank} documentation.
 
