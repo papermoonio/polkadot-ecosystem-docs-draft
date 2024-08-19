@@ -34,7 +34,7 @@ Instead of using custom contracts for each asset, Asset Hub incorporates built-i
 
 These assets, identified by claimable, integer-based asset IDs, are known as `local assets`. This approach simplifies asset management, as users can interact with them using the same set of functions.
 
-The protocol ensures that each asset ID (an integer) is unique, enabling creators to assign metadata such as the asset symbol. Therefore, users should verify their assets to confirm that they possess the correct ID. For instance, although anyone can label their asset as USDT, users will probably seek the one issued by [Tether](https://tether.to/en/){target=_blank} (asset ID 1984).
+The protocol ensures that each asset ID (an integer) is unique, enabling creators to assign metadata such as the asset symbol. Therefore, users should verify their assets to confirm they possess the correct ID. For instance, although anyone can label their asset as USDT, users will probably seek the one issued by [Tether](https://tether.to/en/){target=_blank} (asset ID 1984).
 
 For more information on how to verify the legitimacy of an asset on Asset Hub, you can read [this article](https://support.polkadot.network/support/solutions/articles/65000181800){target=_blank}.
 
