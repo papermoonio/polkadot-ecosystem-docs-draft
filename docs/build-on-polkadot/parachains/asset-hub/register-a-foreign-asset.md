@@ -7,31 +7,35 @@ description: An in-depth guide to registering a foreign asset on the Asset Hub p
 
 ## Introduction
 
-As outlined in the [Asset Hub Overview](./overview.md#foreign-assets){target=_blank}, Asset Hub supports two categories of assets: local and foreign. Foreign assets are originated outside of Asset Hub and are recognized by [`Multilocations`](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=_blank}. This guide will walk you through the process of registering a foreign asset on the Asset Hub parachain.
+As outlined in the [Asset Hub Overview](./overview.md#foreign-assets){target=_blank}, Asset Hub supports two categories of assets: local and foreign. Foreign assets originated outside of Asset Hub and are recognized by [`Multilocations`](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=_blank}. This guide will walk you through the process of registering a foreign asset on the Asset Hub parachain.
 
-In order to register a foreign asset on Asset Hub, it's important to notice that the process involves a communication between two parachains. Asset Hub parachain will be the destination of the foreign asset, while the source parachain will be the origin of the asset. The communication between the two parachains is facilitated by the [Cross-Chain Message Passing (XCMP)](https://wiki.polkadot.network/docs/learn-xcm){target=_blank} protocol.
+To register a foreign asset on Asset Hub, it's essential to notice that the process involves communication between two parachains. Asset Hub parachain will be the destination of the foreign asset, while the source parachain will be the origin of the asset. The communication between the two parachains is facilitated by the [Cross-Chain Message Passing (XCMP)](https://wiki.polkadot.network/docs/learn-xcm){target=_blank} protocol.
 
 ## Prerequisites
 
-Asset Hub parachain exists as a one of the system parachains on a relay chain, such as [Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank} or [Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank}. To interact with those parachains, you can use the [Polkadot.js App](https://polkadot.js.org/apps/#/explorer){target=_blank} interface. For example:
+The Asset Hub parachain is one of the system parachains on a relay chain, such as [Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank} or [Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank}. To interact with these parachains, you can use the [Polkadot.js App](https://polkadot.js.org/apps/#/explorer){target=_blank} interface. For example:
 
 - [Polkadot Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/explorer){target=\_blank}
 - [Kusama Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fsys.ibp.network%2Fstatemine#/explorer){target=\_blank}
-- And for testing purposes, [Rococo Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-rococo-rpc.dwellir.com#/explorer){target=\_blank}
 
-So, before you start, ensure that you have:
+For testing purposes, you can also interact with the Asset Hub instance of the following test networks:
 
-- Access to the Polkadot.js App interface and you are connected to the desired chain
-- A parachain that supports the XCMP protocol and is able to send the foreign asset to Asset Hub
-- A funded wallet to pay for the transaction fees and consequent registration of the foreign asset
+- [Rococo Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-rococo-rpc.dwellir.com#/explorer){target=\_blank}
+- [Paseo Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpas-rpc.stakeworld.io%2Fassethub#/explorer){target=\_blank}
 
-This guide will focus on using Rococo and its Asset Hub instance spawned locally, as stated on the [Test Enviroment Setup](./register-a-foreign-asset.md/#enviroment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using.
+Before you start, ensure that you have: 
+
+- Access to the Polkadot.js App interface, and you are connected to the desired chain
+- A parachain that supports the XCMP protocol to register foreign assets in Asset Hub
+- A funded wallet to pay for the transaction fees and subsequent registration of the foreign asset
+
+This guide will focus on using Polkadot, its locally spawned Asset Hub instance, and the [Astar](https://astar.network/){taget=\_blank} parachain, as stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using.
 
 ## Steps to Register a Foreign Asset
 
 1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and connect to the `Asset Hub` parachain
 
-      - For the local environment, connect to `Local Node (Zombienet)`, available the link your terminal will provide
+      - For the local environment, connect to `Local Node (Chopsticks)`, check the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section for more details
       - For the live network, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama or Rococo Asset Hub
 
 2. Click on the **Developer** tab on the left sidebar and select the **Extrinsics** section
