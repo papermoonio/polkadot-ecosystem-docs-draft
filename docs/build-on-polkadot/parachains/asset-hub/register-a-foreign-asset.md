@@ -18,7 +18,7 @@ The Asset Hub parachain is one of the system parachains on a relay chain, such a
 - [Polkadot Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/explorer){target=\_blank}
 - [Kusama Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fsys.ibp.network%2Fstatemine#/explorer){target=\_blank}
 
-For testing purposes, you can also interact with the Asset Hub instance of the following test networks:
+For testing purposes, you can also interact with the Asset Hub instance of test networks:
 
 - [Rococo Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-rococo-rpc.dwellir.com#/explorer){target=\_blank}
 - [Paseo Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpas-rpc.stakeworld.io%2Fassethub#/explorer){target=\_blank}
@@ -26,17 +26,17 @@ For testing purposes, you can also interact with the Asset Hub instance of the f
 Before you start, ensure that you have: 
 
 - Access to the Polkadot.js App interface, and you are connected to the desired chain
-- A parachain that supports the XCMP protocol to register foreign assets in Asset Hub
+- A parachain that supports the XCMP protocol to interact with the Asset Hub parachain
 - A funded wallet to pay for the transaction fees and subsequent registration of the foreign asset
 
-This guide will focus on using Polkadot, its locally spawned Asset Hub instance, and the [Astar](https://astar.network/){taget=\_blank} parachain, as stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using.
+This guide will focus on using Polkadot, its local Asset Hub instance, and the [Astar](https://astar.network/){taget=\_blank} parachain (`ID` 2006), as stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using and the parachain owner of the foreign asset.
 
 ## Steps to Register a Foreign Asset
 
 1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and connect to the `Asset Hub` parachain
 
       - For the local environment, connect to `Local Node (Chopsticks)`, check the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section for more details
-      - For the live network, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama or Rococo Asset Hub
+      - For the live network, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama, Rococo or Paseo Asset Hub
 
 2. Click on the **Developer** tab on the left sidebar and select the **Extrinsics** section
 
@@ -94,3 +94,13 @@ npx @acala-network/chopsticks xcm \
 ```
 !!! note
     The above command will create a lazy fork of Polkadot as the relay chain, its Asset Hub instance, and the Astar parachain. The `xcm` parameter enables communication through the XCMP protocol between the relay chain and the parachains, allowing the registration of foreign assets on Asset Hub. For further information on the chopsticks usage of the XCMP protocol, refer to the [XCM Testing](../../../dev-tools/chopsticks/overview.md#xcm-testing){target=_blank} section of the Chopsticks documentation.
+
+After executing the command, the terminal will display the subsequent output:
+
+--8<-- 'code/build-on-polkadot/parachains/asset-hub/register-a-foreign-asset/terminal/chopstick-test-env-output.md'
+
+According to the output, the Polkadot relay chain, the Polkadot Asset Hub, and the Astar parachain are running locally and connected through XCM. They can be accessed via the Polkadot.js Apps interface:
+
+- [Polkadot Relay Chain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Flocalhost%3A8002#/explorer){target=_blank}
+- [Polkadot Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Flocalhost%3A8000#/explorer){target=_blank}
+- [Astar Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Flocalhost%3A8001#/explorer){target=_blank}
