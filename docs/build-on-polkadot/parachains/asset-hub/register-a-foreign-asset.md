@@ -80,7 +80,7 @@ This guide will focus on using Polkadot, its locally spawned Asset Hub instance,
         Ensure to replace the encoded call with the one you copied in the previous step.
 
 
-## Test Enviroment Setup
+## Test Environment Setup
 
 To test the foreign asset registration process before deploying it on the live network, you can set up a local parachain environment. This guide uses `chopsticks` to simulate that process. For more information on using chopsticks, please refer to the [Chopsticks documentation](../../../dev-tools/chopsticks/overview.md){target=_blank}.
 
