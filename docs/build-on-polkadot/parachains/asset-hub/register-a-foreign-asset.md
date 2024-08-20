@@ -82,47 +82,15 @@ This guide will focus on using Polkadot, its locally spawned Asset Hub instance,
 
 ## Test Enviroment Setup
 
-It might be beneficial to set up a local testing environment to first check out the asset registration process before deploying it on the live network. This guide uses `zombienet` to simulate that process. For further information on zombienet usage, refer to the [Zombienet](../../../dev-tools/zombienet/overview.md){target=\_blank} documentation.
+To test the foreign asset registration process before deploying it on the live network, you can set up a local parachain environment. This guide uses `chopsticks` to simulate that process. For more information on using chopsticks, please refer to the [Chopsticks documentation](../../../dev-tools/chopsticks/overview.md){target=_blank}.
 
-To set up a test environment then, create a file named `minimal-config-asset-hub-rococo.toml` with the following content:
-
-```toml
-[relaychain]
-chain = "rococo-local"
-
-  [[relaychain.nodes]]
-  name = "alice"
-  validator = true
-
-  [[relaychain.nodes]]
-  name = "bob"
-  validator = true
-
-[[parachains]]
-id = 100
-chain = "asset-hub-rococo-local"
-
-  [parachains.collator]
-  name = "collator01"
-  command = "polkadot-parachain"
-
-
-[[parachains]]
-id = 101
-
-  [parachains.collator]
-  name = "collator02"
-  command = "polkadot-parachain"
-```
-
-Then, execute the following command:
+To set up a test environment, run the following command:
 
 ```bash
-./zombienet -p native spawn minimal-config-asset-hub-rococo.toml
+npx @acala-network/chopsticks xcm \
+--r polkadot \
+--p polkadot-asset-hub \
+--p astar
 ```
-
-!!!note 
-    The above command will spawn a Rococo relay chain with two validators: alice and bob. Also, it will spawn an Asset Hub parachain instance with ID 100 and a collator named collator01. Finally, it will spawn another parachain instance with ID 101 and a collator named collator02, which will be used to simulate the source parachain of the foreign asset.
-    
-Now, you have a Rococo relay chain running locally and can proceed with the asset registration process. Note that the local registering process does not differ from the live network process, so you can use the same steps for both.
-
+!!! note
+    The above command will create a lazy fork of Polkadot as the relay chain, its Asset Hub instance, and the Astar parachain. The `xcm` parameter enables communication through the XCMP protocol between the relay chain and the parachains, allowing the registration of foreign assets on Asset Hub. For further information on the chopsticks usage of the XCMP protocol, refer to the [XCM Testing](../../../dev-tools/chopsticks/overview.md#xcm-testing){target=_blank} section of the Chopsticks documentation.
