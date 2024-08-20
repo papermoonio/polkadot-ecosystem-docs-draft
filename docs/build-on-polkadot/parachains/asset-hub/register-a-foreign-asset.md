@@ -36,7 +36,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and connect to the `Asset Hub` parachain
 
       - For the local environment, connect to `Local Node (Chopsticks)`, check the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section for more details
-      - For the live network, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama, Rococo or Paseo Asset Hub
+      - For the live networks, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama, Rococo, or Paseo Asset Hub
 
 2. Click on the **Developer** tab on the left sidebar and select the **Extrinsics** section
 
@@ -48,37 +48,53 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
 4. Fill out the required fields and click on the copy icon to copy the **encoded call** to your clipboard
 
-    ![Fill out the required fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-4.webp)
+    ![Fill out the required fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
 
     ??? note
-        If you want an encoded call example, you can copy the following: `0x35000101009501007369626c6500000000000000000000000000000000000000000000000000000000000000000000000000000000000000`
+        If you want an encoded call example, you can copy the following: `0x3500010100591f007369626cd6070000000000000000000000000000000000000000000000000000a0860100000000000000000000000000`
 
     The fields to be filled are:
 
-    - `id` - as this is a foreign asset, the ID will be represented with a `Multilocation` that reflects its origin. For this case, the multilocation of the asset will be from the source parachain perspective:
+    - `id` - as this is a foreign asset, the ID will be represented by a `Multilocation` that reflects its origin. For this case, the multilocation of the asset will be from the source parachain perspective:
   
         ```javascript
-        MultiLocation {parents: 1, interior: X1(Parachain(101))};
+        MultiLocation {parents: 1, interior: X1(Parachain(2006))};
         ```
 
-    - `admin` - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the asset that is being registered corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain. This account can be obtained through the [this utility](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.
+    - `admin` - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the registered asset corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain. 
+      
+        ??? note
+            This sibling account can be obtained through [this utility](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}
 
-        ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
+            ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-4.webp)
 
-        !!!note 
-            Ensure that `Sibling` is selected and the `Parachain ID` is the one of the source parachain, in this case, as the guide is following the test setup stated on the [Test Enviroment Setup](./register-a-foreign-asset.md/#enviroment-setup) section, the `Parachain ID` should be `101`.
+            Ensure that `Sibling` is selected and that the `Parachain ID` is the one of the source parachain. In this case, since the guide is following the test setup stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section, the `Parachain ID` is `2006`.
 
-5. Now, the Polkadot.js interface connected to the the parachain that will send the foreign asset to Asset Hub, go to the `Developer > Extrinsics` section and craft the following call. Ensure to paste the **encoded call** copied in the previous step and click on the **Submit Transaction** button after filling out the required fields.
+    - `minBalance` - the minimum balance required to hold this asset
+
+5. With the Polkadot.js interface connected to the parachain that will send the foreign asset to Asset Hub, navigate to the `Developer > Extrinsics` section. Create the following call, making sure to paste the **encoded call** copied in the previous step. After filling out the required fields, click on the **Submit Transaction** button.
 
     ![Register foreign asset through XCM](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-5.webp)
 
     First, DOT will be withdrawn from the sibling account of the parachain. Then, the DOT will be used to initiate an execution. The transaction will be carried out with the origin kind as XCM, and the transaction will be the hex-encoded call for creating a foreign asset on Asset Hub for the specified parachain asset multilocation. Any surplus will be refunded, and the asset will be deposited back into the sibling account.
 
+    !!! warning
+        Note that the sovereign account on the Asset Hub parachain must have a sufficient balance to cover the XCM `BuyExecution` instruction. If the account does not have enough balance, the transaction will fail.
+
     ???note
-        If you want to have the whole XCM call ready to be copied, go to go to the `Developer > Extrinsics > Decode` section and paste the following hex-encoded call: `0x020033000301010091010314000400010000070010a5d4e81300010000070010a5d4e80006030700b4f13501419ce035000101009501007369626c6500000000000000000000000000000000000000000000000000000000000000000000000000000000000000140d01000001009501`
+        If you want to have the whole XCM call ready to be copied, go to go to the `Developer > Extrinsics > Decode` section and paste the following hex-encoded call: `0x6300330003010100a10f030c000400010000070010a5d4e81300010000070010a5d4e80006030700b4f13501419ce03500010100591f007369626cd607000000000000000000000000000000000000000000000000000000000000000000000000000000000000`
 
         Ensure to replace the encoded call with the one you copied in the previous step.
 
+After the transaction is successfully executed, the foreign asset will be registered on the Asset Hub parachain. 
+
+## Asset Registration Verification
+
+To confirm that a foreign asset has been successfully accepted and registered on the Asset Hub parachain, you can navigate to the `Network > Explorer` section of the Polkadot.Js App interface. You should be able to see an event that includes the following details:
+
+![Asset registration event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-6.webp)
+
+In the image above, the **success** field indicates whether the asset registration was successful.
 
 ## Test Environment Setup
 
