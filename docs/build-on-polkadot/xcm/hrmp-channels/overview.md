@@ -53,6 +53,65 @@ Parachain developers have a few options for triggering the required extrinsic ca
 
 ## Opening HRMP Channels Between Parachains
 
+For establishing bidirectional communication channels between parachains on the Polkadot network, using the HRMP protocol, the following steps are required:
+
+1. Channel Request - the parachain that wants to open an HRMP channel must make a request to the parachain it wishes to have an open channel with
+2. Channel Acceptance - the other parachain must then accept this request in order to complete the channel establishment
+
+This process results in a unidirectional HRMP channel, where messages can flow in only one direction between the two parachains.
+
+To enable bidirectional communication, an additional HRMP channel must be established in the opposite direction. This requires repeating the request and acceptance process, but with the parachains reversing their roles.
+
+Once both unidirectional channels are established, the parachains can then send messages back and forth freely through the bidirectional HRMP communication channel.
+
+### Detailed Procedure for HRMP Channel Setup
+
+This example will demonstrate how to open a channel between parachain 2500 and parachain 2600, using Rococo Local as the relay chain.
+
+#### Step 1 - Fund Sovereign Account
+
+The sovereign account for parachain 2500 on the relay chain must be funded so it can take care of any XCM transact fees.
+
+Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from your account to the parachain 2500 sovereign account.
+![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-3.webp)
+
+??? note "Calculating Parachain Sovereign Account"
+    To generate the sovereign account address for a parachain, you'll need to follow these steps:
+
+    1. Determine if the parachain is an "up/down" chain (parent or child) or a "sibling" chain:
+
+        - Up/down chains use the prefix `0x70617261` (which decodes to `b"para"`)
+
+        - Sibling chains use the prefix `0x7369626c` (which decodes to `b"sibl"`)
+
+    2. Calculate the u32 scale encoded value of the parachain ID:
+
+        For example, parachain 2500 would be encoded as `c4090000`
+
+    3. Combine the prefix and parachain ID encoding to form the full sovereign account address:
+
+        The sovereign account of parachain 2500 in relay chain will be `0x70617261c4090000000000000000000000000000000000000000000000000000`
+        and the SS58 format of this address is `5Ec4AhPSY2GEE4VoHUVheqv5wwq2C1HMKa7c9fVJ1WKivX1Y`
+    
+    To perform this conversion, you can also use the **"Para ID" to Address** section in [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/).
+
+#### Step 2 - Create Channel Opening Request
+
+1. In Polkadot.js Apps, connect to the relay chain, navigate to the **Developer** dropdown and select the **Extrinsics** option
+
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-4.webp)
+
+2. Construct an `hrmpInitOpenChannel` extrinsic call
+
+    1. Select the **hrmp** pallet
+    2. Choose the **hrmpInitOpenChannel** extrinsic
+    3. Fill in the parameters
+        - **recipient** - parachain ID 
+        - **proposedMaxCapacity** - number of messages that can be pending in the channel at once
+        - **proposedMaxMessageSize** - message size that could be put into the channel
+    4. Copy the encoded call data
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-5.webp)
+
 
 
 ## Opening HRMP Channels with System Parachains
