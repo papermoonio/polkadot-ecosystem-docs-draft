@@ -125,16 +125,16 @@ A promise containing the result of constructing the transaction.
 
             ```ts
             type LocalTransferTypes =
-                | 'assets::transfer'
-                | 'assets::transferKeepAlive'
-                | 'foreignAssets::transfer'
-                | 'foreignAssets::transferKeepAlive'
-                | 'balances::transfer'
-                | 'balances::transferKeepAlive'
-                | 'poolAssets::transfer'
-                | 'poolAssets::transferKeepAlive'
-                | 'tokens::transfer'
-                | 'tokens::transferKeepAlive';
+              | 'assets::transfer'
+              | 'assets::transferKeepAlive'
+              | 'foreignAssets::transfer'
+              | 'foreignAssets::transferKeepAlive'
+              | 'balances::transfer'
+              | 'balances::transferKeepAlive'
+              | 'poolAssets::transfer'
+              | 'poolAssets::transferKeepAlive'
+              | 'tokens::transfer'
+              | 'tokens::transferKeepAlive';
             ```
 
     ---
