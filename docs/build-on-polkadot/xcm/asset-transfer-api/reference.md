@@ -50,7 +50,7 @@ After obtaining the transaction, you must handle the signing and submission proc
 
     `destChainId` ++"string"++ <span class="required" markdown>++"required"++</span>
     
-    ID of the destination chain ('0' for relay chain, other values for parachains).
+    ID of the destination chain (`'0'` for relay chain, other values for parachains).
 
     ---
 
