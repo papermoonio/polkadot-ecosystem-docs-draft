@@ -147,12 +147,12 @@ A promise containing the result of constructing the transaction.
 
         ```ts
         export type ConstructedFormat<T> = T extends 'payload'
-        ? GenericExtrinsicPayload
-        : T extends 'call'
-        ? `0x${string}`
-        : T extends 'submittable'
-            ? SubmittableExtrinsic<'promise', ISubmittableResult>
-            : never;
+          ? GenericExtrinsicPayload
+          : T extends 'call'
+          ? `0x${string}`
+          : T extends 'submittable'
+          ? SubmittableExtrinsic<'promise', ISubmittableResult>
+          : never;
         ```
 
         The `ConstructedFormat` type is a conditional type that returns a specific type based on the value of the TxResult `format` field.
