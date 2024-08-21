@@ -110,15 +110,15 @@ A promise containing the result of constructing the transaction.
 
         ```ts
         type Methods =
-            | LocalTransferTypes
-            | 'transferAssets'
-            | 'transferAssetsUsingTypeAndThen'
-            | 'limitedReserveTransferAssets'
-            | 'limitedTeleportAssets'
-            | 'transferMultiasset'
-            | 'transferMultiassets'
-            | 'transferMultiassetWithFee'
-            | 'claimAssets';
+          | LocalTransferTypes
+          | 'transferAssets'
+          | 'transferAssetsUsingTypeAndThen'
+          | 'limitedReserveTransferAssets'
+          | 'limitedTeleportAssets'
+          | 'transferMultiasset'
+          | 'transferMultiassets'
+          | 'transferMultiassetWithFee'
+          | 'claimAssets';
         ```
 
         ??? child "Type `LocalTransferTypes`"
