@@ -209,13 +209,15 @@ Fetch estimated fee information for an extrinsic.
     ??? child "Type `ConstructedFormat<T>`"
 
         ```ts
+        ```ts
         export type ConstructedFormat<T> = T extends 'payload'
-        ? GenericExtrinsicPayload
-        : T extends 'call'
-        ? `0x${string}`
-        : T extends 'submittable'
+          ? GenericExtrinsicPayload
+          : T extends 'call'
+          ? `0x${string}`
+          : T extends 'submittable'
           ? SubmittableExtrinsic<'promise', ISubmittableResult>
           : never;
+        ```
         ```
 
         The `ConstructedFormat` type is a conditional type that returns a specific type based on the value of the TxResult `format` field.
