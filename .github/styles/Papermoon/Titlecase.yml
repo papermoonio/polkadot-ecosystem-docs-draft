@@ -2,7 +2,7 @@
 # Will ignore {: anchor-tag-text } 
 extends: capitalization
 message: "'%s' should be in title case"
-level: warning
+level: error
 scope: heading
 match: '^(.*?)(\s*\{\:\s?#.*\})?$'
 style: Chicago
