@@ -30,7 +30,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
       - For the live network, connect to the `Asset Hub` parachain. Either Polkadot or Kusama Asset Hub can be selected from the dropdown list, choosing the desired RPC provider
     
 2. Click on the **Network** tab on the top navigation bar and select **Assets** from the dropdown list
- 
+
       ![Access to Asset Hub through Polkadot.JS](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-1.webp) 
 
 3. Now, you need to examine all the registered asset IDs. This step is crucial to ensure that the asset ID you are about to register is unique. Asset IDs are displayed in the **assets** column
@@ -38,11 +38,11 @@ To register a local asset on the Asset Hub parachain, follow these steps:
       ![Asset IDs on Asset Hub](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-2.webp)
 
 4. Once you have confirmed that the asset ID is unique, click on the **Create** button on the top right corner of the page
-   
+
       ![Create a new asset](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-3.webp)
 
 5. Fill in the required fields in the **Create Asset** form and click on the **Next** button
-   
+
     - **creator account** - the account to be used for creating this asset and setting up the initial metadata
     - **asset name** - the descriptive name of the asset you are registering
     - **asset symbol** - the symbol that will be used to represent the asset
@@ -67,7 +67,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
 ## Verify Asset Registration
 
 After completing these steps, the asset will be successfully registered. You can now view your asset listed on the [**Assets**](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/assets){target=\_blank} section of the Polkadot.js Apps interface.
-      
+
 ![Asset listed on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-7.webp)
 
 !!! note
