@@ -81,7 +81,11 @@ Options for customizing the claim assets transaction. These options allow you to
     ??? child "Type `AssetTransferType`"
 
         ```ts
-        export type AssetTransferType = LocalReserve | DestinationReserve | Teleport | RemoteReserve;
+        export type AssetTransferType =
+          | LocalReserve
+          | DestinationReserve
+          | Teleport
+          | RemoteReserve;
         ```
 
         !!! note
