@@ -42,6 +42,6 @@ You can read the [What is Asset Hub and How Do I Use it?](https://support.polkad
 
 Asset Hub considers assets originating from a different blockchain to be foreign assets. These assets can be native tokens from various parachains or other consensus systems like Ethereum. Once a foreign asset is added to Asset Hub, users can transfer this token from its original blockchain to Asset Hub and utilize it like any other asset.
 
-A significant difference lies in the method used for their identification. Unlike the Assets pallet, foreign assets use [`XCM Multilocation`](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=\_blank} instead of integers to identify assets, making asset identification much more versatile.
+A significant difference lies in the method used for their identification. Unlike the Assets pallet, foreign assets use [XCM Multilocation](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=\_blank} instead of integers to identify assets, making asset identification much more versatile.
 
 Foreign assets are implemented as an [instance of Assets pallet](https://github.com/paritytech/polkadot-sdk/blob/035211d707d0a74a2a768fd658160721f09d5b44/cumulus/parachains/runtimes/assets/asset-hub-rococo/src/lib.rs#L408){target=\_blank}, but with a specialized configuration that enables support for xcm operations.
