@@ -43,7 +43,7 @@ Options for customizing the claim assets transaction. These options allow you to
 
     `keepAlive` ++"boolean"++
     
-    Enables `transferKeepAlive` for local asset transfers. For creating local asset transfers, if true this will allow for a `transferKeepAlive` as opposed to a `transfer`.
+    Enables `transferKeepAlive` for local asset transfers. For creating local asset transfers, if `true` this will allow for a `transferKeepAlive` as opposed to a `transfer`.
 
     ---
 
