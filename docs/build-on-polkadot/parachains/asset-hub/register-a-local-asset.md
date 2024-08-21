@@ -6,11 +6,11 @@ description: Comprehensive guide to registering a local asset on the Asset Hub s
 # Register a Local Asset on Asset Hub
 
 ## Introduction
-As detailed in the [Asset Hub Overview](./overview.md#local-assets){target=_blank} page, Asset Hub accommodates two types of assets: local and foreign. Local assets are those that were created in Asset Hub and are identifiable by an integer ID. This guide will take you through the steps of registering a local asset on the Asset Hub parachain.
+As detailed in the [Asset Hub Overview](./overview.md#local-assets){target=\_blank} page, Asset Hub accommodates two types of assets: local and foreign. Local assets are those that were created in Asset Hub and are identifiable by an integer ID. This guide will take you through the steps of registering a local asset on the Asset Hub parachain.
 
 ## Prerequisites
 
-Before you begin, ensure you have access to the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and a funded wallet with DOT or KSM.
+Before you begin, ensure you have access to the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and a funded wallet with DOT or KSM.
 
 - For Polkadot Asset Hub, you would need a `deposit of 10 DOT` and around `0.201 DOT for the metadata`
 - For Kusama Asset Hub, the `deposit is 0.1 KSM` and around `0.000669 KSM for the metadata`
@@ -21,7 +21,7 @@ You need to ensure that your Asset Hub account balance is a bit more than the su
 
 To register a local asset on the Asset Hub parachain, follow these steps:
 
-1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=_blank} interface and connect to the `Asset Hub` parachain
+1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and connect to the `Asset Hub` parachain
       - You may prefer to test local asset registration on TestNet before registering the asset on a MainNet hub. If you still need to set up a local testing environment, review the [Environment setup](#environment-setup) section for instructions. Once the local environment is set up, connect to the `Local Node (Chopsticks)` available on `ws://127.0.0.1:8000`. 
       - For the live network, connect to the `Asset Hub` parachain. Either Polkadot or Kusama Asset Hub can be selected from the dropdown list, choosing the desired RPC provider
     
@@ -62,7 +62,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
 
 ## Verify Asset Registration
 
-After completing these steps, the asset will be successfully registered. You can now view your asset listed on the [`Assets`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/assets){target=_blank} section of the Polkadot.js Apps interface.
+After completing these steps, the asset will be successfully registered. You can now view your asset listed on the [`Assets`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/assets){target=\_blank} section of the Polkadot.js Apps interface.
       
 ![Asset listed on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/registering-a-local-asset/registering-a-local-asset-7.webp)
 
@@ -75,7 +75,7 @@ For an in-depth explanation of Asset Hub and its features, please refer to the P
 
 ## Test Setup Environment
 
-You can set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks](../../../dev-tools/chopsticks/overview.md){target=_blank} documentation.
+You can set up a local parachain environment to test the asset registration process before deploying it on the live network. This guide uses `chopsticks` to simulate that process. For further information on chopsticks usage, refer to the [Chopsticks](../../../dev-tools/chopsticks/overview.md){target=\_blank} documentation.
 
 To set up a test environment, execute the following command:
 
