@@ -9,9 +9,9 @@ Options for customizing the claim assets transaction. These options allow you to
     ??? child "Type `Format`"
 
         ```ts
-        export type Format = 'payload' | 'call' | 'submittable';
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/format.ts'
         ```
-    
+
     ---
 
     `paysWithFeeOrigin` ++"string"++
@@ -59,16 +59,7 @@ Options for customizing the claim assets transaction. These options allow you to
 
     ??? child "Type `AssetTransferType`"
 
-        ```ts
-        export type AssetTransferType =
-          | LocalReserve
-          | DestinationReserve
-          | Teleport
-          | RemoteReserve;
-        ```
-
-        !!! note
-            To use the `assetTransferType` parameter, which is a string, you should use the `AssetTransferType` type as if each of its variants are strings. For example: `assetTransferType = 'LocalReserve'`.
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/asset-transfer-type.md'
 
     ---
 
@@ -84,16 +75,7 @@ Options for customizing the claim assets transaction. These options allow you to
 
     ??? child "Type `AssetTransferType`"
 
-        ```ts
-        export type AssetTransferType =
-          | LocalReserve
-          | DestinationReserve
-          | Teleport
-          | RemoteReserve;
-        ```
-
-        !!! note
-            To use the `feesTransferType` parameter, which is a string, you should use the `AssetTransferType` type as if each of its variants are strings. For example: `feesTransferType = 'LocalReserve'`.
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/asset-transfer-type.md'
 
     ---
 
