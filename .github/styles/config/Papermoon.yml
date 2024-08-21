@@ -1,0 +1,8 @@
+name: Papermoon
+description: "Custom style guide for enforcing Papermoon standards."
+version: 0.1.0
+rules:
+  # Ignores the content inside parentheses on dropdowns using `??? function "` or `???+ function "`
+  IgnoreFunctionParams: suggestion
+  # Ignores content inside `**SomeText**` items on dropdowns using `??? function "` or `???+ function "`
+  IgnoreFunctionNames: suggestion

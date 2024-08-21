@@ -1,0 +1,9 @@
+extends: spelling
+message: "Manually check param spelling"
+level: suggestion
+scope: raw
+ignorecase: true
+# Match function name followed by parentheses, ignore the content inside the parentheses
+match: '^\?\?\?\+?\sfunction\s"[^"]*"\s*\([^)]*\)'
+exceptions:
+  - '^\([^)]*\)$'
