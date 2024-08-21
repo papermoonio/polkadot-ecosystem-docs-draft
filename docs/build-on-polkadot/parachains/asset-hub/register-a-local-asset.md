@@ -15,8 +15,8 @@ This guide will take you through the steps of registering a local asset on the A
 
 Before you begin, ensure you have access to the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and a funded wallet with DOT or KSM.
 
-- For Polkadot Asset Hub, you would need a `deposit of 10 DOT` and around `0.201 DOT for the metadata`
-- For Kusama Asset Hub, the `deposit is 0.1 KSM` and around `0.000669 KSM for the metadata`
+- For Polkadot Asset Hub, you would need a deposit of 10 DOT and around 0.201 DOT for the metadata
+- For Kusama Asset Hub, the deposit is 0.1 KSM and around 0.000669 KSM for the metadata
 
 You need to ensure that your Asset Hub account balance is a bit more than the sum of those two deposits, which should seamlessly account for the required deposits and transaction fees.
 
