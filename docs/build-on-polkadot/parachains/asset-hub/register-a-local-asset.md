@@ -62,7 +62,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
 
 7. Finally, click on the **Sign and Submit** button to complete the asset registration process
 
-    ![Sign and Submit](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/registering-a-local-asset-6.webp)
+    ![Sign and Submit](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-6.webp)
 
 ## Verify Asset Registration
 
