@@ -49,7 +49,7 @@ Options for customizing the claim assets transaction. These options allow you to
 
     `transferLiquidToken` ++"boolean"++
     
-    Declares if this will transfer liquidity tokens. Default is false.
+    Declares if this will transfer liquidity tokens. Default is `false`.
 
     ---
 
