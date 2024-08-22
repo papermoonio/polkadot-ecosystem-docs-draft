@@ -42,7 +42,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
     ![Access to Developer Extrinsics section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-1.webp)
 
-3. Select the **Foreign Asset** pallet from the dropdown list and choose the **create** extrinsic
+3. Select the **foreignAssets** pallet from the dropdown list and choose the **create** extrinsic
 
     ![Select the Foreign Asset pallet](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-2.webp)
 
