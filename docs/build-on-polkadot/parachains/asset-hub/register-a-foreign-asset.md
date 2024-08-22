@@ -70,7 +70,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
     ??? note
         If you want an example of the encoded call data, you can copy the following: `0x3500010100591f007369626cd6070000000000000000000000000000000000000000000000000000a0860100000000000000000000000000`
 
-5. With the Polkadot.js interface connected to the parachain that will send the foreign asset to Asset Hub, navigate to the **Developer > Extrinsics** section. Create the following call, and paste the **encoded call data** copied in the previous step. After filling out the required fields, click the **Submit Transaction** button.
+5. With the Polkadot.js interface connected to the parachain that will send the foreign asset to Asset Hub, navigate to the **Developer > Extrinsics** section. Create the following call, and paste the **encoded call data** copied in the previous step. After filling out the required fields, click the **Submit Transaction** button
 
     ![Register foreign asset through XCM](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-5.webp)
 
