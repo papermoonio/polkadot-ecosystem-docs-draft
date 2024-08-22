@@ -3,11 +3,11 @@ title: Register a foreign asset
 description: An in-depth guide to registering a foreign asset on the Asset Hub parachain, providing clear, step-by-step instructions.
 ---
 
-# Register a foreign asset on Asset Hub
+# Register a Foreign Asset on Asset Hub
 
 ## Introduction
 
-As outlined in the [Asset Hub Overview](./overview.md#foreign-assets){target=\_blank}, Asset Hub supports two categories of assets: local and foreign. Foreign assets originated outside of Asset Hub and are recognized by [Multilocations](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=\_blank}. This guide will walk you through the process of registering a foreign asset on the Asset Hub parachain.
+As outlined in the [Asset Hub Overview](./overview.md#foreign-assets){target=\_blank}, Asset Hub supports two categories of assets: local and foreign. Foreign assets originated outside of Asset Hub are recognized by [Multilocations](https://wiki.polkadot.network/docs/learn/xcm/fundamentals/multilocation-summary){target=\_blank}. This guide will walk you through the process of registering a foreign asset on the Asset Hub parachain.
 
 To register a foreign asset on Asset Hub, it's essential to notice that the process involves communication between two parachains. Asset Hub parachain will be the destination of the foreign asset, while the source parachain will be the origin of the asset. The communication between the two parachains is facilitated by the [Cross-Chain Message Passing (XCMP)](https://wiki.polkadot.network/docs/learn-xcm){target=\_blank} protocol.
 
@@ -29,7 +29,7 @@ Before you start, ensure that you have:
 - A parachain that supports the XCMP protocol to interact with the Asset Hub parachain
 - A funded wallet to pay for the transaction fees and subsequent registration of the foreign asset
 
-This guide will focus on using Polkadot, its local Asset Hub instance, and the [Astar](https://astar.network/){taget=\_blank} parachain (`ID` 2006), as stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using and the parachain owner of the foreign asset.
+This guide will focus on using Polkadot, its local Asset Hub instance, and the [Astar](https://astar.network/){target=\_blank} parachain (`ID` 2006), as stated in the [Test Environment Setup](#test-environment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using and the parachain owner of the foreign asset.
 
 ## Steps to Register a Foreign Asset
 
@@ -42,7 +42,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
     ![Access to Developer Extrinsics section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-1.webp)
 
-3. Select the **Foreign Asset** pallet from the dropdown list and choose the **create** extrinsic
+3. Select the **foreignAssets** pallet from the dropdown list and choose the **create** extrinsic
 
     ![Select the Foreign Asset pallet](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-2.webp)
 
