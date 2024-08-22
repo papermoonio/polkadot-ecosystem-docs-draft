@@ -228,7 +228,7 @@ After running it, you should see output similar to the following:
 
 --8<-- 'code/developer-tools/chopsticks/overview/terminal/fork-output.md'
 
-Now you can interact with the forked chains using the ports specified in the output.
+Now he can interact with his forked chains using the ports specified in the output.
 
 ## WebSocket Commands
 

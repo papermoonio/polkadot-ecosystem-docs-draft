@@ -1,10 +1,11 @@
-
 blockchain
 blockchains
 certhash
+cron jobs
 daemon
 daemonless
 enum
+JavaScript
 keystore
 keystores
 namespace
@@ -16,5 +17,7 @@ onboarding
 Podman
 subcommand
 subkeys
+TypeScript
 validators
 Wasm
+webRTC 

@@ -1,3 +1,4 @@
+# List of crypto & blockchain brand names and token symbols
 Acala
 Astar
 Ethereum

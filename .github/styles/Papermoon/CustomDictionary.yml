@@ -3,13 +3,9 @@
 extends: spelling
 message: "Did you really mean '%s'?"
 level: error
+vocab: true
 ignore:
   # Reference file location relative to styles/config/ignore directory
     # custom dictionary of cyrpto brands and token names/symbols
   - brand-token-ignore.txt
-    # custom dictionary of coding and crypto/blockchain specific words
-  - industry-ignore.txt
-    # custom dictionary of Papermoon specific words
-  - papermoon-ignore.txt
-    # custom dictionary of Polkadot specific words
-  - polkadot-ignore.txt
+    
