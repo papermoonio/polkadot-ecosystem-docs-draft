@@ -2,12 +2,8 @@ extends: existence
 message: "Don't use exclamation points in text."
 link: "https://developers.google.com/style/exclamation-points"
 nonword: true
-level: error
-action:
-  name: edit
-  params:
-    - trim_right
-    - "!"
+level: warning
 tokens:
   - '\w+!(?:\s|$)'
-  
+exceptions:
+  - ink!

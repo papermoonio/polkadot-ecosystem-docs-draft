@@ -18,7 +18,7 @@ With Chopsticks, developers can simulate and test complex blockchain scenarios w
 For additional support and information, please reach out through [GitHub Issues](https://github.com/AcalaNetwork/chopsticks/issues){target=_blank}.
 
 !!! note
-    Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=_blank} light client, which only supports the native Polkadot-SDK API. Consequently, a Chopsticks-based fork does not support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
+    Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=_blank} light client, which only supports the native Polkadot-SDK API. Consequently, a Chopsticks-based fork doesn't support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Before you begin, ensure you have the following installed:
 You can install Chopsticks either globally or locally in your project. Choose the option that best fits your development workflow.
 
 !!! note
-    This documentation explains the functionality of Chopsticks version `{{ dependencies.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
+    This documentation explains the features of Chopsticks version `{{ dependencies.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
 
 ### Global Installation
 
@@ -79,7 +79,7 @@ To run Chopsticks, you need to configure some parameters. This can be set either
 - `config` - path or URL of the config file
 - `port` - the port to expose an endpoint on
 - `build-block-mode` - how blocks should be built in the fork: batch, manual, instant
-- `import-storage` - a pre-defined JSON/YAML storage file path to override in the parachain's storage
+- `import-storage` - a pre-defined JSON/YAML storage path to override in the parachain's storage
 - `allow-unresolved-imports` - whether to allow Wasm unresolved imports when using a Wasm to build the parachain
 - `html` - include to generate storage diff preview between blocks
 - `mock-signature-host` - mock signature host so that any signature starts with `0xdeadbeef` and filled by `0xcd` is considered valid
@@ -115,7 +115,7 @@ To run Chopsticks using a configuration file, utilize the `--config` flag. You c
     npx @acala-network/chopsticks --config=polkadot
     ```
 
-Regardless of which method you choose from the examples above, you'll see an output similar to the following:
+Regardless of which method you choose from the preceding examples, you'll see an output similar to the following:
 
 <div id="termynal" data-termynal>
     <span data-ty="input"><span class="file-path"></span>npx @acala-network/chopsticks --config=polkadot</span>
@@ -189,7 +189,7 @@ For programmatic interaction, you can use the Polkadot.js library. Here's a basi
 
 Chopsticks allows you to replay specific blocks from a chain, which is useful for debugging and analyzing state changes. You can use the parameters in the [Configuration](#configuration) section to set up the chain configuration, and then use the run-block subcommand with additional options:
 
-- `output-path` - file path to print output
+- `output-path` - path to print output
 - `html` - generate HTML with storage diff
 - `open` - open generated HTML
 
@@ -228,7 +228,7 @@ After running it, you should see output similar to the following:
 
 --8<-- 'code/developer-tools/chopsticks/overview/terminal/fork-output.md'
 
-Now he can interact with his forked chains using the ports specified in the output.
+Now you can interact with your forked chains using the ports specified in the output.
 
 ## WebSocket Commands
 

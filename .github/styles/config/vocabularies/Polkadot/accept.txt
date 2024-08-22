@@ -4,11 +4,13 @@ blockHash
 bootnode
 bootnodes
 config
+[Cc]oretime
 dev_newBlock
 dev_setHead
 dev_setStorage
 dev_timeTravel
 extrinsics
+ink!
 invulnerables
 IPs
 [Pp]arachain

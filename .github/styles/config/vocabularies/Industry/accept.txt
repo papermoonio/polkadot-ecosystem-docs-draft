@@ -1,3 +1,4 @@
+API
 blockchain
 blockchains
 certhash
@@ -15,9 +16,11 @@ npx
 onboarded
 onboarding
 Podman
+SDK
 subcommand
 subkeys
 TypeScript
+validator
 validators
 Wasm
 webRTC 
