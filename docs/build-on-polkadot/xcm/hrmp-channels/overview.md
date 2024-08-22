@@ -95,7 +95,7 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
     
     To perform this conversion, you can also use the **"Para ID" to Address** section in [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/).
 
-#### Step 2 - Create Channel Opening Request
+#### Step 2 - Create Channel Opening Extrinsic
 
 1. In Polkadot.js Apps, connect to the relay chain, navigate to the **Developer** dropdown and select the **Extrinsics** option
 
@@ -107,11 +107,12 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
     2. Choose the **hrmpInitOpenChannel** extrinsic
     3. Fill in the parameters
         - **recipient** - parachain ID 
-        - **proposedMaxCapacity** - number of messages that can be pending in the channel at once
-        - **proposedMaxMessageSize** - message size that could be put into the channel
+        - **proposedMaxCapacity** - max number of messages that can be pending in the channel at once
+        - **proposedMaxMessageSize** - max message size that could be put into the channel
     4. Copy the encoded call data
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-5.webp)
 
+#### Step 3 - Submit XCM to Initiate Channel
 
 
 ## Opening HRMP Channels with System Parachains
