@@ -3,7 +3,7 @@ title: Register a foreign asset
 description: An in-depth guide to registering a foreign asset on the Asset Hub parachain, providing clear, step-by-step instructions.
 ---
 
-# Register a foreign asset on Asset Hub
+# Register a Foreign Asset on Asset Hub
 
 ## Introduction
 
