@@ -18,7 +18,7 @@ With Chopsticks, developers can simulate and test complex blockchain scenarios w
 For additional support and information, please reach out through [GitHub Issues](https://github.com/AcalaNetwork/chopsticks/issues){target=_blank}.
 
 !!! note
-    Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=_blank} light client, which only supports the native Polkadot-SDK API. Consequently, a Chopsticks-based fork doesn't support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
+    Chopsticks uses [Smoldot](https://github.com/smol-dot/smoldot){target=_blank} light client, which only supports the native Polkadot SDK API. Consequently, a Chopsticks-based fork doesn't support Ethereum JSON-RPC calls, so you cannot use it to fork your chain and connect Metamask.
 
 ## Prerequisites
 

@@ -19,8 +19,9 @@ parachains
 parathread
 Polkadot
 Polkadot's
-relaychain
-relaychains
+Polkadot SDK
+relay chain
+relay chains
 Smoldot
 Zombienet
 
