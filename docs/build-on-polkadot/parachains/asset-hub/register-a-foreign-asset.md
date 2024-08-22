@@ -35,7 +35,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
 1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and connect to the `Asset Hub` parachain
 
-      - For the local environment, connect to Local Node (Chopsticks), check the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section for more details
+      - For the local environment, connect to Local Node (Chopsticks), check the [Test Environment Setup](#test-environment-setup) section for more details
       - For the live networks, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama, Rococo, or Paseo Asset Hub
 
 2. Click on the **Developer** tab on the left sidebar and select the **Extrinsics** section
