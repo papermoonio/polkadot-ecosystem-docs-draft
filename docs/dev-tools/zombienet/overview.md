@@ -43,27 +43,27 @@ In order to install Zombienet, there are multiple options available, depending o
         ```
 
     !!! note
-        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v{{ dev_tools.zombienet.version }}` and `zombienet-{{ dev_tools.zombienet.architecture }}`.
+        Ensure to replace the URL with the `<INSERT_ZOMBIENET_VERSION>` that you want to download, as well as the `<INSERT_ZOMBIENET_EXECUTABLE>` with the name of the executable file that matches your operating system and architecture. This guide uses `v{{ dependencies.zombienet.version }}` and `zombienet-{{ dependencies.zombienet.architecture }}`.
     
     !!! note
-        This documentation explains the functionality of Chopsticks version `{{ dev_tools.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
+        This documentation explains the functionality of Chopsticks version `{{ dependencies.chopsticks.version }}`. Make sure you're using the correct version to match these instructions.
 
     Then, ensure the downloaded file is executable:
 
     ```bash
-    chmod +x zombienet-{{ dev_tools.zombienet.architecture }}
+    chmod +x zombienet-{{ dependencies.zombienet.architecture }}
     ```
 
     Finally, you can run the following command to check if the installation was successful. If so, it will display the version of the installed Zombienet:
 
     ```bash
-    ./zombienet-{{ dev_tools.zombienet.architecture }} version
+    ./zombienet-{{ dependencies.zombienet.architecture }} version
     ```
 
     If you want to add the `zombienet` executable to your PATH, you can move it to a directory in your PATH, such as `/usr/local/bin`:
 
     ```bash
-    mv zombienet-{{ dev_tools.zombienet.architecture }} /usr/local/bin/zombienet
+    mv zombienet-{{ dependencies.zombienet.architecture }} /usr/local/bin/zombienet
     ```
 
     So then, you can refer to the `zombienet` executable directly:
