@@ -54,7 +54,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
         MultiLocation {parents: 1, interior: X1(Parachain(2006))};
         ```
 
-    - **admin** - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the registered asset corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain. 
+    - **admin** - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the registered asset corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain
       
         ??? note
             The sibling account can be obtained through [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}
