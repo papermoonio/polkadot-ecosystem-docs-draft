@@ -1,5 +1,5 @@
 ---
-title: Asset Hub
+title: Overview of Asset Hub
 description: Guide to learn and implement Asset Hub parachain on Polkadot, a decentralized platform for the issuance, management, and trading of digital assets.
 ---
 

@@ -1,0 +1,21 @@
+name: Document Analyzer
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-repositories:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Run Document Analyzer
+      run: |
+        python .github/scripts/analyze_docs.py
