@@ -1,4 +1,3 @@
-THIS IS  A TEST FILE REMOVE!!!!!!!!!!!!!!
 ---
 title: Asset Hub
 description: Guide to learn and implement Asset Hub parachain on Polkadot, a decentralized platform for the issuance, management, and trading of digital assets.
