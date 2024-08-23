@@ -25,7 +25,7 @@ For testing purposes, you can also interact with the Asset Hub instance on the f
 
 Before you start, ensure that you have: 
 
-- Access to the Polkadot.js App interface, and you are connected to the desired chain
+- Access to the Polkadot.js Apps interface, and you are connected to the desired chain
 - A parachain that supports the XCMP protocol to interact with the Asset Hub parachain
 - A funded wallet to pay for the transaction fees and subsequent registration of the foreign asset
 
