@@ -88,7 +88,7 @@ After the transaction is successfully executed, the foreign asset will be regist
 
 ## Asset Registration Verification
 
-To confirm that a foreign asset has been successfully accepted and registered on the Asset Hub parachain, you can navigate to the `Network > Explorer` section of the Polkadot.js App interface. You should be able to see an event that includes the following details:
+To confirm that a foreign asset has been successfully accepted and registered on the Asset Hub parachain, you can navigate to the `Network > Explorer` section of the Polkadot.js Apps interface for Asset Hub. You should be able to see an event that includes the following details:
 
 ![Asset registration event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-6.webp)
 
