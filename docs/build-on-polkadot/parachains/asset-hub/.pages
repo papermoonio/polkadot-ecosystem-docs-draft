@@ -2,5 +2,5 @@ title: Asset Hub
 nav:
   - index.md
   - 'Overview': 'overview.md'
-  - 'Register a local asset': 'register-a-local-asset.md'
-  - 'Register a foreign asset': 'register-a-foreign-asset.md'
+  - 'Register a Local Asset': 'register-a-local-asset.md'
+  - 'Register a Foreign Asset': 'register-a-foreign-asset.md'
