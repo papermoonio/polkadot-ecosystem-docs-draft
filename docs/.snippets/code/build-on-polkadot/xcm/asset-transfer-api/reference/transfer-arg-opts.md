@@ -9,17 +9,17 @@ Options for customizing the claim assets transaction. These options allow you to
     ??? child "Type `Format`"
 
         ```ts
-        export type Format = 'payload' | 'call' | 'submittable';
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/format.ts'
         ```
-    
+
     ---
 
     `paysWithFeeOrigin` ++"string"++
     
     The Asset ID to pay fees on the current common good parachain. The defaults are as follows:
 
-        - Polkadot AssetHub - DOT
-        - Kusama AssetHub - KSM
+    - Polkadot Asset Hub - `'DOT'`
+    - Kusama Asset Hub - `'KSM'`
 
     ---
 
@@ -43,13 +43,13 @@ Options for customizing the claim assets transaction. These options allow you to
 
     `keepAlive` ++"boolean"++
     
-    Enables `transferKeepAlive` for local asset transfers. For creating local asset transfers, if true this will allow for a `transferKeepAlive` as opposed to a `transfer`.
+    Enables `transferKeepAlive` for local asset transfers. For creating local asset transfers, if `true` this will allow for a `transferKeepAlive` as opposed to a `transfer`.
 
     ---
 
     `transferLiquidToken` ++"boolean"++
     
-    Declares if this will transfer liquidity tokens. Default is false.
+    Declares if this will transfer liquidity tokens. Default is `false`.
 
     ---
 
@@ -59,12 +59,7 @@ Options for customizing the claim assets transaction. These options allow you to
 
     ??? child "Type `AssetTransferType`"
 
-        ```ts
-        export type AssetTransferType = LocalReserve | DestinationReserve | Teleport | RemoteReserve;
-        ```
-
-        !!! note
-            To use the `assetTransferType` parameter, which is a string, you should use the `AssetTransferType` type as if each of its variants are strings. For example: `assetTransferType = 'LocalReserve'`.
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/asset-transfer-type.md'
 
     ---
 
@@ -80,12 +75,7 @@ Options for customizing the claim assets transaction. These options allow you to
 
     ??? child "Type `AssetTransferType`"
 
-        ```ts
-        export type AssetTransferType = LocalReserve | DestinationReserve | Teleport | RemoteReserve;
-        ```
-
-        !!! note
-            To use the `feesTransferType` parameter, which is a string, you should use the `AssetTransferType` type as if each of its variants are strings. For example: `feesTransferType = 'LocalReserve'`.
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/asset-transfer-type.md'
 
     ---
 

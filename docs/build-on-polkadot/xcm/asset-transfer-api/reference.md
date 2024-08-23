@@ -11,10 +11,10 @@ description: Explore the Asset Transfer API Reference for comprehensive details 
 
     ---
 
-    Learn how to install [`asset-transfer-api`](#) into a new or existing project.
+    Learn how to install [`asset-transfer-api`](https://github.com/paritytech/asset-transfer-api){target=\_blank} into a new or existing project.
 
     <br>
-    [:octicons-arrow-right-24: Get started](#)
+    [:octicons-arrow-right-24: Get started](../asset-transfer-api/overview.md)
 
 -   :octicons-code-16:{ .lg .middle } __Dive in with a tutorial__
 
@@ -23,7 +23,7 @@ description: Explore the Asset Transfer API Reference for comprehensive details 
     Ready to start coding? Follow along with a step-by-step tutorial.
 
     <br>
-    [:octicons-arrow-right-24: How to use the Asset Transfer API](#)
+    [:octicons-arrow-right-24: How to use the Asset Transfer API](../asset-transfer-api/overview.md/#examples)
 </div>
 <br>
 
@@ -50,7 +50,7 @@ After obtaining the transaction, you must handle the signing and submission proc
 
     `destChainId` ++"string"++ <span class="required" markdown>++"required"++</span>
     
-    ID of the destination chain ('0' for relay chain, other values for parachains).
+    ID of the destination chain (`'0'` for relay chain, other values for parachains).
 
     ---
 
@@ -171,7 +171,7 @@ Decodes the hex of an extrinsic into a string readable format.
     ??? child "Type `Format`"
 
         ```ts
-        export type Format = 'payload' | 'call' | 'submittable';
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/format.ts'
         ```
 
 ??? interface "Response parameters"
@@ -208,21 +208,7 @@ Fetch estimated fee information for an extrinsic.
 
     ??? child "Type `ConstructedFormat<T>`"
 
-        ```ts
-        export type ConstructedFormat<T> = T extends 'payload'
-        ? GenericExtrinsicPayload
-        : T extends 'call'
-        ? `0x${string}`
-        : T extends 'submittable'
-          ? SubmittableExtrinsic<'promise', ISubmittableResult>
-          : never;
-        ```
-
-        The `ConstructedFormat` type is a conditional type that returns a specific type based on the value of the TxResult `format` field.
-
-        - Payload Format - if the format field is set to 'payload', the ConstructedFormat type will return a [GenericExtrinsicPayload](https://github.com/polkadot-js/api/blob/3b7b44f048ff515579dd233ea6964acec39c0589/packages/types/src/extrinsic/ExtrinsicPayload.ts#L48){target=_blank}
-        - Call Format - if the format field is set to 'call', the `ConstructedFormat` type will return a hexadecimal string (`0x${string}`). This is the encoded representation of the extrinsic call
-        - Submittable Format - if the format field is set to `'submittable'`, the `ConstructedFormat` type will return a [`SubmittableExtrinsic`](https://github.com/polkadot-js/api/blob/3b7b44f048ff515579dd233ea6964acec39c0589/packages/api-base/src/types/submittable.ts#L56){target=_blank}. This is a Polkadot.js type that represents a transaction that can be submitted to the blockchain
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/constructed-format.md'
 
     ---
 
@@ -233,7 +219,7 @@ Fetch estimated fee information for an extrinsic.
     ??? child "Type `Format`"
 
         ```ts
-        export type Format = 'payload' | 'call' | 'submittable';
+        --8<-- 'code/build-on-polkadot/xcm/asset-transfer-api/reference/format.ts'
         ```
 
 ??? interface "Response parameters"

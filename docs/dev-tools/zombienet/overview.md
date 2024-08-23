@@ -157,9 +157,9 @@ It's important to note that each provider has specific requirements and associat
 
 #### Requirements
 
-Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernets Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/){target=_blank} is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters. If you don't have `kubectl` installed, you can follow the instructions provided on the [Kubernetes website](https://kubernetes.io/docs/tasks/tools/#kubectl){target=_blank}.
+Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/){target=_blank} is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters. If you don't have `kubectl` installed, you can follow the instructions provided on the [Kubernetes website](https://kubernetes.io/docs/tasks/tools/#kubectl){target=_blank}.
 
-Moreover, in order to create resources such as namespaces, pods, and cronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+Moreover, in order to create resources such as namespaces, pods, and CronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
 #### Features
 
@@ -184,7 +184,7 @@ Upon launching Zombienet, access to these monitoring services is facilitated thr
 - Tempo - [http://127.0.0.1:34125](http://127.0.0.1:34125){target=_blank}
 - Grafana - [http://127.0.0.1:41461](http://127.0.0.1:41461){target=_blank}
 
-It's important to note that Grafana is deployed with default admin access.
+It's important to note that Grafana is deployed with default administrator access.
 
 !!! note
     When network operations cease —either by halting a running spawn with Ctrl+C or upon completion of the test— Zombienet automatically removes all associated pods.
@@ -242,7 +242,7 @@ id = 1000
 ```
 
 !!! note
-    The local provider exclusively utilizes the command config for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` config to specify the binary for spawning all nodes in the relay chain.
+    The local provider exclusively utilizes the command configuration for nodes/collators, which supports both relative and absolute paths. You can employ the `default_command` configuration to specify the binary for spawning all nodes in the relay chain.
 
 #### Features
 
@@ -260,7 +260,7 @@ The following sections will guide you through the primary usage of the Zombienet
 
 ### CLI Commands
 
-??? function "`spawn` - spawn the network defined in the config file"
+??? function "`spawn` - spawn the network defined in the configuration file"
 
     === "Argument"
 
@@ -387,7 +387,7 @@ Through the keyword `settings`, it's possible to define the general settings for
 - `image_pull_policy?` ++"string"++ - image pull policy to use in the network. Possible values are `Always`, `IfNotPresent`, and `Never`
 - `local_ip?` ++"string"++ - IP used for exposing local services (rpc/metrics/monitors). Defaults to `"127.0.0.1"`
 - `global_delay_network_global_settings?` ++"number"++ - delay in seconds to apply to the network
-- `node_verifier?` ++"string"++ - allow managing how to verify node readiness or disable by using `None`. Possible values are `None` and `Metric`. Defaults to `Metric`
+- `node_verifier?` ++"string"++ - specify how to verify node readiness or deactivate by using `None`. Possible values are `None` and `Metric`. Defaults to `Metric`
 
 For example, the following configuration file defines a minimal example for the settings:
 
@@ -426,7 +426,7 @@ You can use the `relaychain` keyword to define further parameters for the relay 
   ```
 - `default_db_snapshot?` ++"string"++ - the default database snapshot to use
 - `default_prometheus_prefix` ++"string"++ - a parameter for customizing the metric's prefix. Defaults to `substrate`
-- `default_substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version. The `SubstrateCliArgsVersion` enum is defined as follows:
+- `default_substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI arguments version. The `SubstrateCliArgsVersion` enum is defined as follows:
   ```js
   export enum SubstrateCliArgsVersion {
     V0 = 0,
@@ -448,7 +448,7 @@ You can use the `relaychain` keyword to define further parameters for the relay 
   } 
   ```
 - `random_nominators_count?` ++"number"++ - if set and the stacking pallet is enabled, Zombienet will generate the input quantity of nominators and inject them into the genesis
-- `max_nominations` ++"number"++ - the max number of nominations allowed by a nominator. Should match the value set in the rumtime. Defaults to `24`
+- `max_nominations` ++"number"++ - the max number of nominations allowed by a nominator. Should match the value set in the runtime. Defaults to `24`
 - `nodes?` ++"Node[]"++ - an array of nodes to spawn. It is further defined on the [Node Configuration](#node-configuration) section
 - `node_groups?` ++"NodeGroup[]"++ - an array of node groups to spawn. It is further defined on the [Node Group Configuration](#node-group-configuration) section
 - `total_node_in_group?` ++"number"++ - the total number of nodes in the group. Defaults to `1`
@@ -487,7 +487,7 @@ There is one specific key capable of receiving more subkeys: the `nodes` key. Th
   ```
 - `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
 - `db_snapshot?` ++"string"++ - database snapshot to use
-- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI arguments version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
   ```js
   export enum SubstrateCliArgsVersion {
     V0 = 0,
@@ -520,7 +520,7 @@ There is one specific key capable of receiving more subkeys: the `nodes` key. Th
 - `ws_port?` ++"number"++ - WS port to use
 - `rpc_port?` ++"number"++ - RPC port to use
 - `prometheus_port?` ++"number"++ - Prometheus port to use
-- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webrtc transport
+- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webRTC transport
 - `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
   ```js
   export interface DelayNetworkSettings {
@@ -568,7 +568,7 @@ The `node_groups` key is used to define further parameters for the node groups. 
   ```
 - `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
 - `db_snapshot?` ++"string"++ - database snapshot to use
-- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI arguments version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
   ```js
   export enum SubstrateCliArgsVersion {
     V0 = 0,
@@ -637,8 +637,8 @@ The `parachain` keyword is used to define further parameters for the parachain. 
 - `add_to_genesis?` ++"boolean"++ - flag to add parachain to genesis or register in runtime. Defaults to `true`
 - `register_para?` ++"boolean"++ - flag to specify whether the para should be registered. The `add_to_genesis` flag must be set to false for this flag to have any effect. Defaults to `true`
 - `onboard_as_parachain?` ++"boolean"++ - flag to specify whether the para should be onboarded as a parachain, rather than remaining a parathread. Defaults to `true`
-- `genesis_wasm_path?` ++"string"++ - path to the wasm file to use
-- `genesis_wasm_generator?` ++"string"++ - command to generate the wasm file
+- `genesis_wasm_path?` ++"string"++ - path to the Wasm file to use
+- `genesis_wasm_generator?` ++"string"++ - command to generate the Wasm file
 - `genesis_state_path?` ++"string"++ - path to the state file to use
 - `genesis_state_generator?` ++"string"++ - command to generate the state file
 - `chain_spec_path?` ++"string"++ - path to the chain spec file
@@ -681,7 +681,7 @@ One specific key capable of receiving more subkeys is the `collator` key. This k
 - `rpc_port?` ++"number"++ - RPC port to use
 - `prometheus_port?` ++"number"++ - Prometheus port to use
 - `p2p_port?` ++"number"++ - P2P port to use
-- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webrtc transport
+- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webRTC transport
 - `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
   ```js
   export interface DelayNetworkSettings {
@@ -708,7 +708,7 @@ One specific key capable of receiving more subkeys is the `collator` key. This k
   ```
 - `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
 - `db_snapshot?` ++"string"++ - database snapshot to use
-- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI arguments version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
   ```js
   export enum SubstrateCliArgsVersion {
     V0 = 0,
@@ -772,7 +772,7 @@ The `collator_groups` key is used to define further parameters for the collator 
   ```
 - `prometheus_prefix?` ++"string"++ - customizes the metric's prefix for the specific node. Defaults to `substrate`
 - `db_snapshot?` ++"string"++ - database snapshot to use
-- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI args version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
+- `substrate_cli_args_version?` ++"SubstrateCliArgsVersion"++ - set the Substrate CLI arguments version directly to skip binary evaluation overhead. The `SubstrateCliArgsVersion` enum is defined as follows:
   ```js
   export enum SubstrateCliArgsVersion {
     V0 = 0,
@@ -825,7 +825,7 @@ For instance, the configuration file below defines a minimal example for the col
 
 You can use the `hrmp_channels` keyword to define further parameters for the XCM channels at start-up. The available keys are:
 
-- `hrmp_channels` ++"HrmpChannelsConfig[]"++ - array of HRMP channel configurations. The `HrmpChannelsConfig` interface is defined as follows:
+- `hrmp_channels` ++"HrmpChannelsConfig[]"++ - array of Horizontal Relay-routed Message Passing (HRMP) channel configurations. The `HrmpChannelsConfig` interface is defined as follows:
   ```js
   export interface HrmpChannelsConfig {
     sender: number;
