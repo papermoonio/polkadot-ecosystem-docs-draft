@@ -58,12 +58,13 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
     - **admin** - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the registered asset corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain
       
-        ??? note "How to obtain the sovereign account"
+        ??? note "Obtain the sovereign account"
             The sovereign account can be obtained through [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.
+
+            Ensure that **Sibling** is selected and that the **Parachain ID** corresponds to the source parachain. In this case, since the guide follows the test setup stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section, the **Parachain ID** is `2006`.
 
             ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
 
-            Ensure that **Sibling** is selected and that the **Parachain ID** corresponds to the source parachain. In this case, since the guide follows the test setup stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section, the **Parachain ID** is `2006`.
 
     - **minBalance** - the minimum balance required to hold this asset
 
