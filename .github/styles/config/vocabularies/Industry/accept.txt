@@ -19,6 +19,7 @@ JSON-RPC
 keystore
 keystores
 mintable
+multilocation
 multisig
 namespace
 namespaces
