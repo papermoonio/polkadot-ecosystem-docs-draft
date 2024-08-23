@@ -1,6 +1,6 @@
 ---
 title: Polkadot Draft Ecosystem Docs
-description: Discover the resources, tools, and tutorials essential for building on Polkadot, a blockchain protocol offering shared security and seamless interoperability
+description: Discover the resources, tools, and tutorials essential for building on Polkadot, a blockchain protocol offering shared security and seamless interoperability.
 hide:
 - footer
 - feedback
