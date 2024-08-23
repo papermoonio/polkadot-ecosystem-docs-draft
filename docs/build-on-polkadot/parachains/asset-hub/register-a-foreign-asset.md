@@ -58,7 +58,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
     - **admin** - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the registered asset corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain
       
-        ??? note
+        ??? note "How to obtain the sovereign account"
             The sovereign account can be obtained through [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.
 
             ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
@@ -69,8 +69,11 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
     ![Fill out the required fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-4.webp)
 
-    ??? note
-        If you want an example of the encoded call data, you can copy the following: `0x3500010100591f007369626cd6070000000000000000000000000000000000000000000000000000a0860100000000000000000000000000`
+    ??? note "Encoded call data"
+        If you want an example of the encoded call data, you can copy the following:
+        ```bash
+        0x3500010100591f007369626cd6070000000000000000000000000000000000000000000000000000a0860100000000000000000000000000
+        ```
 
 5. With the Polkadot.js interface connected to the parachain that will send the foreign asset to Asset Hub, navigate to the **Developer > Extrinsics** section. Create the following call, and paste the **encoded call data** copied in the previous step. After filling out the required fields, click the **Submit Transaction** button
 
@@ -81,7 +84,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
     !!! warning
         Note that the sovereign account on the Asset Hub parachain must have a sufficient balance to cover the XCM `BuyExecution` instruction. If the account does not have enough balance, the transaction will fail.
 
-    ???note
+    ???note "Example of the encoded call data"
         If you want to have the whole XCM call ready to be copied, go to the **Developer > Extrinsics > Decode** section and paste the following hex-encoded call data: `0x6300330003010100a10f030c000400010000070010a5d4e81300010000070010a5d4e80006030700b4f13501419ce03500010100591f007369626cd607000000000000000000000000000000000000000000000000000000000000000000000000000000000000`
 
         Ensure to replace the encoded call data with the one you copied in the previous step.
