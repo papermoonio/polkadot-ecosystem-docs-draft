@@ -61,13 +61,13 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
         ??? note
             The sibling account can be obtained through [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.
 
-            ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-4.webp)
+            ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
 
             Ensure that **Sibling** is selected and that the **Parachain ID** corresponds to the source parachain. In this case, since the guide follows the test setup stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section, the **Parachain ID** is `2006`.
 
     - **minBalance** - the minimum balance required to hold this asset
 
-    ![Fill out the required fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
+    ![Fill out the required fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-4.webp)
 
     ??? note
         If you want an example of the encoded call data, you can copy the following: `0x3500010100591f007369626cd6070000000000000000000000000000000000000000000000000000a0860100000000000000000000000000`
