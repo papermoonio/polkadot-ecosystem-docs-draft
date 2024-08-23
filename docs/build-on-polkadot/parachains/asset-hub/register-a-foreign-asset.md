@@ -13,7 +13,7 @@ When registering a foreign asset on Asset Hub, it's essential to notice that the
 
 ## Prerequisites
 
-The Asset Hub parachain is one of the system parachains on a relay chain, such as [Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank} or [Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank}. To interact with these parachains, you can use the [Polkadot.js App](https://polkadot.js.org/apps/#/explorer){target=\_blank} interface. For example:
+The Asset Hub parachain is one of the system parachains on a relay chain, such as [Polkadot](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank} or [Kusama](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.api.onfinality.io%2Fpublic-ws#/explorer){target=\_blank}. To interact with these parachains, you can use the [Polkadot.js Apps](https://polkadot.js.org/apps/#/explorer){target=\_blank} interface for:
 
 - [Polkadot Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-polkadot-rpc.dwellir.com#/explorer){target=\_blank}
 - [Kusama Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fsys.ibp.network%2Fstatemine#/explorer){target=\_blank}
