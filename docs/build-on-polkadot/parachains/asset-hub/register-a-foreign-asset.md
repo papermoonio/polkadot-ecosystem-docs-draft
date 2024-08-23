@@ -71,7 +71,7 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
     ??? note "Encoded call data"
         If you want an example of the encoded call data, you can copy the following:
-        ```bash
+        ```
         0x3500010100591f007369626cd6070000000000000000000000000000000000000000000000000000a0860100000000000000000000000000
         ```
 
@@ -84,8 +84,11 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
     !!! warning
         Note that the sovereign account on the Asset Hub parachain must have a sufficient balance to cover the XCM `BuyExecution` instruction. If the account does not have enough balance, the transaction will fail.
 
-    ???note "Example of the encoded call data"
-        If you want to have the whole XCM call ready to be copied, go to the **Developer > Extrinsics > Decode** section and paste the following hex-encoded call data: `0x6300330003010100a10f030c000400010000070010a5d4e81300010000070010a5d4e80006030700b4f13501419ce03500010100591f007369626cd607000000000000000000000000000000000000000000000000000000000000000000000000000000000000`
+    ??? note "Example of the encoded call data"
+        If you want to have the whole XCM call ready to be copied, go to the **Developer > Extrinsics > Decode** section and paste the following hex-encoded call data:
+        ```
+        0x6300330003010100a10f030c000400010000070010a5d4e81300010000070010a5d4e80006030700b4f13501419ce03500010100591f007369626cd607000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+        ```
 
         Ensure to replace the encoded call data with the one you copied in the previous step.
 
