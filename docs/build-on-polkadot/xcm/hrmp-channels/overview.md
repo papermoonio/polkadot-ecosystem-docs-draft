@@ -85,8 +85,7 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
         - Sibling chains use the prefix `0x7369626c` (which decodes to `b"sibl"`)
 
     2. Calculate the u32 scale encoded value of the parachain ID:
-
-        For example, parachain 2500 would be encoded as `c4090000`
+        - Parachain 2500 would be encoded as `c4090000`
 
     3. Combine the prefix and parachain ID encoding to form the full sovereign account address:
 
@@ -111,8 +110,33 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
         - **proposedMaxMessageSize** - max message size that could be put into the channel
     4. Copy the encoded call data
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-5.webp)
+    The encoded call data for opening a channel with parachain 2600 is `0x3c00280a00000800000000001000`.
 
 #### Step 3 - Submit XCM to Initiate Channel
+
+1. Connect to parachain 2500
+   
+2. Craft an XCM message containing the encoded `hrmpInitOpenChannel` call data from previous step.
+
+    In this example the `sudo` pallet is used to dispatch the extrinsic. You should always check what the XCM configuration is for the parachain you are working with and which origin has privileges to execute `polkadotXcm.send` extrinsic.
+
+    The xcm message needed will have the following instructions:
+
+    - **WithdrawAsset** - withdraw asset(s) from the ownership of origin and place them into the Holding Register
+    - **BuyExecution** - Pays for the execution of the current message using the asset(s) that were deposited in the XCVM Holding Register from the previous `WithdrawAsset` instruction
+    - **Transact** - execute the encoded transaction call
+    - **RefundSurplus** - increases Refunded Weight Register to the value of Surplus Weight Register. Attempts to accrue fees previously paid via BuyExecution into the XCVM Holding Register for the amount that Refunded Weight Register is increased
+    - **DepositAsset** - subtracts the asset(s) from the XCVM Holding Register and deposits on-chain equivalent assets under the ownership of the beneficiary
+
+    In summary, you are going to withdraw some amount from the parachain sovereign account to the XCVM Holding Register. Use the amount in there to buy execution time for the XCM Transact instruction. Execute the Transact. And whatever amount is left over is deposited into an account specified by using the DepositAsset instruction.
+
+    
+
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-6.webp)
+
+3. Submit the transaction
+
+
 
 
 ## Opening HRMP Channels with System Parachains
