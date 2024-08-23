@@ -35,12 +35,12 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
 ## Steps to Register a Foreign Asset
 
-1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and connect to the `Asset Hub` parachain
+1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and connect to the Asset Hub parachain using the network selector in the top left corner 
 
-      - For the local environment, connect to Local Node (Chopsticks), check the [Test Environment Setup](#test-environment-setup) section for more details
-      - For the live networks, connect to the `Asset Hub` parachain. You can use either Polkadot, Kusama, Rococo, or Paseo Asset Hub
+      - Testing foreign asset registration is recommended on TestNet before proceeding to MainNet. If you haven't set up a local testing environment yet, consult the [Environment setup](#environment-setup) guide. After setting up, connect to the Local Node (Chopsticks) at `ws://127.0.0.1:8000`
+      - For live network operations, connect to the Asset Hub parachain. You can choose either Polkadot or Kusama Asset Hub from the dropdown menu, selecting your preferred RPC provider.
 
-2. Click on the **Developer** tab on the left sidebar and select the **Extrinsics** section
+2. Click on the **Developer** tab on the top navigation bar and select the **Extrinsics** from the dropdown list
 
     ![Access to Developer Extrinsics section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-1.webp)
 
