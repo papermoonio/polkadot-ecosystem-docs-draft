@@ -159,7 +159,7 @@ It's important to note that each provider has specific requirements and associat
 
 Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/){target=_blank} is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters. If you don't have `kubectl` installed, you can follow the instructions provided on the [Kubernetes website](https://kubernetes.io/docs/tasks/tools/#kubectl){target=_blank}.
 
-Moreover, in order to create resources such as namespaces, pods, and cron jobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+Moreover, in order to create resources such as namespaces, pods, and CronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
 #### Features
 
@@ -387,7 +387,7 @@ Through the keyword `settings`, it's possible to define the general settings for
 - `image_pull_policy?` ++"string"++ - image pull policy to use in the network. Possible values are `Always`, `IfNotPresent`, and `Never`
 - `local_ip?` ++"string"++ - IP used for exposing local services (rpc/metrics/monitors). Defaults to `"127.0.0.1"`
 - `global_delay_network_global_settings?` ++"number"++ - delay in seconds to apply to the network
-- `node_verifier?` ++"string"++ - specify how to verify node readniess or deactivate by using `None`. Possible values are `None` and `Metric`. Defaults to `Metric`
+- `node_verifier?` ++"string"++ - specify how to verify node readiness or deactivate by using `None`. Possible values are `None` and `Metric`. Defaults to `Metric`
 
 For example, the following configuration file defines a minimal example for the settings:
 
