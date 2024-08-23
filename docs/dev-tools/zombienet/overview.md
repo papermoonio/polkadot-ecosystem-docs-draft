@@ -520,7 +520,7 @@ There is one specific key capable of receiving more subkeys: the `nodes` key. Th
 - `ws_port?` ++"number"++ - WS port to use
 - `rpc_port?` ++"number"++ - RPC port to use
 - `prometheus_port?` ++"number"++ - Prometheus port to use
-- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webrtc transport
+- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webRTC transport
 - `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
   ```js
   export interface DelayNetworkSettings {
@@ -681,7 +681,7 @@ One specific key capable of receiving more subkeys is the `collator` key. This k
 - `rpc_port?` ++"number"++ - RPC port to use
 - `prometheus_port?` ++"number"++ - Prometheus port to use
 - `p2p_port?` ++"number"++ - P2P port to use
-- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webrtc transport
+- `p2p_cert_hash?` ++"string"++ - libp2p certhash to use with webRTC transport
 - `delay_network_settings?` ++"DelayNetworkSettings"++ - sets the expected configuration to delay the network. The `DelayNetworkSettings` interface is defined as follows:
   ```js
   export interface DelayNetworkSettings {
