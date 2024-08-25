@@ -35,6 +35,8 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
 
 ## Steps to Register a Foreign Asset
 
+### Asset Hub
+
 1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and connect to the Asset Hub parachain using the network selector in the top left corner 
 
       - Testing foreign asset registration is recommended on TestNet before proceeding to MainNet. If you haven't set up a local testing environment yet, consult the [Environment setup](#environment-setup) guide. After setting up, connect to the Local Node (Chopsticks) at `ws://127.0.0.1:8000`
@@ -80,11 +82,17 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
         0x3500010100591f007369626cd6070000000000000000000000000000000000000000000000000000a0860100000000000000000000000000
         ```
 
-5. With the Polkadot.js interface connected to the parachain that will send the foreign asset to Asset Hub, navigate to the **Developer > Extrinsics** section. Create the following call, and paste the **encoded call data** copied in the previous step. After filling out the required fields, click the **Submit Transaction** button
+
+### Source Parachain
+
+1. Navigate to the **Developer > Extrinsics** section
+2. Create the extrinsic to register the foreign asset through XCM
+      1. Paste the **encoded call data** copied in the previous step
+      2. Click the **Submit Transaction** button
 
     ![Register foreign asset through XCM](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-5.webp)
 
-    First, DOT will be withdrawn from the sibling account of the parachain. Then, the DOT will be used to initiate an execution. The transaction will be carried out with the origin kind as XCM, and the transaction will be the hex-encoded call for creating a foreign asset on Asset Hub for the specified parachain asset multilocation. Any surplus will be refunded, and the asset will be deposited into the sibling account.
+    This XCM call involves withdrawing DOT from the sibling account of the parachain, using it to initiate an execution. The transaction will be carried out with XCM as the origin kind, and will be a hex-encoded call to create a foreign asset on Asset Hub for the specified parachain asset multilocation. Any surplus will be refunded, and the asset will be deposited into the sibling account.
 
     !!! warning
         Note that the sovereign account on the Asset Hub parachain must have a sufficient balance to cover the XCM `BuyExecution` instruction. If the account does not have enough balance, the transaction will fail.
