@@ -40,15 +40,19 @@ This guide will focus on using Polkadot, its local Asset Hub instance, and the [
       - Testing foreign asset registration is recommended on TestNet before proceeding to MainNet. If you haven't set up a local testing environment yet, consult the [Environment setup](#environment-setup) guide. After setting up, connect to the Local Node (Chopsticks) at `ws://127.0.0.1:8000`
       - For live network operations, connect to the Asset Hub parachain. You can choose either Polkadot or Kusama Asset Hub from the dropdown menu, selecting your preferred RPC provider.
 
-2. Click on the **Developer** tab on the top navigation bar and select the **Extrinsics** from the dropdown list
+2. Navigate to the **Extrinsics** page
+      1. Click on the **Developer** tab from the top navigation bar
+      2. Select **Extrinsics** from the dropdown
 
     ![Access to Developer Extrinsics section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-1.webp)
 
-3. Select the **foreignAssets** pallet from the dropdown list and choose the **create** extrinsic
+3. Select the Foreing Assets pallet
+      3. Select the **foreignAssets** pallet from the dropdown list
+      4. Choose the **create** extrinsic
 
     ![Select the Foreign Asset pallet](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-2.webp)
 
-4. Fill out the required fields and click on the copy icon to copy the **encoded call data** to your clipboard. The fields to be filled are:
+3. Fill out the required fields and click on the copy icon to copy the **encoded call data** to your clipboard. The fields to be filled are:
 
     - **id** - as this is a foreign asset, the ID will be represented by a Multilocation that reflects its origin. For this case, the Multilocation of the asset will be from the source parachain perspective:
   
