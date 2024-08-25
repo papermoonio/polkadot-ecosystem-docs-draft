@@ -31,7 +31,7 @@ Before you start, ensure that you have:
 - A parachain that supports the XCMP protocol to interact with the Asset Hub parachain
 - A funded wallet to pay for the transaction fees and subsequent registration of the foreign asset
 
-This guide will focus on using Polkadot, its local Asset Hub instance, and the [Astar](https://astar.network/){target=\_blank} parachain (`ID` 2006), as stated in the [Test Environment Setup](#test-environment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachains, regardless of the network you are using and the parachain owner of the foreign asset.
+This guide will use Polkadot, its local Asset Hub instance, and the [Astar](https://astar.network/){target=\_blank} parachain (`ID` 2006), as stated in the [Test Environment Setup](#test-environment-setup) section. However, the process is the same for other relay chains and their respective Asset Hub parachain, regardless of the network you are using and the parachain owner of the foreign asset.
 
 ## Steps to Register a Foreign Asset
 
