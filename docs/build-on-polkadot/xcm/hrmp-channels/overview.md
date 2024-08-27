@@ -9,7 +9,7 @@ description: HRMP channels enable cross-chain communication in Polkadot, a tempo
 
 Polkadot is designed to enable seamless interoperability between its connected parachains. At the core of this interoperability is the Cross-Consensus Message Format (XCM), a standard language that allows parachains to communicate and interact with each other.
 
-The actual network-layer protocol responsible for delivering XCM-formatted messages between parachains is called the Cross-Chain Message Passing (XCMP) protocol. XCMP maintains messaging queues on the relay chain, serving as a bridge to facilitate cross-chain interactions.
+The network-layer protocol responsible for delivering XCM-formatted messages between parachains is the Cross-Chain Message Passing (XCMP) protocol. XCMP maintains messaging queues on the relay chain, serving as a bridge to facilitate cross-chain interactions.
 
 As XCMP is still under development, Polkadot has put in place a temporary alternative called Horizontal Relay-routed Message Passing (HRMP). HRMP offers the same interface and functionality as the planned XCMP but with a crucial difference—it stores all messages directly in the relay chain’s storage, which is more resource-intensive.
 
