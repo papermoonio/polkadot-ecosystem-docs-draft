@@ -39,7 +39,7 @@ This guide will use Polkadot, its local Asset Hub instance, and the [Astar](http
 
 1. Open the [Polkadot.js Apps](https://polkadot.js.org/apps/){target=\_blank} interface and connect to the Asset Hub parachain using the network selector in the top left corner 
 
-      - Testing foreign asset registration is recommended on TestNet before proceeding to MainNet. If you haven't set up a local testing environment yet, consult the [Environment setup](#environment-setup) guide. After setting up, connect to the Local Node (Chopsticks) at `ws://127.0.0.1:8000`
+      - Testing foreign asset registration is recommended on TestNet before proceeding to MainNet. If you haven't set up a local testing environment yet, consult the [Environment setup](#test-environment-setup) guide. After setting up, connect to the Local Node (Chopsticks) at `ws://127.0.0.1:8000`
       - For live network operations, connect to the Asset Hub parachain. You can choose either Polkadot or Kusama Asset Hub from the dropdown menu, selecting your preferred RPC provider.
 
 2. Navigate to the **Extrinsics** page
@@ -67,7 +67,7 @@ This guide will use Polkadot, its local Asset Hub instance, and the [Astar](http
         ??? note "Obtain the sovereign account"
             The sovereign account can be obtained through [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.
 
-            Ensure that **Sibling** is selected and that the **Para ID** corresponds to the source parachain. In this case, since the guide follows the test setup stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section, the **Para ID** is `2006`.
+            Ensure that **Sibling** is selected and that the **Para ID** corresponds to the source parachain. In this case, since the guide follows the test setup stated in the [Test Environment Setup](#test-environment-setup) section, the **Para ID** is `2006`.
 
             ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
 
