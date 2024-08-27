@@ -38,7 +38,7 @@ id = 100
   name = "collator01"
 ```
 
-This configuration file defines a network with a relaychain with two nodes, `alice` and `bob`, and a parachain with a collator named `collator01`. Also, it sets a timeout of 120 seconds for the network to be ready.
+This configuration file defines a network with a relay chain with two nodes, `alice` and `bob`, and a parachain with a collator named `collator01`. Also, it sets a timeout of 120 seconds for the network to be ready.
 
 ## Running the Network
 
@@ -145,7 +145,7 @@ If successful, you will see the following output:
 </div>
 
 !!! note 
-    If the IPs and ports are not explicitly defined in the configuration file, they may change each time the network is started, causing the links provided in the output to differ from the example.
+    If the IPs and ports aren't explicitly defined in the configuration file, they may change each time the network is started, causing the links provided in the output to differ from the example.
 
 ## Interacting with the Spawned Network
 
@@ -185,7 +185,7 @@ You can also check the metrics of the nodes by accessing the provided links list
 
 ### Checking Logs
 
-To check the nodes’ logs, you can use the provided command listed by the output as 'Log Cmd'. For instance, to check the logs of the `alice` node, you can open a new terminal and run the following command:
+To check the nodes’ logs, you can use the provided command listed by the output as `Log Cmd`. For instance, to check the logs of the `alice` node, you can open a new terminal and run the following command:
 
 ```bash
 tail -f /var/folders/f4/7rdt2m9d7j361dm453cpggbm0000gn/T/zombie-75a01b93c92d571f6198a67bcb380fcd_21724-SEzfCidQ1za4/alice.log
@@ -195,7 +195,7 @@ After running this command, you will see the logs of the `alice` node in real-ti
 
 ## Running a Test
 
-To run a test against the spawned network, you can use the [Zombienet DSL](../testing.md) to define the test scenario. For example, you can create a file named `spawn-a-basic-network-test.zndsl` with the following content:
+To run a test against the spawned network, you can use the [Zombienet Domain Specific Language (DSL)](../testing.md) to define the test scenario. For example, you can create a file named `spawn-a-basic-network-test.zndsl` with the following content:
 
 ```toml
 Description: Test the basic functionality of the network (minimal example)
@@ -222,8 +222,8 @@ collator01: reports node_roles is 4
 This test scenario checks to verify the following:
 
 - the nodes are running
-- the parachain with ID 100 is registered within a certain timeframe (255 seconds in this example)
-- the parachain block height is at least a certain number within a timeframe (in this case, 10 within 255 seconds)
+- the parachain with ID 100 is registered within a certain time frame (255 seconds in this example)
+- the parachain block height is at least a certain number within a time frame (in this case, 10 within 255 seconds)
 - the nodes report metrics 
 
 However, you can define any test scenario following the [Zombienet DSL](../testing.md) syntax.

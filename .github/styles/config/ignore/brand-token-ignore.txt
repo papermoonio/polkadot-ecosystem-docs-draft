@@ -6,10 +6,13 @@ Arbitrum
 Astar
 Celo
 CELO
+DOT
 Ethereum
 Grafana
 Klaytn
+KSM
 Kujira
+Kusama
 Metamask
 Moonbeam
 Moonriver
@@ -18,4 +21,8 @@ Polkadot
 Sei
 Solana
 Uniswap
+Westend
+Westmint
+WND
 Wormhole
+Zondax

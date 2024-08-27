@@ -9,13 +9,19 @@ description: Guide to deploying a parachain on Polkadot's Paseo TestNet. It cove
 
 Paseo is a community-run TestNet designed for parachain teams and dApp developers to build and test their solutions. The Paseo network is open, allowing anyone to launch a parachain as part of their process for eventual deployment onto the Polkadot MainNet.
 
-This project is maintained by the members of the following teams: [Portico](https://forum.polkadot.network/u/portico/summary){target=_blank}, [R0GUE](https://r0gue.io/){target=_blank}, and [Zondax](https://zondax.ch/){target=_blank}. For further support, you can reach out to the team members on the [Paseo Matrix channel](https://matrix.to/#/#paseo-testnet-support:parity.io){target=_blank}.
+This project is maintained by the members of the following teams: 
+
+- [Portico](https://forum.polkadot.network/u/portico/summary){target=_blank} 
+- [R0GUE](https://r0gue.io/){target=_blank}
+- [Zondax](https://zondax.ch/){target=_blank} 
+
+For further support, you can reach out to the team members on the [Paseo Matrix channel](https://matrix.to/#/#paseo-testnet-support:parity.io){target=_blank}.
 
 It provides dedicated parachain slots to maintainers, with the lease period duration varying based on the following criteria:
 
 - Maintainers of live parachains on the Polkadot or Kusama MainNets will be granted a dedicated Paseo parachain slot for a one-year lease period
 
-- Maintainers of parachains under active development, or those that have not yet secured a parachain slot on Kusama or Polkadot, will be assigned a shorter Paseo lease period of two weeks
+- Maintainers of parachains under active development, or those that haven't yet secured a parachain slot on Kusama or Polkadot, will be assigned a shorter Paseo lease period of two weeks
 
 This guide will walk you through deploying your blockchain as a parachain on the Paseo TestNet. It covers generating a customized chain spec, securing a dedicated parachain slot, and setting up and running your parachain.
 
@@ -29,25 +35,25 @@ Before you can deploy your parachain on the Paseo TestNet, you'll need to meet t
 
 To deploy your parachain, you'll first need to select a unique parachain ID on the Paseo TestNet:
 
-1. Visit [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo TestNet
+1. Visit [polkadot{.js} Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo-rpc.dwellir.com#/explorer){target=_blank} and ensure you're connected to the Paseo TestNet
 
 2. Navigate to the **Network** dropdown, then select the **Parachains** option from the menu that appears
-    ![The Network menu for the Paseo TestNet on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-1.webp)
+    ![The Network menu for the Paseo TestNet on polkadot{.js} Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-1.webp)
 
-3. Review the list of active parachains and parathreads, and select an available parachain ID for your chain. Ensure the ID you choose is not currently used by examining:
+3. Review the list of active parachains and parathreads, and select an available parachain ID for your chain. Ensure the ID you choose isn't currently used by examining:
     - The **parachains** column
-      ![The Parachains section on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-2.webp)
+      ![The Parachains section on polkadot{.js} Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-2.webp)
 
     - The **parathreads** column under the **Parathreads** tab
-      ![The Parathreads section on Polkadot.js Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-3.webp)
+      ![The Parathreads section on polkadot{.js} Apps](/polkadot-ecosystem-docs-draft/images/networks/testnets/paseo-testnet/onboarding/onboarding-3.webp)
 
 ## Generate Customs Keys for Your Collators
 
 To securely deploy your parachain, it is essential to generate custom keys specifically for your collators (block producers). You should generate two sets of keys for each collator:
 
-- Account keys - used to interact with the network and manage funds. These should be protected carefully and should never exist on the filesystem of the collator node
+- **Account keys** - used to interact with the network and manage funds. These should be protected carefully and should never exist on the filesystem of the collator node
 
-- Session keys - used in block production. These identify your node and its blocks on the network. Stored in the parachain keystore, these are disposable "hot wallet" keys. If leaked, they could be used to impersonate your node, potentially leading to fund slashing. To mitigate risks, rotate these keys frequently. Treat them with the same caution as a hot wallet to protect your node security
+- **Session keys** - used in block production. These identify your node and its blocks on the network. Stored in the parachain keystore, these are disposable "hot wallet" keys. If leaked, they could be used to impersonate your node, potentially leading to fund slashing. To mitigate risks, rotate these keys frequently. Treat them with the same caution as a hot wallet to protect your node security
 
 To perform this step, you can use [subkey](https://docs.rs/crate/subkey/latest){target=_blank}, a command-line tool for generating and managing keys:
 

@@ -9,7 +9,7 @@ description: Diving deeper into Zombienet, a versatile tool enabling the creatio
 
 Zombienet is a testing framework designed for Polkadot SDK-based blockchains. It provides a simple CLI tool for creating and testing blockchain environments locally or across networks. This allows developers to easily run and interact with blockchain nodes in a controlled environment. Zombienet is a JavaScript library designed to run on Node.js and supports various backend providers, including Kubernetes, Podman, and local setups for running blockchain nodes.
 
-The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relaychains with validators and parachains with collators.
+The framework enables developers to create tests using natural language tools to verify on-chain storage, metrics, logs, and custom interactions with the blockchain. It is particularly effective for setting up local relay chains with validators and parachains with collators.
 
 [Parity Technologies](https://www.parity.io/){target=_blank} has designed and developed this framework, now maintained by the Zombienet team. For further support and information, refer to the following contact points:
 
@@ -159,7 +159,7 @@ It's important to note that each provider has specific requirements and associat
 
 Zombienet is designed to be compatible with a variety of Kubernetes clusters, including [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine){target=_blank}, [Docker Desktop](https://docs.docker.com/desktop/kubernetes/){target=_blank}, and [kind](https://kind.sigs.k8s.io/){target=_blank}. To effectively interact with your cluster, you'll need to ensure that [`kubectl`](https://kubernetes.io/docs/reference/kubectl/){target=_blank} is installed on your system, which is the Kubernetes command-line tool that allows you to run commands against Kubernetes clusters. If you don't have `kubectl` installed, you can follow the instructions provided on the [Kubernetes website](https://kubernetes.io/docs/tasks/tools/#kubectl){target=_blank}.
 
-Moreover, in order to create resources such as namespaces, pods, and CronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
+Moreover, to create resources such as namespaces, pods, and CronJobs within the target cluster, you must have the appropriate permissions granted to your user or service account. These permissions are essential for managing and deploying applications effectively within Kubernetes.
 
 #### Features
 
@@ -204,7 +204,7 @@ zombienet setup polkadot polkadot-parachain
 This command will download and prepare the necessary binaries for Zombienet’s use.
 
 !!! warning
-    The `polkadot` and `polkadot-parachain` binaries releases are not compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
+    The `polkadot` and `polkadot-parachain` binaries releases aren't compatible with macOS. As a result, macOS users will need to clone the [Polkadot repository](https://github.com/paritytech/polkadot-sdk){target=_blank}, build the Polkadot binary, and manually add it to their PATH for `polkadot` and `polkadot-parachain` to work.
 
 If you need to use a custom binary, ensure the binary is available in your PATH. You can also specify the binary path in the network configuration file. To showcase this, this guide will use the custom [OpenZeppelin template](https://github.com/OpenZeppelin/polkadot-runtime-templates){target=_blank} as an example.
 
@@ -246,7 +246,7 @@ id = 1000
 
 #### Features
 
-Currently, the local provider does not execute any additional layers or processes.
+Currently, the local provider doesn't execute any additional layers or processes.
 
 ## CLI Usage
 
@@ -281,7 +281,7 @@ The following sections will guide you through the primary usage of the Zombienet
 
         - `<binaries>` - executables that will be downloaded and prepared to be used by Zombienet. Options: `polkadot`, `polkadot-parachain`
 
-??? function "`convert` - transforms a (now deprecated) polkadot-launch configuration file to a Zombienet configuration file"
+??? function "`convert` - transforms a (now deprecated) `polkadot-launch` configuration file to a Zombienet configuration file"
 
     === "Argument"
 
@@ -331,7 +331,7 @@ You can use the following flags to customize the behavior of the CLI:
 
         - `<logType>` desired type of logging. Options: `table`, `text`, `silent`
 
-??? function "`-m`, `--monitor` - start as monitor, do not auto clean up network"
+??? function "`-m`, `--monitor` - start as monitor, don't auto clean up network"
 
     === "Argument"
 
@@ -354,7 +354,7 @@ You can use the following flags to customize the behavior of the CLI:
 The network configuration can be given in either JSON or TOML format. The Zombienet repository also provides a [folder with some examples](https://github.com/paritytech/zombienet/tree/main/examples){target=_blank} of configuration files that can be used as a reference.
 
 !!! note
-    Each section may include provider-specific keys that are not recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
+    Each section may include provider-specific keys that aren't recognized by other providers. For example, if you use the local provider, any references to images for nodes will be disregarded.
 
 ### Settings
 

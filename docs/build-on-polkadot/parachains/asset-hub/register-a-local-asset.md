@@ -31,7 +31,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
     
 2. Click on the **Network** tab on the top navigation bar and select **Assets** from the dropdown list
 
-      ![Access to Asset Hub through Polkadot.JS](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-1.webp) 
+      ![Access to Asset Hub through polkadot{.js}](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-1.webp) 
 
 3. Now, you need to examine all the registered asset IDs. This step is crucial to ensure that the asset ID you are about to register is unique. Asset IDs are displayed in the **assets** column
 
@@ -48,7 +48,7 @@ To register a local asset on the Asset Hub parachain, follow these steps:
     - **asset symbol** - the symbol that will be used to represent the asset
     - **asset decimals** - the number of decimal places for this token, with a maximum of 20 allowed through the user interface
     - **minimum balance** - the minimum balance for the asset. This is specified in the units and decimals as requested
-    - **asset ID** - the selected id for the asset. This should not match an already-existing asset id
+    - **asset ID** - the selected id for the asset. This shouldn't match an already-existing asset id
  
     ![Create Asset Form](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-4.webp)
 
@@ -89,6 +89,6 @@ npx @acala-network/chopsticks \
 ```
 
 !!!note 
-    The above command will spawn a lazy fork of Polkadot Asset Hub with the latest block data from the network. If you need to test Kusama Asset Hub, replace `polkadot-asset-hub.yml` with `kusama-asset-hub.yml` in the command.
+    The preceding command will spawn a lazy fork of Polkadot Asset Hub with the latest block data from the network. If you need to test Kusama Asset Hub, replace `polkadot-asset-hub.yml` with `kusama-asset-hub.yml` in the command.
 
-An Asset Hub instance is now running locally, and you can proceed with the asset registration process. Note that the local registration process does not differ from the live network process. Once you have a successful TestNet transaction, you can use the same steps to register the asset on MainNet.
+An Asset Hub instance is now running locally, and you can proceed with the asset registration process. Note that the local registration process doesn't differ from the live network process. Once you have a successful TestNet transaction, you can use the same steps to register the asset on MainNet.

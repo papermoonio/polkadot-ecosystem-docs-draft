@@ -48,8 +48,8 @@ This guide will use Polkadot, its local Asset Hub instance, and the [Astar](http
 
     ![Access to Developer Extrinsics section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-1.webp)
 
-3. Select the Foreing Assets pallet
-      3. Select the **foreignAssets** pallet from the dropdown list
+3. Select the Foreign Assets pallet
+      3. Select the **`foreignAssets`** pallet from the dropdown list
       4. Choose the **create** extrinsic
 
     ![Select the Foreign Asset pallet](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-2.webp)
@@ -62,7 +62,7 @@ This guide will use Polkadot, its local Asset Hub instance, and the [Astar](http
         MultiLocation {parents: 1, interior: X1(Parachain(2006))};
         ```
 
-    - **admin** - refers to the account that will be the admin of this asset. This account will be able to manage the asset, including updating its metadata. As the registered asset corresponds to a native asset of the source parachain, the admin account should be the sovereign account of the source parachain
+    - **admin** - refers to the account that will be the administrator of this asset. This account will be able to manage the asset, including updating its metadata. As the registered asset corresponds to a native asset of the source parachain, the administrator account should be the sovereign account of the source parachain
       
         ??? note "Obtain the sovereign account"
             The sovereign account can be obtained through [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.

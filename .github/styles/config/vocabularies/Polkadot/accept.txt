@@ -9,7 +9,7 @@ dev_newBlock
 dev_setHead
 dev_setStorage
 dev_timeTravel
-extrinsics
+[Ee]xtrinsics
 ink!
 invulnerables
 IPs
@@ -17,7 +17,9 @@ IPs
 parachain's
 parachains
 parathread
+Paseo
 Polkadot
+polkadot{.js}
 Polkadot's
 Polkadot SDK
 relay chain

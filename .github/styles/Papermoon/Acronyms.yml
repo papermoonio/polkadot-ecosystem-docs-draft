@@ -16,12 +16,14 @@ exceptions:
   - CSV
   - DEBUG
   - DOM
+  - DOT
   - DPI
   - EVM
   - FAQ
   - GCC
   - GDB
   - GET
+  - GLMR
   - GPU
   - GTK
   - GUI
@@ -32,6 +34,7 @@ exceptions:
   - JAR
   - JSON
   - JSX
+  - KSM
   - LESS
   - LLDB
   - NET
@@ -60,7 +63,9 @@ exceptions:
   - URI
   - URL
   - USB
+  - USDT
   - UTF
+  - WND
   - XCM
   - XML
   - XSS

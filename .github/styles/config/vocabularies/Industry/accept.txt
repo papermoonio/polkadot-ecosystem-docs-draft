@@ -1,10 +1,14 @@
 API
 application
+async
 blockchain
 blockchains
 burnable
 certhash
 CronJobs
+crypto
+cryptocurrency
+cryptocurrencies
 daemon
 daemonless
 [Dd]App
@@ -19,9 +23,12 @@ JSON-RPC
 keystore
 keystores
 mintable
+multilocation
 multisig
 namespace
 namespaces
+NFT
+NFTs
 npm
 npx
 onboarded
@@ -30,7 +37,9 @@ Podman
 SDK
 snake_case
 subcommand
+subkey
 subkeys
+sudo
 tooltip
 TypeScript
 validator
