@@ -5,7 +5,10 @@ dependencies:
   chopsticks:
     repository_url: https://github.com/AcalaNetwork/chopsticks
     version: 0.13.1
-  zombienet: 
+  zombienet:
     repository_url: https://github.com/paritytech/zombienet
-    version: v1.3.106
+    version: 1.3.106
     architecture: macos-arm64
+  asset_transfer_api:
+    repository_url: https://github.com/paritytech/asset-transfer-api
+    version: 0.3.1
