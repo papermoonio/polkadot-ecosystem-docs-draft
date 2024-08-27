@@ -11,7 +11,7 @@ Polkadot is designed to enable seamless interoperability between its connected p
 
 The actual network-layer protocol responsible for delivering XCM-formatted messages between parachains is called the Cross-Chain Message Passing (XCMP) protocol. XCMP maintains messaging queues on the relay chain, serving as a bridge to facilitate cross-chain interactions.
 
-However, as XCMP is still under development, Polkadot has implemented a temporary substitute known as Horizontal Relay-routed Message Passing (HRMP). HRMP provides the same interface and functionality as the planned XCMP, but with a key difference - it stores all messages directly in the relay chain's storage, which is more resource-intensive.
+As XCMP is still under development, Polkadot has put in place a temporary alternative called Horizontal Relay-routed Message Passing (HRMP). HRMP offers the same interface and functionality as the planned XCMP but with a crucial difference—it stores all messages directly in the relay chain’s storage, which is more resource-intensive.
 
 Once XCMP is fully implemented, HRMP will be deprecated in favor of the native XCMP protocol. XCMP will offer a more efficient and scalable solution for cross-chain message passing, as it will not require the relay chain to store all the messages.
 
