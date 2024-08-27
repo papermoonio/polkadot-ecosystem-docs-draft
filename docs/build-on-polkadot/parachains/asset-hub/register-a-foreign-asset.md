@@ -67,7 +67,7 @@ This guide will use Polkadot, its local Asset Hub instance, and the [Astar](http
         ??? note "Obtain the sovereign account"
             The sovereign account can be obtained through [Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/){target=\_blank}.
 
-            Ensure that **Sibling** is selected and that the **Para ID** corresponds to the source parachain. In this case, since the guide follows the test setup stated in the [Test Environment Setup](./register-a-foreign-asset.md/#test-enviroment-setup) section, the **Para ID** is `2006`.
+            Ensure that **Sibling** is selected and that the **Para ID** corresponds to the source parachain. In this case, since the guide follows the test setup stated in the [Test Environment Setup](#test-enviroment-setup) section, the **Para ID** is `2006`.
 
             ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
 
