@@ -64,7 +64,7 @@ For establishing communication channels between parachains on the Polkadot netwo
 
 This process results in a unidirectional HRMP channel, where messages can flow in only one direction between the two parachains.
 
-To enable bidirectional communication, an additional HRMP channel must be established in the opposite direction. This requires repeating the request and acceptance process, but with the parachains reversing their roles.
+An additional HRMP channel must be established in the opposite direction to enable bidirectional communication. This requires repeating the request and acceptance process but with the parachains reversing their roles.
 
 Once both unidirectional channels are established, the parachains can then send messages back and forth freely through the bidirectional HRMP communication channel.
 
