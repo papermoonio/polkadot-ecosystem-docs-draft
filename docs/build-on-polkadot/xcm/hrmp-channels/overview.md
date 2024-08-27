@@ -57,7 +57,7 @@ Parachain developers have a few options for triggering the required extrinsic ca
 
 ## Opening HRMP Channels Between Parachains
 
-For establishing communication channels between parachains on the Polkadot network, using the HRMP protocol, the following steps are required:
+For establishing communication channels between parachains on the Polkadot network using the HRMP protocol, the following steps are required:
 
 1. Channel request - the parachain that wants to open an HRMP channel must make a request to the parachain it wishes to have an open channel with
 2. Channel acceptance - the other parachain must then accept this request in order to complete the channel establishment
