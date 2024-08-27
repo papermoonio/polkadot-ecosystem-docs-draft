@@ -29,7 +29,7 @@ Opening an HRMP channel requires the parachains involved to make a deposit on th
 
 ### Relay Chain Parameters
 
-Each Polkadot relay chain has a set of configurable parameters that control the behavior of the message channels between parachains. These parameters include `hrmpSenderDeposit`, `hrmpRecipientDeposit`, `hrmpChannelMaxMessageSize`, `hrmpChannelMaxCapacity` and more.
+Each Polkadot relay chain has a set of configurable parameters that control the behavior of the message channels between parachains. These parameters include `hrmpSenderDeposit`, `hrmpRecipientDeposit`, `hrmpChannelMaxMessageSize`, `hrmpChannelMaxCapacity`, and more.
 
 When a parachain wants to open a new channel, it must consider these parameter values to ensure the channel is configured correctly.
 
