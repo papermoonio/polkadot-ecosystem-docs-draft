@@ -66,7 +66,7 @@ This process results in a unidirectional HRMP channel, where messages can flow i
 
 An additional HRMP channel must be established in the opposite direction to enable bidirectional communication. This requires repeating the request and acceptance process but with the parachains reversing their roles.
 
-Once both unidirectional channels are established, the parachains can then send messages back and forth freely through the bidirectional HRMP communication channel.
+Once both unidirectional channels are established, the parachains can send messages back and forth freely through the bidirectional HRMP communication channel.
 
 ### Procedure for Initiating HRMP Channel Setup
 
