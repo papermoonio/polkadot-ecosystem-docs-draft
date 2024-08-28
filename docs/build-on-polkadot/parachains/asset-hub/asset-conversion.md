@@ -93,7 +93,161 @@ As the above image shows, the **lp_token** ID created for this pool is 19. This 
 
 ## Adding Liquidity to a Pool
 
+The `add_liquidity` extrinsic allows users to provide liquidity to a pool of two assets. Users specify their preferred amounts for both assets and minimum acceptable quantities. The function determines the best asset contribution, which may vary from the amounts desired but won't fall below the specified minimums. In return for their contribution, providers receive liquidity tokens representing their pool portion.
+
+To add liquidity to a pool, follow these steps:
+
+1. Navigate to the **Extrinsics** section on the Polkadot.Js App interface
+      1. Select **Developer** from the top menu
+      2. Click on **Extrinsics** from the dropdown menu
+
+        ![Extrinsics Section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-1.webp)
+
+2. Choose the **AssetConversion** pallet and click on the **add_liquidity** extrinsic
+      1. Select the **AssetConversion** pallet
+      2. Choose the `add_liquidity` extrinsic from the list of available extrinsics
+
+        ![Add Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-5.webp)
+
+3. Fill in the required fields:
+      1. **asset1** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
+         ```javascript
+         {
+            parents: 0,
+            interior: Here
+         }
+         ```
+      2. **asset2** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
+         ```javascript
+         {
+            parents: 0,
+            interior: {
+              X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
+            }
+         }
+         ``` 
+      3. **amount1Desired** - the amount of the first asset that will be contributed to the pool
+      4. **amount2Desired** - the quantity of the second asset intended for pool contribution
+      5. **amount1Min** - the minimum amount of the first asset that will be contributed
+      6. **amount2Min** - the lowest acceptable quantity of the second asset for contribution
+      7. **mintTo** - the account to which the liquidity tokens will be minted
+      8. Click on **Submit Transaction** to add liquidity to the pool
+
+        ![Add Liquidity Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-6.webp)
+
+        !!! warning
+            Ensure that the amounts of tokens provided have been minted previously and are available in your account before adding liquidity to the pool.
+
+        In this case, the liquidity provided to the pool is between DOT tokens and PPM tokens with the asset ID 1112 on Polkadot Asset Hub. The intention is to provide liquidity for 1 DOT token (u128 value of 1000000000000 as it also has 10 decimals) and 1 PPM token (u128 value of 1000000000000 as it also has 10 decimals).
+
+After signing and submitting the transaction, the liquidity will be added to the pool. To verify the liquidity addition, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **LiquidityAdded** event has been emitted.
+
+![Liquidity Added Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-7.webp)
+
 ## Swapping Assets
+
+### Swapping From an Exact Amount of Tokens
+
+The asset conversion pallet enables users to exchange a specific quantity of one asset for another in a designated liquidity pool by swapping them for an exact amount of tokens. It guarantees that the user will receive at least a predetermined minimum amount of the second asset. This function is intended to provide trading predictability, allowing users to conduct asset exchanges confidently, knowing they will receive minimum returns.
+
+To swap assets for an exact amount of tokens, follow these steps:
+
+1. Navigate to the **Extrinsics** section on the Polkadot.Js App interface
+      1. Select **Developer** from the top menu
+      2. Click on **Extrinsics** from the dropdown menu
+
+        ![Extrinsics Section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-1.webp)
+
+2. Choose the **AssetConversion** pallet and click on the **swapForExactTokens** extrinsic
+      1. Select the **AssetConversion** pallet
+      2. Choose the `swapForExactTokens` extrinsic from the list of available extrinsics
+
+        ![Swap For Exact Tokens Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-8.webp)
+
+3. Fill in the required fields:
+      1. **path:Vec<StagingXcmV3MultiLocation\>** - an array of Multilocations representing the path of the swap. The first and last elements of the array are the input and output assets, respectively. In this case, the path consists of two elements:
+         - **0: StagingXcmV3MultiLocation** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
+         ```javascript
+         {
+            parents: 0,
+            interior: Here
+         }
+         ```
+        - **1: StagingXcmV3MultiLocation** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
+        ```javascript
+          {
+              parents: 0,
+              interior: {
+              X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
+              }
+          }
+          ```
+    2. **amountOut** - the exact amount of the second asset that the user wants to receive
+    3. **amountInMax** - the maximum amount of the first asset that the user is willing to swap
+    4. **sendTo** - the account to which the swapped assets will be sent
+    5. **keepAlive** - a boolean value that determines whether the pool should be kept alive after the swap
+    6. Click on **Submit Transaction** to swap assets for an exact amount of tokens
+
+        ![Swap For Exact Tokens Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-9.webp)
+
+        !!! warning
+            Ensure that the amounts of tokens provided have been minted previously and are available in your account before swapping assets.
+
+        In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it also has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
+
+After signing and submitting the transaction, the swap will be executed. To verify the swap, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **SwapExecuted** event has been emitted.
+
+![Swap For Exact Tokens Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-10.webp)
+
+### Swapping To an Exact Amount of Tokens
+
+Conversely, the Asset Conversion pallet counts wiht a function that allows users to trade a variable amount of one asset to acquire a precise quantity of another. It ensures that users don't exceed a set maximum of the initial asset to obtain the exact desired amount of the second asset. This provides a method to control transaction costs while achieving the intended result.
+
+To swap assets for an exact amount of tokens, follow these steps:
+
+1. Navigate to the **Extrinsics** section on the Polkadot.Js App interface
+      1. Select **Developer** from the top menu
+      2. Click on **Extrinsics** from the dropdown menu
+
+        ![Extrinsics Section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-1.webp)
+
+2. Choose the **AssetConversion** pallet and click on the **swapTokensForExactTokens** extrinsic:
+      1. Select the **AssetConversion** pallet
+      2. Choose the `swapTokensForExactTokens` extrinsic from the list of available extrinsics
+
+        ![Swap Tokens For Exact Tokens Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-11.webp)
+
+3. Fill in the required fields:
+      1. **path:Vec<StagingXcmV3MultiLocation\>** - an array of Multilocations representing the path of the swap. The first and last elements of the array are the input and output assets, respectively. In this case, the path consists of two elements:
+         - **0: StagingXcmV3MultiLocation** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
+         ```javascript
+         {
+            parents: 0,
+            interior: Here
+         }
+         ```
+        - **1: StagingXcmV3MultiLocation** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
+        ```javascript
+          {
+              parents: 0,
+              interior: {
+              X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
+              }
+          }
+          ```
+    2. **amountOut** - the exact amount of the second asset that the user wants to receive
+    3. **amountInMax** - the maximum amount of the first asset that the user is willing to swap
+    4. **sendTo** - the account to which the swapped assets will be sent
+    5. **keepAlive** - a boolean value that determines whether the pool should be kept alive after the swap
+    6. Click on **Submit Transaction** to swap assets for an exact amount of tokens
+
+        ![Swap Tokens For Exact Tokens Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-12.webp)
+
+        !!! warning
+            Ensure that the amounts of tokens provided have been minted previously and are available in your account before swapping assets.
+
+        In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it also has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
+
 
 ## Withdrawing Liquidity from a Pool
 
