@@ -207,12 +207,15 @@ To send the XCM message to the relay chain, connect to parachain 2600 in Polkado
 
 After submitting the XCM message to accept the HRMP channel opening, verify that the channel has been set up correctly.
 
-1. Connect to the relay chain using Polkadot.js Apps
-2. Navigate to the **Developer** dropdown and select **Chain state**
-   
+1. Using Polkadot.js Apps, connect to the relay chain and navigate to the **Developer** dropdown, then select the **Chain state** option
+
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-11.webp)
 
-3. Under the **hrmp** section, query the **hrmpChannels** storage item
+2. Query the hrmp open channel requests
+    1. Select **hrmp**
+    2. Choose the **hrmpChannels** call
+    3. Click the **+** button to execute the query
+    4. Check the status of the opened channel
 
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-10.webp)
 
