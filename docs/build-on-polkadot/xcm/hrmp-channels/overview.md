@@ -39,7 +39,11 @@ To view the current values of these parameters in the Polkadot network:
 
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-1.webp)
 
-2. Under the **configuration** section, call the `activeConfig()` function by clicking the button with the **+** icon. This will display the current settings for all the Polkadot network parameters, including the HRMP channel settings
+2. Query the chain configuration parameters. The result will display the current settings for all the Polkadot network parameters, including the HRMP channel settings
+    1. Select **configuration**
+    2. Choose the **activeConfig()** call
+    3. Click the **+** button
+    4. Check the chain configuration
 
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-2.webp)
 
@@ -73,7 +77,6 @@ Once both unidirectional channels are established, the parachains can send messa
 This example will demonstrate how to open a channel between parachain 2500 and parachain 2600, using Rococo Local as the relay chain.
 
 #### Step 1 - Fund Sovereign Account {: #init-fund-sovereign-account }
-<!-- <a id="init-fund-sovereign-account"></a> -->
 
 The [sovereign account](https://github.com/polkadot-fellows/xcm-format/blob/10726875bd3016c5e528c85ed6e82415e4b847d7/README.md?plain=1#L50){target=_blank} for parachain 2500 on the relay chain must be funded so it can take care of any XCM transact fees.
 
@@ -136,13 +139,11 @@ The XCM message should contain the following instructions:
 
 In essence, this process withdraws funds from the parachain's sovereign account to the XCVM Holding Register, then uses these funds to purchase execution time for the XCM Transact instruction, executes Transact, refunds any unused execution time and deposits any remaining funds into a specified account.
 
-To submit the XCM message:
+To send the XCM message to the relay chain, connect to parachain 2500 in Polkadot.js Apps. Fill in the required parameters as shown in the image below, ensuring that you:
 
-1. Connect to parachain 2500
-   
-2. Construct the XCM message by filling in all required parameters. Make sure to replace the **call** field with your encoded `hrmpInitOpenChannel` call data from the previous step
-   
-3. Click the **Submit Transaction** button to dispatch the XCM message to the relay chain.
+1. Replace the **call** field with your encoded `hrmpInitOpenChannel` call data from the previous step
+2. Use the correct beneficiary information
+3. Click the **Submit Transaction** button to dispatch the XCM message to the relay chain
 
 ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-6.webp)
 
@@ -153,11 +154,17 @@ After submitting the XCM message to initiate the HRMP channel opening, you shoul
 
 1. Using Polkadot.js Apps, connect to the relay chain and navigate to the **Developer** dropdown, then select the **Chain state** option
 
-2. Under the **hrmp** section, select the `hrmpOpenChannelRequests` function. Click the button with the **+** icon next to it to call the function. This will display the status of all pending channel requests
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-11.webp)
+
+2. Query the hrmp open channel requests
+    1. Select **hrmp**
+    2. Choose the **hrmpOpenChannelRequests** call
+    3. Click the **+** button
+    4. Check the status of all pending channel requests
+
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-7.webp)
 
 If your channel request was successful, you should see an entry for your parachain ID in the list of open channel requests. This confirms that your request has been properly registered on the relay chain and is awaiting acceptance by the target parachain
-
-![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-7.webp)
 
 ### Procedure for Accepting HRMP Channel
 
@@ -190,22 +197,26 @@ To accept the HRMP channel opening, you need to create and submit an XCM message
 - Use the encoded call data for `hrmpAcceptOpenChannel` obtained in Step 2 of this section
 - In the last XCM instruction (DepositAsset), set the beneficiary to parachain 2600's sovereign account to receive any surplus funds
 
-To submit the XCM message:
+To send the XCM message to the relay chain, connect to parachain 2600 in Polkadot.js Apps. Fill in the required parameters as shown in the image below, ensuring that you:
 
-1. Connect to parachain 2600 using Polkadot.js Apps
-2. Construct the XCM message by filling in all required parameters, ensuring you use the correct encoded call data and beneficiary information
-3. Submit the transaction to dispatch the XCM message to the relay chain
-    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-9.webp)
+1. Replace the **call(()) field with your encoded `hrmpAcceptOpenChannel` call data from the previous step
+2. Use the correct beneficiary information
+3. Click the **Submit Transaction** button to dispatch the XCM message to the relay chain
+
+![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-9.webp)
 
 After submitting the XCM message to accept the HRMP channel opening, verify that the channel has been set up correctly.
 
 1. Connect to the relay chain using Polkadot.js Apps
 2. Navigate to the **Developer** dropdown and select **Chain state**
+   
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-11.webp)
+
 3. Under the **hrmp** section, query the **hrmpChannels** storage item
 
-If the channel has been successfully established, you should see the channel details in the query results.
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-10.webp)
 
-![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-10.webp)
+If the channel has been successfully established, you should see the channel details in the query results.
 
 By following these steps, you will have successfully accepted the HRMP channel request and established a unidirectional channel between the two parachains. 
 
