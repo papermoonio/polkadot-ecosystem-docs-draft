@@ -7,11 +7,11 @@ description: HRMP channels enable cross-chain communication in Polkadot, a tempo
 
 ## Introduction
 
-Polkadot is designed to enable seamless interoperability between its connected parachains. At the core of this interoperability is the Cross-Consensus Message Format (XCM), a standard language that allows parachains to communicate and interact with each other.
+Polkadot is designed to enable seamless interoperability between its connected parachains. At the core of this interoperability is the [Cross-Consensus Message Format (XCM)](https://wiki.polkadot.network/docs/learn-xcm), a standard language that allows parachains to communicate and interact with each other.
 
 The network-layer protocol responsible for delivering XCM-formatted messages between parachains is the Cross-Chain Message Passing (XCMP) protocol. XCMP maintains messaging queues on the relay chain, serving as a bridge to facilitate cross-chain interactions.
 
-As XCMP is still under development, Polkadot has put in place a temporary alternative called Horizontal Relay-routed Message Passing (HRMP). HRMP offers the same interface and functionality as the planned XCMP but with a crucial difference—it stores all messages directly in the relay chain’s storage, which is more resource-intensive.
+As XCMP is still under development, Polkadot has implemented a temporary alternative called Horizontal Relay-routed Message Passing (HRMP). HRMP offers the same interface and functionality as the planned XCMP but it has a crucial difference, it stores all messages directly in the relay chain’s storage, which is more resource-intensive.
 
 Once XCMP is fully implemented, HRMP will be deprecated in favor of the native XCMP protocol. XCMP will offer a more efficient and scalable solution for cross-chain message passing, as it will not require the relay chain to store all the messages.
 
@@ -21,11 +21,11 @@ Once XCMP is fully implemented, HRMP will be deprecated in favor of the native X
 
 ## Establishing HRMP Channels
 
-To facilitate communication between parachains using the HRMP protocol, the parachains must explicitly establish communication channels by registering them on the relay chain.
+To enable communication between parachains using the HRMP protocol, the parachains must explicitly establish communication channels by registering them on the relay chain.
 
 Downward and upward channels from and to the relay chain are implicitly available, meaning they do not need to be explicitly opened.
 
-Opening an HRMP channel requires the parachains involved to make a deposit on the relay chain. This deposit covers the expenses of using the relay chain's storage for the message queues associated with the channel.
+Opening an HRMP channel requires the parachains involved to make a deposit on the relay chain. This deposit serves a specific purpose, it covers the costs associated with using the relay chain's storage for the message queues linked to the channel. The amount of this deposit varies based on parameters defined by the specific relay chain being used.
 
 ### Relay Chain Parameters
 
@@ -60,7 +60,7 @@ Parachain developers have a few options for triggering the required extrinsic ca
 For establishing communication channels between parachains on the Polkadot network using the HRMP protocol, the following steps are required:
 
 1. Channel request - the parachain that wants to open an HRMP channel must make a request to the parachain it wishes to have an open channel with
-2. Channel acceptance - the other parachain must then accept this request in order to complete the channel establishment
+2. Channel acceptance - the other parachain must then accept this request to complete the channel establishment
 
 This process results in a unidirectional HRMP channel, where messages can flow in only one direction between the two parachains.
 
@@ -75,7 +75,7 @@ This example will demonstrate how to open a channel between parachain 2500 and p
 #### Step 1 - Fund Sovereign Account {: #init-fund-sovereign-account }
 <!-- <a id="init-fund-sovereign-account"></a> -->
 
-The sovereign account for parachain 2500 on the relay chain must be funded so it can take care of any XCM transact fees.
+The [sovereign account](https://github.com/polkadot-fellows/xcm-format/blob/10726875bd3016c5e528c85ed6e82415e4b847d7/README.md?plain=1#L50){target=_blank} for parachain 2500 on the relay chain must be funded so it can take care of any XCM transact fees.
 
 Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from your account to the parachain 2500 sovereign account.
 ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-3.webp)
@@ -130,6 +130,9 @@ The XCM message should contain the following instructions:
 - **Transact** - execute the encoded transaction call
 - **RefundSurplus** - increases the Refunded Weight Register to the value of the Surplus Weight Register, attempting to reclaim any excess fees paid via BuyExecution
 - **DepositAsset** - subtracts assets from the Holding Register and deposits equivalent on-chain assets under the specified beneficiary's ownership
+
+!!!note 
+    For more detailed information about XCM's functionality, complexities, and instruction set, refer to the [xcm-format](https://github.com/polkadot-fellows/xcm-format){target=_blank} documentation.
 
 In essence, this process withdraws funds from the parachain's sovereign account to the XCVM Holding Register, then uses these funds to purchase execution time for the XCM Transact instruction, executes Transact, refunds any unused execution time and deposits any remaining funds into a specified account.
 
