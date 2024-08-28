@@ -19,7 +19,7 @@ This guide will provide detailed information about the key functionalities offer
 
 ## Prerequisites
 
-Before converting assets on Asset Hub, you must ensure to have:
+Before converting assets on Asset Hub, you must ensure you have:
 
 - Access the [Polkadot.Js App](https://polkadot.js.org/apps){target=\_blank} interface and connect it to the intended blockchain
 - A funded wallet containing the assets you wish to convert, and that the wallet has enough balance to cover the transaction fees
@@ -31,9 +31,10 @@ If there is no existing liquidity pool for an asset on Asset Hub, the first step
 
 The asset conversion pallet provides the `create_pool` extrinsic to create a new liquidity pool. It is used to create an empty liquidity pool along with a new `LP token` asset. 
 
-For this example, a testing token with the asset ID `1112` and the name `PPM` was created.
+!!! note
+    A testing token with the asset ID `1112` and the name `PPM` was created for this example.
 
-As stated in the [Test Environment Setup](#test-environment-setup) section, this tutorial is based on the assumption that you have an instance of Polkadot Asset Hub running locally. Therefore, the creation of the liquidity pool will be between DOT and PPM tokens. However, the same steps can be applied to any other asset on Asset Hub.
+As stated in the [Test Environment Setup](#test-environment-setup) section, this tutorial is based on the assumption that you have an instance of Polkadot Asset Hub running locally. Therefore, the liquidity pool will be created between DOT and PPM tokens. However, the same steps can be applied to any other asset on Asset Hub.
 
 From the Asset Hub perspective, the Multilocation that identifies the PPM token is the following:
 
@@ -47,20 +48,48 @@ From the Asset Hub perspective, the Multilocation that identifies the PPM token 
 ```
 
 !!!note 
-    The PalletInstance of 50 represents the Assets pallet on Asset Hub and the GeneralIndex (1112) is the Asset ID of the PPM asset.
+    The PalletInstance of 50 represents the Assets pallet on Asset Hub, and the GeneralIndex (1112) is the Asset ID of the PPM asset.
 
 To create the liquidity pool, you can follow these steps:
 
-1. Navigate to the **Extrinsics** tab on the Polkadot.Js App interface
-   1. Select **Developer** from the top menu
-   2. Click on **Extrinsics** from the dropdown menu
+1. Navigate to the **Extrinsics** section on the Polkadot.Js App interface
+      1. Select **Developer** from the top menu
+      2. Click on **Extrinsics** from the dropdown menu
 
-2. Select the **AssetConversion** pallet from the **Pallets** dropdown menu
+        ![Extrinsics Section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-1.webp)
 
-3. Choose the `create_pool` extrinsic from the list of available extrinsics
+2. Choose the **AssetConversion** pallet and click on the **create_pool** extrinsic
+      3. Select the **AssetConversion** pallet 
+      4. Choose the `create_pool` extrinsic from the list of available extrinsics
 
-4. Fill in the required fields:
+        ![Create Pool Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-2.webp)
 
+3. Fill in the required fields:
+      1. **asset1** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
+         ```javascript
+         {
+            parents: 0,
+            interior: Here
+         }
+         ```
+      2. **asset2** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
+         ```javascript
+         {
+            parents: 0,
+            interior: {
+              X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
+            }
+         }
+         ```
+      5. Click on **Submit Transaction** to create the liquidity pool
+
+        ![Create Pool Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-3.webp)
+
+After signing and submitting the transaction, the liquidity pool will be created. To verify the pool’s creation, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **PoolCreated** event has been emitted.
+
+![Pool Created Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-4.webp)
+
+As the above image shows, the **lp_token** ID created for this pool is 19. This ID is essential for adding liquidity to the pool, swapping assets, and withdrawing liquidity.
 
 ## Adding Liquidity to a Pool
 
