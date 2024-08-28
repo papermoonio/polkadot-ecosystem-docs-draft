@@ -199,7 +199,7 @@ To accept the HRMP channel opening, you need to create and submit an XCM message
 
 To send the XCM message to the relay chain, connect to parachain 2600 in Polkadot.js Apps. Fill in the required parameters as shown in the image below, ensuring that you:
 
-1. Replace the **call(()) field with your encoded `hrmpAcceptOpenChannel` call data from the previous step
+1. Replace the **call** field with your encoded `hrmpAcceptOpenChannel` call data from the previous step
 2. Use the correct beneficiary information
 3. Click the **Submit Transaction** button to dispatch the XCM message to the relay chain
 
