@@ -41,26 +41,28 @@ To register a local asset on the Asset Hub parachain, follow these steps:
 
       ![Create a new asset](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-3.webp)
 
-5. Fill in the required fields in the **Create Asset** form and click on the **Next** button
+5. Fill in the required fields in the **Create Asset** form:
 
-    - **creator account** - the account to be used for creating this asset and setting up the initial metadata
-    - **asset name** - the descriptive name of the asset you are registering
-    - **asset symbol** - the symbol that will be used to represent the asset
-    - **asset decimals** - the number of decimal places for this token, with a maximum of 20 allowed through the user interface
-    - **minimum balance** - the minimum balance for the asset. This is specified in the units and decimals as requested
-    - **asset ID** - the selected id for the asset. This should not match an already-existing asset id
+    1. **creator account** - the account to be used for creating this asset and setting up the initial metadata
+    2. **asset name** - the descriptive name of the asset you are registering
+    3. **asset symbol** - the symbol that will be used to represent the asset
+    4. **asset decimals** - the number of decimal places for this token, with a maximum of 20 allowed through the user interface
+    5. **minimum balance** - the minimum balance for the asset. This is specified in the units and decimals as requested
+    6. **asset ID** - the selected id for the asset. This should not match an already-existing asset id
+    7. Click on the **Next** button
  
     ![Create Asset Form](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-4.webp)
 
-6. Select the **admin account**, **issuer-account** and **freezer-account**, and then click on the **Create** button
+6. Choose the accounts for the roles listed below:
 
-    - **admin account** - the account designated for continuous administration of the token      
-    - **issuer account** - the account that will be used for issuing this token
-    - **freezer account** - the account that will be used for performing token freezing operations
+    1. **admin account** - the account designated for continuous administration of the token      
+    2. **issuer account** - the account that will be used for issuing this token
+    3. **freezer account** - the account that will be used for performing token freezing operations
+    4. Click on the **Create** button
 
     ![Admin, Issuer, Freezer accounts](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-5.webp)
 
-7. Finally, click on the **Sign and Submit** button to complete the asset registration process
+7. Click on the **Sign and Submit** button to complete the asset registration process
 
     ![Sign and Submit](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-6.webp)
 
