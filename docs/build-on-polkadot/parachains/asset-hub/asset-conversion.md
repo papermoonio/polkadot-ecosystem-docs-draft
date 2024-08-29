@@ -175,18 +175,18 @@ To swap assets for an exact amount of tokens, follow these steps:
          ```
         - **1: StagingXcmV3MultiLocation** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
         ```javascript
-          {
-              parents: 0,
-              interior: {
-              X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
-              }
-          }
-          ```
-    2. **amountOut** - the exact amount of the second asset that the user wants to receive
-    3. **amountInMax** - the maximum amount of the first asset that the user is willing to swap
-    4. **sendTo** - the account to which the swapped assets will be sent
-    5. **keepAlive** - a boolean value that determines whether the pool should be kept alive after the swap
-    6. Click on **Submit Transaction** to swap assets for an exact amount of tokens
+        {
+            parents: 0,
+            interior: {
+                X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
+            }
+        }
+        ```
+    1. **amountOut** - the exact amount of the second asset that the user wants to receive
+    2. **amountInMax** - the maximum amount of the first asset that the user is willing to swap
+    3. **sendTo** - the account to which the swapped assets will be sent
+    4. **keepAlive** - a boolean value that determines whether the pool should be kept alive after the swap
+    5. Click on **Submit Transaction** to swap assets for an exact amount of tokens
 
         ![Swap For Exact Tokens Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-9.webp)
 
