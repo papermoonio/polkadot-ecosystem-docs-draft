@@ -21,7 +21,7 @@ This guide will provide detailed information about the key functionalities offer
 
 Before converting assets on Asset Hub, you must ensure you have:
 
-- Access the [Polkadot.Js App](https://polkadot.js.org/apps){target=\_blank} interface and connect it to the intended blockchain
+- Access the [Polkadot.js Apps](https://polkadot.js.org/apps){target=\_blank} interface and connect it to the intended blockchain
 - A funded wallet containing the assets you wish to convert, and that the wallet has enough balance to cover the transaction fees
 - An asset registered on Asset Hub that you wish to convert. If you haven't created an asset on Asset Hub yet, you can refer either to the [Register a Local Asset](./docs/build-on-polkadot/parachains/asset-hub/register-a-foreign-asset.md){target=\_blank} or [Register a Foreign Asset](./docs/build-on-polkadot/parachains/asset-hub/register-a-local-asset.md){target=\_blank} documentation to create an asset.
 
