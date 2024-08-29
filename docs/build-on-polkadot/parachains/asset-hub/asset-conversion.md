@@ -246,7 +246,7 @@ To swap assets for an exact amount of tokens, follow these steps:
         !!! warning
             Before swapping assets, ensure that the tokens provided have been minted previously and are available in your account.
 
-        In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it also has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
+        In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
 After signing and submitting the transaction, the swap will be executed. To verify the swap, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **SwapExecuted** event has been emitted.
 
@@ -298,7 +298,7 @@ To withdraw liquidity from a pool, follow these steps:
         !!! warning
             Ensure that the tokens provided have been minted previously and are available in your account before withdrawing liquidity from the pool.
 
-        In this case, the intention is to withdraw 0.05 liquidity tokens from the pool, expecting to receive 0.004 DOT token (u128 value of 40000000000 as it also has 10 decimals) and 0.04 PPM token (u128 value of 200000000000 as it also has 10 decimals).
+        In this case, the intention is to withdraw 0.05 liquidity tokens from the pool, expecting to receive 0.004 DOT token (u128 value of 40000000000 as it has 10 decimals) and 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
 After signing and submitting the transaction, the liquidity will be withdrawn from the pool. To verify the withdrawal, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **LiquidityRemoved** event has been emitted.
 
