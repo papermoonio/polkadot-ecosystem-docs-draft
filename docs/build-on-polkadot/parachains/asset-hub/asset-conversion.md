@@ -221,13 +221,13 @@ To swap assets for an exact amount of tokens, follow these steps:
       1. **path:Vec<StagingXcmV3MultiLocation\>** - an array of Multilocations representing the path of the swap. The first and last elements of the array are the input and output assets, respectively. In this case, the path consists of two elements:
          - **0: StagingXcmV3MultiLocation** - the Multilocation of the first asset in the pool. In this case, it is the PPM token, which the following Multilocation represents:
         ```javascript
-          {
-              parents: 0,
-              interior: {
-              X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
-              }
-          }
-          ```
+        {
+            parents: 0,
+            interior: {
+                X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
+            }
+        }
+        ```
         - **1: StagingXcmV3MultiLocation** - the second asset's Multilocation within the pool. This refers to the DOT token, which the following Multilocation identifies: 
          ```javascript
          {
