@@ -33,7 +33,7 @@ To view the current values of these parameters in the Polkadot network:
 
 1. Visit [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpolkadot.api.onfinality.io%2Fpublic-ws#/explorer), navigate to the **Developer** dropdown and select the **Chain state** option
 
-    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-1.webp)
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/overview/hrmp-overview-1.webp)
 
 2. Query the chain configuration parameters. The result will display the current settings for all the Polkadot network parameters, including the HRMP channel settings
     1. Select **configuration**
@@ -41,7 +41,7 @@ To view the current values of these parameters in the Polkadot network:
     3. Click the **+** button to execute the query
     4. Check the chain configuration
 
-    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-2.webp)
+    ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/overview/hrmp-overview-2.webp)
 
 ### Dispatching Extrinsics
 
