@@ -254,6 +254,56 @@ After signing and submitting the transaction, the swap will be executed. To veri
 
 ## Withdrawing Liquidity from a Pool
 
+To remove liquidity from a pool, the Asset Conversion pallet provides the `remove_liquidity` extrinsic. This function allows users to withdraw their provided liquidity from a pool, receiving back the original assets. When calling this function, users specify the amount of liquidity tokens (representing their share in the pool) they wish to burn. They also set minimum acceptable amounts for the assets they expect to receive back. This mechanism ensures users can control the minimum value they receive, protecting against unfavourable price movements during the withdrawal process.
+
+To withdraw liquidity from a pool, follow these steps:
+
+1. Navigate to the **Extrinsics** section on the Polkadot.Js App interface
+      1. Select **Developer** from the top menu
+      2. Click on **Extrinsics** from the dropdown menu
+
+        ![Extrinsics Section](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-1.webp)
+
+2. Choose the **AssetConversion** pallet and click on the **remove_liquidity** extrinsic
+      1. Select the **AssetConversion** pallet
+      2. Choose the `removeLiquidity` extrinsic from the list of available extrinsics
+       
+        ![Remove Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-14.webp)
+
+3. Fill in the required fields:
+      1. **asset1** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
+         ```javascript
+         {
+            parents: 0,
+            interior: Here
+         }
+         ```
+      2. **asset2** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
+         ```javascript
+         {
+            parents: 0,
+            interior: {
+              X2: [{PalletInstance: 50}, {GeneralIndex: 1112}]
+            }
+         }
+         ```
+      3. **lpTokenBurn** - the amount of liquidity tokens to burn
+      4. **amount1MinReceived** - the minimum amount of the first asset that the user expects to receive
+      5. **amount2MinReceived** - the minimum quantity of the second asset the user expects to receive
+      6. **withdrawTo** - the account to which the withdrawn assets will be sent
+      7. Click on **Submit Transaction** to withdraw liquidity from the pool
+
+        ![Remove Liquidity Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-15.webp)
+
+        !!! warning
+            Ensure that the amounts of tokens provided have been minted previously and are available in your account before withdrawing liquidity from the pool.
+
+        In this case, the intention is to withdraw 0.05 liquidity tokens from the pool, expecting to receive 0.004 DOT token (u128 value of 40000000000 as it also has 10 decimals) and 0.04 PPM token (u128 value of 200000000000 as it also has 10 decimals).
+
+After signing and submitting the transaction, the liquidity will be withdrawn from the pool. To verify the withdrawal, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **LiquidityRemoved** event has been emitted.
+
+![Remove Liquidity Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-16.webp)
+
 ## Test Environment Setup
 
 To test the Asset Conversion pallet, you can set up a local test environment to simulate different scenarios. This guide uses Chopsticks to spin up an instance of Polkadot Asset Hub. For further details on using Chopsticks, please refer to the [Chopsticks documentation](./docs/dev-tools/chopsticks/overview.md){target=\_blank}.
