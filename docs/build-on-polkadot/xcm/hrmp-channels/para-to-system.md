@@ -98,6 +98,7 @@ After successfully submitting the XCM message to the relay chain, two HRMP chann
     ```
 
 The output confirms the successful establishment of two HRMP channels:
+
 - From chain 1000 (system chain) to chain 2500 (parachain)
 - From chain 2500 (parachain) to chain 1000 (system chain)
 
