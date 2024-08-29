@@ -219,14 +219,7 @@ To swap assets for an exact amount of tokens, follow these steps:
 
 3. Fill in the required fields:
       1. **path:Vec<StagingXcmV3MultiLocation\>** - an array of Multilocations representing the path of the swap. The first and last elements of the array are the input and output assets, respectively. In this case, the path consists of two elements:
-         - **0: StagingXcmV3MultiLocation** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
-         ```javascript
-         {
-            parents: 0,
-            interior: Here
-         }
-         ```
-        - **1: StagingXcmV3MultiLocation** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
+         - **0: StagingXcmV3MultiLocation** - the Multilocation of the first asset in the pool. In this case, it is the PPM token, which the following Multilocation represents:
         ```javascript
           {
               parents: 0,
@@ -235,11 +228,18 @@ To swap assets for an exact amount of tokens, follow these steps:
               }
           }
           ```
-    2. **amountOut** - the exact amount of the second asset that the user wants to receive
-    3. **amountInMax** - the maximum amount of the first asset that the user is willing to swap
-    4. **sendTo** - the account to which the swapped assets will be sent
-    5. **keepAlive** - a boolean value that determines whether the pool should be kept alive after the swap
-    6. Click on **Submit Transaction** to swap assets for an exact amount of tokens
+        - **1: StagingXcmV3MultiLocation** - the second asset's Multilocation within the pool. This refers to the DOT token, which the following Multilocation identifies: 
+         ```javascript
+         {
+            parents: 0,
+            interior: Here
+         }
+         ```
+    1. **amountOut** - the exact amount of the second asset that the user wants to receive
+    2. **amountInMax** - the maximum amount of the first asset that the user is willing to swap
+    3. **sendTo** - the account to which the swapped assets will be sent
+    4. **keepAlive** - a boolean value that determines whether the pool should be kept alive after the swap
+    5. Click on **Submit Transaction** to swap assets for an exact amount of tokens
 
         ![Swap Tokens For Exact Tokens Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-12.webp)
 
@@ -248,6 +248,9 @@ To swap assets for an exact amount of tokens, follow these steps:
 
         In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it also has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
+After signing and submitting the transaction, the swap will be executed. To verify the swap, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **SwapExecuted** event has been emitted.
+
+![Swap Tokens For Exact Tokens Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-13.webp)
 
 ## Withdrawing Liquidity from a Pool
 
