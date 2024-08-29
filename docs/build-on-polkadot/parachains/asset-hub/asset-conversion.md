@@ -29,7 +29,7 @@ Before converting assets on Asset Hub, you must ensure you have:
 
 If there is no existing liquidity pool for an asset on Asset Hub, the first step is to create a liquidity pool. 
 
-The asset conversion pallet provides the `create_pool` extrinsic to create a new liquidity pool. It is used to create an empty liquidity pool along with a new `LP token` asset. 
+The asset conversion pallet provides the `createPool` extrinsic to create a new liquidity pool. It is used to create an empty liquidity pool along with a new `LP token` asset. 
 
 !!! note
     A testing token with the asset ID `1112` and the name `PPM` was created for this example.
@@ -60,7 +60,7 @@ To create the liquidity pool, you can follow these steps:
 
 2. Choose the **AssetConversion** pallet and click on the **create_pool** extrinsic
       3. Select the **AssetConversion** pallet 
-      4. Choose the `create_pool` extrinsic from the list of available extrinsics
+      4. Choose the **createPool** extrinsic from the list of available extrinsics
 
         ![Create Pool Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-2.webp)
 
@@ -93,7 +93,7 @@ As the above image shows, the **lp_token** ID created for this pool is 19. This 
 
 ## Adding Liquidity to a Pool
 
-The `add_liquidity` extrinsic allows users to provide liquidity to a pool of two assets. Users specify their preferred amounts for both assets and minimum acceptable quantities. The function determines the best asset contribution, which may vary from the amounts desired but won't fall below the specified minimums. In return for their contribution, providers receive liquidity tokens representing their pool portion.
+The `addLiquidity` extrinsic allows users to provide liquidity to a pool of two assets. Users specify their preferred amounts for both assets and minimum acceptable quantities. The function determines the best asset contribution, which may vary from the amounts desired but won't fall below the specified minimums. Providers receive liquidity tokens representing their pool portion in return for their contribution.
 
 To add liquidity to a pool, follow these steps:
 
@@ -105,7 +105,7 @@ To add liquidity to a pool, follow these steps:
 
 2. Choose the **AssetConversion** pallet and click on the **add_liquidity** extrinsic
       1. Select the **AssetConversion** pallet
-      2. Choose the `add_liquidity` extrinsic from the list of available extrinsics
+      2. Choose the **addLiquidity** extrinsic from the list of available extrinsics
 
         ![Add Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-5.webp)
 
@@ -160,7 +160,7 @@ To swap assets for an exact amount of tokens, follow these steps:
 
 2. Choose the **AssetConversion** pallet and click on the **swapForExactTokens** extrinsic
       1. Select the **AssetConversion** pallet
-      2. Choose the `swapForExactTokens` extrinsic from the list of available extrinsics
+      2. Choose the **swapForExactTokens** extrinsic from the list of available extrinsics
 
         ![Swap For Exact Tokens Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-8.webp)
 
@@ -191,7 +191,7 @@ To swap assets for an exact amount of tokens, follow these steps:
         ![Swap For Exact Tokens Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-9.webp)
 
         !!! warning
-            Ensure that the amounts of tokens provided have been minted previously and are available in your account before swapping assets.
+            Before swapping assets, ensure that the tokens provided have been minted previously and are available in your account.
 
         In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it also has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
@@ -201,7 +201,7 @@ After signing and submitting the transaction, the swap will be executed. To veri
 
 ### Swapping To an Exact Amount of Tokens
 
-Conversely, the Asset Conversion pallet counts wiht a function that allows users to trade a variable amount of one asset to acquire a precise quantity of another. It ensures that users don't exceed a set maximum of the initial asset to obtain the exact desired amount of the second asset. This provides a method to control transaction costs while achieving the intended result.
+Conversely, the Asset Conversion pallet counts with a function that allows users to trade a variable amount of one asset to acquire a precise quantity of another. It ensures that users stay within a set maximum of the initial asset to obtain the desired amount of the second asset. This provides a method to control transaction costs while achieving the intended result.
 
 To swap assets for an exact amount of tokens, follow these steps:
 
@@ -213,7 +213,7 @@ To swap assets for an exact amount of tokens, follow these steps:
 
 2. Choose the **AssetConversion** pallet and click on the **swapTokensForExactTokens** extrinsic:
       1. Select the **AssetConversion** pallet
-      2. Choose the `swapTokensForExactTokens` extrinsic from the list of available extrinsics
+      2. Choose the **swapTokensForExactTokens** extrinsic from the list of available extrinsics
 
         ![Swap Tokens For Exact Tokens Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-11.webp)
 
@@ -244,7 +244,7 @@ To swap assets for an exact amount of tokens, follow these steps:
         ![Swap Tokens For Exact Tokens Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-12.webp)
 
         !!! warning
-            Ensure that the amounts of tokens provided have been minted previously and are available in your account before swapping assets.
+            Before swapping assets, ensure that the tokens provided have been minted previously and are available in your account.
 
         In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it also has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
@@ -254,7 +254,7 @@ After signing and submitting the transaction, the swap will be executed. To veri
 
 ## Withdrawing Liquidity from a Pool
 
-To remove liquidity from a pool, the Asset Conversion pallet provides the `remove_liquidity` extrinsic. This function allows users to withdraw their provided liquidity from a pool, receiving back the original assets. When calling this function, users specify the amount of liquidity tokens (representing their share in the pool) they wish to burn. They also set minimum acceptable amounts for the assets they expect to receive back. This mechanism ensures users can control the minimum value they receive, protecting against unfavourable price movements during the withdrawal process.
+The Asset Conversion pallet provides the `removeLiquidity` extrinsic to remove liquidity from a pool. This function allows users to withdraw the liquidity they offered from a pool, returning the original assets. When calling this function, users specify the number of liquidity tokens (representing their share in the pool) they wish to burn. They also set minimum acceptable amounts for the assets they expect to receive back. This mechanism ensures that users can control the minimum value they receive, protecting against unfavorable price movements during the withdrawal process.
 
 To withdraw liquidity from a pool, follow these steps:
 
@@ -266,7 +266,7 @@ To withdraw liquidity from a pool, follow these steps:
 
 2. Choose the **AssetConversion** pallet and click on the **remove_liquidity** extrinsic
       1. Select the **AssetConversion** pallet
-      2. Choose the `removeLiquidity` extrinsic from the list of available extrinsics
+      2. Choose the **removeLiquidity** extrinsic from the list of available extrinsics
        
         ![Remove Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-14.webp)
 
@@ -287,7 +287,7 @@ To withdraw liquidity from a pool, follow these steps:
             }
          }
          ```
-      3. **lpTokenBurn** - the amount of liquidity tokens to burn
+      3. **lpTokenBurn** - the number of liquidity tokens to burn
       4. **amount1MinReceived** - the minimum amount of the first asset that the user expects to receive
       5. **amount2MinReceived** - the minimum quantity of the second asset the user expects to receive
       6. **withdrawTo** - the account to which the withdrawn assets will be sent
@@ -296,7 +296,7 @@ To withdraw liquidity from a pool, follow these steps:
         ![Remove Liquidity Fields](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-15.webp)
 
         !!! warning
-            Ensure that the amounts of tokens provided have been minted previously and are available in your account before withdrawing liquidity from the pool.
+            Ensure that the tokens provided have been minted previously and are available in your account before withdrawing liquidity from the pool.
 
         In this case, the intention is to withdraw 0.05 liquidity tokens from the pool, expecting to receive 0.004 DOT token (u128 value of 40000000000 as it also has 10 decimals) and 0.04 PPM token (u128 value of 200000000000 as it also has 10 decimals).
 
