@@ -197,7 +197,7 @@ To swap assets for an exact amount of tokens, follow these steps:
 
 After signing and submitting the transaction, the swap will be executed. To verify the swap, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **SwapExecuted** event has been emitted.
 
-![Swap For Exact Tokens Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-10.webp)
+![Swap From Exact Tokens Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-10.webp)
 
 ### Swapping To an Exact Amount of Tokens
 
