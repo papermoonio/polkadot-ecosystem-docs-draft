@@ -89,7 +89,7 @@ After signing and submitting the transaction, the liquidity pool will be created
 
 ![Pool Created Event](/polkadot-ecosystem-docs-draft/images/building-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-4.webp)
 
-As the above image shows, the **lp_token** ID created for this pool is 19. This ID is essential for adding liquidity to the pool, swapping assets, and withdrawing liquidity.
+As the above image shows, the **lp_token** ID created for this pool is 19. This ID is essential to identify the liquidity pool and the LP tokens associated with it.
 
 ## Adding Liquidity to a Pool
 
