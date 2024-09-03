@@ -147,6 +147,7 @@ To fund the account, follow the same process described in the previous section [
 ### Step 3 - Crafting and Submitting the XCM Message from the Receiver
 
 To accept the HRMP channel opening, you need to create and submit an XCM message that includes the encoded `hrmpAcceptOpenChannel` call data from the previous step. This process is similar to the one described in the previous section's [Step 3 - Crafting and Submitting the XCM Message](#step-3---crafting-and-submitting-the-xcm-message-from-the-sender), with a few key differences:
+
 - Use the encoded call data for `hrmpAcceptOpenChannel` obtained in Step 2 of this section
 - In the last XCM instruction (DepositAsset), set the beneficiary to parachain 2600's sovereign account to receive any surplus funds
 
