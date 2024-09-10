@@ -85,7 +85,7 @@ The XCM message should contain the following instructions:
 - **`BuyExecution`** - pays for the execution of the current message using the assets in the Holding Register
 - **`Transact`** - execute the encoded transaction call
 - **`RefundSurplus`** - increases the Refunded Weight Register to the value of the Surplus Weight Register, attempting to reclaim any excess fees paid via BuyExecution
-- **DepositAsset** - subtracts assets from the Holding Register and deposits equivalent on-chain assets under the specified beneficiary's ownership
+- **`DepositAsset`** - subtracts assets from the Holding Register and deposits equivalent on-chain assets under the specified beneficiary's ownership
 
 !!!note 
     For more detailed information about XCM's functionality, complexities, and instruction set, refer to the [xcm-format](https://github.com/polkadot-fellows/xcm-format){target=_blank} documentation.
