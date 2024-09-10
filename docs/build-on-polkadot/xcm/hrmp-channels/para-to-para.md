@@ -63,7 +63,7 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
 
 2. Construct an `hrmpInitOpenChannel` extrinsic call
 
-    1. Select the **hrmp** pallet
+    1. Select the **`hrmp`** pallet
     2. Choose the **hrmpInitOpenChannel** extrinsic
     3. Fill in the parameters
         - **recipient** - parachain ID of the target chain (in this case, 2600)
