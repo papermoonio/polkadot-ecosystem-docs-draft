@@ -1,5 +1,5 @@
 ---
-title: Convert assets on Asset Hub
+title: Convert Assets on Asset Hub
 description: A guide detailing the step-by-step process of converting assets on Asset Hub, helping users navigate the asset management on the platform efficiently.
 ---
 
