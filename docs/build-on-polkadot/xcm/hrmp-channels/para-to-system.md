@@ -73,7 +73,7 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
 
 Connect to parachain 2500 using Polkadot.js Apps to send the XCM message to the relay chain. Input the necessary parameters as illustrated in the image below. Make sure to:
 
-1. Insert your previously encoded `establish_channel_with_system` call data into the **call** field
+1. Insert your previously encoded `establish_channel_with_system` call data into the **`call`** field
 2. Provide beneficiary details
 3. Dispatch the XCM message to the relay chain by clicking the **Submit Transaction** button
 ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/para-to-system/hrmp-para-to-system-2.webp)
