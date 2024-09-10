@@ -86,7 +86,7 @@ After successfully submitting the XCM message to the relay chain, two HRMP chann
 1. Using Polkadot.js Apps, connect to the relay chain and navigate to the **Developer** dropdown, then select **Chain state**
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-1.webp)
 
-2. Query the hrmp channels
+2. Query the HRMP channels
     1. Select **hrmp** from the options
     2. Choose the **hrmpChannels** call
     3. Click the **+** button to execute the query
