@@ -82,7 +82,7 @@ This example uses the `sudo` pallet to dispatch the extrinsic. Verify the XCM co
 The XCM message should contain the following instructions:
 
 - **`WithdrawAsset`** - withdraws assets from the origin's ownership and places them in the Holding Register
-- **BuyExecution** - pays for the execution of the current message using the assets in the Holding Register
+- **`BuyExecution`** - pays for the execution of the current message using the assets in the Holding Register
 - **Transact** - execute the encoded transaction call
 - **RefundSurplus** - increases the Refunded Weight Register to the value of the Surplus Weight Register, attempting to reclaim any excess fees paid via BuyExecution
 - **DepositAsset** - subtracts assets from the Holding Register and deposits equivalent on-chain assets under the specified beneficiary's ownership
