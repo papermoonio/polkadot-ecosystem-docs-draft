@@ -87,7 +87,7 @@ After successfully submitting the XCM message to the relay chain, two HRMP chann
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-1.webp)
 
 2. Query the HRMP channels
-    1. Select **hrmp** from the options
+    1. Select **`hrmp`** from the options
     2. Choose the **`hrmpChannels`** call
     3. Click the **+** button to execute the query
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/para-to-system/hrmp-para-to-system-3.webp)
