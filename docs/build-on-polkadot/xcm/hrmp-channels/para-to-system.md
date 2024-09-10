@@ -7,20 +7,20 @@ description: Learn how to open HRMP channels with Polkadot system parachains. Di
 
 ## Introduction
 
-While establishing HRMP channels between regular parachains involves a two-step request and acceptance procedure, opening channels with system parachains follows a more straightforward approach.
+While establishing Horizontal Relay-routed Message Passing (HRMP) channels between regular parachains involves a two-step request and acceptance procedure, opening channels with system parachains follows a more straightforward approach.
 
 System parachains are specialized chains that provide core functionality to the Polkadot network. Examples include Asset Hub for cross-chain asset transfers and Bridge Hub for connecting to external networks. Given their critical role, establishing communication channels with these system parachains has been optimized for efficiency and ease of use.
 
-Any parachain can establish a bi-directional channel with a system chain through a single operation, requiring just one XCM message from the parachain to the relay chain.
+Any parachain can establish a bidirectional channel with a system chain through a single operation, requiring just one XCM message from the parachain to the relay chain.
 
 ## Prerequisites
 
 To successfully complete this process, you'll need to have the following in place:
 
 - Access to a blockchain network consisting of:
-    1. A relay chain
-    2. A parachain
-    3. An Asset Hub system chain
+    - A relay chain
+    - A parachain
+    - An Asset Hub system chain
 - A wallet containing enough funds to cover transaction fees on each of the participating chains
 
 ## Procedure for Establishing HRMP Channel
@@ -61,8 +61,8 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
 
 2. Construct an `establish_channel_with_system` extrinsic call
 
-    1. Select the **hrmp** pallet
-    2. Choose the **establish_channel_with_system** extrinsic
+    1. Select the **`hrmp`** pallet
+    2. Choose the **`establish_channel_with_system`** extrinsic
     3. Fill in the parameters:
         - **`target_system_chain`** - parachain ID of the target system chain (in this case, 1000)
     4. Copy the encoded call data

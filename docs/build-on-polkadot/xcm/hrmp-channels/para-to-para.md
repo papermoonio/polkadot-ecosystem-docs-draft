@@ -64,11 +64,11 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
 2. Construct an `hrmpInitOpenChannel` extrinsic call
 
     1. Select the **`hrmp`** pallet
-    2. Choose the **hrmpInitOpenChannel** extrinsic
+    2. Choose the **`hrmpInitOpenChannel`** extrinsic
     3. Fill in the parameters
         - **`recipient`** - parachain ID of the target chain (in this case, 2600)
-        - **proposedMaxCapacity** - max number of messages that can be pending in the channel at once
-        - **proposedMaxMessageSize** - max message size that could be put into the channel
+        - **`proposedMaxCapacity`** - max number of messages that can be pending in the channel at once
+        - **`proposedMaxMessageSize`** - max message size that could be put into the channel
     4. Copy the encoded call data
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/para-to-para/hrmp-para-to-para-2.webp)
     The encoded call data for opening a channel with parachain 2600 is `0x3c00280a00000800000000001000`.
@@ -94,7 +94,7 @@ In essence, this process withdraws funds from the parachain's sovereign account 
 
 To send the XCM message to the relay chain, connect to parachain 2500 in Polkadot.js Apps. Fill in the required parameters as shown in the image below, ensuring that you:
 
-1. Replace the **call** field with your encoded `hrmpInitOpenChannel` call data from the previous step
+1. Replace the **`call`** field with your encoded `hrmpInitOpenChannel` call data from the previous step
 2. Use the correct beneficiary information
 3. Click the **Submit Transaction** button to dispatch the XCM message to the relay chain
 
@@ -109,9 +109,9 @@ After submitting the XCM message to initiate the HRMP channel opening, you shoul
 
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-1.webp)
 
-2. Query the hrmp open channel requests
-    1. Select **hrmp**
-    2. Choose the **hrmpOpenChannelRequests** call
+2. Query the HRMP open channel requests
+    1. Select **`hrmp`**
+    2. Choose the **`hrmpOpenChannelRequests`** call
     3. Click the **+** button to execute the query
     4. Check the status of all pending channel requests
 
@@ -136,10 +136,10 @@ To fund the account, follow the same process described in the previous section [
 
 2. Construct an `hrmpAcceptOpenChannel` extrinsic call
 
-    1. Select the **hrmp** pallet
-    2. Choose the **hrmpAcceptOpenChannel** extrinsic
+    1. Select the **`hrmp`** pallet
+    2. Choose the **`hrmpAcceptOpenChannel`** extrinsic
     3. Fill in the parameters:
-        - **sender** - parachain ID of the requesting chain (in this case, 2500)
+        - **`sender`** - parachain ID of the requesting chain (in this case, 2500)
     4. Copy the encoded call data
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/para-to-para/hrmp-para-to-para-5.webp)
     The encoded call data for accepting a channel with parachain 2500 should be `0x3c01c4090000`
@@ -153,7 +153,7 @@ To accept the HRMP channel opening, you need to create and submit an XCM message
 
 To send the XCM message to the relay chain, connect to parachain 2600 in Polkadot.js Apps. Fill in the required parameters as shown in the image below, ensuring that you:
 
-1. Replace the **call** field with your encoded `hrmpAcceptOpenChannel` call data from the previous step
+1. Replace the **`call`** field with your encoded `hrmpAcceptOpenChannel` call data from the previous step
 2. Use the correct beneficiary information
 3. Click the **Submit Transaction** button to dispatch the XCM message to the relay chain
 
@@ -165,9 +165,9 @@ After submitting the XCM message to accept the HRMP channel opening, verify that
 
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/hrmp-channels-1.webp)
 
-2. Query the hrmp channels
-    1. Select **hrmp**
-    2. Choose the **hrmpChannels** call
+2. Query the HRMP channels
+    1. Select **`hrmp`**
+    2. Choose the **`hrmpChannels`** call
     3. Click the **+** button to execute the query
     4. Check the status of the opened channel
 
