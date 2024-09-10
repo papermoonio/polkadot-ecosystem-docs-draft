@@ -53,4 +53,4 @@ Parachain developers have a few options for triggering the required extrinsic ca
 
 - **Sudo** - if the parachain has a `sudo` pallet configured, the sudo key holder can use the sudo extrinsic to dispatch the necessary channel opening calls
 - **Governance** - the parachain's governance system, such as a council or OpenGov, can be used to authorize the channel opening calls
-- Privileged Accounts - the parachain may have other designated privileged accounts that are allowed to dispatch the HRMP channel opening extrinsics
+- **Privileged Accounts** - the parachain may have other designated privileged accounts that are allowed to dispatch the HRMP channel opening extrinsics
