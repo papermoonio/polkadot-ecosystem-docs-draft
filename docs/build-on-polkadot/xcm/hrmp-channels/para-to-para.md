@@ -117,7 +117,7 @@ After submitting the XCM message to initiate the HRMP channel opening, you shoul
 
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/para-to-para/hrmp-para-to-para-4.webp)
 
-If your channel request was successful, you should see an entry for your parachain ID in the list of open channel requests. This confirms that your request has been properly registered on the relay chain and is awaiting acceptance by the target parachain
+If your channel request was successful, you should see an entry for your parachain ID in the list of open channel requests. This confirms that your request has been properly registered on the relay chain and is awaiting acceptance by the target parachain.
 
 ## Procedure for Accepting HRMP Channel
 
