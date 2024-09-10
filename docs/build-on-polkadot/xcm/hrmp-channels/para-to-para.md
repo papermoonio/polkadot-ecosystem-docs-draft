@@ -10,7 +10,7 @@ description: Learn how to open HRMP channels between parachains on Polkadot. Dis
 For establishing communication channels between parachains on the Polkadot network using the HRMP protocol, the following steps are required:
 
 1. **Channel request** - the parachain that wants to open an HRMP channel must make a request to the parachain it wishes to have an open channel with
-2. Channel acceptance - the other parachain must then accept this request to complete the channel establishment
+2. **Channel acceptance** - the other parachain must then accept this request to complete the channel establishment
 
 This process results in a unidirectional HRMP channel, where messages can flow in only one direction between the two parachains.
 
