@@ -64,7 +64,7 @@ Use Polkadot.js Apps UI to connect to the relay chain and transfer funds from yo
     1. Select the **hrmp** pallet
     2. Choose the **establish_channel_with_system** extrinsic
     3. Fill in the parameters:
-        - **target_system_chain** - parachain ID of the target system chain (in this case, 1000)
+        - **`target_system_chain`** - parachain ID of the target system chain (in this case, 1000)
     4. Copy the encoded call data
     ![](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/hrmp-channels/para-to-system/hrmp-para-to-system-1.webp)
     The encoded call data for establishing a channel with system parachain 1000 should be `0x3c0ae8030000`
