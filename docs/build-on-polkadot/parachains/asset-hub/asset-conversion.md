@@ -7,7 +7,7 @@ description: A guide detailing the step-by-step process of converting assets on 
 
 ## Introduction
 
-Asset Conversion is an Automated Market Maker (AMM) that utilizes [Uniswap V2](https://github.com/Uniswap/v2-core){target=\_blank} logic and is implemented as a pallet on Polkadot's AssetHub. For more details about this feature, please visit the [Asset Conversion on Asset Hub](https://wiki.polkadot.network/docs/learn-asset-conversion-assethub){target=\_blank} page. 
+Asset Conversion is an Automated Market Maker (AMM) utilizing [Uniswap V2](https://github.com/Uniswap/v2-core){target=\_blank} logic and implemented as a pallet on Polkadot's Asset Hub. For more details about this feature, please visit the [Asset Conversion on Asset Hub](https://wiki.polkadot.network/docs/learn-asset-conversion-assethub){target=\_blank} wiki page. 
 
 This guide will provide detailed information about the key functionalities offered by the
 [Asset Conversion](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/asset-conversion){target=\_blank} pallet on Asset Hub, including: 
