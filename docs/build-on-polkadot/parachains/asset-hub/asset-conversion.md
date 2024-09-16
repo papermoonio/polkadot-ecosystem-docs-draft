@@ -130,7 +130,7 @@ To add liquidity to a pool, follow these steps:
       4. **`amount2Desired`** - the quantity of the second asset intended for pool contribution
       5. **`amount1Min`** - the minimum amount of the first asset that will be contributed
       6. **`amount2Min`** - the lowest acceptable quantity of the second asset for contribution
-      7. **mintTo** - the account to which the liquidity tokens will be minted
+      7. **`mintTo`** - the account to which the liquidity tokens will be minted
       8. Click on **Submit Transaction** to add liquidity to the pool
 
         ![Add Liquidity Fields](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-6.webp)
