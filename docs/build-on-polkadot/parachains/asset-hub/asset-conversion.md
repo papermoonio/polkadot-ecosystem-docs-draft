@@ -60,7 +60,7 @@ To create the liquidity pool, you can follow these steps:
 
 2. Choose the **`AssetConversion`** pallet and click on the **`createPool`** extrinsic
       3. Select the **`AssetConversion`** pallet 
-      4. Choose the **createPool** extrinsic from the list of available extrinsics
+      4. Choose the **`createPool`** extrinsic from the list of available extrinsics
 
         ![Create Pool Extrinsic](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-2.webp)
 
