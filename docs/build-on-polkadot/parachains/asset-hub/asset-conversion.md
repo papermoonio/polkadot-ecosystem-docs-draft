@@ -110,7 +110,7 @@ To add liquidity to a pool, follow these steps:
         ![Add Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-5.webp)
 
 3. Fill in the required fields:
-      1. **asset1** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
+      1. **`asset1`** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
          ```javascript
          {
             parents: 0,
