@@ -34,7 +34,7 @@ The asset conversion pallet provides the `createPool` extrinsic to create a new 
 !!! note
     A testing token with the asset ID `1112` and the name `PPM` was created for this example.
 
-As stated in the [Test Environment Setup](#test-environment-setup) section, this tutorial is based on the assumption that you have an instance of Polkadot Asset Hub running locally. Therefore, the liquidity pool will be created between DOT and PPM tokens. However, the same steps can be applied to any other asset on Asset Hub.
+As stated in the [Test Environment Setup](#test-environment-setup) section, this tutorial is based on the assumption that you have an instance of Polkadot Asset Hub running locally. Therefore, the demo liquidity pool will be created between DOT and PPM tokens. However, the same steps can be applied to any other asset on Asset Hub.
 
 From the Asset Hub perspective, the Multilocation that identifies the PPM token is the following:
 
