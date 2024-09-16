@@ -140,7 +140,7 @@ To add liquidity to a pool, follow these steps:
 
         In this case, the liquidity provided to the pool is between DOT tokens and PPM tokens with the asset ID 1112 on Polkadot Asset Hub. The intention is to provide liquidity for 1 DOT token (u128 value of 1000000000000 as it has 10 decimals) and 1 PPM token (u128 value of 1000000000000 as it also has 10 decimals).
 
-After signing and submitting the transaction, the liquidity will be added to the pool. To verify the liquidity addition, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **LiquidityAdded** event has been emitted.
+Signing and submitting the transaction adds liquidity to the pool. To verify the liquidity addition, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **`LiquidityAdded`** event was emitted.
 
 ![Liquidity Added Event](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-7.webp)
 
