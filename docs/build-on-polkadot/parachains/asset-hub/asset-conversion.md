@@ -128,7 +128,7 @@ To add liquidity to a pool, follow these steps:
          ``` 
       3. **`amount1Desired`** - the amount of the first asset that will be contributed to the pool
       4. **`amount2Desired`** - the quantity of the second asset intended for pool contribution
-      5. **amount1Min** - the minimum amount of the first asset that will be contributed
+      5. **`amount1Min`** - the minimum amount of the first asset that will be contributed
       6. **amount2Min** - the lowest acceptable quantity of the second asset for contribution
       7. **mintTo** - the account to which the liquidity tokens will be minted
       8. Click on **Submit Transaction** to add liquidity to the pool
