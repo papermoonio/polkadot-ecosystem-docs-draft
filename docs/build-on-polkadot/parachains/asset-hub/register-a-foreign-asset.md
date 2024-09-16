@@ -72,7 +72,7 @@ This guide will use Polkadot, its local Asset Hub instance, and the [Astar](http
             ![Get parachain sovereign account](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-3.webp)
 
 
-    - **minBalance** - the minimum balance required to hold this asset
+    - **`minBalance`** - the minimum balance required to hold this asset
 
     ![Fill out the required fields](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/register-a-foreign-asset/register-a-foreign-asset-4.webp)
 
