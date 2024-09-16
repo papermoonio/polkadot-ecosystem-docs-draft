@@ -105,7 +105,7 @@ To add liquidity to a pool, follow these steps:
 
 2. Choose the **`assetConversion`** pallet and click on the **`addLiquidity`** extrinsic
       1. Select the **`assetConversion`** pallet
-      2. Choose the **addLiquidity** extrinsic from the list of available extrinsics
+      2. Choose the **`addLiquidity`** extrinsic from the list of available extrinsics
 
         ![Add Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-5.webp)
 
