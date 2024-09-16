@@ -29,7 +29,7 @@ Before converting assets on Asset Hub, you must ensure you have:
 
 If an asset on Asset Hub does not have an existing liquidity pool, the first step is to create one. 
 
-The asset conversion pallet provides the `createPool` extrinsic to create a new liquidity pool. It is used to create an empty liquidity pool along with a new `LP token` asset. 
+The asset conversion pallet provides the `createPool` extrinsic to create a new liquidity pool, creating an empty liquidity pool and a new `LP token` asset. 
 
 !!! note
     A testing token with the asset ID `1112` and the name `PPM` was created for this example.
