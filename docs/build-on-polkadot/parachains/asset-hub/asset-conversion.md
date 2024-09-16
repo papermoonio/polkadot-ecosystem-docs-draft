@@ -85,7 +85,7 @@ To create the liquidity pool, you can follow these steps:
 
         ![Create Pool Fields](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-3.webp)
 
-After signing and submitting the transaction, the liquidity pool will be created. To verify the pool’s creation, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **PoolCreated** event has been emitted.
+Signing and submitting the transaction triggers the creation of the liquidity pool. To verify the new pool's creation, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **`PoolCreated`** event was emitted.
 
 ![Pool Created Event](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-4.webp)
 
