@@ -89,7 +89,7 @@ Signing and submitting the transaction triggers the creation of the liquidity po
 
 ![Pool Created Event](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-4.webp)
 
-As the above image shows, the **lpToken** ID created for this pool is 19. This ID is essential to identify the liquidity pool and the LP tokens associated with it.
+As the preceding image shows, the **`lpToken`** ID created for this pool is 19. This ID is essential to identify the liquidity pool and associated LP tokens.
 
 ## Adding Liquidity to a Pool
 
