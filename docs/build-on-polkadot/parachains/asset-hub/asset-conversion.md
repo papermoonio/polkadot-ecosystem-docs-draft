@@ -148,7 +148,7 @@ Signing and submitting the transaction adds liquidity to the pool. To verify the
 
 ### Swapping From an Exact Amount of Tokens
 
-The asset conversion pallet enables users to exchange a specific quantity of one asset for another in a designated liquidity pool by swapping them for an exact amount of tokens. It guarantees that the user will receive at least a predetermined minimum amount of the second asset. This function is intended to provide trading predictability, allowing users to conduct asset exchanges confidently, knowing they will receive minimum returns.
+The asset conversion pallet enables users to exchange a specific quantity of one asset for another in a designated liquidity pool by swapping them for an exact amount of tokens. It guarantees the user will receive at least a predetermined minimum amount of the second asset. This function increases trading predictability and allows users to conduct asset exchanges with confidence that they are assured a minimum return.
 
 To swap assets for an exact amount of tokens, follow these steps:
 
