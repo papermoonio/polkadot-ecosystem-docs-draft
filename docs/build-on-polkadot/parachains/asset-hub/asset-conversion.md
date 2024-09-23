@@ -265,7 +265,7 @@ To withdraw liquidity from a pool, follow these steps:
         ![Extrinsics Section](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-1.webp)
 
 2. Choose the **`AssetConversion`** pallet and click on the **`remove_liquidity`** extrinsic
-      1. Select the **AssetConversion** pallet
+      1. Select the **`AssetConversion`** pallet
       2. Choose the **removeLiquidity** extrinsic from the list of available extrinsics
        
         ![Remove Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-14.webp)
