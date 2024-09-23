@@ -201,7 +201,7 @@ Signing and submitting the transaction will execute the swap. To verify executio
 
 ### Swapping To an Exact Amount of Tokens
 
-Conversely, the Asset Conversion pallet counts with a function that allows users to trade a variable amount of one asset to acquire a precise quantity of another. It ensures that users stay within a set maximum of the initial asset to obtain the desired amount of the second asset. This provides a method to control transaction costs while achieving the intended result.
+Conversely, the Asset Conversion pallet comes with a function that allows users to trade a variable amount of one asset to acquire a precise quantity of another. It ensures that users stay within a set maximum of the initial asset to obtain the desired amount of the second asset. This provides a method to control transaction costs while achieving the intended result.
 
 To swap assets for an exact amount of tokens, follow these steps:
 
