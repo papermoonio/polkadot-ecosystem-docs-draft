@@ -278,7 +278,7 @@ To withdraw liquidity from a pool, follow these steps:
             interior: Here
          }
          ```
-      2. **asset2** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
+      2. **`asset2`** - the second asset's Multilocation within the pool. This refers to the PPM token, which the following Multilocation identifies:  
          ```javascript
          {
             parents: 0,
