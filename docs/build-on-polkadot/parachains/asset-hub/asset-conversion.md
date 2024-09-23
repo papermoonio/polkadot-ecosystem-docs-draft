@@ -300,7 +300,7 @@ To withdraw liquidity from a pool, follow these steps:
 
         In this case, the intention is to withdraw 0.05 liquidity tokens from the pool, expecting to receive 0.004 DOT token (u128 value of 40000000000 as it has 10 decimals) and 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
-After signing and submitting the transaction, the liquidity will be withdrawn from the pool. To verify the withdrawal, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **LiquidityRemoved** event has been emitted.
+Signing and submitting the transaction will initiate the withdrawal of liquidity from the pool. To verify the withdrawal, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **`LiquidityRemoved`** event was emitted.
 
 ![Remove Liquidity Event](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-16.webp)
 
