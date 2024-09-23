@@ -271,7 +271,7 @@ To withdraw liquidity from a pool, follow these steps:
         ![Remove Liquidity Extrinsic](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-14.webp)
 
 3. Fill in the required fields:
-      1. **asset1** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
+      1. **`asset1`** - the Multilocation of the first asset in the pool. In this case, it is the DOT token, which the following Multilocation represents:
          ```javascript
          {
             parents: 0,
