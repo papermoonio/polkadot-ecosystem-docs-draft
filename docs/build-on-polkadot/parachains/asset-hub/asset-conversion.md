@@ -213,7 +213,7 @@ To swap assets for an exact amount of tokens, follow these steps:
 
 2. Choose the **`AssetConversion`** pallet and click on the **`swapTokensForExactTokens`** extrinsic:
       1. Select the **`AssetConversion`** pallet
-      2. Choose the **swapTokensForExactTokens** extrinsic from the list of available extrinsics
+      2. Choose the **`swapTokensForExactTokens`** extrinsic from the list of available extrinsics
 
         ![Swap Tokens For Exact Tokens Extrinsic](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-11.webp)
 
