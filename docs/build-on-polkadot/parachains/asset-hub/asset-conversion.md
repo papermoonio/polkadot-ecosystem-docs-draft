@@ -298,7 +298,7 @@ To withdraw liquidity from a pool, follow these steps:
         !!! warning
             Ensure that the tokens provided have been minted previously and are available in your account before withdrawing liquidity from the pool.
 
-        In this case, the intention is to withdraw 0.05 liquidity tokens from the pool, expecting to receive 0.004 DOT token (u128 value of 40000000000 as it has 10 decimals) and 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
+        In this case, the intention is to withdraw 0.05 liquidity tokens from the pool, expecting to receive 0.004 DOT token (`u128` value of 40000000000 as it has ten decimals) and 0.04 PPM token (`u128` value of 400000000000 as it also has ten decimals).
 
 Signing and submitting the transaction will initiate the withdrawal of liquidity from the pool. To verify the withdrawal, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **`LiquidityRemoved`** event was emitted.
 
