@@ -287,7 +287,7 @@ To withdraw liquidity from a pool, follow these steps:
             }
          }
          ```
-      3. **lpTokenBurn** - the number of liquidity tokens to burn
+      3. **`lpTokenBurn`** - the number of liquidity tokens to burn
       4. **amount1MinReceived** - the minimum amount of the first asset that the user expects to receive
       5. **amount2MinReceived** - the minimum quantity of the second asset the user expects to receive
       6. **withdrawTo** - the account to which the withdrawn assets will be sent
