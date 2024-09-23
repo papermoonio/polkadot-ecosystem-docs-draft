@@ -195,7 +195,7 @@ To swap assets for an exact amount of tokens, follow these steps:
 
         In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
-After signing and submitting the transaction, the swap will be executed. To verify the swap, check the **Explorer** section on the Polkadot.Js App interface and ensure that the **SwapExecuted** event has been emitted.
+Signing and submitting the transaction will execute the swap. To verify execution, check the **Explorer** section on the Polkadot.Js App interface and make sure that the **`SwapExecuted`** event was emitted.
 
 ![Swap From Exact Tokens Event](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-10.webp)
 
