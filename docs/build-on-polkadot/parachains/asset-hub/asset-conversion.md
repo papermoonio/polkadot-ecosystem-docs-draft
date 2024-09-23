@@ -235,7 +235,7 @@ To swap assets for an exact amount of tokens, follow these steps:
             interior: Here
          }
          ```
-    1. **amountOut** - the exact amount of the second asset that the user wants to receive
+    1. **`amountOut`** - the exact amount of the second asset that the user wants to receive
     2. **`amountInMax`** - the maximum amount of the first asset that the user is willing to swap
     3. **sendTo** - the account to which the swapped assets will be sent
     4. **keepAlive** - a boolean value that determines whether the pool should be kept alive after the swap
