@@ -191,7 +191,7 @@ To swap assets for an exact amount of tokens, follow these steps:
         ![Swap For Exact Tokens Fields](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/asset-conversion/asset-conversion-9.webp)
 
         !!! warning
-            Before swapping assets, ensure that the tokens provided have been minted previously and are available in your account.
+            Ensure that the appropriate amount of tokens provided has been minted previously and is available in your account before adding liquidity to the pool.
 
         In this case, the intention is to swap 0.01 DOT token (u128 value of 100000000000 as it has 10 decimals) for 0.04 PPM token (u128 value of 400000000000 as it also has 10 decimals).
 
