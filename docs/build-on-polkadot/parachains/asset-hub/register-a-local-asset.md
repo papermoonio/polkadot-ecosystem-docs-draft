@@ -28,10 +28,10 @@ To register a local asset on the Asset Hub parachain, follow these steps:
 
       - You may prefer to test local asset registration on TestNet before registering the asset on a MainNet hub. If you still need to set up a local testing environment, review the [Environment setup](#environment-setup) section for instructions. Once the local environment is set up, connect to the Local Node (Chopsticks) available on `ws://127.0.0.1:8000`
       - For the live network, connect to the `Asset Hub` parachain. Either Polkadot or Kusama Asset Hub can be selected from the dropdown list, choosing the desired RPC provider
-    
+
 2. Click on the **Network** tab on the top navigation bar and select **Assets** from the dropdown list
 
-      ![Access to Asset Hub through Polkadot.JS](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-1.webp) 
+      ![Access to Asset Hub through Polkadot.JS](/polkadot-ecosystem-docs-draft/images/build-on-polkadot/parachains/asset-hub/register-a-local-asset/register-a-local-asset-1.webp)
 
 3. Now, you need to examine all the registered asset IDs. This step is crucial to ensure that the asset ID you are about to register is unique. Asset IDs are displayed in the **assets** column
 
