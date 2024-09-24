@@ -1,0 +1,6 @@
+title: XCM
+hide: false
+nav:
+  - index.md
+  - asset-transfer-api
+  - hrmp-channels

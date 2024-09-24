@@ -3,3 +3,5 @@ nav:
   - index.md
   - 'Overview': 'overview.md'
   - 'Register a Local Asset': 'register-a-local-asset.md'
+  - 'Register a Foreign Asset': 'register-a-foreign-asset.md'
+  - 'Asset Conversion': 'asset-conversion.md'

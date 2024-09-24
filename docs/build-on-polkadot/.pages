@@ -2,4 +2,5 @@ title: Build on Polkadot
 hide: false
 nav:
   - index.md
+  - xcm
   - parachains
